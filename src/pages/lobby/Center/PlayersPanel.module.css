@@ -1,0 +1,93 @@
+.container {
+    width: 50%;
+}
+
+.headerContainer {
+    position: relative;
+    height: 10%;
+    width: 100%;
+}
+
+.headerTitle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 2.2rem;
+}
+
+.headerPlayerNum {
+    position: absolute;
+    text-align: right;
+    font-size: 1.2rem;
+    display: block;
+    top: 50%;
+    right: 0;
+    transform: translate(-10%, -50%);
+}
+
+.list {
+    height: 70%;
+    overflow-y: scroll;
+    width: 100%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.list::-webkit-scrollbar {
+    display: none;
+}
+
+.bottomPanel {
+    display: flex;
+    height: 20%;
+    width: 100%;
+    border-radius: 3rem;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    /*background-color: azure;*/
+}
+
+.remainingGames {
+    height: 25%;
+    width: 30%;
+    border-radius: 2rem;
+    transform: translateY(-10%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightBlue {
+    background-color: #282c34;
+}
+
+.lightYellow {
+    background-color: darkolivegreen;
+}
+
+.lightRed {
+    background-color: darkred;
+}
+
+.remainingGames p {
+    display: block;
+}
+
+.buttonStart {
+    width: 100%;
+    height: 70%;
+    align-self: flex-end;
+    justify-self: flex-end;
+}
+
+.noMoreCoins {
+    text-align: center;
+    width: 80%;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    border: 1px red dashed;
+}

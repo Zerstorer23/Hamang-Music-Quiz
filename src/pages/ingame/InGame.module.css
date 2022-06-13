@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(159, 180, 198);
+    padding: 0.4rem;
+}
+
+.leftPanel {
+    width: 75%;
+}
+
+.rightPanel {
+    width: 25%;
+}

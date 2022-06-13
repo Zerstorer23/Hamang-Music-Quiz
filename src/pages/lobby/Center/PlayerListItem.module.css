@@ -1,0 +1,43 @@
+.item {
+    width: 100%;
+    font-size: 2rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.isHost {
+    color: red;
+}
+
+.namePanel {
+    text-align: left;
+    padding: 0.7rem;
+    font-size: 1.5rem;
+}
+
+.readyPanel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    height: 80%;
+    text-align: center;
+    background-color: greenyellow;
+    color: navy;
+    border-radius: 1rem;
+}
+
+.hostPanel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    height: 80%;
+    text-align: center;
+    background-color: rgba(255, 0, 0, 0.5);
+    color: #ffe70e;
+    font-weight: bold;
+    font-size: 1.3rem;
+    border-radius: 1rem;
+}
