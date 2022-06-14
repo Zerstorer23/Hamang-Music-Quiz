@@ -15,6 +15,15 @@ export function randomInt(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+export function currentTimeInMills(): number {
+    const d = new Date();
+    return d.getTime();
+}
+
+export function elapsedSinceInMills(start: number): number {
+    return currentTimeInMills() - start;
+}
+
 export function getRandomSeed() {
     return randomInt(0, 100);
 }

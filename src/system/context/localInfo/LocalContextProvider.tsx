@@ -22,6 +22,10 @@ export enum LocalField {
     Muted,
 }
 
+export type CursorFocusInfo = {
+    time: number;
+    state: InputCursor;
+}
 export type TimerOptionType = {
     duration: number;
     onExpire: any;
@@ -47,7 +51,10 @@ export enum InputCursor {
 
 export default function LocalProvider(props: IProps) {
     const [myId, setMyId] = useState<string | null>(null);
-    const [inputFocused, setInputFocused] = useState<InputCursor>(InputCursor.Idle);
+    const [inputFocused, setInputFocused] = useState<CursorFocusInfo>({
+        time: 0,
+        state: InputCursor.Idle
+    });
     const [isMuted, setIsMuted] = useState<boolean>(false);
     const [timerOption, setTimerOption] = useState<TimerOptionType>({
         duration: 20,

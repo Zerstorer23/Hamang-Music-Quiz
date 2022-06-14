@@ -23,19 +23,17 @@ export default function PlayersPanel() {
     const playerMap: PlayerMap = ctx.room.playerMap;
     const currPlayer = playerMap.size;
     const playerList = ctx.room.playerList;
-    const myId = localCtx.getVal(LocalField.Id);
     useKeyListener([KeyCode.Space], onKey);
     if (myEntry.id === null) return <Fragment/>;
 
     function onKey(keyCode: KeyCode) {
-        if (localCtx.getVal(LocalField.InputFocus) === InputCursor.Chat) return;
+        if (localCtx.getVal(LocalField.InputFocus).state !== InputCursor.Idle) return;
         if (keyCode === KeyCode.Space) {
             onClickStart();
         }
     }
 
     function onClickStart() {
-        console.log("Listen start " + amHost);
         if (amHost) {
             //Host action is start game
             if (DS.StrictRules) {
@@ -80,7 +78,7 @@ export default function PlayersPanel() {
                             {(buttonKey)}
                         </button> :
                         <p className={`${classes.noMoreCoins} ${gc.borderColor}`}>
-                            {amHost ? ("_prompt_how_to") : ("_prompt_play_more_want")}
+                            더 플레이 하려면 방장이 채팅에 "/coins" 입력
                         </p>
                 }
             </div>

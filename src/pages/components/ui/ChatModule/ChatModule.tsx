@@ -8,14 +8,13 @@ import ChatContext, {
 import {TurnManager} from "system/GameStates/TurnManager";
 import RoomContext from "system/context/roomInfo/room-context";
 import HorizontalLayout from "pages/components/ui/HorizontalLayout";
-import {InputCursor, LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
+import {CursorFocusInfo, InputCursor, LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
 import useKeyListener, {KeyCode} from "system/hooks/useKeyListener";
 import {CommandParser} from "pages/components/ui/ChatModule/CommandParser";
 import sendToPort from "pages/components/ui/ChatModule/ChatRelay";
 import {InputManager} from "system/GameStates/InputManager";
+import {currentTimeInMills, elapsedSinceInMills, randomInt} from "system/Constants/GameConstants";
 
-const LF = String.fromCharCode(10);
-const CR = String.fromCharCode(13);
 export default function ChatModule() {
     const chatCtx = useContext(ChatContext);
     const ctx = useContext(RoomContext);
@@ -24,6 +23,7 @@ export default function ChatModule() {
     const myEntry = TurnManager.getMyInfo(ctx, localCtx);
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const chatFieldRef = useRef<HTMLTextAreaElement>(null);
+    const cursorFocus = localCtx.getVal(LocalField.InputFocus) as CursorFocusInfo;
 
     useEffect(() => {
         messagesEndRef.current!.scrollIntoView({behavior: "smooth"});
@@ -35,7 +35,11 @@ export default function ChatModule() {
         if (keyCode === KeyCode.Undefined) return;
         if (document.activeElement === chatFieldRef.current!) {
             handleSend();
-        } else {
+            return;
+        }
+        if (cursorFocus.state === InputCursor.Idle) {
+            const elapsed = elapsedSinceInMills(cursorFocus.time);
+            if (elapsed <= 250) return;
             chatFieldRef.current!.focus();
         }
     }
@@ -69,8 +73,11 @@ export default function ChatModule() {
     }, [handleSpecials, myEntry]);
 
     function toggleFocus(toggle: boolean) {
-        localCtx.setVal(LocalField.InputFocus,
-            toggle ? InputCursor.Chat : InputCursor.Idle);
+        const cursorInfo: CursorFocusInfo = {
+            time: currentTimeInMills(),
+            state: toggle ? InputCursor.Chat : InputCursor.Idle
+        };
+        localCtx.setVal(LocalField.InputFocus, cursorInfo);
     }
 
 
@@ -86,7 +93,7 @@ export default function ChatModule() {
         <textarea
             ref={chatFieldRef}
             className={classes.inputField}
-            placeholder={("_chat_hint")}
+            placeholder={"Enter로 채팅 시작..."}
             onBlur={() => {
                 toggleFocus(false);
             }}
@@ -95,7 +102,7 @@ export default function ChatModule() {
             }}
         ></textarea>
                 <button className={classes.buttonSend} onClick={handleSend}>
-                    {("_send")}
+                    전송
                 </button>
             </HorizontalLayout>
         </div>

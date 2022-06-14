@@ -15,13 +15,12 @@ type Prop = IProps & {
 export default function PlayerListItem(props: Prop) {
     const hostCss = props.isHost ? classes.isHost : "";
     //TODO
-    const name = (props.player.wins === 0) ? props.player.name : "Plaer with wins";
-    // insert(t, "_name_with_wins", props.player.name, props.player.wins);
+    const name = (props.player.wins === 0) ? props.player.name : `${props.player.name} (${props.player.gameWins}승)`;
     let tagElem: JSX.Element;
     if (props.isHost) {
-        tagElem = <div className={`${classes.hostPanel}`}>{("_is_host")}</div>;
+        tagElem = <div className={`${classes.hostPanel}`}>방장</div>;
     } else if (props.player.isReady) {
-        tagElem = <div className={`${classes.readyPanel} ${animClasses.slideDown}`}>{("_is_ready")}</div>;
+        tagElem = <div className={`${classes.readyPanel} ${animClasses.slideDown}`}>{("준비됨")}</div>;
     } else {
         tagElem = <div className={`${classes.readyPanel} ${animClasses.invisible}`}/>;
     }
