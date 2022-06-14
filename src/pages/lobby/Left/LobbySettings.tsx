@@ -50,6 +50,9 @@ export default function LobbySettings() {
         navigator.clipboard.writeText(myUrl);
     }
 
+//TODO on push Filter, build library, if host, check count song validity and update
+    //On update count song, check validity and modify min.
+    //Dont push if library size 0
     const enabledCss = myEntry.player.isReady ? classes.isDisabled : "";
     return (
         <div className={`${classes.container} ${gc.round_border} ${gc.borderColor}`}>

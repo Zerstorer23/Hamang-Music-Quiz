@@ -25,9 +25,7 @@ export default function InGame() {
     const myId = localCtx.getVal(LocalField.Id);
     const amHost = TurnManager.amHost(ctx, localCtx);
     const numPlayers = ctx.room.playerMap.size;
-    useEffect(() => {
 
-    }, []);
     useEffect(() => {
         if (myId === null) {
             history.replace(Navigation.Loading);

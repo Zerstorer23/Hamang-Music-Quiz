@@ -31,4 +31,18 @@ export class InputManager {
         }
         return answer;
     }
+
+    public static cleanseVid(url: string) {
+        if (url.length === 11) {
+            return url;
+        } else if (url.includes("youtu.be")) {
+            //share url
+            let temp = url.lastIndexOf("/");
+            return url.substring(temp + 1, temp + 12);
+        } else {
+            let temp = url.indexOf("v=");
+            return url.substring(temp + 2, temp + 13);
+        }
+
+    }
 }

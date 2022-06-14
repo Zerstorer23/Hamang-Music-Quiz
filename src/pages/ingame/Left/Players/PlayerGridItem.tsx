@@ -5,6 +5,7 @@ import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManage
 import {useContext, useEffect, useState} from "react";
 import RoomContext from "system/context/roomInfo/room-context";
 import animCss from "index/animation.module.css";
+import gc from "index/global.module.css";
 
 type Props = IProps & {
     entry: PlayerEntry
@@ -33,10 +34,10 @@ export default function PlayerGridItem(props: Props) {
 
     }, [music.status, player.answer]);
 
-    const answerCss = (gotCorrect) ? `${classes.correct} ${animCss.zoomIn}` : "";
-
+    const answerCss = (gotCorrect) ? `${classes.correct} ${gc.greenText} ${animCss.zoomIn}` : "";
+    const playerCss = (props.isMe) ? gc.greenText : " ";
     return <div className={`${classes.cell} ${cellCss}`}>
-        <p>
+        <p className={playerCss}>
             {`${cssIndex}. ${player.name} (${player.wins}점)`}
         </p>
         {

@@ -48,6 +48,10 @@
     color: black;
 }
 
+.greenText {
+    color: greenyellow;
+}
+
 .panelBackground {
     background-color: rgba(31, 43, 57, 255);
 }

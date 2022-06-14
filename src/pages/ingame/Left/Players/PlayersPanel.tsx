@@ -1,6 +1,6 @@
 import classes from "./PlayersPanel.module.css";
 import RoomContext from "system/context/roomInfo/room-context";
-import {useContext} from "react";
+import {Fragment, useContext} from "react";
 import {PlayerManager} from "system/Database/PlayerManager";
 import gc from "index/global.module.css";
 import PlayerGridItem from "pages/ingame/Left/Players/PlayerGridItem";
@@ -16,8 +16,9 @@ export default function PlayersPanel() {
     return <div className={`${classes.container} ${gc.round_border} ${gc.borderColor}`}>
         {
             sortedPlayers.map((player, index, array) => {
+                if (index > 7) return <Fragment key={index}/>;
                 return <PlayerGridItem
-                    key={player.id}
+                    key={index}
                     entry={player}
                     isMe={myEntry.id === player.id}
                     index={index}

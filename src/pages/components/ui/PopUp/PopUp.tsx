@@ -7,6 +7,9 @@ import RoomContext from "system/context/roomInfo/room-context";
 import animClasses from "index/animation.module.css";
 import {MyTimer} from "pages/components/ui/MyTimer/MyTimer";
 import {LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
+import {PlayerManager} from "system/Database/PlayerManager";
+import {TurnManager} from "system/GameStates/TurnManager";
+import gc from "index/global.module.css";
 
 function Backdrop() {
     return (
@@ -16,35 +19,27 @@ function Backdrop() {
 
 
 function GameOverWindow(props: IProps) {
-    // const img = Card.getVictoryImage(props.card1, props.card2);
+    const ctx = useContext(RoomContext);
+    const localCtx = useContext(LocalContext);
+    const sortedPlayers = PlayerManager.sortByWins(ctx.room.playerMap, ctx.room.playerList);
+    const myEntry = TurnManager.getMyInfo(ctx, localCtx);
+
     return (
         <div className={`${classes.modal} ${animClasses.slideDown}`}>
-            {/*<img className={classes.image} src={`${img}`} alt={"victory"}/>*/}
-            {/*       <p className={classes.text}>{formatInsert(t, "_game_winner", props.player.name)}</p>
-            <p className={classes.text}>{formatInsert(t, "_game_cardUsed",
-                Card.getName(t, props.card1),
-                Card.getName(t, props.card2))}</p>*/}
-            <p className={classes.text}>{("_return_lobby")}<MyTimer/></p>
+            {sortedPlayers.map((value, index, array) => {
+                const player = value.player;
+                const playerCss = (value.id === myEntry.id) ? gc.greenText : " ";
+                if (index > 7) return <Fragment key={index}/>;
+                return <p className={`${classes.item} ${playerCss}`}
+                          key={index}>{`${index + 1}.${player.name} [${player.wins}승]`}</p>;
+            })}
+            <p className={classes.text}><MyTimer/>초후 로비로 복귀...</p>
         </div>
     );
 }
 
 export default function GameOverPopUp() {
     const home = document.getElementById("overlays") as HTMLElement;
-    const ctx = useContext(RoomContext);
-    const localCtx = useContext(LocalContext);
-    const myId = localCtx.getVal(LocalField.Id);
-
-    //TODO
-    /*    useEffect(() => {
-            if (player === undefined) return;
-            if (myId !== winnerID) return;
-            increaseWin(playerCards);
-            const ref = ReferenceManager.getPlayerFieldReference(winnerID, PlayerDbFields.PLAYER_wins);
-            ReferenceManager.atomicDeltaByRef(ref, 1);
-        }, []);
-        if (player === undefined) return <Fragment/>;*/
-
     return (
         <Fragment>
             {ReactDOM.createPortal(<Backdrop/>, home)}

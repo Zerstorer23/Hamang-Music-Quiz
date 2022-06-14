@@ -7,6 +7,7 @@ import {connect} from "pages/components/ui/ChatModule/ChatRelay";
 import InGame from "pages/ingame/InGame";
 import ChatLoader from "pages/components/ui/ChatModule/ChatLoader";
 import GameOverPage from "pages/gameOver/GameOverPage";
+import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
 
 export enum Navigation {
     Loading = "/loading",
@@ -18,6 +19,7 @@ export enum Navigation {
 function App() {
     useEffect(() => {
         connect();
+        MusicManager.loadFile();
     }, []);
     return (
         <Fragment>

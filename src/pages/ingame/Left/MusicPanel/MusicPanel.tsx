@@ -11,10 +11,11 @@ export default function MusicPanel() {
     const ctx = useContext(RoomContext);
     const isPlaying = ctx.room.game.music.status === MusicStatus.Playing;
     const isTakingAnswers = ctx.room.game.music.status === MusicStatus.ReceivingAnswers;
+    const remainingSongs = ctx.room.header.settings.songsPlay - ctx.room.game.music.counter - 1;
     return <div className={`${classes.container} ${gc.borderColor} ${gc.round_border}`}>
-        {isPlaying && <p className={classes.remainingGame}>5 곡 남음</p>}
+        {isPlaying && <p className={classes.remainingGame}>{`${remainingSongs} 곡 남음`}</p>}
         <MusicModule/>
         {isPlaying && <p className={classes.remainingTime}><MyTimer/>초 남음...</p>}
-        {isTakingAnswers && <p className={classes.remainingTime}>곧 정답을 공개합니다.</p>}
+        {isTakingAnswers && <p className={classes.remainingTime}>곧 정답을 공?개합니다</p>}
     </div>;
 }

@@ -57,7 +57,7 @@ export class PlayerManager {
 
         const arr = list.map((id) => (PlayerManager.createEntry(id, map.get(id)!)));
         return arr.sort((e1: PlayerEntry, e2: PlayerEntry) =>
-            e1.player.wins > e2.player.wins ? 1 : e1.player.wins < e2.player.wins ? -1 : 0
+            e2.player.wins > e1.player.wins ? 1 : e2.player.wins < e1.player.wins ? -1 : 0
         );
     }
 
