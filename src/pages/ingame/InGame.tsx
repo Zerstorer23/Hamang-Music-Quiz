@@ -24,8 +24,10 @@ export default function InGame() {
     const history = useHistory();
     const myId = localCtx.getVal(LocalField.Id);
     const amHost = TurnManager.amHost(ctx, localCtx);
+    const numPlayers = ctx.room.playerMap.size;
+    useEffect(() => {
 
-
+    }, []);
     useEffect(() => {
         if (myId === null) {
             history.replace(Navigation.Loading);
@@ -33,6 +35,11 @@ export default function InGame() {
     }, [myId, history]);
     const status = ctx.room.game.status;
     useEffect(() => {
+        if (numPlayers <= 1 && DS.StrictRules) {
+            console.log("Last one in");
+            TransitionManager.pushEndGame();
+            return;
+        }
         switch (status) {
             case GameStatus.Lobby:
                 history.replace(Navigation.Lobby);
@@ -42,10 +49,8 @@ export default function InGame() {
             case GameStatus.Over:
                 history.replace(Navigation.GameFinish);
                 break;
-
         }
-
-    }, [status]);
+    }, [status, numPlayers]);
     if (myId === null) return <Fragment/>;
     return (
         <div className={`${classes.container} ${gc.panelBackground}`}>

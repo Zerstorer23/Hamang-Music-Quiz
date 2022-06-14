@@ -7,10 +7,11 @@ import {TurnManager} from "system/GameStates/TurnManager";
 import {LocalContext} from "system/context/localInfo/LocalContextProvider";
 import {RoomContextType} from "system/context/roomInfo/RoomContextProvider";
 import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
-import {MusicEntry} from "system/types/GameTypes";
+import {MusicEntry, MusicStatus} from "system/types/GameTypes";
 import {RoomManager} from "system/Database/RoomManager";
 import {MusicManager} from "pages/components/ui/MusicModule/MusicManager";
 import {randomInt} from "system/Constants/GameConstants";
+import TransitionManager from "system/GameStates/TransitionManager";
 
 export const MAX_MUSIC_SEC = 20;
 export const USE_SMART_RANDOM = true;
@@ -26,12 +27,6 @@ enum YtState {
     VideoSignaal = 5,
 }
 
-enum PlayerState {
-    WaitingMusic,
-    Injecting,
-    Playing,
-    Revealing,
-}
 
 type YtProps = IProps & {
     videoId: string;
@@ -61,61 +56,62 @@ export function YoutubeModule(props: YtProps) {
 }
 
 export default function MusicModule() {
-    const [playerState, setPlayerState] = useState<PlayerState>(PlayerState.WaitingMusic);
+    const localCtx = useContext(LocalContext);
+    const ctx = useContext(RoomContext);
+    const playerState = ctx.room.game.music.status;
+    // const [playerState, setPlayerState] = useState<MusicStatus>(ctx.room.game.music.status);
     const [youtubeElement, setJSX] = useState(<Fragment/>);
     const [musicTimer, setMusicTimer] = useState<any>(null);
 
-    const localCtx = useContext(LocalContext);
-    const ctx = useContext(RoomContext);
     // const myId = localCtx.getVal(LocalField.Id);
     const amHost = TurnManager.amHost(ctx, localCtx);
     const c = ctx.room.game.music.c;
 
-
     useEffect(() => {
         switch (playerState) {
-            case PlayerState.WaitingMusic:
+            case MusicStatus.WaitingMusic:
                 setJSX(<Fragment/>);
                 if (!amHost) return;
                 clearTimer(musicTimer);
-                const success = pollMusic(ctx);
+                const success = pollMusic(c);
                 if (success) return;
-                cleanMusic();
                 break;
-            case PlayerState.Injecting:
+            case MusicStatus.Injecting:
                 setJSX(<p>로딩중</p>);
-                setPlayerState((p) => PlayerState.Playing);
+                if (!amHost) return;
+                TransitionManager.pushMusicState(MusicStatus.Playing);
                 break;
-            case PlayerState.Playing:
+            case MusicStatus.Playing:
                 //TODO play invis
                 setJSX(<YoutubeModule videoId={ctx.room.game.music.vid} onStateChange={onStateChange}/>);
                 console.log("Playing");
+                if (!amHost) return;
                 setMusicTimer((prevTimer: any) => {
                     clearTimer(prevTimer);
                     return setTimeout(() => {
-                        setPlayerState(PlayerState.Revealing);
+                        TransitionManager.pushMusicState(MusicStatus.Revealing);
                     }, MAX_MUSIC_SEC * 1000);
                 });
                 break;
-            case PlayerState.Revealing:
+            case MusicStatus.Revealing:
                 console.log("Revealing");
                 if (!amHost) return;
                 setMusicTimer((prevTimer: any) => {
+                    clearTimer(prevTimer);
+                    TransitionManager.pushMusicState(MusicStatus.Revealing);
                     return setTimeout(() => {
-                        setPlayerState(PlayerState.WaitingMusic);
+                        TransitionManager.pushMusicState(MusicStatus.WaitingMusic);
                     }, REVEAL_TIME * 1000);
                 });
                 break;
         }
     }, [playerState]);
-    useEffect(() => {
-        if (c < 0) return;
-        setPlayerState(PlayerState.Injecting);
-    }, [c]);
+
     useEffect(() => {
         if (!amHost) return;
-        setPlayerState(PlayerState.WaitingMusic);
+        TransitionManager.pushMusicState(MusicStatus.WaitingMusic);
     }, [ctx.room.header.hostId]);
+
     const guessTime = ctx.room.header.settings.guessTime;
 
     function onStateChange(e: any) {
@@ -132,7 +128,7 @@ export default function MusicModule() {
         }
     }
 
-    const blockCss = `${classes.youtubeBlock} ${(playerState === PlayerState.Revealing) ? classes.show : classes.hide}`;
+    const blockCss = `${classes.youtubeBlock} ${(playerState === MusicStatus.Revealing) ? classes.show : classes.hide}`;
     return <div className={classes.container}>
         <div className={blockCss}>
             {youtubeElement}
@@ -140,10 +136,11 @@ export default function MusicModule() {
     </div>;
 }
 
-function pollMusic(ctx: RoomContextType): boolean {
+function pollMusic(c: number): boolean {
     const me = MusicManager.testPollRandom();
     if (me === null) return false;
-    pushCurrentMusic(ctx.room.game.music.c, me);
+    me.c = c + 1;
+    ReferenceManager.updateReference(DbFields.GAME_music, me);
     return true;
 }
 
@@ -151,11 +148,6 @@ function clearTimer(prevTimer: any) {
     if (prevTimer !== null && prevTimer !== undefined) {
         clearTimeout(prevTimer);
     }
-}
-
-export function pushCurrentMusic(c: number, me: MusicEntry) {
-    me.c = c + 1;
-    ReferenceManager.updateReference(DbFields.GAME_music, me);
 }
 
 export function cleanMusic() {

@@ -7,6 +7,7 @@ import {InputCursor, LocalContext, LocalField} from "system/context/localInfo/Lo
 import RoomContext from "system/context/roomInfo/room-context";
 import {InputManager} from "system/GameStates/InputManager";
 import {PlayerDbFields, ReferenceManager} from "system/Database/ReferenceManager";
+import {MusicStatus} from "system/types/GameTypes";
 
 const LF = String.fromCharCode(10);
 const CR = String.fromCharCode(13);
@@ -16,9 +17,9 @@ export default function AnswerInputPanel() {
     const [focused, setFocused] = useState(false);
     const myEntry = TurnManager.getMyInfo(ctx, localCtx);
     const inputRef = useRef<HTMLTextAreaElement>(null);
-
+    const musicStatus = ctx.room.game.music.status;
     ///====Key listener====///
-    useKeyListener([KeyCode.Aphostrophe], onKeyDown);
+    useKeyListener([KeyCode.Space], onKeyDown);
 
     const focus = localCtx.getVal(LocalField.InputFocus);
 
@@ -27,13 +28,30 @@ export default function AnswerInputPanel() {
         if (focus !== InputCursor.Idle) return;
         if (document.activeElement === inputRef.current!) return;
         inputRef.current!.focus();
+        //TODO Check if everyone is ready.
+        //If ready. push
     }
 
+    useEffect(() => {
+        switch (musicStatus) {
+            case MusicStatus.WaitingMusic:
+                break;
+            case MusicStatus.Injecting:
+                break;
+            case MusicStatus.Playing:
+                break;
+            case MusicStatus.Revealing:
+                inputRef.current!.value = "";
+                //TODO disable input
+                break;
+        }
+    }, [musicStatus]);
 
     const handleSend = useCallback(() => {
         let text = inputRef.current!.value.toString();
         text = InputManager.cleanseAnswer(text);
         if (text.length <= 0) return;
+        console.log("Send " + text);
         ReferenceManager.updatePlayerFieldReference(myEntry.id, PlayerDbFields.PLAYER_answer, text);
         ReferenceManager.updatePlayerFieldReference(myEntry.id, PlayerDbFields.PLAYER_isReady, true);
     }, [myEntry]);

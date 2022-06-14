@@ -23,7 +23,7 @@ export class RoomManager {
         return {
             c: -1,
             vid: "",
-            status: MusicStatus.Waiting,
+            status: MusicStatus.WaitingMusic,
         };
     }
 
