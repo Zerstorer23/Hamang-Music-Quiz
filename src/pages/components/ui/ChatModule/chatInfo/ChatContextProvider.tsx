@@ -55,11 +55,7 @@ export function ChatProvider(props: IProps) {
 
     function loadChat(ce: ChatEntry) {
         if (ce === null) return;
-        setChatList((prev) => {
-            const newState = [...prev];
-            newState.push(ce);
-            return newState;
-        });
+        setChatList((prev) => [...prev, ce]);
     }
 
 

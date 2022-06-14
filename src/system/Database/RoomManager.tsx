@@ -71,7 +71,7 @@ export class RoomManager {
 
     private static getStartingGame(): Game {
         return {
-            music: MusicManager.testPollRandom(),
+            music: MusicManager.pollRandom()!,
             status: GameStatus.InGame
         };
     }

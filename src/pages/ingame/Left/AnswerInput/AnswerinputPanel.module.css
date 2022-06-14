@@ -8,7 +8,11 @@
 }
 
 .textInput {
-
     height: 80%;
     width: 75%;
+}
+
+.isDisabled {
+    pointer-events: none;
+    background-color: #000000;
 }

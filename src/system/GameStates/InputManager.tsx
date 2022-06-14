@@ -12,4 +12,13 @@ export class InputManager {
         }
         return answer;
     }
+
+    public static cleanseChat(answer: string): string {
+        answer = answer.replaceAll(LF, "");
+        answer = answer.replaceAll(CR, "");
+        if (answer.length > 128) {
+            answer = answer.substring(0, 128);
+        }
+        return answer;
+    }
 }

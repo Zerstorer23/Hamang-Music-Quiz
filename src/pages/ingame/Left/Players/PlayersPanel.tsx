@@ -18,7 +18,7 @@ export default function PlayersPanel() {
             sortedPlayers.map((player, index, array) => {
                 return <PlayerGridItem
                     key={player.id}
-                    player={player}
+                    entry={player}
                     isMe={myEntry.id === player.id}
                     index={index}
                 />;

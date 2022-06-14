@@ -6,6 +6,7 @@ import RoomContext from "system/context/roomInfo/room-context";
 import {LocalContext} from "system/context/localInfo/LocalContextProvider";
 import {TurnManager} from "system/GameStates/TurnManager";
 import {PlayerDbFields, ReferenceManager} from "system/Database/ReferenceManager";
+import {MusicStatus} from "system/types/GameTypes";
 
 const MAX_NAME_LENGTH = 16;
 export default function LobbySettings() {
@@ -31,12 +32,13 @@ export default function LobbySettings() {
         navigator.clipboard.writeText(myUrl);
     }
 
+    const enabledCss = myEntry.player.isReady ? classes.isDisabled : "";
     return (
         <div className={`${classes.container} ${gc.round_border} ${gc.borderColor}`}>
             <div className={`${classes.settingsContainer} ${gc.borderBottom}`}>
                 <p className={classes.nameHeader}>이름</p>
                 <textarea
-                    className={`${classes.fieldType} ${classes.nameTextArea} ${myEntry.player.isReady && classes.isDisabled}`}
+                    className={`${classes.fieldType} ${classes.nameTextArea} ${enabledCss}`}
                     onBlur={onFinishEditName}
                     defaultValue={myEntry.player.name}
                 ></textarea>

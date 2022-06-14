@@ -10,6 +10,11 @@
     border-radius: 0.7rem;
 }
 
+.correct {
+    color: greenyellow;
+    text-shadow: 2px 2px #ffffff;
+}
+
 .cell1 {
     grid-column: 1;
     grid-row: 1;

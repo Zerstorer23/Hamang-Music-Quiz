@@ -2,10 +2,8 @@ import classes from "./AnswerinputPanel.module.css";
 import {TurnManager} from "system/GameStates/TurnManager";
 import {useCallback, useContext, useEffect, useRef, useState} from "react";
 import useKeyListener, {KeyCode} from "system/hooks/useKeyListener";
-import {ChatFormat, sendChat} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
 import {InputCursor, LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
 import RoomContext from "system/context/roomInfo/room-context";
-import {InputManager} from "system/GameStates/InputManager";
 import {PlayerDbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import {MusicStatus} from "system/types/GameTypes";
 
@@ -27,6 +25,7 @@ export default function AnswerInputPanel() {
         if (keyCode === KeyCode.Undefined) return;
         if (focus !== InputCursor.Idle) return;
         if (document.activeElement === inputRef.current!) return;
+        if (musicStatus === MusicStatus.Revealing) return;
         inputRef.current!.focus();
         //TODO Check if everyone is ready.
         //If ready. push
@@ -36,20 +35,19 @@ export default function AnswerInputPanel() {
         switch (musicStatus) {
             case MusicStatus.WaitingMusic:
                 break;
-            case MusicStatus.Injecting:
-                break;
             case MusicStatus.Playing:
                 break;
             case MusicStatus.Revealing:
-                inputRef.current!.value = "";
-                //TODO disable input
+                inputRef.current!.blur();
+                setTimeout(() => {
+                    inputRef.current!.value = "";
+                }, 500);
                 break;
         }
     }, [musicStatus]);
 
     const handleSend = useCallback(() => {
         let text = inputRef.current!.value.toString();
-        text = InputManager.cleanseAnswer(text);
         if (text.length <= 0) return;
         console.log("Send " + text);
         ReferenceManager.updatePlayerFieldReference(myEntry.id, PlayerDbFields.PLAYER_answer, text);
@@ -60,11 +58,12 @@ export default function AnswerInputPanel() {
         if (!focused) {
             handleSend();
         }
-    }, [focused]);
 
+    }, [focused]);
+    const enabledCss = musicStatus === MusicStatus.Revealing ? classes.isDisabled : "";
 
     return <div className={classes.container}>
-       <textarea className={classes.textInput}
+       <textarea className={`${classes.textInput} ${enabledCss}`}
                  ref={inputRef}
                  placeholder={"정답을 입력... [특수문자 절대없음]"}
                  onBlur={() => {

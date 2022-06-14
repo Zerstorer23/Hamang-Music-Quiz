@@ -12,6 +12,7 @@ import {InputCursor, LocalContext, LocalField} from "system/context/localInfo/Lo
 import useKeyListener, {KeyCode} from "system/hooks/useKeyListener";
 import {CommandParser} from "pages/components/ui/ChatModule/CommandParser";
 import sendToPort from "pages/components/ui/ChatModule/ChatRelay";
+import {InputManager} from "system/GameStates/InputManager";
 
 const LF = String.fromCharCode(10);
 const CR = String.fromCharCode(13);
@@ -47,10 +48,9 @@ export default function ChatModule() {
             const theRest = text.substring(1);
             if (firstChar === "/") {
                 CommandParser.handleCommands(ctx, localCtx, chatCtx, theRest);
-            } else {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         },
         [myEntry.id, chatCtx]
     );
@@ -58,16 +58,12 @@ export default function ChatModule() {
     const handleSend = useCallback(() => {
         let text = chatFieldRef.current!.value.toString();
         chatFieldRef.current!.value = "";
-        text = text.replaceAll(LF, ""); //LF
-        text = text.replaceAll(CR, ""); //LF
+        text = InputManager.cleanseChat(text);
         if (text.length <= 0) {
             chatFieldRef.current!.blur();
             return;
         }
         if (handleSpecials(text)) return;
-        if (text.length > 128) {
-            text = text.substring(0, 128);
-        }
         sendToPort(text);
         sendChat(ChatFormat.normal, myEntry.player.name, text);
     }, [handleSpecials, myEntry]);
@@ -75,7 +71,6 @@ export default function ChatModule() {
     function toggleFocus(toggle: boolean) {
         localCtx.setVal(LocalField.InputFocus,
             toggle ? InputCursor.Chat : InputCursor.Idle);
-        // console.log("Toggle " + toggle);
     }
 
 

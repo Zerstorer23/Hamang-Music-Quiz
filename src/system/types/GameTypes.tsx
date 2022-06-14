@@ -29,7 +29,7 @@ export type MusicEntry = {
 
 export enum MusicStatus {
     WaitingMusic,
-    Injecting,
+    //  Injecting,
     Playing,
     Revealing,
 }

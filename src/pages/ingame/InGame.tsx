@@ -1,11 +1,10 @@
 import HorizontalLayout from "../components/ui/HorizontalLayout";
 import VerticalLayout from "../components/ui/VerticalLayout";
 import classes from "./InGame.module.css";
-import {Fragment, useContext, useEffect, useState} from "react";
+import {Fragment, useContext, useEffect} from "react";
 import RoomContext from "system/context/roomInfo/room-context";
 import {useHistory} from "react-router-dom";
 import {TurnManager} from "system/GameStates/TurnManager";
-import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
 
 import gc from "index/global.module.css";
 import {LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
@@ -35,7 +34,7 @@ export default function InGame() {
     }, [myId, history]);
     const status = ctx.room.game.status;
     useEffect(() => {
-        if (numPlayers <= 1 && DS.StrictRules) {
+        if (numPlayers <= 1 && status !== GameStatus.Over && DS.StrictRules) {
             console.log("Last one in");
             TransitionManager.pushEndGame();
             return;

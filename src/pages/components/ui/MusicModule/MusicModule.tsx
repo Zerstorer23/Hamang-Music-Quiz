@@ -70,17 +70,20 @@ export default function MusicModule() {
     useEffect(() => {
         switch (playerState) {
             case MusicStatus.WaitingMusic:
-                setJSX(<Fragment/>);
+                setJSX(<p>로딩중</p>);
                 if (!amHost) return;
                 clearTimer(musicTimer);
                 const success = pollMusic(c);
-                if (success) return;
+                if (!success) {
+                    //Game Finished
+                    TransitionManager.pushEndGame();
+                }
                 break;
-            case MusicStatus.Injecting:
-                setJSX(<p>로딩중</p>);
-                if (!amHost) return;
-                TransitionManager.pushMusicState(MusicStatus.Playing);
-                break;
+            /*            case MusicStatus.Injecting:
+                            setJSX(<p>로딩중</p>);
+                            if (!amHost) return;
+                            TransitionManager.pushMusicState(MusicStatus.Playing);
+                            break;*/
             case MusicStatus.Playing:
                 //TODO play invis
                 setJSX(<YoutubeModule videoId={ctx.room.game.music.vid} onStateChange={onStateChange}/>);
@@ -137,10 +140,10 @@ export default function MusicModule() {
 }
 
 function pollMusic(c: number): boolean {
-    const me = MusicManager.testPollRandom();
+    const me = MusicManager.pollRandom();
     if (me === null) return false;
-    me.c = c + 1;
     ReferenceManager.updateReference(DbFields.GAME_music, me);
+    TransitionManager.pushMusicState(MusicStatus.Playing);
     return true;
 }
 
