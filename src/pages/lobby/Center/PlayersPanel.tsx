@@ -12,6 +12,7 @@ import {PlayerDbFields, ReferenceManager} from "system/Database/ReferenceManager
 import {Player, PlayerMap} from "system/types/GameTypes";
 import {RoomManager} from "system/Database/RoomManager";
 import {DS} from "system/configs/DS";
+import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
 
 
 export default function PlayersPanel() {
@@ -42,7 +43,7 @@ export default function PlayersPanel() {
                 if (!canStartGame(playerMap)) return;
             }
             const room = ctx.room;
-            RoomManager.setStartingRoom(room);
+            RoomManager.setStartingRoom(room, MusicManager.MusicList.length);
         } else {
             //My action is ready
             const toggleReady = !myEntry.player.isReady;

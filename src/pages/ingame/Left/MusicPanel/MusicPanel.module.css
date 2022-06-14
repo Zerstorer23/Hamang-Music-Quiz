@@ -1,0 +1,21 @@
+.container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.remainingGame {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+}
+
+.remainingTime {
+    position: absolute;
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+}

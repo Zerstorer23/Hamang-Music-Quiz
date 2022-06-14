@@ -28,6 +28,5 @@ export default class TransitionManager {
 
     public static pushMusicState(state: MusicStatus) {
         ReferenceManager.updateReference(DbFields.GAME_music_status, state);
-
     }
 }

@@ -33,10 +33,10 @@ export function MyTimer(): JSX.Element {
 }
 
 export function setMyTimer(
-    ctx: RoomContextType,
     localCtx: LocalContextType,
     duration: number,
-    onExpire: () => void,
+    onExpire: () => void = () => {
+    },
 ) {
     const option = createTimeOption(duration, onExpire);
     localCtx.setVal(LocalField.Timer, option);

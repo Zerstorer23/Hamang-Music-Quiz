@@ -6,6 +6,7 @@ import LoadingPage from "pages/components/ui/LoadingPage/LoadingPage";
 import {connect} from "pages/components/ui/ChatModule/ChatRelay";
 import InGame from "pages/ingame/InGame";
 import ChatLoader from "pages/components/ui/ChatModule/ChatLoader";
+import GameOverPage from "pages/gameOver/GameOverPage";
 
 export enum Navigation {
     Loading = "/loading",
@@ -31,6 +32,9 @@ function App() {
                 </Route>
                 <Route path={Navigation.InGame} exact>
                     <InGame/>
+                </Route>
+                <Route path={Navigation.GameFinish} exact>
+                    <GameOverPage/>
                 </Route>
                 <Route path="*">
                     <Redirect to={Navigation.Loading}/>

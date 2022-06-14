@@ -4,8 +4,6 @@ import {InputManager} from "system/GameStates/InputManager";
 import {PlayerDbFields, ReferenceManager} from "system/Database/ReferenceManager";
 
 export class MusicManager {
-
-    static iterator = 0;
     static MusicList: string[] = [
         "uaLGwqCksrI",
         "j4ZuoUOkjSY",
@@ -13,18 +11,12 @@ export class MusicManager {
         "AYUNaQaDfa8",
     ];
 
-    public static resetIterator() {
-        this.iterator = 0;
-    }
 
-    public static pollRandom(): MusicEntry | null {
-        this.iterator++;
-        if (this.iterator >= this.MusicList.length) {
-            return null;
-        }
+    public static pollNext(counter: number): MusicEntry | null {
+        if (counter >= this.MusicList.length) return null;
         return {
-            c: this.iterator,
-            vid: this.MusicList[this.iterator],
+            counter: counter,
+            vid: this.MusicList[counter],
             status: MusicStatus.Playing,
         };
     }

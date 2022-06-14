@@ -13,9 +13,10 @@ import TransitionManager from "system/GameStates/TransitionManager";
 import {Navigation} from "index/App";
 import {GameStatus} from "system/types/GameTypes";
 import InGameChatBoard from "pages/ingame/Chat/InGameChatBoard";
-import MusicModule from "pages/components/ui/MusicModule/MusicModule";
+import MusicModule from "pages/ingame/Left/MusicPanel/MusicModule/MusicModule";
 import PlayersPanel from "pages/ingame/Left/Players/PlayersPanel";
 import AnswerInputPanel from "pages/ingame/Left/AnswerInput/AnswerinputPanel";
+import MusicPanel from "pages/ingame/Left/MusicPanel/MusicPanel";
 
 export default function InGame() {
     const ctx = useContext(RoomContext);
@@ -56,7 +57,7 @@ export default function InGame() {
             <HorizontalLayout>
                 <VerticalLayout className={`${classes.leftPanel}`}>
                     <div className={classes.musicPanel}>
-                        <MusicModule/>
+                        <MusicPanel/>
                         {/*<Fragment/>*/}
                     </div>
                     <div className={classes.answerPanel}>

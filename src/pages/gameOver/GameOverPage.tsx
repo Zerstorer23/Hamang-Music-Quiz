@@ -16,18 +16,19 @@ export default function GameOverPage() {
     const ctx = useContext(RoomContext);
     const localCtx = useContext(LocalContext);
     const history = useHistory();
+    const status = ctx.room.game.status;
     const amHost = TurnManager.amHost(ctx, localCtx);
     useEffect(() => {
-        setMyTimer(ctx, localCtx, 5, () => {
+        setMyTimer(localCtx, 5, () => {
             if (!amHost) return;
             TransitionManager.pushLobby();
         });
     }, [amHost]);
     useEffect(() => {
-        if (ctx.room.game.status === GameStatus.Lobby) {
+        if (status === GameStatus.Lobby) {
             history.replace(Navigation.Lobby);
         }
-    }, [ctx.room.game.status]);
+    }, [status]);
 
     return <div className={`${classes.container} ${gc.panelBackground}`}>
         <GameOverPopUp/>

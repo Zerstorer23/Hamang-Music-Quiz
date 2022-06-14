@@ -1,21 +1,23 @@
 import classes from "./AnswerinputPanel.module.css";
 import {TurnManager} from "system/GameStates/TurnManager";
-import {useCallback, useContext, useEffect, useRef, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import useKeyListener, {KeyCode} from "system/hooks/useKeyListener";
 import {InputCursor, LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
 import RoomContext from "system/context/roomInfo/room-context";
 import {PlayerDbFields, ReferenceManager} from "system/Database/ReferenceManager";
-import {MusicStatus} from "system/types/GameTypes";
+import {MusicEntry, MusicStatus, Player, PlayerMap} from "system/types/GameTypes";
+import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
+import TransitionManager from "system/GameStates/TransitionManager";
+import {RoomContextType} from "system/context/roomInfo/RoomContextProvider";
 
-const LF = String.fromCharCode(10);
-const CR = String.fromCharCode(13);
+
 export default function AnswerInputPanel() {
     const ctx = useContext(RoomContext);
     const localCtx = useContext(LocalContext);
     const [focused, setFocused] = useState(false);
-    const myEntry = TurnManager.getMyInfo(ctx, localCtx);
+    const {id: myId, player: myPlayer} = TurnManager.getMyInfo(ctx, localCtx);
     const inputRef = useRef<HTMLTextAreaElement>(null);
-    const musicStatus = ctx.room.game.music.status;
+    const music = ctx.room.game.music;
     ///====Key listener====///
     useKeyListener([KeyCode.Space], onKeyDown);
 
@@ -25,47 +27,29 @@ export default function AnswerInputPanel() {
         if (keyCode === KeyCode.Undefined) return;
         if (focus !== InputCursor.Idle) return;
         if (document.activeElement === inputRef.current!) return;
-        if (musicStatus === MusicStatus.Revealing) return;
-        inputRef.current!.focus();
-        //TODO Check if everyone is ready.
-        //If ready. push
+        if (music.status === MusicStatus.Revealing) return;
+        inputRef.current?.focus();
     }
 
     useEffect(() => {
-        switch (musicStatus) {
-            case MusicStatus.WaitingMusic:
-                break;
-            case MusicStatus.Playing:
-                break;
-            case MusicStatus.Revealing:
-                inputRef.current!.blur();
-                setTimeout(() => {
-                    inputRef.current!.value = "";
-                }, 500);
-                break;
-        }
-    }, [musicStatus]);
+        handleMusicStatus(music, inputRef, myId, myPlayer);
+    }, [music.status]);
 
-    const handleSend = useCallback(() => {
-        let text = inputRef.current!.value.toString();
-        if (text.length <= 0) return;
-        console.log("Send " + text);
-        ReferenceManager.updatePlayerFieldReference(myEntry.id, PlayerDbFields.PLAYER_answer, text);
-        ReferenceManager.updatePlayerFieldReference(myEntry.id, PlayerDbFields.PLAYER_isReady, true);
-    }, [myEntry]);
+    function handleSend() {
+        insertAnswer(inputRef, myPlayer, myId, music, ctx.room.playerMap);
+    }
 
     useEffect(() => {
-        if (!focused) {
-            handleSend();
-        }
-
+        if (focused) return;
+        handleSend();
     }, [focused]);
-    const enabledCss = musicStatus === MusicStatus.Revealing ? classes.isDisabled : "";
+    const enabledCss = music.status === MusicStatus.Playing ? "" : classes.isDisabled;
+    const hintText = music.status === MusicStatus.Playing ? "[Space] 정답을 입력..." : "정답 확인중... [정답에는 특수문자가 절대 없습니다]";
 
     return <div className={classes.container}>
        <textarea className={`${classes.textInput} ${enabledCss}`}
                  ref={inputRef}
-                 placeholder={"정답을 입력... [특수문자 절대없음]"}
+                 placeholder={hintText}
                  onBlur={() => {
                      setFocused(false);
                  }}
@@ -76,3 +60,44 @@ export default function AnswerInputPanel() {
     </div>;
 }
 
+function handleMusicStatus(music: MusicEntry, inputRef: any, myId: string, myPlayer: Player) {
+    switch (music.status) {
+        case MusicStatus.WaitingMusic:
+            inputRef.current!.value = "";
+            ReferenceManager.updatePlayerFieldReference(myId, PlayerDbFields.PLAYER_answer, "");
+            break;
+        case MusicStatus.Playing:
+            break;
+        case MusicStatus.ReceivingAnswers:
+            inputRef.current?.blur();
+            break;
+        case MusicStatus.Revealing:
+            const isAnswer = MusicManager.checkAnswer(music.vid, myPlayer.answer);
+            if (isAnswer) {
+                MusicManager.addPoints({id: myId, player: myPlayer});
+            }
+            if (myPlayer.isReady) {
+                ReferenceManager.updatePlayerFieldReference(myId, PlayerDbFields.PLAYER_isReady, false);
+            }
+            break;
+    }
+}
+
+function insertAnswer(inputRef: any, myPlayer: Player, myId: string, music: MusicEntry, playerMap: PlayerMap) {
+    let text = inputRef.current!.value.toString();
+    if (text.length <= 0) return;
+    if (text === myPlayer.answer) return;
+    console.log("Send " + text);
+    ReferenceManager.updatePlayerFieldReference(myId, PlayerDbFields.PLAYER_answer, text);
+    ReferenceManager.updatePlayerFieldReference(myId, PlayerDbFields.PLAYER_isReady, true);
+    if (music.status !== MusicStatus.Playing) return;
+    let allAnswered = true;
+    playerMap.forEach((value, key, map) => {
+        if (!allAnswered) return;
+        if (key === myId) return;
+        if (!value.isReady) allAnswered = false;
+    });
+    if (allAnswered) {
+        TransitionManager.pushMusicState(MusicStatus.ReceivingAnswers);
+    }
+}
