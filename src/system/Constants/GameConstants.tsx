@@ -3,11 +3,6 @@
  */
 import {PlayerMap} from "system/types/GameTypes";
 
-export enum WaitTime {
-    MakingDecision = 15,
-    WaitReactions = 5,
-    WaitConfirms = 3,
-}
 
 /**
  *

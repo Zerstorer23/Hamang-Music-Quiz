@@ -12,7 +12,8 @@ export type PlayerEntry = {
 };
 
 export type RoomSettings = {
-    included: boolean[]
+    included: boolean[],
+    guessTime: number,
 }
 export type RoomHeader = {
     seed: number;

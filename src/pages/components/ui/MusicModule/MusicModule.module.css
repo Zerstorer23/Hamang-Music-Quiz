@@ -13,9 +13,6 @@
 
 .show {
     visibility: visible;
-    position: absolute;
-    top: 0;
-    right: 0;
 }
 
 .hide {

@@ -20,7 +20,6 @@ export default function LoadingPage() {
         if (myId === null) return;
         switch (gameState) {
             case GameStatus.Lobby:
-                console.log("Redirect to lobby " + myId);
                 history.replace(Navigation.Lobby);
                 break;
             case GameStatus.InGame:

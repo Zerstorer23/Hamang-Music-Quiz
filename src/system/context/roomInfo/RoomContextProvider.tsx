@@ -131,7 +131,6 @@ export default function RoomProvider(props: IProps) {
         onUpdatePlayer,
         onUpdateField,
     };
-
     return (
         <RoomContext.Provider value={roomContext}>
             {props.children}

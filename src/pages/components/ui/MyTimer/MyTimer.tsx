@@ -2,7 +2,6 @@ import {Fragment, useContext, useEffect} from "react";
 import {useTimer} from "react-timer-hook";
 import {TimerReturnType} from "system/types/CommonTypes";
 import {RoomContextType} from "system/context/roomInfo/RoomContextProvider";
-import {WaitTime} from "system/Constants/GameConstants";
 import {
     LocalContext,
     LocalContextType,
@@ -36,22 +35,13 @@ export function MyTimer(): JSX.Element {
 export function setMyTimer(
     ctx: RoomContextType,
     localCtx: LocalContextType,
+    duration: number,
     onExpire: () => void,
 ) {
-    //TODO
-    const duration =WaitTime.MakingDecision //inferWaitTime(ctx.room.game.state.board);
-    // console.trace("Set timer: ", duration, ctx.room.game.state.board);
     const option = createTimeOption(duration, onExpire);
     localCtx.setVal(LocalField.Timer, option);
 }
 
-export function forceSetTimer(
-    localCtx: LocalContextType,
-    duration: number,
-    onExpire: () => void) {
-    const option = createTimeOption(duration, onExpire);
-    localCtx.setVal(LocalField.Timer, option);
-}
 
 /**
  * Easily generates Option object for you.

@@ -13,8 +13,8 @@ export class RoomManager {
             seed: getRandomSeed(),
             games: GameConfigs.defaultGames,
             settings: {
-                included:
-                    [] // TODO
+                included: [],
+                guessTime: 20
             },
         };
     }

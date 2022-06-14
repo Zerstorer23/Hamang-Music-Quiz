@@ -8,7 +8,6 @@ export class MusicManager {
         "j4ZuoUOkjSY",
         "P9V10ZmUBIA",
         "AYUNaQaDfa8",
-        "fw8BVYazA",
     ];
 
     public static testPollRandom(): MusicEntry {

@@ -4,11 +4,10 @@ import RoomContext from "system/context/roomInfo/room-context";
 import {useHistory} from "react-router-dom";
 import {TurnManager} from "system/GameStates/TurnManager";
 import GameOverPopUp from "pages/components/ui/PopUp/PopUp";
-import {forceSetTimer} from "pages/components/ui/MyTimer/MyTimer";
+import {setMyTimer} from "pages/components/ui/MyTimer/MyTimer";
 
 import gc from "index/global.module.css";
 import {LocalContext} from "system/context/localInfo/LocalContextProvider";
-import {WaitTime} from "system/Constants/GameConstants";
 import TransitionManager from "system/GameStates/TransitionManager";
 import {Navigation} from "index/App";
 import {GameStatus} from "system/types/GameTypes";
@@ -19,9 +18,9 @@ export default function GameOverPage() {
     const history = useHistory();
     const amHost = TurnManager.amHost(ctx, localCtx);
     useEffect(() => {
-        forceSetTimer(localCtx, WaitTime.WaitReactions, () => {
+        setMyTimer(ctx, localCtx, 5, () => {
             if (!amHost) return;
-             TransitionManager.pushLobby();
+            TransitionManager.pushLobby();
         });
     }, [amHost]);
     useEffect(() => {

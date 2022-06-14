@@ -10,9 +10,12 @@ import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import {MusicEntry} from "system/types/GameTypes";
 import {RoomManager} from "system/Database/RoomManager";
 import {MusicManager} from "pages/components/ui/MusicModule/MusicManager";
+import {randomInt} from "system/Constants/GameConstants";
 
 export const MAX_MUSIC_SEC = 20;
 export const USE_SMART_RANDOM = true;
+export const HEURISTIC_INIT_TIME = 4;
+export const REVEAL_TIME = 5;
 
 enum YtState {
     NotStarted = -1,
@@ -27,6 +30,7 @@ enum PlayerState {
     WaitingMusic,
     Injecting,
     Playing,
+    Revealing,
 }
 
 type YtProps = IProps & {
@@ -44,15 +48,23 @@ export function YoutubeModule(props: YtProps) {
         width: width,
         playerVars: {
             autoplay: 1,
+            controls: 0,
         },
     };
-    return <YouTube videoId={props.videoId} opts={opts} onStateChange={props.onStateChange}/>;
+
+    function onError(e: any) {
+        console.warn(`Error with ${props.videoId} ${e.data}`);
+    }
+
+    return <YouTube videoId={props.videoId} opts={opts} onError={onError}
+                    onStateChange={props.onStateChange}/>;
 }
 
 export default function MusicModule() {
     const [playerState, setPlayerState] = useState<PlayerState>(PlayerState.WaitingMusic);
     const [youtubeElement, setJSX] = useState(<Fragment/>);
     const [musicTimer, setMusicTimer] = useState<any>(null);
+
     const localCtx = useContext(LocalContext);
     const ctx = useContext(RoomContext);
     // const myId = localCtx.getVal(LocalField.Id);
@@ -75,14 +87,23 @@ export default function MusicModule() {
                 setPlayerState((p) => PlayerState.Playing);
                 break;
             case PlayerState.Playing:
+                //TODO play invis
                 setJSX(<YoutubeModule videoId={ctx.room.game.music.vid} onStateChange={onStateChange}/>);
-                if (!amHost) return;
+                console.log("Playing");
                 setMusicTimer((prevTimer: any) => {
                     clearTimer(prevTimer);
                     return setTimeout(() => {
-                        // console.log("Timer expired");
-                        setPlayerState(PlayerState.WaitingMusic);
+                        setPlayerState(PlayerState.Revealing);
                     }, MAX_MUSIC_SEC * 1000);
+                });
+                break;
+            case PlayerState.Revealing:
+                console.log("Revealing");
+                if (!amHost) return;
+                setMusicTimer((prevTimer: any) => {
+                    return setTimeout(() => {
+                        setPlayerState(PlayerState.WaitingMusic);
+                    }, REVEAL_TIME * 1000);
                 });
                 break;
         }
@@ -95,25 +116,26 @@ export default function MusicModule() {
         if (!amHost) return;
         setPlayerState(PlayerState.WaitingMusic);
     }, [ctx.room.header.hostId]);
-
+    const guessTime = ctx.room.header.settings.guessTime;
 
     function onStateChange(e: any) {
         if (!amHost) return;
+        const player = e.target;
         const state = e.data as YtState;
         switch (state) {
-            case YtState.Finished:
-                // setPlayerState(PlayerState.WaitingMusic);
-                break;
-            case YtState.Paused:
-                // setPlayerState(PlayerState.WaitingMusic);
+            case YtState.Playing:
+                if (player.getCurrentTime() < HEURISTIC_INIT_TIME) {
+                    const duration = e.target.getDuration();
+                    e.target.seekTo(randomInt(HEURISTIC_INIT_TIME, Math.max(HEURISTIC_INIT_TIME, duration - guessTime)), true);
+                }
                 break;
         }
     }
 
+    const blockCss = `${classes.youtubeBlock} ${(playerState === PlayerState.Revealing) ? classes.show : classes.hide}`;
     return <div className={classes.container}>
-        <div className={classes.youtubeBlock}>
+        <div className={blockCss}>
             {youtubeElement}
-
         </div>
     </div>;
 }

@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import {IProps} from "system/types/CommonTypes";
-import {WaitTime} from "system/Constants/GameConstants";
 
 /*
 Local context holds local data that does not go into database
@@ -51,7 +50,7 @@ export default function LocalProvider(props: IProps) {
     const [inputFocused, setInputFocused] = useState<InputCursor>(InputCursor.Idle);
     const [isMuted, setIsMuted] = useState<boolean>(false);
     const [timerOption, setTimerOption] = useState<TimerOptionType>({
-        duration: WaitTime.MakingDecision,
+        duration: 20,
         onExpire: () => {
         },
     });
@@ -74,7 +73,7 @@ export default function LocalProvider(props: IProps) {
         val: isMuted,
         set: setIsMuted,
     });
-    
+
     const context: LocalContextType = {
         map,
         getVal: (field: LocalField) => {
@@ -84,6 +83,7 @@ export default function LocalProvider(props: IProps) {
             map.get(field).set(val);
         },
     };
+
     return (
         <LocalContext.Provider value={context}>
             {props.children}

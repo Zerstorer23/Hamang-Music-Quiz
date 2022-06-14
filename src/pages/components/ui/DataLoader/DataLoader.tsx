@@ -18,17 +18,17 @@ import {Player, Room, RoomHeader} from "system/types/GameTypes";
 import {RoomDatabase} from "system/Database/RoomDatabase";
 import {PlayerManager} from "system/Database/PlayerManager";
 
+function checkNull<T>(snapshot: Snapshot): [boolean, T] {
+    const data: T = snapshot.val();
+    return [data !== null, data];
+}
+
 export default function DataLoader(props: IProps) {
     const [isLoaded, setStatus] = useState(LoadStatus.init);
     const context = useContext(RoomContext);
     const localCtx = useContext(LocalContext);
     ///====LOAD AND LISTEN DB===///
     //https://firebase.google.com/docs/reference/node/firebase.database.Reference#on
-    function checkNull<T>(snapshot: Snapshot): [boolean, T] {
-        const data: T = snapshot.val();
-        return [data !== null, data];
-    }
-
     function updateField<T>(listenerType: ListenerTypes, snapshot: Snapshot) {
         const [valid, data] = checkNull<T>(snapshot);
         if (!valid) return;
@@ -94,29 +94,26 @@ export default function DataLoader(props: IProps) {
             console.log("Join as host");
             setUpRoom();
         } else {
-            console.trace("Join as client");
+            console.log("Join as client");
             playerJoin();
         }
     }
 
+
     useEffect(() => {
         switch (isLoaded) {
             case LoadStatus.init:
-                console.trace("Init");
-                cleanChats();
                 RoomDatabase.loadRoom().then((room: Room) => {
                     context.onRoomLoaded(room);
                     setStatus(LoadStatus.loaded);
                 });
                 break;
             case LoadStatus.loaded:
-                console.log("Loaded");
                 const listeners = RoomDatabase.registerListeners();
                 setListeners(listeners);
                 setStatus(LoadStatus.listening);
                 break;
             case LoadStatus.listening:
-                console.log("Listening");
                 joinPlayer();
                 setStatus(LoadStatus.joined);
                 break;
@@ -125,8 +122,6 @@ export default function DataLoader(props: IProps) {
                 //Wait for my id to be set
                 break;
             case LoadStatus.outerSpace:
-                console.log("Outer space");
-                console.log(localCtx.getVal(LocalField.Id));
                 break;
         }
     }, [isLoaded]);
@@ -137,7 +132,6 @@ export default function DataLoader(props: IProps) {
     }, [myId]);
     return (
         <Fragment>
-            <ChatLoader/>
             {props.children}
         </Fragment>
     );
