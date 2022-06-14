@@ -10,10 +10,8 @@ import RoomContext from "system/context/roomInfo/room-context";
 import HorizontalLayout from "pages/components/ui/HorizontalLayout";
 import {InputCursor, LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
 import useKeyListener, {KeyCode} from "system/hooks/useKeyListener";
-import {useTranslation} from "react-i18next";
 import {CommandParser} from "pages/components/ui/ChatModule/CommandParser";
 import sendToPort from "pages/components/ui/ChatModule/ChatRelay";
-import MusicContext from "pages/components/ui/MusicModule/musicInfo/MusicContextProvider";
 
 const LF = String.fromCharCode(10);
 const CR = String.fromCharCode(13);
@@ -21,8 +19,6 @@ export default function ChatModule() {
     const chatCtx = useContext(ChatContext);
     const ctx = useContext(RoomContext);
     const localCtx = useContext(LocalContext);
-    const musicCtx = useContext(MusicContext);
-    const {t} = useTranslation();
 
     const myEntry = TurnManager.getMyInfo(ctx, localCtx);
     const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -50,13 +46,13 @@ export default function ChatModule() {
             const firstChar = text.at(0);
             const theRest = text.substring(1);
             if (firstChar === "/") {
-                CommandParser.handleCommands(t, ctx, localCtx, chatCtx, musicCtx, theRest);
+                CommandParser.handleCommands(ctx, localCtx, chatCtx, theRest);
             } else {
                 return false;
             }
             return true;
         },
-        [myEntry.id, chatCtx, musicCtx]
+        [myEntry.id, chatCtx]
     );
 
     const handleSend = useCallback(() => {
@@ -73,7 +69,7 @@ export default function ChatModule() {
             text = text.substring(0, 128);
         }
         sendToPort(text);
-        sendChat(ChatFormat.normal, myEntry.name, text);
+        sendChat(ChatFormat.normal, myEntry.player.name, text);
     }, [handleSpecials, myEntry]);
 
     function toggleFocus(toggle: boolean) {
@@ -95,7 +91,7 @@ export default function ChatModule() {
         <textarea
             ref={chatFieldRef}
             className={classes.inputField}
-            placeholder={t("_chat_hint")}
+            placeholder={("_chat_hint")}
             onBlur={() => {
                 toggleFocus(false);
             }}
@@ -104,7 +100,7 @@ export default function ChatModule() {
             }}
         ></textarea>
                 <button className={classes.buttonSend} onClick={handleSend}>
-                    {t("_send")}
+                    {("_send")}
                 </button>
             </HorizontalLayout>
         </div>

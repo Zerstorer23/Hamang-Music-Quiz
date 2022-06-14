@@ -1,6 +1,7 @@
 import classes from "./ImageButton.module.css";
 import getImage, {Images} from "resources/Resources";
-import gc from "global.module.css";
+
+import gc from "index/global.module.css";
 import {IProps} from "system/types/CommonTypes";
 
 type Props = IProps & {

@@ -2,20 +2,16 @@ import classes from "./MusicModule.module.css";
 import {Fragment, useContext, useEffect, useState} from "react";
 import YouTube, {YouTubeProps} from "react-youtube";
 import {IProps} from "system/types/CommonTypes";
-import MusicContext, {
-    cleanMusic,
-    MusicContextType,
-    pushCurrentMusic
-} from "pages/components/ui/MusicModule/musicInfo/MusicContextProvider";
 import RoomContext from "system/context/roomInfo/room-context";
 import {TurnManager} from "system/GameStates/TurnManager";
-import {ChatFormat, sendChat} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
-import {useTranslation} from "react-i18next";
 import {LocalContext} from "system/context/localInfo/LocalContextProvider";
+import {RoomContextType} from "system/context/roomInfo/RoomContextProvider";
+import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
+import {MusicEntry} from "system/types/GameTypes";
+import {RoomManager} from "system/Database/RoomManager";
+import {MusicManager} from "pages/components/ui/MusicModule/MusicManager";
 
-export const MAX_MUSIC_QUEUE = 16;
-export const MAX_PERSONAL_QUEUE = 3;
-export const MAX_MUSIC_SEC = 2 * (60) + 22;
+export const MAX_MUSIC_SEC = 20;
 export const USE_SMART_RANDOM = true;
 
 enum YtState {
@@ -40,8 +36,8 @@ type YtProps = IProps & {
 
 export function YoutubeModule(props: YtProps) {
     //https://developers.google.com/youtube/iframe_api_reference#onStateChange
-    const width = 720;
-    const height = 360;//TODO
+    const width = window.screen.availWidth * 0.4;
+    const height = window.screen.availHeight * 0.4;
     const opts: YouTubeProps["opts"] = {
         //https://www.npmjs.com/package/react-youtube
         height: height,
@@ -57,18 +53,20 @@ export default function MusicModule() {
     const [playerState, setPlayerState] = useState<PlayerState>(PlayerState.WaitingMusic);
     const [youtubeElement, setJSX] = useState(<Fragment/>);
     const [musicTimer, setMusicTimer] = useState<any>(null);
-    const musicCtx = useContext(MusicContext);
     const localCtx = useContext(LocalContext);
     const ctx = useContext(RoomContext);
     // const myId = localCtx.getVal(LocalField.Id);
     const amHost = TurnManager.amHost(ctx, localCtx);
+    const c = ctx.room.game.music.c;
+
+
     useEffect(() => {
         switch (playerState) {
             case PlayerState.WaitingMusic:
                 setJSX(<Fragment/>);
                 if (!amHost) return;
                 clearTimer(musicTimer);
-                const success = pollMusic(musicCtx);
+                const success = pollMusic(ctx);
                 if (success) return;
                 cleanMusic();
                 break;
@@ -77,9 +75,8 @@ export default function MusicModule() {
                 setPlayerState((p) => PlayerState.Playing);
                 break;
             case PlayerState.Playing:
-                setJSX(<YoutubeModule videoId={musicCtx.current.entry.vid} onStateChange={onStateChange}/>);
+                setJSX(<YoutubeModule videoId={ctx.room.game.music.vid} onStateChange={onStateChange}/>);
                 if (!amHost) return;
-                sendChat(ChatFormat.announcement, "", "_playing_next" + musicCtx.list.length);//TODO
                 setMusicTimer((prevTimer: any) => {
                     clearTimer(prevTimer);
                     return setTimeout(() => {
@@ -91,14 +88,13 @@ export default function MusicModule() {
         }
     }, [playerState]);
     useEffect(() => {
-        if (musicCtx.current.c < 0) return;
+        if (c < 0) return;
         setPlayerState(PlayerState.Injecting);
-    }, [musicCtx.current.c]);
+    }, [c]);
     useEffect(() => {
         if (!amHost) return;
         setPlayerState(PlayerState.WaitingMusic);
     }, [ctx.room.header.hostId]);
-
 
 
     function onStateChange(e: any) {
@@ -115,14 +111,17 @@ export default function MusicModule() {
     }
 
     return <div className={classes.container}>
-        {youtubeElement}
+        <div className={classes.youtubeBlock}>
+            {youtubeElement}
+
+        </div>
     </div>;
 }
 
-function pollMusic(musicCtx: MusicContextType): boolean {
-    const me = (USE_SMART_RANDOM) ? musicCtx.smartRandom() : musicCtx.dequeue();
+function pollMusic(ctx: RoomContextType): boolean {
+    const me = MusicManager.testPollRandom();
     if (me === null) return false;
-    pushCurrentMusic(musicCtx.current.c, me);
+    pushCurrentMusic(ctx.room.game.music.c, me);
     return true;
 }
 
@@ -131,3 +130,14 @@ function clearTimer(prevTimer: any) {
         clearTimeout(prevTimer);
     }
 }
+
+export function pushCurrentMusic(c: number, me: MusicEntry) {
+    me.c = c + 1;
+    ReferenceManager.updateReference(DbFields.GAME_music, me);
+}
+
+export function cleanMusic() {
+    const cRef = ReferenceManager.getRef(DbFields.GAME_music);
+    cRef.set(RoomManager.getDefaultMusic());
+}
+

@@ -1,6 +1,5 @@
 import {RoomContextType} from "system/context/roomInfo/RoomContextProvider";
 import {ChatContextType, ChatEntry, ChatFormat} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
-import {MusicContextType} from "pages/components/ui/MusicModule/musicInfo/MusicContextProvider";
 import {TurnManager} from "system/GameStates/TurnManager";
 import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import {GameConfigs} from "system/configs/GameConfigs";
@@ -8,11 +7,9 @@ import {LocalContextType} from "system/context/localInfo/LocalContextProvider";
 
 export class CommandParser {
     public static handleCommands(
-        t: any,
         ctx: RoomContextType,
         localCtx: LocalContextType,
         chatCtx: ChatContextType,
-        musicCtx: MusicContextType,
         command: string
     ) {
         const args = command.split(" ");
@@ -30,7 +27,7 @@ export class CommandParser {
                 chatCtx.loadChat({
                     format: ChatFormat.announcement,
                     name: "",
-                    msg: t("_coins_inserted"),
+                    msg: ("_coins_inserted"),
                 });
                 break;
         }

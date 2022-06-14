@@ -40,14 +40,9 @@ type RoomActionType = {
     sideParam?: any;
 };
 
-export type PlayerIdPair = {
-    id: string,
-    player: Player
-}
-
 function handlePlayerUpdate(newRoom: Room, action: RoomActionType) {
     const updateType = action.sideParam;
-    const entry = action.mainParam as PlayerIdPair;
+    const entry = action.mainParam as PlayerEntry;
     switch (updateType) {
         case UpdateType.Update:
         case UpdateType.Insert:

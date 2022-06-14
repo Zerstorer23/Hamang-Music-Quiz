@@ -3,7 +3,8 @@ import {useContext, useEffect} from "react";
 import RoomContext from "system/context/roomInfo/room-context";
 import {useHistory} from "react-router-dom";
 import classes from "pages/lobby/Lobby.module.css";
-import gc from "global.module.css";
+
+import gc from "index/global.module.css";
 import {LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
 import {GameStatus} from "system/types/GameTypes";
 import {Navigation} from "index/App";
@@ -16,9 +17,10 @@ export default function LoadingPage() {
     const myId = localCtx.getVal(LocalField.Id);
     const gameState = ctx.room.game.status;
     useEffect(() => {
-        if (myId === null || gameState === undefined) return;
+        if (myId === null) return;
         switch (gameState) {
             case GameStatus.Lobby:
+                console.log("Redirect to lobby " + myId);
                 history.replace(Navigation.Lobby);
                 break;
             case GameStatus.InGame:
@@ -32,5 +34,5 @@ export default function LoadingPage() {
 
     return <div className={`${classes.container} ${gc.panelBackground}`}>
         <ImagePage imgSrc={Images.LoadingImg} titleKey={"_loading"}/>;
-    </div>
+    </div>;
 }

@@ -1,6 +1,6 @@
 import usePrevious from "system/hooks/usePrevious";
 import {useEffect, useState} from "react";
-import animClasses from "animation.module.css";
+import animClasses from "index/animation.module.css";
 
 export enum AnimType {
     FadeIn = animClasses.fadeIn,

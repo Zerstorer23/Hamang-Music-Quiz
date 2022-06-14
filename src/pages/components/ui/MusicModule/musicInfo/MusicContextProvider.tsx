@@ -1,15 +1,13 @@
+/*
 import React, {useState} from "react";
 import {IProps} from "system/types/CommonTypes";
 import "firebase/compat/database";
 import {MAX_MUSIC_QUEUE, MAX_PERSONAL_QUEUE,} from "pages/components/ui/MusicModule/MusicModule";
 import {DbFields, ReferenceManager,} from "system/Database/ReferenceManager";
 import {randomInt} from "system/Constants/GameConstants";
+import {MusicEntry} from "system/types/GameTypes";
+import {RoomManager} from "system/Database/RoomManager";
 
-export type MusicEntry = {
-    key: string;
-    pid: string;
-    vid: string;
-};
 // export type MusicDBType = MusicContextType & { queue: any };
 export type MusicContextType = {
     list: MusicEntry[];
@@ -19,14 +17,6 @@ export type MusicContextType = {
     dequeue: () => MusicEntry | null;
     smartRandom: () => MusicEntry | null;
     setMusic: (cm: CounterMusicType) => void;
-};
-export type CounterMusicType = {
-    c: number;
-    entry: MusicEntry;
-};
-const defaultEntry: CounterMusicType = {
-    c: -1,
-    entry: {key: "", pid: "", vid: ""},
 };
 
 const MusicContext = React.createContext<MusicContextType>({
@@ -82,7 +72,7 @@ export function MusicProvider(props: IProps) {
         setCurrent(cm);
     }
 
-    /*    function loadData(a: MusicDBType) {
+    /!*    function loadData(a: MusicDBType) {
               const queueObj = a.queue;
               const list: MusicEntry[] = [];
               if (queueObj !== undefined) {
@@ -93,7 +83,7 @@ export function MusicProvider(props: IProps) {
               }
               console.log("Load data ", a);
               setCurrent(a.current);
-          }*/
+          }*!/
 
     const context: MusicContextType = {
         list,
@@ -175,3 +165,5 @@ export function cleanMusic() {
 }
 
 export default MusicContext;
+*/
+export const a = 1;

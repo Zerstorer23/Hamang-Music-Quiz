@@ -1,5 +1,5 @@
 export const DS = {
-    StrictRules: true,
+    StrictRules: false,
     serverSG: true,
     abundantCoins: false,
     useChatRelay: false,

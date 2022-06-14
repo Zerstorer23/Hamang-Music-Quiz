@@ -1,8 +1,6 @@
-
 import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import {Player, PlayerEntry, PlayerMap} from "system/types/GameTypes";
 import {randomInt} from "system/Constants/GameConstants";
-import {PlayerIdPair} from "system/context/roomInfo/RoomContextProvider";
 
 export class PlayerManager {
 
@@ -16,8 +14,9 @@ export class PlayerManager {
             isSpectating: false,
             isReady: false,
             wins: 0,
-            name:  this.getDefaultName(),
-            gameWins:0,
+            name: this.getDefaultName(),
+            gameWins: 0,
+            answer: "",
         };
         return newPlayer;
     }
@@ -54,10 +53,16 @@ export class PlayerManager {
         );
     }
 
-    static createEntry(id:string, player:Player):PlayerEntry {
-        return {id,...player};
+    public static sortByWins(map: PlayerMap, list: string[]): PlayerEntry[] {
+
+        const arr = list.map((id) => (PlayerManager.createEntry(id, map.get(id)!)));
+        return arr.sort((e1: PlayerEntry, e2: PlayerEntry) =>
+            e1.player.wins > e2.player.wins ? 1 : e1.player.wins < e2.player.wins ? -1 : 0
+        );
     }
-    public static createDBEntry(id:string, player:Player):PlayerIdPair {
-        return {id,player};
+
+    static createEntry(id: string, player: Player): PlayerEntry {
+        return {id, player};
     }
+
 }

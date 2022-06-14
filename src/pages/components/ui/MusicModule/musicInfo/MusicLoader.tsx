@@ -1,3 +1,4 @@
+/*
 import {Fragment, useContext, useEffect} from "react";
 import {LISTEN_CHILD_ADDED, LISTEN_CHILD_REMOVED, LISTEN_VALUE, Snapshot} from "system/types/CommonTypes";
 import MusicContext, {
@@ -49,11 +50,13 @@ export default function MusicLoader() {
     return <Fragment/>;
 }
 
-/*export async function loadMusic(): Promise<MusicDBType | null> {
+/!*export async function loadMusic(): Promise<MusicDBType | null> {
     const musicRef = ReferenceManager.getRef(DbReferences.MUSIC);
     const snapshot = await musicRef.get();
     if (!snapshot.exists()) return null;
     return snapshot.val();
-}*/
+}*!/
 
 
+*/
+export const b = 1;

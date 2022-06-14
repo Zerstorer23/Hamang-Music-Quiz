@@ -1,22 +1,18 @@
-
 export type Player = {
     isSpectating: boolean; //may not need it
     isReady: boolean;
-    gameWins:number;
+    gameWins: number;
     wins: number;
     name: string;
+    answer: string;
 };
 export type PlayerEntry = {
-    id: string;
-    isSpectating: boolean; //may not need it
-    isReady: boolean;
-    gameWins:number;
-    wins: number;
-    name: string;
+    id: string,
+    player: Player
 };
 
 export type RoomSettings = {
-    included:boolean[]
+    included: boolean[]
 }
 export type RoomHeader = {
     seed: number;
@@ -27,23 +23,25 @@ export type RoomHeader = {
 export type MusicEntry = {
     c: number;
     vid: string;
-    status:MusicStatus;
+    status: MusicStatus;
 };
 
-export enum MusicStatus{
-    Playing,Revealing
+export enum MusicStatus {
+    Playing, Revealing, Waiting,
 }
-export enum GameStatus{
-    Lobby,InGame,Over,
+
+export enum GameStatus {
+    Lobby, InGame, Over,
 }
-export type Game={
-    music:MusicEntry;
-    status:GameStatus;
+
+export type Game = {
+    music: MusicEntry;
+    status: GameStatus;
 }
 export type PlayerMap = Map<string, Player>;
 export type Room = {
     playerMap: PlayerMap;
     playerList: string[];
-    game:Game;
+    game: Game;
     header: RoomHeader;
 };

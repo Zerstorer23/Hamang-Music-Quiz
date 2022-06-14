@@ -1,8 +1,6 @@
-
 import {RoomContextType} from "system/context/roomInfo/RoomContextProvider";
 import {PlayerEntry, PlayerMap} from "system/types/GameTypes";
 import {LocalContextType, LocalField} from "system/context/localInfo/LocalContextProvider";
-
 
 
 export class TurnManager {
@@ -33,6 +31,7 @@ export class TurnManager {
         const myId = localCtx.getVal(LocalField.Id);
         return ctx.room.header.hostId === myId;
     }
+
     public static getMyInfo(
         ctx: RoomContextType,
         localCtx: LocalContextType
@@ -40,9 +39,9 @@ export class TurnManager {
         return this.getPlayerInfoById(ctx, localCtx.getVal(LocalField.Id));
     }
 
-    public static getPlayerInfoById(ctx: RoomContextType, playerId: string): PlayerEntry {
-        const player = ctx.room.playerMap.get(playerId)!;
-        return {id: playerId, ...player};
+    public static getPlayerInfoById(ctx: RoomContextType, id: string): PlayerEntry {
+        const player = ctx.room.playerMap.get(id)!;
+        return {id, player};
     }
 
 }

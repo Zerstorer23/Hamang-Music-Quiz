@@ -1,4 +1,5 @@
-import gc from "global.module.css";
+
+import gc from "index/global.module.css";
 import classes from "./InGameChatBoard.module.css";
 import React from "react";
 import ChatModule from "pages/components/ui/ChatModule/ChatModule";

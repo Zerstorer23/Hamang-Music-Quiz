@@ -1,0 +1,14 @@
+
+.container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+}
+
+.textInput {
+
+    height: 80%;
+    width: 75%;
+}

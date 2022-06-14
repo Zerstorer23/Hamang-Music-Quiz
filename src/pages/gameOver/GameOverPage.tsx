@@ -5,7 +5,8 @@ import {useHistory} from "react-router-dom";
 import {TurnManager} from "system/GameStates/TurnManager";
 import GameOverPopUp from "pages/components/ui/PopUp/PopUp";
 import {forceSetTimer} from "pages/components/ui/MyTimer/MyTimer";
-import gc from "global.module.css";
+
+import gc from "index/global.module.css";
 import {LocalContext} from "system/context/localInfo/LocalContextProvider";
 import {WaitTime} from "system/Constants/GameConstants";
 import TransitionManager from "system/GameStates/TransitionManager";

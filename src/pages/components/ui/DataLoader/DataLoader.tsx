@@ -10,7 +10,6 @@ import {
     Snapshot,
 } from "system/types/CommonTypes";
 import ChatLoader from "pages/components/ui/ChatModule/ChatLoader";
-import MusicLoader from "pages/components/ui/MusicModule/musicInfo/MusicLoader";
 import {cleanChats} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
 import {ReferenceManager} from "system/Database/ReferenceManager";
 import {LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
@@ -39,19 +38,19 @@ export default function DataLoader(props: IProps) {
     function onUpdatePlayer(snapshot: Snapshot) {
         const [valid, player] = checkNull<Player>(snapshot);
         if (!valid) return;
-        context.onUpdatePlayer(PlayerManager.createEntry(snapshot.key!,player), UpdateType.Update);
+        context.onUpdatePlayer(PlayerManager.createEntry(snapshot.key!, player), UpdateType.Update);
     }
 
     function onAddPlayer(snapshot: Snapshot) {
         const [valid, player] = checkNull<Player>(snapshot);
         if (!valid) return;
-        context.onUpdatePlayer(PlayerManager.createEntry(snapshot.key!,player), UpdateType.Insert);
+        context.onUpdatePlayer(PlayerManager.createEntry(snapshot.key!, player), UpdateType.Insert);
     }
 
     function onRemovePlayer(snapshot: Snapshot) {
         const [valid, player] = checkNull<Player>(snapshot);
         if (!valid) return;
-        context.onUpdatePlayer(PlayerManager.createEntry(snapshot.key!,player), UpdateType.Delete);
+        context.onUpdatePlayer(PlayerManager.createEntry(snapshot.key!, player), UpdateType.Delete);
     }
 
     function onUpdateGame(snapshot: Snapshot) {
@@ -95,7 +94,7 @@ export default function DataLoader(props: IProps) {
             console.log("Join as host");
             setUpRoom();
         } else {
-            console.log("Join as client");
+            console.trace("Join as client");
             playerJoin();
         }
     }
@@ -103,6 +102,7 @@ export default function DataLoader(props: IProps) {
     useEffect(() => {
         switch (isLoaded) {
             case LoadStatus.init:
+                console.trace("Init");
                 cleanChats();
                 RoomDatabase.loadRoom().then((room: Room) => {
                     context.onRoomLoaded(room);
@@ -110,18 +110,23 @@ export default function DataLoader(props: IProps) {
                 });
                 break;
             case LoadStatus.loaded:
+                console.log("Loaded");
                 const listeners = RoomDatabase.registerListeners();
                 setListeners(listeners);
                 setStatus(LoadStatus.listening);
                 break;
             case LoadStatus.listening:
+                console.log("Listening");
                 joinPlayer();
                 setStatus(LoadStatus.joined);
                 break;
             case LoadStatus.joined:
+                console.log("Joined");
                 //Wait for my id to be set
                 break;
             case LoadStatus.outerSpace:
+                console.log("Outer space");
+                console.log(localCtx.getVal(LocalField.Id));
                 break;
         }
     }, [isLoaded]);
@@ -133,7 +138,6 @@ export default function DataLoader(props: IProps) {
     return (
         <Fragment>
             <ChatLoader/>
-            <MusicLoader/>
             {props.children}
         </Fragment>
     );

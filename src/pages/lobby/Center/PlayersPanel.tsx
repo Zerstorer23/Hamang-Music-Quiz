@@ -3,13 +3,15 @@ import VerticalLayout from "pages/components/ui/VerticalLayout";
 import PlayerListItem from "./PlayerListItem";
 import {Fragment, useContext} from "react";
 import RoomContext from "system/context/roomInfo/room-context";
-import gc from "global.module.css";
+
+import gc from "index/global.module.css";
 import {TurnManager} from "system/GameStates/TurnManager";
 import useKeyListener, {KeyCode} from "system/hooks/useKeyListener";
 import {InputCursor, LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
 import {PlayerDbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import {Player, PlayerMap} from "system/types/GameTypes";
 import {RoomManager} from "system/Database/RoomManager";
+import {DS} from "system/configs/DS";
 
 
 export default function PlayersPanel() {
@@ -20,9 +22,9 @@ export default function PlayersPanel() {
     const playerMap: PlayerMap = ctx.room.playerMap;
     const currPlayer = playerMap.size;
     const playerList = ctx.room.playerList;
-
+    const myId = localCtx.getVal(LocalField.Id);
     useKeyListener([KeyCode.Space], onKey);
-    if (myEntry.name === undefined || myEntry.name === null) return <Fragment/>;
+    if (myEntry.id === null) return <Fragment/>;
 
     function onKey(keyCode: KeyCode) {
         if (localCtx.getVal(LocalField.InputFocus) === InputCursor.Chat) return;
@@ -32,27 +34,30 @@ export default function PlayersPanel() {
     }
 
     function onClickStart() {
+        console.log("Listen start " + amHost);
         if (amHost) {
             //Host action is start game
-            if (playerList.length <= 1) return;
-            if (!canStartGame(playerMap)) return;
+            if (DS.StrictRules) {
+                if (playerList.length <= 1) return;
+                if (!canStartGame(playerMap)) return;
+            }
             const room = ctx.room;
             RoomManager.setStartingRoom(room);
         } else {
             //My action is ready
-            const toggleReady = !myEntry.isReady;
+            const toggleReady = !myEntry.player.isReady;
             const ref = ReferenceManager.getPlayerFieldReference(myEntry.id, PlayerDbFields.PLAYER_isReady);
             ref.set(toggleReady);
         }
     }
 
-    let buttonKey = getButtonKey(amHost, playerList, playerMap, myEntry);
+    let buttonKey = getButtonKey(amHost, playerList, playerMap, myEntry.player);
     const numGames = ctx.room.header.games;
     const remainingCss = getRemainingCss(numGames);
     return (
         <VerticalLayout className={`${gc.round_border} ${gc.borderColor} ${classes.container} `}>
             <div className={`${classes.headerContainer} ${gc.borderBottom}`}>
-                <p className={classes.headerTitle}>7번ㄴ함</p>
+                <p className={classes.headerTitle}>7번함</p>
                 <p className={classes.headerPlayerNum}>{`연결됨: ${currPlayer}`}</p>
             </div>
             <VerticalLayout className={classes.list}>{
@@ -103,18 +108,16 @@ function getRemainingCss(n: number) {
 
 function getButtonKey(amHost: boolean, playerList: string[], playerMap: Map<string, Player>, myPlayer: Player) {
     if (amHost) {
-        if (playerList.length <= 1) {
-            return "_not_enough_people";
-        } else if (!canStartGame(playerMap)) {
-            return "_not_enough_ready";
+        if (!canStartGame(playerMap)) {
+            return "플레이어들이 준비를 마쳐야 합니다.";
         } else {
-            return "_start";
+            return "시작";
         }
     } else {
         if (!myPlayer.isReady) {
-            return "_on_ready";
+            return "준비";
         } else {
-            return "_waiting_at_lobby";
+            return "호스트가 게임을 시작하기를 기다리는 중";
         }
     }
 }

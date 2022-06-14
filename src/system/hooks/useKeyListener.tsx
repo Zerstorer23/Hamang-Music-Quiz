@@ -4,6 +4,7 @@ export enum KeyCode {
     Undefined = -1,
     Enter = 13,
     Space = 32,
+    Aphostrophe = 192,
     One = 49,
     Two = 50,
     Three = 51,
@@ -24,6 +25,7 @@ export default function useKeyListener(targets: KeyCode[], onKeyDown: (keyCode: 
     }, []);
 
     function onKeyEvent(event: any) {
+        // console.log("Key press " + event.keyCode);
         if (!targets.includes(event.keyCode)) return;
         setKeyInfo((prevState) => ({idx: prevState.idx + 1, code: event.keyCode}));
     }

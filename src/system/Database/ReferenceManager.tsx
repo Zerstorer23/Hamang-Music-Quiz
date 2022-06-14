@@ -1,4 +1,3 @@
-
 import {DbRef} from "system/types/CommonTypes";
 import {db} from "system/Database/Firebase";
 import firebase from "firebase/compat/app";
@@ -19,9 +18,6 @@ export enum DbFields {
     HEADER_games = `/room/header/games`,
     HEADER_settings = `/room/header/settings`,
     CHAT = "/chat",
-    MUSIC = "/music",
-    MUSIC_queue = "/music/queue",
-    MUSIC_current = "/music/current",
 }
 
 export enum PlayerDbFields {
@@ -29,6 +25,7 @@ export enum PlayerDbFields {
     PLAYER_isReady = "isReady",
     PLAYER_wins = "wins",
     PLAYER_gameWins = "gameWins",
+    PLAYER_answer = "answer",
 }
 
 /**
