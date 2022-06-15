@@ -1,3 +1,5 @@
+import {MusicObject} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
+
 export type Player = {
     isSpectating: boolean; //may not need it
     isReady: boolean;
@@ -12,7 +14,6 @@ export type PlayerEntry = {
 };
 
 export type RoomSettings = {
-    included: boolean[],
     guessTime: number,
     songsPlay: number,
 }
@@ -24,14 +25,13 @@ export type RoomHeader = {
 };
 export type MusicEntry = {
     counter: number;
-    vid: string;
+    music: MusicObject;
     status: MusicStatus;
 };
 
 export enum MusicStatus {
     DefaultInit,
     WaitingMusic,
-    //  Injecting,
     Playing,
     ReceivingAnswers,
     Revealing,
@@ -42,8 +42,8 @@ export enum GameStatus {
 }
 
 export type Game = {
-    music: MusicEntry;
-    status: GameStatus;
+    musicEntry: MusicEntry;
+    gameStatus: GameStatus;
 }
 export type PlayerMap = Map<string, Player>;
 export type Room = {

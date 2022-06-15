@@ -23,6 +23,6 @@ export class TurnManager {
     }
 
     public static getRemainingSongs(ctx: RoomContextType): number {
-        return ctx.room.header.settings.songsPlay - ctx.room.game.music.counter - 1;
+        return ctx.room.header.settings.songsPlay - ctx.room.game.musicEntry.counter - 1;
     }
 }

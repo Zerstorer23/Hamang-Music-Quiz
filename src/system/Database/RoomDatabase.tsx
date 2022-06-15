@@ -11,7 +11,7 @@ export class RoomDatabase {
         const roomRef = ReferenceManager.getRef(DbFields.ROOM);
         const defaultRoom = RoomManager.getDefaultRoom();
         await roomRef.set(defaultRoom);
-        roomRef.onDisconnect().remove();
+        ReferenceManager.getRef(DbFields.ROOT).onDisconnect().remove();
         return await PlayerManager.joinLocalPlayer(true);
     }
 

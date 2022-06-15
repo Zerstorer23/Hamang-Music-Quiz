@@ -1,9 +1,10 @@
-import {Fragment, useEffect, useState} from "react";
+import {Fragment, useContext, useEffect, useState} from "react";
 
 import Papa from "papaparse";
 import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
 import classes from "./GenreBox.module.css";
 import {IProps} from "system/types/CommonTypes";
+import ChatContext from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
 
 const allowedExtensions = ["csv"];
 type Props = IProps & {
@@ -11,12 +12,14 @@ type Props = IProps & {
 }
 export default function CSVLoader(props: Props) {
 
+    const chatCtx = useContext(ChatContext);
     // It state will contain the error when
     // correct file extension is not used
     const [error, setError] = useState("");
 
     useEffect(() => {
-        console.warn(error);
+        if (error.length === 0) return;
+        chatCtx.localAnnounce(error);
     }, [error]);
     // This function will be called when
     // the file input changes
@@ -32,7 +35,7 @@ export default function CSVLoader(props: Props) {
         // we show the error
         const fileExtension = inputFile?.type.split("/")[1];
         if (!allowedExtensions.includes(fileExtension)) {
-            setError("Please input a csv file");
+            setError(".CSV 파일이 아닙니다.");
             return;
         }
         // If input type is correct set the state
@@ -43,24 +46,24 @@ export default function CSVLoader(props: Props) {
     function handleParse(file: any) {
         // If user clicks the parse button without
         // a file we show a error
-        console.log("File chosen", file);
         // Initialize a reader which allows user
         // to read any file or blob.
         const reader = new FileReader();
-
-        // Event listener on reader when the file
+        // Event listener on reader when the fil
         // loads, we parse it and set the data.
         reader.onload = async ({target}: any) => {
             try {
                 const csv = Papa.parse(target.result, {header: true});
                 MusicManager.parseCSV(csv, true, (obj: any) => {
-                    console.log("Exception", obj);
+                    setError(`${obj}: 내부포맷이 잘못된 파일. 헤더명이 정확하고 내용에 ,이 없는지 확인해주세요.`);
+                }, () => {
+                    props.onUseCustom(true);
                 });
             } catch (e) {
-                setError("Enter a valid file");
+                setError(`내부포맷이 잘못된 파일. 헤더명이 정확하고 내용에 ,이 없는지 확인해주세요.`);
                 return;
             }
-            props.onUseCustom(true);
+
         };
         reader.readAsText(file as any);
 

@@ -17,7 +17,7 @@ export default function PlayerGridItem(props: Props) {
     const id = props.entry.id;
     const ctx = useContext(RoomContext);
     const player = props.entry.player;
-    const music = ctx.room.game.music;
+    const music = ctx.room.game.musicEntry;
     const cssIndex = props.index + 1;
     const cellCss = classes[`cell${cssIndex}`];
     const [gotCorrect, setGotCorrect] = useState(false);
@@ -29,16 +29,15 @@ export default function PlayerGridItem(props: Props) {
             return;
         }
         if (music.status !== MusicStatus.Revealing) return;
-        const isAnswer = MusicManager.checkAnswer(music.vid, player.answer);
+        const isAnswer = MusicManager.checkAnswer(music.music, player.answer);
         setGotCorrect(isAnswer);
-
     }, [music.status, player.answer]);
-
-    const answerCss = (gotCorrect) ? `${classes.correct} ${gc.greenText} ${animCss.zoomIn}` : "";
-    const playerCss = (props.isMe) ? gc.greenText : " ";
+    const isReadyText = player.isReady ? " [제출완료]" : "";
+    const answerCss = (gotCorrect) ? `${classes.correct} ${gc.greenText} ${animCss.zoomIn}` : `${animCss.slideUp}`;
+    const playerCss = (props.isMe) ? gc.greenText : (player.isReady) ? gc.blueText : "";
     return <div className={`${classes.cell} ${cellCss}`}>
         <p className={playerCss}>
-            {`${cssIndex}. ${player.name} (${player.wins}점)`}
+            {`${cssIndex}. ${player.name} (${player.wins}점) ${isReadyText}`}
         </p>
         {
             (revealAnswers) &&

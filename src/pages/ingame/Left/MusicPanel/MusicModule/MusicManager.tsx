@@ -2,44 +2,30 @@ import {MusicEntry, MusicStatus, PlayerEntry} from "system/types/GameTypes";
 import {InputManager} from "system/GameStates/InputManager";
 import {PlayerDbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import Papa from "papaparse";
-import {shuffleArray} from "system/Constants/GameConstants";
-import {RoomManager} from "system/Database/RoomManager";
+import {MusicFilter, MusicLibrary} from "pages/ingame/Left/MusicPanel/MusicModule/MusicLibrary";
 
 //https://docs.google.com/spreadsheets/d/1QluDRTVw7qz5rE46MpLYEFj_WntZUNa3THLvBeuvVJY/edit#gid=0
 
-export enum MusicTeam {
-    Haruhi = "하루히",
-    Kon = "케이온",
-    LuckyStar = "러키스타",
-    KyoAni = "쿄애니",
-    Vocaloid = "보컬로이드",
-    Idols = "아이돌",
-    Etc = "기타",
-}
 
-export const TeamList: MusicTeam[] = [
-    MusicTeam.Haruhi,
-    MusicTeam.Kon,
-    MusicTeam.LuckyStar,
-    MusicTeam.KyoAni,
-    MusicTeam.Vocaloid,
-    MusicTeam.Idols,
-    MusicTeam.Etc,
-];
 export type MusicObject = {
-    team: MusicTeam,
+    team: string,
     videoId: string,
     title: string,
     answers: string[],
 }
 type MusicCSVEntry = {
-    team: MusicTeam,
+    team: string,
     video: string,
     title: string,
     ko_translate: string,
     ko_read: string,
     en_read: string,
+    sub1: string,
+    sub2: string,
+    sub3: string,
 }
+
+/*
 const keyMap = new Map<string, number>();
 
 export function TeamNameToIndex(name: MusicTeam): number {
@@ -48,37 +34,45 @@ export function TeamNameToIndex(name: MusicTeam): number {
     }
     return keyMap.get(name)!;
 }
+*/
 
 export class MusicManager {
-    private static PresetLibrary = new Map<string, MusicObject>();
-    private static CustomLibrary = new Map<string, MusicObject>();
-    public static CurrentLibrary: Map<string, MusicObject>;
+    private static PresetLibrary = new MusicLibrary();
+    private static UserLibrary = new MusicLibrary();
+    public static CurrentLibrary: MusicLibrary;
     public static MusicList: MusicObject[] = [];
 
     public static parseCSV(results: any, useCustom: boolean, onException: any = () => {
+    }, onSuccess: any = () => {
     }) {
         const rows = results.data as MusicCSVEntry[]; // array of objects
-        const library = useCustom ? this.CustomLibrary : this.PresetLibrary;
+        const library = new MusicLibrary();
         library.clear();
-        rows.forEach((item: MusicCSVEntry) => {
-                try {
+        let line = 0;
+        try {
+            rows.forEach((item: MusicCSVEntry) => {
                     const obj: MusicObject = {
                         team: item.team,
                         videoId: InputManager.cleanseVid(item.video),
                         title: item.title,
                         answers: []
                     };
-                    if (item.ko_translate.length > 0) obj.answers.push(item.ko_translate);
-                    if (item.ko_read.length > 0) obj.answers.push(item.ko_read);
-                    if (item.en_read.length > 0) obj.answers.push(item.en_read);
-
-                    library.set(obj.videoId, obj);
-                } catch (e) {
-                    onException(item);
+                    const answers = [item.ko_translate, item.ko_read, item.en_read, item.sub1, item.sub2, item.sub3];
+                    obj.answers = answers.filter((ans) => ans.length > 0);
+                    library.put(obj);
+                    line++;
                 }
-            }
-        );
-        console.log(rows);
+            );
+        } catch (e) {
+            onException(`${line}줄 부근, `);
+            return;
+        }
+        if (useCustom) {
+            this.UserLibrary = library;
+        } else {
+            this.PresetLibrary = library;
+        }
+        onSuccess();
     }
 
     public static async loadPreset() {
@@ -89,40 +83,43 @@ export class MusicManager {
         const csv = decoder.decode(result.value); // the csv text
         const results = Papa.parse(csv, {header: true}); // object with { data, errors, meta }
         this.parseCSV(results, false);
-        this.buildRandomList(RoomManager.getDefaultIncluded(), false);
+        this.selectLibrary(false);
+        this.buildRandomList();
     };
 
-    public static buildRandomList(filters: boolean[], useCustom: boolean): number {
-        this.MusicList = [];
-        this.CurrentLibrary = useCustom ? this.CustomLibrary : this.PresetLibrary;
-        this.CurrentLibrary.forEach((value, key, map) => {
-            const index = TeamNameToIndex(value.team);
-            if (!filters[index]) return;
-            this.MusicList.push(value);
-        });
-        this.MusicList = shuffleArray(this.MusicList);
+    public static selectLibrary(useCustom: boolean) {
+        this.CurrentLibrary = useCustom ? this.UserLibrary : this.PresetLibrary;
+    }
+
+    public static pushHeader(filter: MusicFilter): number {
+        if (!MusicManager.CurrentLibrary.updateHeader(filter)) {
+            return 0;
+        }
+        return MusicManager.buildRandomList();
+    }
+
+    public static buildRandomList(): number {
+        this.MusicList = this.CurrentLibrary.applyFilter();
         return this.MusicList.length;
     }
 
     public static getMusic(vid: string): MusicObject | null {
-        if (!this.CurrentLibrary.has(vid)) return null;
-        return this.CurrentLibrary.get(vid)!;
+        return this.CurrentLibrary.get(vid);
     }
 
     public static pollNext(counter: number): MusicEntry | null {
         if (counter >= this.MusicList.length) return null;
         return {
             counter: counter,
-            vid: this.MusicList[counter].videoId,
+            music: this.MusicList[counter],
             status: MusicStatus.Playing,
         };
     }
 
-    public static checkAnswer(vid: string, myAnswer: string): boolean {
+    public static checkAnswer(music: MusicObject, myAnswer: string): boolean {
         myAnswer = InputManager.cleanseAnswer(myAnswer);
         if (myAnswer.length <= 0) return false;
-        const music = this.CurrentLibrary.get(vid);
-        if (music === undefined) return false;
+        if (music === null) return false;
         let correct = false;
         music.answers.forEach((value) => {
             if (correct) return;

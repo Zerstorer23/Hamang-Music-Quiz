@@ -3,13 +3,11 @@ import {getRandomSeed} from "system/Constants/GameConstants";
 import {GameConfigs} from "system/configs/GameConfigs";
 import {Game, GameStatus, MusicEntry, MusicStatus, Player, Room, RoomHeader} from "system/types/GameTypes";
 import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
-import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
+import {MusicManager, MusicObject} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
 import {DS} from "system/configs/DS";
 
 export class RoomManager {
-    public static getDefaultIncluded(): boolean[] {
-        return [true, false, false, false, false, false, false];
-    }
+
 
     public static getDefaultHeader(): RoomHeader {
         return {
@@ -17,25 +15,34 @@ export class RoomManager {
             seed: getRandomSeed(),
             games: GameConfigs.defaultGames,
             settings: {
-                included: this.getDefaultIncluded(),
                 guessTime: !DS.StrictRules ? 5 : GameConfigs.defaultGuessTime,
                 songsPlay: !DS.StrictRules ? 5 : GameConfigs.defaultSongNumber,
             },
         };
     }
 
+    static geDefaultMusicObject(): MusicObject {
+        const o: MusicObject = {
+            team: "버그",
+            answers: ["Calc"],
+            videoId: "oidKy7khp8o",
+            title: "Calc.[이게 보이면 버그있음]"
+        };
+        return o;
+    }
+
     static getDefaultMusic(): MusicEntry {
         return {
             counter: -1,
-            vid: "",
-            status: MusicStatus.DefaultInit,
+            music: this.geDefaultMusicObject(),
+            status: MusicStatus.WaitingMusic,
         };
     }
 
     static getDefaultGame(): Game {
         return {
-            music: this.getDefaultMusic(),
-            status: GameStatus.Lobby,
+            musicEntry: this.getDefaultMusic(),
+            gameStatus: GameStatus.Lobby,
         };
     }
 
@@ -77,8 +84,8 @@ export class RoomManager {
 
     private static getStartingGame(): Game {
         return {
-            music: this.getDefaultMusic(),
-            status: GameStatus.InGame
+            musicEntry: this.getDefaultMusic(),
+            gameStatus: GameStatus.InGame
         };
     }
 }

@@ -18,13 +18,13 @@ export default function AnswerInputPanel() {
     const {id: myId, player: myPlayer} = TurnManager.getMyInfo(ctx, localCtx);
     const inputRef = useRef<HTMLTextAreaElement>(null);
     const cursorFocus = localCtx.getVal(LocalField.InputFocus) as CursorFocusInfo;
-    const music = ctx.room.game.music;
+    const musicEntry = ctx.room.game.musicEntry;
     ///====Key listener====///
     useKeyListener([KeyCode.Space, KeyCode.Enter], onKeyDown);
 
     function onKeyDown(keyCode: KeyCode) {
         if (keyCode === KeyCode.Undefined) return;
-        if (music.status !== MusicStatus.Playing) return;
+        if (musicEntry.status !== MusicStatus.Playing) return;
         if (keyCode === KeyCode.Space) {
             if (document.activeElement === inputRef.current!) return;
             inputRef.current?.focus();
@@ -35,8 +35,8 @@ export default function AnswerInputPanel() {
     }
 
     useEffect(() => {
-        handleMusicStatus(music, inputRef, myId, myPlayer);
-    }, [music.status]);
+        handleMusicStatus(musicEntry, inputRef, myId, myPlayer);
+    }, [musicEntry.status]);
 
     function toggleFocus(toggle: boolean) {
         const cursorInfo: CursorFocusInfo = {
@@ -51,9 +51,9 @@ export default function AnswerInputPanel() {
         if (text.length <= 0) return;
         if (text === myPlayer.answer) return;
         if (cursorFocus.state !== InputCursor.Idle) return;
-        insertAnswer(text, myPlayer, myId, music, ctx.room.playerMap);
+        insertAnswer(text, myPlayer, myId, musicEntry, ctx.room.playerMap);
     }, [cursorFocus.state]);
-    const [enabledCss, hintText] = inferCss(music);
+    const [enabledCss, hintText] = inferCss(musicEntry);
 
 
     return <div className={classes.container}>
@@ -70,8 +70,8 @@ export default function AnswerInputPanel() {
     </div>;
 }
 
-function handleMusicStatus(music: MusicEntry, inputRef: any, myId: string, myPlayer: Player) {
-    switch (music.status) {
+function handleMusicStatus(musicEntry: MusicEntry, inputRef: any, myId: string, myPlayer: Player) {
+    switch (musicEntry.status) {
         case MusicStatus.WaitingMusic:
             inputRef.current!.value = "";
             ReferenceManager.updatePlayerFieldReference(myId, PlayerDbFields.PLAYER_answer, "");
@@ -82,8 +82,8 @@ function handleMusicStatus(music: MusicEntry, inputRef: any, myId: string, myPla
             inputRef.current?.blur();
             break;
         case MusicStatus.Revealing:
-            inputRef.current.value = `정답은 ${MusicManager.getMusic(music.vid)?.title}`;
-            const isAnswer = MusicManager.checkAnswer(music.vid, myPlayer.answer);
+            inputRef.current.value = `정답은 ${musicEntry.music.title}`;
+            const isAnswer = MusicManager.checkAnswer(musicEntry.music, myPlayer.answer);
             if (isAnswer) {
                 MusicManager.addPoints({id: myId, player: myPlayer});
             }
@@ -95,7 +95,6 @@ function handleMusicStatus(music: MusicEntry, inputRef: any, myId: string, myPla
 }
 
 function insertAnswer(answer: string, myPlayer: Player, myId: string, music: MusicEntry, playerMap: PlayerMap) {
-    console.log("Send " + answer);
     ReferenceManager.updatePlayerFieldReference(myId, PlayerDbFields.PLAYER_answer, answer);
     ReferenceManager.updatePlayerFieldReference(myId, PlayerDbFields.PLAYER_isReady, true);
     if (music.status !== MusicStatus.Playing) return;

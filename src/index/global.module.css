@@ -52,6 +52,10 @@
     color: greenyellow;
 }
 
+.blueText {
+    color: cornflowerblue;
+}
+
 .panelBackground {
     background-color: rgba(31, 43, 57, 255);
 }

@@ -12,7 +12,7 @@ export default function Sanitizer(props: IProps) {
     const ctx = useContext(RoomContext);
     const localCtx = useContext(LocalContext);
     const history = useHistory();
-    const gameStatus = ctx.room.game.status;
+    const gameStatus = ctx.room.game.gameStatus;
     const myId = localCtx.getVal(LocalField.Id);
     const amHost = TurnManager.amHost(ctx, localCtx);
     const myEntry = TurnManager.getMyInfo(ctx, localCtx);
@@ -42,7 +42,7 @@ export default function Sanitizer(props: IProps) {
             return;
         }
         setValid(true);
-        switch (gameStatus){
+        switch (gameStatus) {
             case GameStatus.InGame:
                 history.replace(Navigation.InGame);
                 break;

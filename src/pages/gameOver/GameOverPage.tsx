@@ -16,7 +16,7 @@ export default function GameOverPage() {
     const ctx = useContext(RoomContext);
     const localCtx = useContext(LocalContext);
     const history = useHistory();
-    const status = ctx.room.game.status;
+    const status = ctx.room.game.gameStatus;
     const amHost = TurnManager.amHost(ctx, localCtx);
     useEffect(() => {
         setMyTimer(localCtx, 5, () => {

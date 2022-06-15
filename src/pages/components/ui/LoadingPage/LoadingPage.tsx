@@ -15,7 +15,7 @@ export default function LoadingPage() {
     const localCtx = useContext(LocalContext);
     const history = useHistory();
     const myId = localCtx.getVal(LocalField.Id);
-    const gameState = ctx.room.game.status;
+    const gameState = ctx.room.game.gameStatus;
     useEffect(() => {
         if (myId === null) return;
         switch (gameState) {

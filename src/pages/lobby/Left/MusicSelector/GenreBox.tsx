@@ -2,9 +2,6 @@ import HorizontalLayout from "pages/components/ui/HorizontalLayout";
 import {Fragment, useContext, useEffect, useState} from "react";
 import {
     MusicManager,
-    MusicTeam,
-    TeamList,
-    TeamNameToIndex
 } from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
 import classes from "./GenreBox.module.css";
 import RoomContext from "system/context/roomInfo/room-context";
@@ -18,41 +15,54 @@ export default function GenreBox() {
     const ctx = useContext(RoomContext);
     const localCtx = useContext(LocalContext);
     const chatCtx = useContext(ChatContext);
-    const [useCustom, setUseCustom] = useState(false);//TODO lift custom state
+    const [useCustom, setUseCustom] = useState(false);
     const amHost = TurnManager.amHost(ctx, localCtx);
-    const [checked, setChecked] = useState(ctx.room.header.settings.included);
+    const [checked, setChecked] = useState(MusicManager.CurrentLibrary.headers);
 
-    function onChange(team: MusicTeam) {
+    function onChange(team: string) {
         if (!amHost) return;
         setChecked((prevState) => {
-            const newState = [...prevState];
-            newState[TeamNameToIndex(team)] = !prevState[TeamNameToIndex(team)];
-            return newState;
+            const newMap = new Map<string, boolean>();
+            prevState.forEach((value, key, map) => {
+                newMap.set(key, value);
+            });
+            newMap.set(team, !newMap.get(team));
+            return newMap;
         });
     }
 
     useEffect(() => {
-        //TODO
-        console.log("Use custom? " + useCustom);
+        MusicManager.selectLibrary(useCustom);
+        setChecked(MusicManager.CurrentLibrary.headers);
+        const setName = useCustom ? "커스텀" : "프리셋";
+        chatCtx.announce(`${setName} 목록이 설정됨. 수록곡 ${MusicManager.MusicList.length}개`);
     }, [useCustom]);
+
 
     function onPushSetting(e: any) {
         if (!amHost) return;
-        let numberFound = MusicManager.buildRandomList(checked, useCustom);
+        const numberFound = MusicManager.pushHeader(checked);
         if (numberFound <= 0) {
             chatCtx.announce("최소 한 장르는 선택해 주세요.");
             return;
         }
-        ReferenceManager.updateReference(DbFields.HEADER_settings_included, checked);
-        let announce = "";
-        checked.forEach((value, index, array) => {
-            if (value) {
-                announce += TeamList[index].toString() + ",";
-            }
-        });
+        let announce = MusicManager.CurrentLibrary.printHeaders();
         chatCtx.announce(`곡 설정: ${announce} (${numberFound}곡)`);
     }
 
+    const checkElems: JSX.Element[] = [];
+    checked.forEach((use, name) => {
+        const elem = <Fragment key={name}>
+            <input type="checkbox" id={name}
+                   onChange={() => {
+                       onChange(name);
+                   }}
+                   checked={checked.get(name)}/>
+            <label htmlFor={name}> {name}</label>
+            <br/>
+        </Fragment>;
+        checkElems.push(elem);
+    });
 
     return <Fragment>
         <p className={classes.centerText}>┌─────곡 데이터 선택──────┐</p>
@@ -69,18 +79,7 @@ export default function GenreBox() {
             <button className={classes.halfWidth} onClick={onPushSetting}>적용</button>
         </HorizontalLayout>
         <div className={classes.genreContainer}>
-            {
-                TeamList.map((value, index, array) => {
-                    return <Fragment key={value}>
-                        <input type="checkbox" id={value} onChange={() => {
-                            onChange(value);
-                        }}
-                               checked={checked[TeamNameToIndex(value)]}/>
-                        <label htmlFor={value}> {value.toString()}</label>
-                        <br/>
-                    </Fragment>;
-                })
-            }
+            {checkElems}
         </div>
     </Fragment>;
 }

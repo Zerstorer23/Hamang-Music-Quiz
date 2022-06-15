@@ -10,8 +10,8 @@ import {TurnManager} from "system/GameStates/TurnManager";
 
 export default function MusicPanel() {
     const ctx = useContext(RoomContext);
-    const isPlaying = ctx.room.game.music.status === MusicStatus.Playing;
-    const isTakingAnswers = ctx.room.game.music.status === MusicStatus.ReceivingAnswers;
+    const isPlaying = ctx.room.game.musicEntry.status === MusicStatus.Playing;
+    const isTakingAnswers = ctx.room.game.musicEntry.status === MusicStatus.ReceivingAnswers;
     const remainingSongs = TurnManager.getRemainingSongs(ctx);
     return <div className={`${classes.container} ${gc.borderColor} ${gc.round_border}`}>
         {isPlaying && <p className={classes.remainingGame}>{`${remainingSongs} 곡 남음`}</p>}

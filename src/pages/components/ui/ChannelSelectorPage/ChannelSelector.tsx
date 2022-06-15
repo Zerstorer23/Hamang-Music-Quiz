@@ -20,7 +20,6 @@ export default function ChannelSelector() {
         }
         setValid(true);
         ReferenceManager.channelId = num;
-        console.log("Ref " + num);
         localCtx.setVal(LocalField.ChannelId, num);
     }
 

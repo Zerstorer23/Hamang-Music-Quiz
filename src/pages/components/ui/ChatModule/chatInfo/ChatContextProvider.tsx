@@ -7,6 +7,7 @@ export type ChatContextType = {
     chatList: ChatEntry[];
     loadChat: (a: ChatEntry) => void;
     announce: (a: string) => void;
+    localAnnounce: (a: string) => void;
 
 };
 
@@ -16,6 +17,8 @@ const ChatContext = React.createContext<ChatContextType>({
     loadChat: (a: ChatEntry) => {
     },
     announce: (a: string) => {
+    },
+    localAnnounce: (a: string) => {
     },
 });
 export type ChatEntry = {
@@ -71,10 +74,20 @@ export function ChatProvider(props: IProps) {
         sendChat(ChatFormat.announcement, "", a);
     }
 
+    function localAnnounce(a: string) {
+        const ce = {
+            format: ChatFormat.announcement,
+            name: "",
+            msg: a
+        };
+        loadChat(ce);
+    }
+
     const context: ChatContextType = {
         chatList,
         loadChat,
         announce,
+        localAnnounce,
     };
     return (
         <ChatContext.Provider value={context}>

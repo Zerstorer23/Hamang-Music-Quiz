@@ -19,14 +19,14 @@ export default class TransitionManager {
 
     public static pushLobby() {
         const game: Game = {
-            music: RoomManager.getDefaultMusic(),
-            status: GameStatus.Lobby
+            musicEntry: RoomManager.getDefaultMusic(),
+            gameStatus: GameStatus.Lobby
         };
         ReferenceManager.atomicDelta(DbFields.HEADER_games, -1);
         ReferenceManager.updateReference(DbFields.GAME, game);
     }
 
     public static pushMusicState(state: MusicStatus) {
-        ReferenceManager.updateReference(DbFields.GAME_music_status, state);
+        ReferenceManager.updateReference(DbFields.GAME_musicEntry_status, state);
     }
 }

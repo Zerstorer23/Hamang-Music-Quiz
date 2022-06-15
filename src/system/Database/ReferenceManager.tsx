@@ -6,18 +6,18 @@ import {ObjectPool} from "system/Database/ObjectPool";
 import {Player} from "system/types/GameTypes";
 
 export enum DbFields {
+    ROOT = "/",
     ROOM = "/room",
     GAME = "/room/game",
-    GAME_music = "/room/game/music",
-    GAME_music_status = "/room/game/music/status",
-    GAME_status = "/room/game/status",
+    GAME_musicEntry = "/room/game/musicEntry",
+    GAME_musicEntry_status = "/room/game/musicEntry/status",
+    GAME_status = "/room/game/gameStatus",
     PLAYERS = `/room/playerMap`,
     HEADER = `/room/header`,
     HEADER_hostId = `/room/header/hostId`,
     HEADER_seed = `/room/header/seed`,
     HEADER_games = `/room/header/games`,
     HEADER_settings = `/room/header/settings`,
-    HEADER_settings_included = `/room/header/settings/included`,
     HEADER_settings_guessTime = `/room/header/settings/guessTime`,
     HEADER_settings_songsPlay = `/room/header/settings/songsPlay`,
     CHAT = "/chat",
@@ -45,7 +45,7 @@ class _RefPool extends ObjectPool<string, DbRef> {
 
 }
 
-export const RefPool = new _RefPool();
+const RefPool = new _RefPool();
 
 export class ReferenceManager {
     public static channelId = -1;

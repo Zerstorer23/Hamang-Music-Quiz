@@ -31,7 +31,7 @@ export default function InGame() {
             history.replace(Navigation.Loading);
         }
     }, [myId, history]);
-    const status = ctx.room.game.status;
+    const status = ctx.room.game.gameStatus;
     useEffect(() => {
         switch (status) {
             case GameStatus.Lobby:
@@ -51,7 +51,6 @@ export default function InGame() {
                 <VerticalLayout className={`${classes.leftPanel}`}>
                     <div className={classes.musicPanel}>
                         <MusicPanel/>
-                        {/*<Fragment/>*/}
                     </div>
                     <div className={classes.answerPanel}>
                         <AnswerInputPanel/>
