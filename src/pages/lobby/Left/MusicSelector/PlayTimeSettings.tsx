@@ -6,21 +6,21 @@ import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import {Fragment, useContext, useEffect, useRef} from "react";
 import RoomContext from "system/context/roomInfo/room-context";
 import {LocalContext} from "system/context/localInfo/LocalContextProvider";
-import ChatContext from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
+import ChatContext, {sendAnnounce} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
 import {TurnManager} from "system/GameStates/TurnManager";
 import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
 
 export default function PlayTimeSettings() {
     const ctx = useContext(RoomContext);
     const localCtx = useContext(LocalContext);
-    const chatCtx = useContext(ChatContext);
     const songNumRef = useRef<HTMLTextAreaElement>(null);
+    const guessRef = useRef<HTMLTextAreaElement>(null);
     const amHost = TurnManager.amHost(ctx, localCtx);
     const numSongs = ctx.room.header.settings.songsPlay;
     useEffect(() => {
         if (numSongs > MusicManager.MusicList.length) {
             songNumRef.current!.value = MusicManager.MusicList.length + "";
-            ReferenceManager.updateReference(DbFields.HEADER_settings_songsPlay, songNumRef.current!.value);
+            ReferenceManager.updateReference(DbFields.HEADER_settings_songsPlay, MusicManager.MusicList.length);
         }
     }, [MusicManager.MusicList.length]);
 
@@ -28,8 +28,9 @@ export default function PlayTimeSettings() {
         if (!amHost) return;
         let guessTime = InputManager.cleanseTime(event, 5, 20);
         if (guessTime === null) return;
+        guessRef.current!.value = guessTime + "";
         ReferenceManager.updateReference(DbFields.HEADER_settings_guessTime, guessTime);
-        chatCtx.announce(`답안제출시간: ${guessTime}`);
+        sendAnnounce(`답안제출시간: ${guessTime}`);
 
     }
 
@@ -38,13 +39,14 @@ export default function PlayTimeSettings() {
         let songNumber = InputManager.cleanseSongs(event);
         songNumRef.current!.value = songNumber + "";
         ReferenceManager.updateReference(DbFields.HEADER_settings_songsPlay, songNumber);
-        chatCtx.announce(`플레이 곡 수: ${songNumber}`);
+        sendAnnounce(`플레이 곡 수: ${songNumber}`);
     }
 
     return <Fragment>
         <HorizontalLayout>
             <p>재생시간:</p>
             <textarea
+                ref={guessRef}
                 className={`${classes.fieldTypeSmall}`}
                 onBlur={onFinishEditGuessTime}
                 defaultValue={ctx.room.header.settings.guessTime}

@@ -7,14 +7,12 @@ import classes from "./GenreBox.module.css";
 import RoomContext from "system/context/roomInfo/room-context";
 import {LocalContext} from "system/context/localInfo/LocalContextProvider";
 import {TurnManager} from "system/GameStates/TurnManager";
-import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
-import ChatContext, {ChatFormat} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
+import {sendAnnounce} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
 import CSVLoader from "pages/lobby/Left/MusicSelector/CSVLoader";
 
 export default function GenreBox() {
     const ctx = useContext(RoomContext);
     const localCtx = useContext(LocalContext);
-    const chatCtx = useContext(ChatContext);
     const [useCustom, setUseCustom] = useState(false);
     const amHost = TurnManager.amHost(ctx, localCtx);
     const [checked, setChecked] = useState(MusicManager.CurrentLibrary.headers);
@@ -23,7 +21,7 @@ export default function GenreBox() {
         if (!amHost) return;
         setChecked((prevState) => {
             const newMap = new Map<string, boolean>();
-            prevState.forEach((value, key, map) => {
+            prevState.forEach((value, key) => {
                 newMap.set(key, value);
             });
             newMap.set(team, !newMap.get(team));
@@ -35,7 +33,7 @@ export default function GenreBox() {
         MusicManager.selectLibrary(useCustom);
         setChecked(MusicManager.CurrentLibrary.headers);
         const setName = useCustom ? "커스텀" : "프리셋";
-        chatCtx.announce(`${setName} 목록이 설정됨. 수록곡 ${MusicManager.MusicList.length}개`);
+        sendAnnounce(`${setName} 목록이 설정됨. 수록곡 ${MusicManager.MusicList.length}개`);
     }, [useCustom]);
 
 
@@ -43,11 +41,11 @@ export default function GenreBox() {
         if (!amHost) return;
         const numberFound = MusicManager.pushHeader(checked);
         if (numberFound <= 0) {
-            chatCtx.announce("최소 한 장르는 선택해 주세요.");
+            sendAnnounce("최소 한 장르는 선택해 주세요.");
             return;
         }
         let announce = MusicManager.CurrentLibrary.printHeaders();
-        chatCtx.announce(`곡 설정: ${announce} (${numberFound}곡)`);
+        sendAnnounce(`곡 설정: ${announce} (${numberFound}곡)`);
     }
 
     const checkElems: JSX.Element[] = [];

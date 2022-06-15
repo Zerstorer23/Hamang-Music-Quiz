@@ -2,11 +2,12 @@ import React, {Fragment, useState} from "react";
 import {IProps} from "system/types/CommonTypes";
 import classes from "pages/components/ui/ChatModule/ChatModule.module.css";
 import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
+import {currentTimeInMills, elapsedSinceInMills} from "system/Constants/GameConstants";
+import {GameConfigs} from "system/configs/GameConfigs";
 
 export type ChatContextType = {
     chatList: ChatEntry[];
     loadChat: (a: ChatEntry) => void;
-    announce: (a: string) => void;
     localAnnounce: (a: string) => void;
 
 };
@@ -15,8 +16,6 @@ export type ChatContextType = {
 const ChatContext = React.createContext<ChatContextType>({
     chatList: [],
     loadChat: (a: ChatEntry) => {
-    },
-    announce: (a: string) => {
     },
     localAnnounce: (a: string) => {
     },
@@ -70,10 +69,6 @@ export function ChatProvider(props: IProps) {
         setChatList((prev) => [...prev, ce]);
     }
 
-    function announce(a: string) {
-        sendChat(ChatFormat.announcement, "", a);
-    }
-
     function localAnnounce(a: string) {
         const ce = {
             format: ChatFormat.announcement,
@@ -86,7 +81,6 @@ export function ChatProvider(props: IProps) {
     const context: ChatContextType = {
         chatList,
         loadChat,
-        announce,
         localAnnounce,
     };
     return (
@@ -96,10 +90,33 @@ export function ChatProvider(props: IProps) {
     );
 }
 
-export function sendChat(format: number, name: string, msg: string) {
+let timeList: number[] = [];
+
+export function sendChat(format: number, name: string, msg: string): boolean {
     const ce: ChatEntry = {name, msg, format};
+    if (chatIsBusy(ce)) {
+        return false;
+    }
     const ref = ReferenceManager.getRef(DbFields.CHAT);
     ref.push(ce);
+    return true;
+}
+
+export function sendAnnounce(a: string) {
+    sendChat(ChatFormat.announcement, "", a);
+}
+
+function chatIsBusy(ce: ChatEntry): boolean {
+    if (ce.format !== ChatFormat.normal) return false;
+    timeList = timeList.filter((value, index, array) => {
+        return elapsedSinceInMills(value) <= 10000;
+    });
+    if (timeList.length < GameConfigs.chatsInTenSec) {
+        timeList.push(currentTimeInMills());
+        return false;
+    }
+    return true;
+
 }
 
 export default ChatContext;

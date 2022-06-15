@@ -69,7 +69,10 @@ export default function ChatModule() {
         }
         if (handleSpecials(text)) return;
         sendToPort(text);
-        sendChat(ChatFormat.normal, myEntry.player.name, text);
+        const success = sendChat(ChatFormat.normal, myEntry.player.name, text);
+        if (!success) {
+            chatCtx.localAnnounce("채팅을 너무 자주 보내셨습니다...");
+        }
     }, [handleSpecials, myEntry]);
 
     function toggleFocus(toggle: boolean) {

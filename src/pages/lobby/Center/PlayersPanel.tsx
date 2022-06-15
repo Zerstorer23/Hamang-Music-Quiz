@@ -13,6 +13,11 @@ import {Player, PlayerMap} from "system/types/GameTypes";
 import {RoomManager} from "system/Database/RoomManager";
 import {DS} from "system/configs/DS";
 import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
+import ChatContext, {
+    ChatFormat,
+    sendAnnounce,
+    sendChat
+} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
 
 
 export default function PlayersPanel() {
@@ -38,6 +43,14 @@ export default function PlayersPanel() {
             //Host action is start game
             if (DS.StrictRules) {
                 if (!canStartGame(playerMap)) return;
+                if (ctx.room.header.settings.songsPlay <= 0) {
+                    sendAnnounce("곡이 0개입니다.");
+                    return;
+                }
+                if (ctx.room.header.settings.guessTime <= 2) {
+                    sendAnnounce("정답시간이 너무 짧습니다..");
+                    return;
+                }
             }
             RoomManager.setStartingRoom(ctx.room);
         } else {

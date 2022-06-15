@@ -23,7 +23,9 @@ export class InputManager {
             event.target.value = Math.min(5, MusicManager.MusicList.length);
             return null;
         }
-        return Math.min(numVal, MusicManager.MusicList.length);
+        numVal = Math.min(numVal, MusicManager.MusicList.length);
+        if (numVal <= 0) numVal = 1;
+        return numVal;
     }
 
     public static isNumber(ref: any, def: number): number {
