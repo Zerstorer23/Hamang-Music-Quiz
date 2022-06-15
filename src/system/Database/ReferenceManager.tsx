@@ -36,14 +36,20 @@ export enum PlayerDbFields {
  * uploading data to Firebase.
  */
 class _RefPool extends ObjectPool<string, DbRef> {
+
+
     instantiate(key: string): DbRef {
         return db.ref(key);
     }
+
+
 }
 
 export const RefPool = new _RefPool();
 
 export class ReferenceManager {
+    public static channelId = -1;
+
     /**
      * @param field
      * @param value
@@ -65,22 +71,16 @@ export class ReferenceManager {
         ref.set(player);
     }
 
-    public static getRoomRef(): DbRef {
-        return ReferenceManager.getRef(DbFields.ROOM);
-    }
-
     public static getRef(refName: DbFields): DbRef {
-        //NOTE USE DB TAGS
-        return RefPool.get(refName);
-
+        return RefPool.get(`${this.channelId}${refName}`);
     }
 
     public static getPlayerReference(playerId: string): DbRef {
-        return RefPool.get(`${DbFields.PLAYERS}/${playerId}`);
+        return RefPool.get(`${this.channelId}${DbFields.PLAYERS}/${playerId}`);
     }
 
     public static getPlayerFieldReference(playerId: string, ref: PlayerDbFields): DbRef {
-        return RefPool.get(`${DbFields.PLAYERS}/${playerId}/${ref}`);
+        return RefPool.get(`${this.channelId}${DbFields.PLAYERS}/${playerId}/${ref}`);
     }
 
     public static updatePlayerFieldReference(playerId: string, tag: PlayerDbFields, value: any) {
@@ -89,7 +89,7 @@ export class ReferenceManager {
     }
 
     public static atomicDelta(refName: string, change: number) {
-        const ref = RefPool.get(refName);
+        const ref = RefPool.get(`${this.channelId}${refName}`);
         ref.set(firebase.database.ServerValue.increment(change));
     }
 

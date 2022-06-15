@@ -1,0 +1,21 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    flex-direction: column;
+    gap: 1rem
+}
+
+.joinButton {
+    width: 10%;
+    height: 2rem;
+}
+
+.inputField {
+    width: 10%;
+    height: 2rem;
+}

@@ -103,6 +103,7 @@ function pollMusic(ctx: RoomContextType): boolean {
     const counter = ctx.room.game.music.counter;
     const me = MusicManager.pollNext(counter + 1);
     if (me === null) return false;
+    console.log("Push music ", me);
     ReferenceManager.updateReference(DbFields.GAME_music, me);
     return true;
 }

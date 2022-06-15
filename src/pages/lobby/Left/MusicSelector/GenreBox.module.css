@@ -4,7 +4,11 @@
     height: 2rem;
 }
 
-.applyButton {
+.centerText {
+    text-align: center;
+}
+
+.halfWidth {
     width: 50%;
     height: 100%;
 }

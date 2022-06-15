@@ -28,7 +28,7 @@ export class RoomManager {
         return {
             counter: -1,
             vid: "",
-            status: MusicStatus.WaitingMusic,
+            status: MusicStatus.DefaultInit,
         };
     }
 
@@ -76,9 +76,8 @@ export class RoomManager {
     }
 
     private static getStartingGame(): Game {
-
         return {
-            music: MusicManager.pollNext(0)!,
+            music: this.getDefaultMusic(),
             status: GameStatus.InGame
         };
     }

@@ -9,8 +9,6 @@ import {
     LoadStatus,
     Snapshot,
 } from "system/types/CommonTypes";
-import ChatLoader from "pages/components/ui/ChatModule/ChatLoader";
-import {cleanChats} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
 import {ReferenceManager} from "system/Database/ReferenceManager";
 import {LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
 import {Listeners, ListenerTypes} from "system/context/roomInfo/RoomContextProvider";
@@ -18,6 +16,8 @@ import {Player, Room, RoomHeader} from "system/types/GameTypes";
 import {RoomDatabase} from "system/Database/RoomDatabase";
 import {PlayerManager} from "system/Database/PlayerManager";
 import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
+import ChannelSelector from "pages/components/ui/ChannelSelectorPage/ChannelSelector";
+import LoadingPage from "pages/components/ui/LoadingPage/LoadingPage";
 
 function checkNull<T>(snapshot: Snapshot): [boolean, T] {
     const data: T = snapshot.val();
@@ -25,12 +25,14 @@ function checkNull<T>(snapshot: Snapshot): [boolean, T] {
 }
 
 export default function DataLoader(props: IProps) {
-    const [isLoaded, setStatus] = useState(LoadStatus.init);
+    const [loadStatus, setStatus] = useState(LoadStatus.selectChannel);
     const [csvLoaded, setCSVLoaded] = useState(false);
     const [roomLoaded, setRoomLoaded] = useState(false);
-
+    const [jsxElem, setJSX] = useState(<ChannelSelector/>);
     const context = useContext(RoomContext);
     const localCtx = useContext(LocalContext);
+    const channelId = localCtx.getVal(LocalField.ChannelId);
+
     ///====LOAD AND LISTEN DB===///
     //https://firebase.google.com/docs/reference/node/firebase.database.Reference#on
     function updateField<T>(listenerType: ListenerTypes, snapshot: Snapshot) {
@@ -105,13 +107,16 @@ export default function DataLoader(props: IProps) {
 
 
     useEffect(() => {
-        switch (isLoaded) {
-            case LoadStatus.init:
-                MusicManager.loadFile().then(() => {
+        switch (loadStatus) {
+            case LoadStatus.selectChannel:
+                MusicManager.loadPreset().then(() => {
                     console.log("CSV loaded");
                     setCSVLoaded(true);
                     setStatus(LoadStatus.loaded);
                 });
+                break;
+            case LoadStatus.init:
+                setJSX(<LoadingPage/>);
                 RoomDatabase.loadRoom().then((room: Room) => {
                     console.log("Room loaded");
                     context.onRoomLoaded(room);
@@ -136,15 +141,21 @@ export default function DataLoader(props: IProps) {
             case LoadStatus.outerSpace:
                 break;
         }
-    }, [isLoaded, csvLoaded, roomLoaded]);
+    }, [loadStatus, csvLoaded, roomLoaded]);
     const myId = localCtx.getVal(LocalField.Id);
     useEffect(() => {
         if (myId === null) return;
         setStatus(LoadStatus.outerSpace);
+        setJSX(props.children);
     }, [myId]);
+    useEffect(() => {
+        if (channelId < 0) return;
+        setStatus(LoadStatus.init);
+    }, [channelId]);
+
     return (
         <Fragment>
-            {props.children}
+            {jsxElem}
         </Fragment>
     );
 }

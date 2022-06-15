@@ -1,5 +1,10 @@
 import {RoomContextType} from "system/context/roomInfo/RoomContextProvider";
-import {ChatContextType, ChatEntry, ChatFormat} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
+import {
+    ChatContextType,
+    ChatEntry,
+    ChatFormat,
+    sendChat
+} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
 import {TurnManager} from "system/GameStates/TurnManager";
 import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import {GameConfigs} from "system/configs/GameConfigs";
@@ -29,6 +34,14 @@ export class CommandParser {
                     name: "",
                     msg: ("_coins_inserted"),
                 });
+                break;
+            case "redirect":
+                if (!amHost) return;
+                sendChat(ChatFormat.hidden, "", "redirect");
+                break;
+            case "reload":
+                if (!amHost) return;
+                sendChat(ChatFormat.hidden, "", "reload");
                 break;
         }
     }

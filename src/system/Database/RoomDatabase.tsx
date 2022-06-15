@@ -8,9 +8,10 @@ import {Listeners, ListenerTypes} from "system/context/roomInfo/RoomContextProvi
 export class RoomDatabase {
 
     public static async initialiseRoom() {
-        const roomRef = ReferenceManager.getRoomRef();
+        const roomRef = ReferenceManager.getRef(DbFields.ROOM);
         const defaultRoom = RoomManager.getDefaultRoom();
         await roomRef.set(defaultRoom);
+        roomRef.onDisconnect().remove();
         return await PlayerManager.joinLocalPlayer(true);
     }
 
@@ -19,7 +20,7 @@ export class RoomDatabase {
     }
 
     public static async loadRoom(): Promise<Room> {
-        const roomRef = ReferenceManager.getRoomRef();
+        const roomRef = ReferenceManager.getRef(DbFields.ROOM);
         const snapshot = await roomRef.get();
         if (!snapshot.exists()) {
             return RoomManager.getDefaultRoom();

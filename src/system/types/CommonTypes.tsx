@@ -17,6 +17,7 @@ export type FlexPair = {
 export type Snapshot = firebase.database.DataSnapshot;
 
 export enum LoadStatus {
+    selectChannel = "Selecting Channel",
     init = "Initialising",
     isLoading = "Loading room",
     loaded = "Room loaded",

@@ -55,6 +55,7 @@ function handlePlayerUpdate(newRoom: Room, action: RoomActionType) {
             if (entry.id === newRoom.header.hostId || !newRoom.playerMap.has(newRoom.header.hostId)) {
                 newRoom.header.hostId = newRoom.playerList[0];
                 console.warn("Detected host disconnect " + newRoom.header.hostId);
+                window.location.reload();
             }
             break;
     }

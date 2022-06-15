@@ -20,6 +20,7 @@ export enum LocalField {
     Timer,
     InputFocus,
     Muted,
+    ChannelId,
 }
 
 export type CursorFocusInfo = {
@@ -56,6 +57,7 @@ export default function LocalProvider(props: IProps) {
         state: InputCursor.Idle
     });
     const [isMuted, setIsMuted] = useState<boolean>(false);
+    const [channelId, setChannelId] = useState<number>(-1);
     const [timerOption, setTimerOption] = useState<TimerOptionType>({
         duration: 20,
         onExpire: () => {
@@ -79,6 +81,10 @@ export default function LocalProvider(props: IProps) {
     map.set(LocalField.Muted, {
         val: isMuted,
         set: setIsMuted,
+    });
+    map.set(LocalField.ChannelId, {
+        val: channelId,
+        set: setChannelId,
     });
 
     const context: LocalContextType = {

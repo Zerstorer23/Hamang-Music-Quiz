@@ -10,18 +10,17 @@ import HorizontalLayout from "pages/components/ui/HorizontalLayout";
 import {InputManager} from "system/GameStates/InputManager";
 import {DS} from "system/configs/DS";
 import VerticalLayout from "pages/components/ui/VerticalLayout";
-import GenreBox from "pages/lobby/Left/GenreBox/GenreBox";
+import GenreBox from "pages/lobby/Left/MusicSelector/GenreBox";
 import {RoomManager} from "system/Database/RoomManager";
 import ChatContext from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
+import PlayTimeSettings from "pages/lobby/Left/MusicSelector/PlayTimeSettings";
 
 const MAX_NAME_LENGTH = 16;
 export default function LobbySettings() {
     const ctx = useContext(RoomContext);
     const localCtx = useContext(LocalContext);
-    const chatCtx = useContext(ChatContext);
     const myEntry = TurnManager.getMyInfo(ctx, localCtx);
     const amHost = TurnManager.amHost(ctx, localCtx);
-    const numSongs = ctx.room.header.settings.songsPlay;
 
     async function onFinishEditName(event: any) {
         let newName: string = event.target.value;
@@ -35,21 +34,6 @@ export default function LobbySettings() {
         // setFishName(newName); //TODO
     }
 
-    function onFinishEditGuessTime(event: any) {
-        if (!amHost) return;
-        let guessTime = InputManager.cleanseTime(event, 5, 20);
-        if (guessTime === null) return;
-        ReferenceManager.updateReference(DbFields.HEADER_settings_guessTime, guessTime);
-        chatCtx.announce(`답안제출시간: ${guessTime}`);
-
-    }
-
-    function onFinishEditSongNumbers(event: any) {
-        if (!amHost) return;
-        let songNumber = InputManager.cleanseSongs(event);
-        ReferenceManager.updateReference(DbFields.HEADER_settings_songsPlay, songNumber);
-        chatCtx.announce(`플레이 곡 수: ${songNumber}`);
-    }
 
     function onClickCopy(e: any) {
         const myUrl = window.location.href;
@@ -79,22 +63,7 @@ export default function LobbySettings() {
             {
                 amHost && <div className={`${classes.settingsContainer} `}>
                     <p>설정넣기</p>
-                    <HorizontalLayout>
-                        <p>재생시간:</p>
-                        <textarea
-                            className={`${classes.fieldTypeSmall}`}
-                            onBlur={onFinishEditGuessTime}
-                            defaultValue={ctx.room.header.settings.guessTime}
-                        ></textarea>
-                    </HorizontalLayout>
-                    <HorizontalLayout className={gc.borderBottom}>
-                        <p>음악재생 곡 수</p>
-                        <textarea
-                            className={`${classes.fieldTypeSmall}`}
-                            onBlur={onFinishEditSongNumbers}
-                            defaultValue={numSongs}
-                        ></textarea>
-                    </HorizontalLayout>
+                    <PlayTimeSettings/>
                     <GenreBox/>
                 </div>
             }

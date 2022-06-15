@@ -33,11 +33,6 @@ export default function InGame() {
     }, [myId, history]);
     const status = ctx.room.game.status;
     useEffect(() => {
-        if (numPlayers <= 1 && status !== GameStatus.Over && DS.StrictRules) {
-            console.log("Last one in");
-            TransitionManager.pushEndGame();
-            return;
-        }
         switch (status) {
             case GameStatus.Lobby:
                 history.replace(Navigation.Lobby);

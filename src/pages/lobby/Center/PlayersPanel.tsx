@@ -37,7 +37,6 @@ export default function PlayersPanel() {
         if (amHost) {
             //Host action is start game
             if (DS.StrictRules) {
-                if (playerList.length <= 1) return;
                 if (!canStartGame(playerMap)) return;
             }
             RoomManager.setStartingRoom(ctx.room);

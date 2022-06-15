@@ -22,25 +22,23 @@ function App() {
     }, []);
     return (
         <Fragment>
-            <DataLoader/>
-            <ChatLoader/>
-            <Switch>
-                <Route path={Navigation.Loading} exact>
-                    <LoadingPage/>
-                </Route>
-                <Route path={Navigation.Lobby} exact>
-                    <Lobby/>
-                </Route>
-                <Route path={Navigation.InGame} exact>
-                    <InGame/>
-                </Route>
-                <Route path={Navigation.GameFinish} exact>
-                    <GameOverPage/>
-                </Route>
-                <Route path="*">
-                    <Redirect to={Navigation.Loading}/>
-                </Route>
-            </Switch>
+            <DataLoader>
+                <ChatLoader/>
+                <Switch>
+                    <Route path={Navigation.Lobby} exact>
+                        <Lobby/>
+                    </Route>
+                    <Route path={Navigation.InGame} exact>
+                        <InGame/>
+                    </Route>
+                    <Route path={Navigation.GameFinish} exact>
+                        <GameOverPage/>
+                    </Route>
+                    <Route path="*">
+                        <Redirect to={Navigation.Loading}/>
+                    </Route>
+                </Switch>
+            </DataLoader>
         </Fragment>
     );
 }

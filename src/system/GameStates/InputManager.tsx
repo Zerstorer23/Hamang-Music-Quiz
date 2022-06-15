@@ -26,11 +26,21 @@ export class InputManager {
         return Math.min(numVal, MusicManager.MusicList.length);
     }
 
+    public static isNumber(ref: any, def: number): number {
+        let numVal: number = +ref.value;
+        if (isNaN(numVal)) {
+            ref.value = def;
+            return -1;
+        }
+        return numVal;
+    }
+
     public static cleanseAnswer(answer: string): string {
-        answer = answer.replaceAll(LF, "");
-        answer = answer.replaceAll(CR, "");
-        answer = answer.replaceAll(" ", "");
-        answer = answer.replace(reg, "");
+        answer = answer.replaceAll(LF, "")
+            .replaceAll(CR, "")
+            .replaceAll(" ", "")
+            .replace(reg, "")
+            .toLowerCase();
         if (answer.length > 128) {
             answer = answer.substring(0, 128);
         }
