@@ -11,6 +11,7 @@ import {randomInt} from "system/Constants/GameConstants";
 import TransitionManager from "system/GameStates/TransitionManager";
 import {YoutubeModule} from "pages/ingame/Left/MusicPanel/MusicModule/YoutubeModule";
 import {setMyTimer} from "pages/components/ui/MyTimer/MyTimer";
+import {RoomContextType} from "system/context/roomInfo/RoomContextProvider";
 
 export const HEURISTIC_INIT_TIME = 4;
 export const REVEAL_TIME = 5;
@@ -35,7 +36,6 @@ export default function MusicModule() {
 
     // const myId = localCtx.getVal(LocalField.Id);
     const amHost = TurnManager.amHost(ctx, localCtx);
-    const counter = ctx.room.game.music.counter;
     const guessTime = ctx.room.header.settings.guessTime;
 
     useEffect(() => {
@@ -44,15 +44,12 @@ export default function MusicModule() {
                 setJSX(<p>로딩중</p>);
                 if (!amHost) return;
                 clearTimer(musicTimer);
-                const success = pollMusic(counter);
-                if (!success) {
-                    TransitionManager.pushEndGame();
-                }
+                const success = pollMusic(ctx);
+                if (success) return;
+                TransitionManager.pushEndGame();
                 break;
             case MusicStatus.Playing:
-                //TODO play invis
                 setJSX(<YoutubeModule videoId={ctx.room.game.music.vid} onStateChange={onStateChange}/>);
-                console.log("Playing");
                 setMyTimer(localCtx, guessTime);
                 if (!amHost) return;
                 doTimer(setMusicTimer, guessTime, () => {
@@ -101,7 +98,9 @@ export default function MusicModule() {
     </div>;
 }
 
-function pollMusic(counter: number): boolean {
+function pollMusic(ctx: RoomContextType): boolean {
+    if (TurnManager.getRemainingSongs(ctx) < 0) return false;
+    const counter = ctx.room.game.music.counter;
     const me = MusicManager.pollNext(counter + 1);
     if (me === null) return false;
     ReferenceManager.updateReference(DbFields.GAME_music, me);

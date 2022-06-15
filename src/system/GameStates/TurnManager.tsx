@@ -4,28 +4,6 @@ import {LocalContextType, LocalField} from "system/context/localInfo/LocalContex
 
 
 export class TurnManager {
-    /**
-     *
-     * @returns  use room hash to get first player
-     */
-    public static getFirstTurn(seed: number, playerSize: number): number {
-        return seed % playerSize;
-    }
-
-    /**
-     *
-     * @returns Get next safe turn
-     */
-    public static getNextTurn(playerMap: PlayerMap, playerList: string[], turn: number, startWithIncrement = true): number {
-        let newTurn = (startWithIncrement) ? turn + 1 : turn;
-        newTurn %= playerList.length;
-        let currPlayer = playerMap.get(playerList[newTurn]);
-        while (currPlayer?.isSpectating) {
-            newTurn = (newTurn + 1) % playerList.length;
-            currPlayer = playerMap.get(playerList[newTurn]);
-        }
-        return newTurn;
-    }
 
     public static amHost(ctx: RoomContextType, localCtx: LocalContextType) {
         const myId = localCtx.getVal(LocalField.Id);
@@ -44,4 +22,7 @@ export class TurnManager {
         return {id, player};
     }
 
+    public static getRemainingSongs(ctx: RoomContextType): number {
+        return ctx.room.header.settings.songsPlay - ctx.room.game.music.counter - 1;
+    }
 }

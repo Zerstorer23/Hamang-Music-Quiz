@@ -6,7 +6,8 @@ import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
 export type ChatContextType = {
     chatList: ChatEntry[];
     loadChat: (a: ChatEntry) => void;
-    setter: any;
+    announce: (a: string) => void;
+
 };
 
 
@@ -14,9 +15,8 @@ const ChatContext = React.createContext<ChatContextType>({
     chatList: [],
     loadChat: (a: ChatEntry) => {
     },
-    setter: () => {
+    announce: (a: string) => {
     },
-
 });
 export type ChatEntry = {
     name: string;
@@ -58,11 +58,18 @@ export function ChatProvider(props: IProps) {
         setChatList((prev) => [...prev, ce]);
     }
 
+    function announce(a: string) {
+        loadChat({
+            format: ChatFormat.announcement,
+            name: "",
+            msg: a,
+        });
+    }
 
     const context: ChatContextType = {
         chatList,
         loadChat,
-        setter: setChatList
+        announce,
     };
     return (
         <ChatContext.Provider value={context}>

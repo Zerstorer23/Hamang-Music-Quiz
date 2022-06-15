@@ -16,7 +16,6 @@ export default function ChatLoader() {
         cleanChats();
         const chatRef = ReferenceManager.getRef(DbFields.CHAT);
         chatRef.on(LISTEN_CHILD_ADDED, onChatAdded);
-        console.log("Clean chats");
     }, []);
 
 

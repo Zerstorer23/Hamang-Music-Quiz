@@ -40,8 +40,7 @@ export default function PlayersPanel() {
                 if (playerList.length <= 1) return;
                 if (!canStartGame(playerMap)) return;
             }
-            const room = ctx.room;
-            RoomManager.setStartingRoom(room, MusicManager.MusicList.length);
+            RoomManager.setStartingRoom(ctx.room);
         } else {
             //My action is ready
             const toggleReady = !myEntry.player.isReady;

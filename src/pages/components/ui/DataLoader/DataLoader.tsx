@@ -17,6 +17,7 @@ import {Listeners, ListenerTypes} from "system/context/roomInfo/RoomContextProvi
 import {Player, Room, RoomHeader} from "system/types/GameTypes";
 import {RoomDatabase} from "system/Database/RoomDatabase";
 import {PlayerManager} from "system/Database/PlayerManager";
+import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
 
 function checkNull<T>(snapshot: Snapshot): [boolean, T] {
     const data: T = snapshot.val();
@@ -25,6 +26,9 @@ function checkNull<T>(snapshot: Snapshot): [boolean, T] {
 
 export default function DataLoader(props: IProps) {
     const [isLoaded, setStatus] = useState(LoadStatus.init);
+    const [csvLoaded, setCSVLoaded] = useState(false);
+    const [roomLoaded, setRoomLoaded] = useState(false);
+
     const context = useContext(RoomContext);
     const localCtx = useContext(LocalContext);
     ///====LOAD AND LISTEN DB===///
@@ -103,12 +107,20 @@ export default function DataLoader(props: IProps) {
     useEffect(() => {
         switch (isLoaded) {
             case LoadStatus.init:
+                MusicManager.loadFile().then(() => {
+                    console.log("CSV loaded");
+                    setCSVLoaded(true);
+                    setStatus(LoadStatus.loaded);
+                });
                 RoomDatabase.loadRoom().then((room: Room) => {
+                    console.log("Room loaded");
                     context.onRoomLoaded(room);
+                    setRoomLoaded(true);
                     setStatus(LoadStatus.loaded);
                 });
                 break;
             case LoadStatus.loaded:
+                if (!csvLoaded || !roomLoaded) return;
                 const listeners = RoomDatabase.registerListeners();
                 setListeners(listeners);
                 setStatus(LoadStatus.listening);
@@ -124,7 +136,7 @@ export default function DataLoader(props: IProps) {
             case LoadStatus.outerSpace:
                 break;
         }
-    }, [isLoaded]);
+    }, [isLoaded, csvLoaded, roomLoaded]);
     const myId = localCtx.getVal(LocalField.Id);
     useEffect(() => {
         if (myId === null) return;

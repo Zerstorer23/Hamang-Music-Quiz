@@ -1,6 +1,6 @@
 import classes from "./AnswerinputPanel.module.css";
 import {TurnManager} from "system/GameStates/TurnManager";
-import {useContext, useEffect, useRef, useState} from "react";
+import {useContext, useEffect, useRef} from "react";
 import useKeyListener, {KeyCode} from "system/hooks/useKeyListener";
 import {CursorFocusInfo, InputCursor, LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
 import RoomContext from "system/context/roomInfo/room-context";
@@ -8,8 +8,8 @@ import {PlayerDbFields, ReferenceManager} from "system/Database/ReferenceManager
 import {MusicEntry, MusicStatus, Player, PlayerMap} from "system/types/GameTypes";
 import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
 import TransitionManager from "system/GameStates/TransitionManager";
-import {InputManager} from "system/GameStates/InputManager";
 import {currentTimeInMills} from "system/Constants/GameConstants";
+import {InputManager} from "system/GameStates/InputManager";
 
 
 export default function AnswerInputPanel() {
@@ -25,7 +25,6 @@ export default function AnswerInputPanel() {
     function onKeyDown(keyCode: KeyCode) {
         if (keyCode === KeyCode.Undefined) return;
         if (music.status !== MusicStatus.Playing) return;
-        console.log("key " + keyCode);
         if (keyCode === KeyCode.Space) {
             if (document.activeElement === inputRef.current!) return;
             inputRef.current?.focus();
@@ -54,8 +53,8 @@ export default function AnswerInputPanel() {
         if (cursorFocus.state !== InputCursor.Idle) return;
         insertAnswer(text, myPlayer, myId, music, ctx.room.playerMap);
     }, [cursorFocus.state]);
-    const enabledCss = music.status === MusicStatus.Playing ? "" : classes.isDisabled;
-    const hintText = music.status === MusicStatus.Playing ? "[Space] 정답을 입력..." : "정답 확인중... [정답에는 특수문자가 절대 없습니다]";
+    const [enabledCss, hintText] = inferCss(music);
+
 
     return <div className={classes.container}>
        <textarea className={`${classes.textInput} ${enabledCss}`}
@@ -83,6 +82,7 @@ function handleMusicStatus(music: MusicEntry, inputRef: any, myId: string, myPla
             inputRef.current?.blur();
             break;
         case MusicStatus.Revealing:
+            inputRef.current.value = `정답은 ${MusicManager.getMusic(music.vid)?.title}`;
             const isAnswer = MusicManager.checkAnswer(music.vid, myPlayer.answer);
             if (isAnswer) {
                 MusicManager.addPoints({id: myId, player: myPlayer});
@@ -108,4 +108,23 @@ function insertAnswer(answer: string, myPlayer: Player, myId: string, music: Mus
     if (allAnswered) {
         TransitionManager.pushMusicState(MusicStatus.ReceivingAnswers);
     }
+}
+
+function inferCss(music: MusicEntry) {
+    let enabledCss = classes.isDisabled;
+    let hintText = "[Space] 정답을 입력...";
+    switch (music.status) {
+        case MusicStatus.WaitingMusic:
+            break;
+        case MusicStatus.Playing:
+            enabledCss = "";
+            break;
+        case MusicStatus.ReceivingAnswers:
+            hintText = "정답 확인중... [정답에는 특수문자가 절대 없습니다]";
+            break;
+        case MusicStatus.Revealing:
+            break;
+    }
+
+    return [enabledCss, hintText];
 }

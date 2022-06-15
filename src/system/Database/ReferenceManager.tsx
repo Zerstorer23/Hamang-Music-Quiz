@@ -17,6 +17,7 @@ export enum DbFields {
     HEADER_seed = `/room/header/seed`,
     HEADER_games = `/room/header/games`,
     HEADER_settings = `/room/header/settings`,
+    HEADER_settings_included = `/room/header/settings/included`,
     HEADER_settings_guessTime = `/room/header/settings/guessTime`,
     HEADER_settings_songsPlay = `/room/header/settings/songsPlay`,
     CHAT = "/chat",

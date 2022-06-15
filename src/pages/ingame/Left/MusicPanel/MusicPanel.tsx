@@ -6,12 +6,13 @@ import classes from "./MusicPanel.module.css";
 import {useContext} from "react";
 import RoomContext from "system/context/roomInfo/room-context";
 import {MusicStatus} from "system/types/GameTypes";
+import {TurnManager} from "system/GameStates/TurnManager";
 
 export default function MusicPanel() {
     const ctx = useContext(RoomContext);
     const isPlaying = ctx.room.game.music.status === MusicStatus.Playing;
     const isTakingAnswers = ctx.room.game.music.status === MusicStatus.ReceivingAnswers;
-    const remainingSongs = ctx.room.header.settings.songsPlay - ctx.room.game.music.counter - 1;
+    const remainingSongs = TurnManager.getRemainingSongs(ctx);
     return <div className={`${classes.container} ${gc.borderColor} ${gc.round_border}`}>
         {isPlaying && <p className={classes.remainingGame}>{`${remainingSongs} 곡 남음`}</p>}
         <MusicModule/>

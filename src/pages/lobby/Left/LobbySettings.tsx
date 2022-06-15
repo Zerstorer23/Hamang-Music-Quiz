@@ -1,4 +1,4 @@
-import {useContext} from "react";
+import {useContext, useEffect, useRef} from "react";
 
 import gc from "index/global.module.css";
 import classes from "./LobbySettings.module.css";
@@ -9,16 +9,21 @@ import {DbFields, PlayerDbFields, ReferenceManager} from "system/Database/Refere
 import HorizontalLayout from "pages/components/ui/HorizontalLayout";
 import {InputManager} from "system/GameStates/InputManager";
 import {DS} from "system/configs/DS";
+import VerticalLayout from "pages/components/ui/VerticalLayout";
+import GenreBox from "pages/lobby/Left/GenreBox/GenreBox";
+import {RoomManager} from "system/Database/RoomManager";
+import ChatContext from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
 
 const MAX_NAME_LENGTH = 16;
 export default function LobbySettings() {
     const ctx = useContext(RoomContext);
     const localCtx = useContext(LocalContext);
+    const chatCtx = useContext(ChatContext);
     const myEntry = TurnManager.getMyInfo(ctx, localCtx);
     const amHost = TurnManager.amHost(ctx, localCtx);
+    const numSongs = ctx.room.header.settings.songsPlay;
 
     async function onFinishEditName(event: any) {
-
         let newName: string = event.target.value;
         if (newName.length <= 1) return;
         if (myEntry.player.isReady) return;
@@ -32,17 +37,18 @@ export default function LobbySettings() {
 
     function onFinishEditGuessTime(event: any) {
         if (!amHost) return;
-        let guessTime = InputManager.cleanseNumber(event, 5, ctx.room.header.settings.guessTime);
+        let guessTime = InputManager.cleanseTime(event, 5, 20);
         if (guessTime === null) return;
         ReferenceManager.updateReference(DbFields.HEADER_settings_guessTime, guessTime);
+        chatCtx.announce(`답안제출시간: ${guessTime}`);
 
     }
 
     function onFinishEditSongNumbers(event: any) {
         if (!amHost) return;
-        let songNumber = InputManager.cleanseNumber(event, 5, ctx.room.header.settings.songsPlay);
-        if (songNumber === null) return;
+        let songNumber = InputManager.cleanseSongs(event);
         ReferenceManager.updateReference(DbFields.HEADER_settings_songsPlay, songNumber);
+        chatCtx.announce(`플레이 곡 수: ${songNumber}`);
     }
 
     function onClickCopy(e: any) {
@@ -70,25 +76,26 @@ export default function LobbySettings() {
                 <br/>
                 <p>모바일 유저는 데스크탑보기모드 꼭 켜주라!</p>
             </div>
-            {amHost &&
-                <div className={classes.settingsContainer}>
+            {
+                amHost && <div className={`${classes.settingsContainer} `}>
                     <p>설정넣기</p>
                     <HorizontalLayout>
                         <p>재생시간:</p>
                         <textarea
                             className={`${classes.fieldTypeSmall}`}
                             onBlur={onFinishEditGuessTime}
-                            defaultValue={ctx.room.header.settings.songsPlay}
+                            defaultValue={ctx.room.header.settings.guessTime}
                         ></textarea>
                     </HorizontalLayout>
-                    <HorizontalLayout>
+                    <HorizontalLayout className={gc.borderBottom}>
                         <p>음악재생 곡 수</p>
                         <textarea
                             className={`${classes.fieldTypeSmall}`}
                             onBlur={onFinishEditSongNumbers}
-                            defaultValue={ctx.room.header.settings.songsPlay}
+                            defaultValue={numSongs}
                         ></textarea>
                     </HorizontalLayout>
+                    <GenreBox/>
                 </div>
             }
         </div>

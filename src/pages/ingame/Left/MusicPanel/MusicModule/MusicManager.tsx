@@ -3,17 +3,29 @@ import {InputManager} from "system/GameStates/InputManager";
 import {PlayerDbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import Papa from "papaparse";
 import {shuffleArray} from "system/Constants/GameConstants";
+import {RoomManager} from "system/Database/RoomManager";
 
 //https://docs.google.com/spreadsheets/d/1QluDRTVw7qz5rE46MpLYEFj_WntZUNa3THLvBeuvVJY/edit#gid=0
 
 export enum MusicTeam {
-    Haruhi,
-    Kon,
-    LuckyStar
+    Haruhi = "하루히",
+    Kon = "케이온",
+    LuckyStar = "러키스타",
+    KyoAni = "쿄애니",
+    Vocaloid = "보컬로이드",
+    Idols = "아이돌",
+    Etc = "기타",
 }
 
-type CSVTeamName = "하루히" | "케이온" | "러키스타";
-
+export const TeamList: MusicTeam[] = [
+    MusicTeam.Haruhi,
+    MusicTeam.Kon,
+    MusicTeam.LuckyStar,
+    MusicTeam.KyoAni,
+    MusicTeam.Vocaloid,
+    MusicTeam.Idols,
+    MusicTeam.Etc,
+];
 export type MusicObject = {
     team: MusicTeam,
     videoId: string,
@@ -21,14 +33,21 @@ export type MusicObject = {
     answers: string[],
 }
 type MusicCSVEntry = {
-    team: CSVTeamName,
+    team: MusicTeam,
     video: string,
     title: string,
     ko_translate: string,
     ko_read: string,
     en_read: string,
 }
+const keyMap = new Map<string, number>();
 
+export function TeamNameToIndex(name: MusicTeam): number {
+    if (!keyMap.has(name)) {
+        keyMap.set(name, TeamList.indexOf(name));
+    }
+    return keyMap.get(name)!;
+}
 
 export class MusicManager {
     private static MusicLibrary = new Map<string, MusicObject>();
@@ -36,7 +55,6 @@ export class MusicManager {
 
     public static async loadFile() {
         const response = await fetch('/mlist.csv')!;
-        console.log(response);
         const reader = response.body!.getReader();
         const result = await reader.read(); // raw array
         const decoder = new TextDecoder('utf-8');
@@ -46,7 +64,7 @@ export class MusicManager {
         this.MusicLibrary.clear();
         rows.forEach((item: MusicCSVEntry) => {
                 const obj: MusicObject = {
-                    team: this.TeamNameToIndex(item.team),
+                    team: item.team,
                     videoId: InputManager.cleanseVid(item.video),
                     title: item.title,
                     answers: []
@@ -57,32 +75,23 @@ export class MusicManager {
                 this.MusicLibrary.set(obj.videoId, obj);
             }
         );
-        console.log(this.MusicList);
+        this.buildRandomList(RoomManager.getDefaultIncluded());
     };
 
-    public static buildRandomList(filters: boolean[], count: number): number {
+    public static buildRandomList(filters: boolean[]): number {
         this.MusicList = [];
-        let allList: MusicObject[] = [];
         this.MusicLibrary.forEach((value, key, map) => {
-            if (!filters[value.team as number]) return;
-            allList.push(value);
+            const index = TeamNameToIndex(value.team);
+            if (!filters[index]) return;
+            this.MusicList.push(value);
         });
-        allList = shuffleArray(allList);
-        this.MusicList = allList.slice(0, Math.min(count, allList.length));
+        this.MusicList = shuffleArray(this.MusicList);
         return this.MusicList.length;
     }
 
-    private static TeamNameToIndex(name: CSVTeamName): MusicTeam {
-        switch (name) {
-            case "하루히":
-                return MusicTeam.Haruhi;
-            case "케이온":
-                return MusicTeam.Haruhi;
-            case "러키스타":
-                return MusicTeam.Kon;
-            default:
-                return MusicTeam.Haruhi;
-        }
+    public static getMusic(vid: string): MusicObject | null {
+        if (!this.MusicLibrary.has(vid)) return null;
+        return this.MusicLibrary.get(vid)!;
     }
 
     //TODO Everyone builds their own randomised list
@@ -95,11 +104,20 @@ export class MusicManager {
         };
     }
 
-    public static checkAnswer(vid: string, answer: string): boolean {
-        answer = InputManager.cleanseAnswer(answer);
-        if (answer.length <= 0) return false;
-        console.log("Check " + answer);
-        return true;
+    public static checkAnswer(vid: string, myAnswer: string): boolean {
+        myAnswer = InputManager.cleanseAnswer(myAnswer);
+        if (myAnswer.length <= 0) return false;
+        const music = this.MusicLibrary.get(vid);
+        if (music === undefined) return false;
+        let correct = false;
+        music.answers.forEach((value) => {
+            if (correct) return;
+            const realAns = InputManager.cleanseAnswer(value);
+            if (realAns === myAnswer) {
+                correct = true;
+            }
+        });
+        return correct;
     }
 
     public static addPoints(player: PlayerEntry) {

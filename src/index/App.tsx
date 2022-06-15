@@ -19,7 +19,6 @@ export enum Navigation {
 function App() {
     useEffect(() => {
         connect();
-        MusicManager.loadFile();
     }, []);
     return (
         <Fragment>
