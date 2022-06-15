@@ -10,6 +10,7 @@ import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManage
 import TransitionManager from "system/GameStates/TransitionManager";
 import {currentTimeInMills} from "system/Constants/GameConstants";
 import {InputManager} from "system/GameStates/InputManager";
+import {sendAnnounce} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
 
 
 export default function AnswerInputPanel() {
@@ -49,6 +50,7 @@ export default function AnswerInputPanel() {
 
     function onClickLobby() {
         if (!amHost) return;
+        sendAnnounce("방장이 게임을 끝냈습니다.");
         TransitionManager.pushEndGame();
     }
 
