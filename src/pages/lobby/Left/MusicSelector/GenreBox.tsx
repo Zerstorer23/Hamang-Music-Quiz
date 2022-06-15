@@ -62,11 +62,7 @@ export default function GenreBox() {
                 setUseCustom(false);
             }}>프리셋
             </button>
-            <CSVLoader/>
-            {/*      <button className={classes.halfButton} onClick={() => {
-                setUseCustom(true);
-            }}>커스텀
-            </button>*/}
+            <CSVLoader onUseCustom={setUseCustom}/>
         </HorizontalLayout>
         <HorizontalLayout className={classes.header}>
             <p className={`${classes.halfWidth} ${classes.centerText}`}>{`필터──>`}</p>

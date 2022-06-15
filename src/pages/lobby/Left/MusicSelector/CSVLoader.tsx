@@ -3,9 +3,13 @@ import {Fragment, useEffect, useState} from "react";
 import Papa from "papaparse";
 import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
 import classes from "./GenreBox.module.css";
+import {IProps} from "system/types/CommonTypes";
 
 const allowedExtensions = ["csv"];
-export default function CSVLoader() {
+type Props = IProps & {
+    onUseCustom: any
+}
+export default function CSVLoader(props: Props) {
 
     // It state will contain the error when
     // correct file extension is not used
@@ -56,6 +60,7 @@ export default function CSVLoader() {
                 setError("Enter a valid file");
                 return;
             }
+            props.onUseCustom(true);
         };
         reader.readAsText(file as any);
 
