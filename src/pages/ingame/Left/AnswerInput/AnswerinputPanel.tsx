@@ -19,6 +19,7 @@ export default function AnswerInputPanel() {
     const inputRef = useRef<HTMLTextAreaElement>(null);
     const cursorFocus = localCtx.getVal(LocalField.InputFocus) as CursorFocusInfo;
     const musicEntry = ctx.room.game.musicEntry;
+    const amHost = TurnManager.amHost(ctx, localCtx);
     ///====Key listener====///
     useKeyListener([KeyCode.Space, KeyCode.Enter], onKeyDown);
 
@@ -46,6 +47,11 @@ export default function AnswerInputPanel() {
         localCtx.setVal(LocalField.InputFocus, cursorInfo);
     }
 
+    function onClickLobby() {
+        if (!amHost) return;
+        TransitionManager.pushEndGame();
+    }
+
     useEffect(() => {
         let text = inputRef.current!.value.toString();
         if (text.length <= 0) return;
@@ -57,16 +63,22 @@ export default function AnswerInputPanel() {
 
 
     return <div className={classes.container}>
-       <textarea className={`${classes.textInput} ${enabledCss}`}
-                 ref={inputRef}
-                 placeholder={hintText}
-                 onBlur={() => {
-                     toggleFocus(false);
-                 }}
-                 onFocus={() => {
-                     toggleFocus(true);
-                 }}
-       />
+        {
+            (amHost) &&
+            <button className={classes.lobbyButton}
+                    onClick={onClickLobby}
+            >[방장]<br/>게임끝내기</button>
+        }
+        <textarea className={`${classes.textInput} ${enabledCss}`}
+                  ref={inputRef}
+                  placeholder={hintText}
+                  onBlur={() => {
+                      toggleFocus(false);
+                  }}
+                  onFocus={() => {
+                      toggleFocus(true);
+                  }}
+        />
     </div>;
 }
 

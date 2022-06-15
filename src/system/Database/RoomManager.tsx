@@ -17,18 +17,18 @@ export class RoomManager {
             settings: {
                 guessTime: !DS.StrictRules ? 5 : GameConfigs.defaultGuessTime,
                 songsPlay: !DS.StrictRules ? 5 : GameConfigs.defaultSongNumber,
+                limitedCommunication: false,
             },
         };
     }
 
     static geDefaultMusicObject(): MusicObject {
-        const o: MusicObject = {
+        return {
             team: "버그",
             answers: ["Calc"],
             videoId: "oidKy7khp8o",
             title: "Calc.[이게 보이면 버그있음]"
         };
-        return o;
     }
 
     static getDefaultMusic(): MusicEntry {

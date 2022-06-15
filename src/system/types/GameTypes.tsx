@@ -16,6 +16,7 @@ export type PlayerEntry = {
 export type RoomSettings = {
     guessTime: number,
     songsPlay: number,
+    limitedCommunication: boolean,
 }
 export type RoomHeader = {
     seed: number;
@@ -30,7 +31,6 @@ export type MusicEntry = {
 };
 
 export enum MusicStatus {
-    DefaultInit,
     WaitingMusic,
     Playing,
     ReceivingAnswers,

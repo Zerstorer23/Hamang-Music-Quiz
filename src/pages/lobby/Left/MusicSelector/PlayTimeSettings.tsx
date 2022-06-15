@@ -6,7 +6,7 @@ import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import {Fragment, useContext, useEffect, useRef} from "react";
 import RoomContext from "system/context/roomInfo/room-context";
 import {LocalContext} from "system/context/localInfo/LocalContextProvider";
-import ChatContext, {sendAnnounce} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
+import {sendAnnounce} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
 import {TurnManager} from "system/GameStates/TurnManager";
 import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
 
@@ -24,6 +24,16 @@ export default function PlayTimeSettings() {
         }
     }, [MusicManager.MusicList.length]);
 
+    function onToggleSafeChat() {
+        const toggle = !ctx.room.header.settings.limitedCommunication;
+        ReferenceManager.updateReference(DbFields.HEADER_settings_limitedCommunication, toggle);
+        if (toggle) {
+            sendAnnounce(`채팅제한 켜짐. 채팅은 3글자만. 닉네임은 ㅇㅇ만 표기.`);
+        } else {
+            sendAnnounce("채팅제한 꺼짐");
+        }
+    }
+
     function onFinishEditGuessTime(event: any) {
         if (!amHost) return;
         let guessTime = InputManager.cleanseTime(event, 5, 20);
@@ -31,7 +41,6 @@ export default function PlayTimeSettings() {
         guessRef.current!.value = guessTime + "";
         ReferenceManager.updateReference(DbFields.HEADER_settings_guessTime, guessTime);
         sendAnnounce(`답안제출시간: ${guessTime}`);
-
     }
 
     function onFinishEditSongNumbers(event: any) {
@@ -43,6 +52,10 @@ export default function PlayTimeSettings() {
     }
 
     return <Fragment>
+        <input type="checkbox" id={"safeChat"}
+               onChange={onToggleSafeChat}
+               checked={ctx.room.header.settings.limitedCommunication}/>
+        <label htmlFor={"safeChat"}>채팅제한</label>
         <HorizontalLayout>
             <p>재생시간:</p>
             <textarea

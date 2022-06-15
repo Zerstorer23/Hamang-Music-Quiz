@@ -14,6 +14,8 @@ import {CommandParser} from "pages/components/ui/ChatModule/CommandParser";
 import sendToPort from "pages/components/ui/ChatModule/ChatRelay";
 import {InputManager} from "system/GameStates/InputManager";
 import {currentTimeInMills, elapsedSinceInMills, randomInt} from "system/Constants/GameConstants";
+import {RoomManager} from "system/Database/RoomManager";
+import {PlayerManager} from "system/Database/PlayerManager";
 
 export default function ChatModule() {
     const chatCtx = useContext(ChatContext);
@@ -24,7 +26,7 @@ export default function ChatModule() {
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const chatFieldRef = useRef<HTMLTextAreaElement>(null);
     const cursorFocus = localCtx.getVal(LocalField.InputFocus) as CursorFocusInfo;
-
+    const limitedChat = ctx.room.header.settings.limitedCommunication;
     useEffect(() => {
         messagesEndRef.current!.scrollIntoView({behavior: "smooth"});
     }, [chatCtx.chatList.length]);
@@ -68,8 +70,13 @@ export default function ChatModule() {
             return;
         }
         if (handleSpecials(text)) return;
+        let senderName = myEntry.player.name;
+        if (limitedChat) {
+            text = text.substring(0, 3);
+            senderName = PlayerManager.getDefaultName();
+        }
         sendToPort(text);
-        const success = sendChat(ChatFormat.normal, myEntry.player.name, text);
+        const success = sendChat(ChatFormat.normal, senderName, text);
         if (!success) {
             chatCtx.localAnnounce("채팅을 너무 자주 보내셨습니다...");
         }

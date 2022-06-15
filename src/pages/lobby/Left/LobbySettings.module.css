@@ -12,15 +12,15 @@
     font-size: 1.2rem;
 }
 
-.mySettingsContainer {
+.commonSettingsContainer {
     width: 100%;
-    height: 30%;
+    height: 35%;
 }
 
 
-.settingsContainer {
+.hostSettingsContainer {
     width: 100%;
-    height: 70%;
+    height: 65%;
     overflow-y: scroll;
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }

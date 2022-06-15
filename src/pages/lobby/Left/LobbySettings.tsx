@@ -37,7 +37,7 @@ export default function LobbySettings() {
 
     function onClickCopy(e: any) {
         const myUrl = window.location.href;
-        navigator.clipboard.writeText(myUrl);
+        navigator.clipboard.writeText(`주소: ${myUrl} \n방번호: ${ReferenceManager.channelId}`);
     }
 
 //TODO on push Filter, build library, if host, check count song validity and update
@@ -46,7 +46,7 @@ export default function LobbySettings() {
     const enabledCss = myEntry.player.isReady ? classes.isDisabled : "";
     return (
         <div className={`${classes.container} ${gc.round_border} ${gc.borderColor}`}>
-            <div className={`${classes.mySettingsContainer} ${gc.borderBottom}`}>
+            <div className={`${classes.commonSettingsContainer} ${gc.borderBottom}`}>
                 <p className={classes.nameHeader}>이름</p>
                 <textarea
                     className={`${classes.fieldType} ${classes.nameTextArea} ${enabledCss}`}
@@ -54,15 +54,17 @@ export default function LobbySettings() {
                     defaultValue={myEntry.player.name}
                 ></textarea>
                 <button className={`${classes.fieldType}`}
-                        onClick={onClickCopy}>링크 복사
+                        onClick={onClickCopy}>{`방 코드: ${ReferenceManager.channelId} 복사`}
                 </button>
                 <a href={"https://chat.haruhi.boats/"} target={"_blank"}>중계기</a>
                 <br/>
+                <a href={"https://chat.haruhi.boats/"} target={"_blank"}>수동파일설정가이드</a>
+                <br/>
                 <p>모바일 유저는 데스크탑보기모드 꼭 켜주라!</p>
+                <p>정답은 주로 한글 번역/발음/영문 발음/특수문자 무시</p>
             </div>
             {
-                amHost && <div className={`${classes.settingsContainer} `}>
-                    <p>설정넣기</p>
+                amHost && <div className={`${classes.hostSettingsContainer} `}>
                     <PlayTimeSettings/>
                     <GenreBox/>
                 </div>

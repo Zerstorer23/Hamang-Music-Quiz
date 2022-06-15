@@ -20,6 +20,7 @@ export enum DbFields {
     HEADER_settings = `/room/header/settings`,
     HEADER_settings_guessTime = `/room/header/settings/guessTime`,
     HEADER_settings_songsPlay = `/room/header/settings/songsPlay`,
+    HEADER_settings_limitedCommunication = `/room/header/settings/limitedCommunication`,
     CHAT = "/chat",
 }
 
