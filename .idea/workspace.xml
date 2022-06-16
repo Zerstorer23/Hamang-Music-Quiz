@@ -1,26 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="File Loader Improvement">
+    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="Remembering file selected">
+      <change afterPath="$PROJECT_DIR$/src/pages/lobby/Left/SettingsDisplay/SettingsDisplay.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/CommandParser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/CommandParser.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/DataLoader/DataLoader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/DataLoader/DataLoader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/AnswerInput/AnswerinputPanel.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/AnswerInput/AnswerinputPanel.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/AnswerInput/AnswerinputPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/AnswerInput/AnswerinputPanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicLibrary.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicLibrary.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicModule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicModule.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/Presets.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/Presets.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayerGridItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayerGridItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Center/PlayersPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Center/PlayersPanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/CSVLoader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/CSVLoader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/LobbySettings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/LobbySettings.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/MusicSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/MusicSelector.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/PlayTimeSettings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/PlayTimeSettings.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/Database/RoomManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/Database/RoomManager.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/GameStates/InputManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/GameStates/InputManager.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/configs/GameConfigs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/configs/GameConfigs.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/context/localInfo/LocalContextProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/context/localInfo/LocalContextProvider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/types/GameTypes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/types/GameTypes.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +118,7 @@
       <workItem from="1655344523274" duration="6759000" />
       <workItem from="1655354177089" duration="870000" />
       <workItem from="1655370319761" duration="6000" />
-      <workItem from="1655408819117" duration="7467000" />
+      <workItem from="1655408819117" duration="8326000" />
     </task>
     <task id="LOCAL-00001" summary="HamangMQ INIT">
       <created>1655161415348</created>
@@ -260,7 +246,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655416417091</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Remembering file selected">
+      <created>1655418343674</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1655418343674</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,7 +289,8 @@
     <MESSAGE value="Multiple Library 1" />
     <MESSAGE value="DS Direct Connect" />
     <MESSAGE value="File Loader Improvement" />
-    <option name="LAST_COMMIT_MESSAGE" value="File Loader Improvement" />
+    <MESSAGE value="Remembering file selected" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remembering file selected" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

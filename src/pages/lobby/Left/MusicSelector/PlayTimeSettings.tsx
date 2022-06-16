@@ -42,7 +42,7 @@ export default function PlayTimeSettings() {
 
     function onFinishEditGuessTime(event: any) {
         if (!amHost) return;
-        let guessTime = InputManager.cleanseTime(event, 5, 20);
+        let guessTime = InputManager.cleanseTime(event, 8, 20);
         if (guessTime === null) return;
         guessRef.current!.value = guessTime + "";
         ReferenceManager.updateReference(DbFields.HEADER_settings_guessTime, guessTime);

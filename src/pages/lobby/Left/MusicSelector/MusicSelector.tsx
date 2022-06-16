@@ -7,12 +7,13 @@ import {LocalContext, LocalContextType, LocalField} from "system/context/localIn
 import {TurnManager} from "system/GameStates/TurnManager";
 import {sendAnnounce} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
 import CSVLoader from "pages/lobby/Left/MusicSelector/CSVLoader";
-import {GameConfigs} from "system/configs/GameConfigs";
 import Dropdown from "pages/components/ui/Dropdown";
 import gc from "index/global.module.css";
 import {PresetName, presetPairs, presetToName} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/Presets";
 import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import useIncrementalState from "system/hooks/useIncrementalState";
+import {RoomContextType} from "system/context/roomInfo/RoomContextProvider";
+import {GameConfigs} from "system/configs/GameConfigs";
 
 
 export default function MusicSelector() {
@@ -31,14 +32,14 @@ export default function MusicSelector() {
     }, [dropdownPreset.counter]);
     //Updae UI if preset IS loaded.
     useEffect(() => {
-        notifyLoaded(localCtx, setChecked, loadedPreset.value);
+        notifyLoaded(localCtx, ctx, setChecked, loadedPreset.value);
     }, [loadedPreset.counter]);
 
 
     function onClickReload() {
         MusicManager.loadPreset(dropdownPreset.value).then((success: boolean) => {
             if (!success) return;
-            notifyLoaded(localCtx, setChecked, loadedPreset.value);
+            notifyLoaded(localCtx, ctx, setChecked, loadedPreset.value);
         });
     }
 
@@ -101,12 +102,16 @@ function tryPreset(dropdownPreset: PresetName, setLoadedPreset: any) {
     });
 }
 
-function notifyLoaded(localCtx: LocalContextType, setChecked: any, loadedPreset: PresetName) {
+function notifyLoaded(localCtx: LocalContextType, ctx: RoomContextType, setChecked: any, loadedPreset: PresetName) {
     const numSongs = MusicManager.MusicList.length;
+    const prevRoomSettingSongs = ctx.room.header.settings.songsPlay;
     setChecked(MusicManager.CurrentLibrary.headers);
     localCtx.setVal(LocalField.SelectedPreset, loadedPreset);
     sendAnnounce(`${presetToName(loadedPreset)} 목록이 설정됨. 수록곡 ${numSongs}개`);
-    const min = Math.min(numSongs, GameConfigs.defaultSongNumber);
+    // console.log(numSongs, GameConfigs.defaultSongNumber, prevRoomSettingSongs);
+    const adjNum = (prevRoomSettingSongs === 0) ? GameConfigs.defaultSongNumber : prevRoomSettingSongs;
+    const min = Math.min(numSongs, adjNum);
+    if (min === prevRoomSettingSongs) return;
     ReferenceManager.updateReference(DbFields.HEADER_settings_songsPlay, min);
 }
 

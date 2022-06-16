@@ -8,6 +8,7 @@ import {TurnManager} from "system/GameStates/TurnManager";
 import {PlayerDbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import MusicSelector from "pages/lobby/Left/MusicSelector/MusicSelector";
 import PlayTimeSettings from "pages/lobby/Left/MusicSelector/PlayTimeSettings";
+import SettingsDisplay from "pages/lobby/Left/SettingsDisplay/SettingsDisplay";
 
 const MAX_NAME_LENGTH = 16;
 export default function LobbySettings() {
@@ -62,6 +63,9 @@ export default function LobbySettings() {
                     <PlayTimeSettings/>
                     <MusicSelector/>
                 </div>
+            }
+            {
+                !amHost && <SettingsDisplay className={classes.hostSettingsContainer}/>
             }
         </div>
     );
