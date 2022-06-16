@@ -62,7 +62,7 @@ export default function PlayersPanel() {
     return (
         <VerticalLayout className={`${gc.round_border} ${gc.borderColor} ${classes.container} `}>
             <div className={`${classes.headerContainer} ${gc.borderBottom}`}>
-                <p className={classes.headerTitle}>7번함</p>
+                <p className={classes.headerTitle}>7번게임</p>
                 <p className={classes.headerPlayerNum}>{`연결됨: ${currPlayer}`}</p>
             </div>
             <VerticalLayout className={classes.list}>{

@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="Remembering file selected">
-      <change afterPath="$PROJECT_DIR$/src/pages/lobby/Left/SettingsDisplay/SettingsDisplay.tsx" afterDir="false" />
+    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="Better user settings UX">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/LobbySettings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/LobbySettings.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/MusicSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/MusicSelector.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/PlayTimeSettings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/PlayTimeSettings.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Center/PlayersPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Center/PlayersPanel.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +116,7 @@
       <workItem from="1655344523274" duration="6759000" />
       <workItem from="1655354177089" duration="870000" />
       <workItem from="1655370319761" duration="6000" />
-      <workItem from="1655408819117" duration="8326000" />
+      <workItem from="1655408819117" duration="8475000" />
     </task>
     <task id="LOCAL-00001" summary="HamangMQ INIT">
       <created>1655161415348</created>
@@ -253,7 +251,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655418343674</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Better user settings UX">
+      <created>1655419226911</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1655419226911</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,7 +295,8 @@
     <MESSAGE value="DS Direct Connect" />
     <MESSAGE value="File Loader Improvement" />
     <MESSAGE value="Remembering file selected" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remembering file selected" />
+    <MESSAGE value="Better user settings UX" />
+    <option name="LAST_COMMIT_MESSAGE" value="Better user settings UX" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
