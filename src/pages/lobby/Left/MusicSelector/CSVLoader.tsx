@@ -1,11 +1,11 @@
 import {Fragment, useContext, useEffect, useState} from "react";
 
 import Papa from "papaparse";
-import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
+import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager";
 import classes from "pages/lobby/Left/MusicSelector/MusicSelector.module.css";
 import {IProps} from "system/types/CommonTypes";
 import ChatContext from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
-import {PresetName} from "pages/ingame/Left/MusicPanel/MusicModule/Presets";
+import {PresetName} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/Presets";
 
 const allowedExtensions = ["csv"];
 type Props = IProps & {

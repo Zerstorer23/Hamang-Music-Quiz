@@ -6,10 +6,9 @@ import {CursorFocusInfo, InputCursor, LocalContext, LocalField} from "system/con
 import RoomContext from "system/context/roomInfo/room-context";
 import {PlayerDbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import {MusicEntry, MusicStatus, Player, PlayerMap} from "system/types/GameTypes";
-import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
+import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager";
 import TransitionManager from "system/GameStates/TransitionManager";
 import {currentTimeInMills} from "system/Constants/GameConstants";
-import {InputManager} from "system/GameStates/InputManager";
 import {sendAnnounce} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
 
 
@@ -81,6 +80,7 @@ export default function AnswerInputPanel() {
                       toggleFocus(true);
                   }}
         />
+        <p className={classes.playerNumDisplay}>{`${ctx.room.playerList.length}명 플레이중`}</p>
     </div>;
 }
 
@@ -109,6 +109,7 @@ function handleMusicStatus(musicEntry: MusicEntry, inputRef: any, myId: string, 
 }
 
 function insertAnswer(answer: string, myPlayer: Player, myId: string, music: MusicEntry, playerMap: PlayerMap) {
+    if (answer.length > 100) answer = answer.substring(0, 100);
     ReferenceManager.updatePlayerFieldReference(myId, PlayerDbFields.PLAYER_answer, answer);
     ReferenceManager.updatePlayerFieldReference(myId, PlayerDbFields.PLAYER_isReady, true);
     if (music.status !== MusicStatus.Playing) return;

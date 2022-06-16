@@ -1,9 +1,9 @@
 import "firebase/compat/database";
-import {getRandomSeed} from "system/Constants/GameConstants";
+import {getRandomSeed, randomInt} from "system/Constants/GameConstants";
 import {GameConfigs} from "system/configs/GameConfigs";
 import {Game, GameStatus, MusicEntry, MusicStatus, Player, Room, RoomHeader} from "system/types/GameTypes";
 import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
-import {MusicManager, MusicObject} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
+import {MusicManager, MusicObject} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager";
 import {DS} from "system/configs/DS";
 
 export class RoomManager {
@@ -34,6 +34,7 @@ export class RoomManager {
     static getDefaultMusic(): MusicEntry {
         return {
             counter: -1,
+            seed: randomInt(0, 100),
             music: this.geDefaultMusicObject(),
             status: MusicStatus.WaitingMusic,
         };

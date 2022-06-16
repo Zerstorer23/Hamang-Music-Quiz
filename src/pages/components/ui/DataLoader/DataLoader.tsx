@@ -15,10 +15,9 @@ import {Listeners, ListenerTypes} from "system/context/roomInfo/RoomContextProvi
 import {Player, Room, RoomHeader} from "system/types/GameTypes";
 import {RoomDatabase} from "system/Database/RoomDatabase";
 import {PlayerManager} from "system/Database/PlayerManager";
-import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
+import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager";
 import ChannelSelector from "pages/components/ui/ChannelSelectorPage/ChannelSelector";
 import LoadingPage from "pages/components/ui/LoadingPage/LoadingPage";
-import {DS} from "system/configs/DS";
 import {GameConfigs} from "system/configs/GameConfigs";
 
 function checkNull<T>(snapshot: Snapshot): [boolean, T] {
@@ -113,6 +112,7 @@ export default function DataLoader(props: IProps) {
             case LoadStatus.selectChannel:
                 MusicManager.loadPreset(GameConfigs.defaultPreset).then(() => {
                     console.log("CSV loaded");
+                    localCtx.setVal(LocalField.SelectedPreset, GameConfigs.defaultPreset);
                     setCSVLoaded(true);
                     setStatus(LoadStatus.loaded);
                 });

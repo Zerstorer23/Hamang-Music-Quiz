@@ -6,8 +6,7 @@ import {LocalContext} from "system/context/localInfo/LocalContextProvider";
 import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import {MusicEntry, MusicStatus} from "system/types/GameTypes";
 import {RoomManager} from "system/Database/RoomManager";
-import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
-import {randomInt} from "system/Constants/GameConstants";
+import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager";
 import TransitionManager from "system/GameStates/TransitionManager";
 import {YoutubeModule} from "pages/ingame/Left/MusicPanel/MusicModule/YoutubeModule";
 import {setMyTimer} from "pages/components/ui/MyTimer/MyTimer";
@@ -29,7 +28,8 @@ enum YtState {
 export default function MusicModule() {
     const localCtx = useContext(LocalContext);
     const ctx = useContext(RoomContext);
-    const playerState = ctx.room.game.musicEntry.status;
+    const musicEntry = ctx.room.game.musicEntry;
+    const playerState = musicEntry.status;
     // const [playerState, setPlayerState] = useState<MusicStatus>(ctx.room.game.music.status);
     const [youtubeElement, setJSX] = useState(<Fragment/>);
     const [musicTimer, setMusicTimer] = useState<any>(null);
@@ -71,11 +71,10 @@ export default function MusicModule() {
     }, [playerState]);
 
     function onStateChange(e: any) {
-        if (!amHost) return;
         const player = e.target;
         const state = e.data as YtState;
         if (state === YtState.Playing) {
-            adjustPlayTime(player, e, guessTime);
+            adjustPlayTime(player, e, guessTime, musicEntry.seed);
         }
     }
 
@@ -117,10 +116,13 @@ export function cleanMusic() {
     cRef.set(RoomManager.getDefaultMusic());
 }
 
-function adjustPlayTime(player: any, e: any, guessTime: number) {
-    if (player.getCurrentTime() < HEURISTIC_INIT_TIME) {
-        const duration = e.target.getDuration();
-        const totalPlayTime = guessTime + REVEAL_TIME;
-        e.target.seekTo(randomInt(HEURISTIC_INIT_TIME, Math.max(HEURISTIC_INIT_TIME, duration - totalPlayTime)), true);
-    }
+function adjustPlayTime(player: any, e: any, guessTime: number, seed: number) {
+    if (player.getCurrentTime() >= HEURISTIC_INIT_TIME) return;
+    const duration = e.target.getDuration();
+    const totalPlayTime = guessTime + REVEAL_TIME;
+    const acceptableEndTime = duration - totalPlayTime;//Make sure video does not finish.
+    if (acceptableEndTime < HEURISTIC_INIT_TIME) return;//no need to set time.  it will reach the end no matter what.
+    const randomOffset = HEURISTIC_INIT_TIME + (seed / 100) * (acceptableEndTime - HEURISTIC_INIT_TIME); // total length of available time.
+    // console.log("Random ", randomOffset);
+    e.target.seekTo(randomOffset, true);
 }

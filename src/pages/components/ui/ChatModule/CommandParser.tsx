@@ -1,10 +1,5 @@
 import {RoomContextType} from "system/context/roomInfo/RoomContextProvider";
-import {
-    ChatContextType,
-    ChatEntry,
-    ChatFormat,
-    sendChat
-} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
+import {ChatContextType, ChatFormat, sendChat} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
 import {TurnManager} from "system/GameStates/TurnManager";
 import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import {GameConfigs} from "system/configs/GameConfigs";
@@ -32,7 +27,7 @@ export class CommandParser {
                 chatCtx.loadChat({
                     format: ChatFormat.announcement,
                     name: "",
-                    msg: ("_coins_inserted"),
+                    msg: "게임을 더 하는것에 합의하였습니다.",
                 });
                 break;
             case "redirect":

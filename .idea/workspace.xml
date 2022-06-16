@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="DS Direct Connect">
-      <change afterPath="$PROJECT_DIR$/public/presets/kyoani.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/Presets.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/system/hooks/useIncrementalState.tsx" afterDir="false" />
+    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="File Loader Improvement">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/presets/i765.csv" beforeDir="false" afterPath="$PROJECT_DIR$/public/presets/i765.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/presets/suzumiya.csv" beforeDir="false" afterPath="$PROJECT_DIR$/public/presets/base.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/CommandParser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/CommandParser.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/components/ui/DataLoader/DataLoader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/DataLoader/DataLoader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicManager.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/LobbySettings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/LobbySettings.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/AnswerInput/AnswerinputPanel.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/AnswerInput/AnswerinputPanel.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/AnswerInput/AnswerinputPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/AnswerInput/AnswerinputPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicLibrary.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicLibrary.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicModule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicModule.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/Presets.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/Presets.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayerGridItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayerGridItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Center/PlayersPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Center/PlayersPanel.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/CSVLoader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/CSVLoader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/GenreBox.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/MusicSelector.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/GenreBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/MusicSelector.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/MusicSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/MusicSelector.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/PlayTimeSettings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/PlayTimeSettings.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/Database/RoomManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/Database/RoomManager.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/system/GameStates/InputManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/GameStates/InputManager.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/system/configs/GameConfigs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/configs/GameConfigs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/context/localInfo/LocalContextProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/context/localInfo/LocalContextProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/types/GameTypes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/types/GameTypes.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +49,7 @@
     <option name="myRunOnSave" value="true" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2AXgHgElVtlOzc3h8mRCYftwhZA" />
   <component name="ProjectLevelVcsManager">
@@ -79,6 +83,7 @@
       <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\src\pages\ingame\Left\MusicPanel\MusicModule\MusicDatabase" />
       <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\public" />
       <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\src\resources\csv" />
       <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\src\pages\ingame\Left\MusicPanel" />
@@ -127,7 +132,7 @@
       <workItem from="1655344523274" duration="6759000" />
       <workItem from="1655354177089" duration="870000" />
       <workItem from="1655370319761" duration="6000" />
-      <workItem from="1655408819117" duration="5365000" />
+      <workItem from="1655408819117" duration="7467000" />
     </task>
     <task id="LOCAL-00001" summary="HamangMQ INIT">
       <created>1655161415348</created>
@@ -248,7 +253,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655356361022</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="File Loader Improvement">
+      <created>1655416417091</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1655416417091</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,7 +295,8 @@
     <MESSAGE value="Better CHats 3" />
     <MESSAGE value="Multiple Library 1" />
     <MESSAGE value="DS Direct Connect" />
-    <option name="LAST_COMMIT_MESSAGE" value="DS Direct Connect" />
+    <MESSAGE value="File Loader Improvement" />
+    <option name="LAST_COMMIT_MESSAGE" value="File Loader Improvement" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

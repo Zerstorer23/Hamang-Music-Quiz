@@ -8,8 +8,7 @@ import RoomContext from "system/context/roomInfo/room-context";
 import {LocalContext} from "system/context/localInfo/LocalContextProvider";
 import {sendAnnounce} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
 import {TurnManager} from "system/GameStates/TurnManager";
-import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
-import {GameConfigs} from "system/configs/GameConfigs";
+import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager";
 
 export default function PlayTimeSettings() {
     const ctx = useContext(RoomContext);

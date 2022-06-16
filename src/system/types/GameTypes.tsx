@@ -1,4 +1,4 @@
-import {MusicObject} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
+import {MusicObject} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager";
 
 export type Player = {
     isSpectating: boolean; //may not need it
@@ -27,6 +27,7 @@ export type RoomHeader = {
 export type MusicEntry = {
     counter: number;
     music: MusicObject;
+    seed: number;
     status: MusicStatus;
 };
 

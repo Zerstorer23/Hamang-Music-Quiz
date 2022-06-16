@@ -1,5 +1,4 @@
 import {ItemPair} from "system/types/CommonTypes";
-import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
 
 export enum PresetName {
     Base = "base",

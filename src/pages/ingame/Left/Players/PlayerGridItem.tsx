@@ -1,7 +1,7 @@
 import {IProps} from "system/types/CommonTypes";
 import {MusicStatus, PlayerEntry} from "system/types/GameTypes";
 import classes from "./PlayerGridItem.module.css";
-import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
+import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager";
 import {useContext, useEffect, useState} from "react";
 import RoomContext from "system/context/roomInfo/room-context";
 import animCss from "index/animation.module.css";
@@ -14,7 +14,6 @@ type Props = IProps & {
 }
 
 export default function PlayerGridItem(props: Props) {
-    const id = props.entry.id;
     const ctx = useContext(RoomContext);
     const player = props.entry.player;
     const music = ctx.room.game.musicEntry;
@@ -32,6 +31,8 @@ export default function PlayerGridItem(props: Props) {
         const isAnswer = MusicManager.checkAnswer(music.music, player.answer);
         setGotCorrect(isAnswer);
     }, [music.status, player.answer]);
+
+    const playerAnswerDisplay = (player.answer.replaceAll(" ", "").length === 0) ? "몰루겟소요..." : player.answer;
     const isReadyText = player.isReady ? " [제출완료]" : "";
     const answerCss = (gotCorrect) ? `${classes.correct} ${gc.greenText} ${animCss.zoomIn}` : `${animCss.slideUp}`;
     const playerCss = (props.isMe) ? gc.greenText : (player.isReady) ? gc.blueText : "";
@@ -41,7 +42,7 @@ export default function PlayerGridItem(props: Props) {
         </p>
         {
             (revealAnswers) &&
-            <p className={`${answerCss}`}>{player.answer}</p>
+            <p className={`${answerCss}`}>{playerAnswerDisplay}</p>
         }
     </div>;
 }

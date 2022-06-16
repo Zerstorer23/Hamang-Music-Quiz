@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {IProps} from "system/types/CommonTypes";
+import {PresetName} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/Presets";
 
 /*
 Local context holds local data that does not go into database
@@ -21,6 +22,7 @@ export enum LocalField {
     InputFocus,
     Muted,
     ChannelId,
+    SelectedPreset,
 }
 
 export type CursorFocusInfo = {
@@ -63,6 +65,7 @@ export default function LocalProvider(props: IProps) {
         onExpire: () => {
         },
     });
+    const [selectedPreset, setSelectedPreset] = useState(PresetName);
 
     const map = new Map();
     map.set(LocalField.Id, {
@@ -85,6 +88,10 @@ export default function LocalProvider(props: IProps) {
     map.set(LocalField.ChannelId, {
         val: channelId,
         set: setChannelId,
+    });
+    map.set(LocalField.SelectedPreset, {
+        val: selectedPreset,
+        set: setSelectedPreset,
     });
 
     const context: LocalContextType = {

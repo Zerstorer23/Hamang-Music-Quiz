@@ -12,12 +12,7 @@ import {PlayerDbFields, ReferenceManager} from "system/Database/ReferenceManager
 import {Player, PlayerMap} from "system/types/GameTypes";
 import {RoomManager} from "system/Database/RoomManager";
 import {DS} from "system/configs/DS";
-import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
-import ChatContext, {
-    ChatFormat,
-    sendAnnounce,
-    sendChat
-} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
+import {sendAnnounce} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
 
 
 export default function PlayersPanel() {

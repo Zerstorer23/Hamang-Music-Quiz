@@ -1,5 +1,4 @@
-import {MusicObject} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
-import firebase from "firebase/compat";
+import {MusicObject} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager";
 import {shuffleArray} from "system/Constants/GameConstants";
 
 export type MusicFilter = Map<string, boolean>;

@@ -1,4 +1,4 @@
-import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
+import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager";
 import {GameConfigs} from "system/configs/GameConfigs";
 
 const LF = String.fromCharCode(10);

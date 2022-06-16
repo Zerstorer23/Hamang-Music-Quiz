@@ -2,10 +2,9 @@ import {MusicEntry, MusicStatus, PlayerEntry} from "system/types/GameTypes";
 import {InputManager} from "system/GameStates/InputManager";
 import {PlayerDbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import Papa from "papaparse";
-import {MusicFilter, MusicLibrary} from "pages/ingame/Left/MusicPanel/MusicModule/MusicLibrary";
-import {GameConfigs} from "system/configs/GameConfigs";
-import {sendAnnounce} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
-import {PresetName, presetToName} from "pages/ingame/Left/MusicPanel/MusicModule/Presets";
+import {MusicFilter, MusicLibrary} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicLibrary";
+import {PresetName} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/Presets";
+import {randomInt} from "system/Constants/GameConstants";
 
 //https://docs.google.com/spreadsheets/d/1QluDRTVw7qz5rE46MpLYEFj_WntZUNa3THLvBeuvVJY/edit#gid=0
 
@@ -29,9 +28,9 @@ type MusicCSVEntry = {
 }
 
 export class MusicManager {
-    private static PresetLibrary = new Map<PresetName, MusicLibrary>();
     public static CurrentLibrary: MusicLibrary;
     public static MusicList: MusicObject[] = [];
+    private static PresetLibrary = new Map<PresetName, MusicLibrary>();
 
     public static parseCSV(results: any, presetName: PresetName, onException: any = () => {
     }) {
@@ -91,7 +90,6 @@ export class MusicManager {
         }
         this.CurrentLibrary = this.PresetLibrary.get(presetName)!;
         const num = this.buildRandomList();
-        console.log(`selected ${presetName} num=${num}`);
         return true;
     }
 
@@ -115,6 +113,7 @@ export class MusicManager {
         if (counter >= this.MusicList.length) return null;
         return {
             counter: counter,
+            seed: randomInt(0, 100),
             music: this.MusicList[counter],
             status: MusicStatus.Playing,
         };

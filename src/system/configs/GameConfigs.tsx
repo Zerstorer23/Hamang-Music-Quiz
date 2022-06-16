@@ -1,4 +1,4 @@
-import {PresetName} from "pages/ingame/Left/MusicPanel/MusicModule/Presets";
+import {PresetName} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/Presets";
 
 export class GameConfigs {
     public static defaultGames = 3;//한세션 최대 게임 수
