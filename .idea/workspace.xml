@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="Multiple Library 1" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+        <option value="CSS File" />
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectId" id="2AXgHgElVtlOzc3h8mRCYftwhZA" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "code.cleanup.on.save": "true",
+    "last_opened_file_path": "D:/Code Repos/IdeaProjects/hamang-music-quiz/public/presets",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "actions.on.save",
+    "ts.external.directory.path": "D:\\Code Repos\\IdeaProjects\\hamang-music-quiz\\node_modules\\typescript\\lib"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\public\presets" />
+      <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\public" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\public" />
+      <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\src\resources\csv" />
+      <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\src\pages\ingame\Left\MusicPanel" />
+      <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\src\pages\ingame\Left" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.deploy">
+    <configuration name="deploy" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="deploy" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="start" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="npm.start" />
+      <item itemvalue="npm.deploy" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="" />
+      <created>1655161265818</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1655161265818</updated>
+      <workItem from="1655161268900" duration="9691000" />
+      <workItem from="1655176146571" duration="4898000" />
+      <workItem from="1655223994516" duration="18313000" />
+      <workItem from="1655251473424" duration="10204000" />
+      <workItem from="1655269413085" duration="1249000" />
+      <workItem from="1655285416397" duration="5779000" />
+      <workItem from="1655317196055" duration="10516000" />
+      <workItem from="1655333955031" duration="2909000" />
+      <workItem from="1655344523274" duration="6759000" />
+    </task>
+    <task id="LOCAL-00001" summary="HamangMQ INIT">
+      <created>1655161415348</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1655161415348</updated>
+    </task>
+    <task id="LOCAL-00002" summary="HamangMQ INIT 2">
+      <created>1655170308364</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1655170308364</updated>
+    </task>
+    <task id="LOCAL-00003" summary="HamangMQ INIT 3">
+      <created>1655179113395</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1655179113395</updated>
+    </task>
+    <task id="LOCAL-00004" summary="HamangMQ INIT 4">
+      <created>1655180737819</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1655180737819</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Game Core Design 1">
+      <created>1655228009086</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1655228009086</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Game Core Design 2">
+      <created>1655238496964</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1655238496964</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Game Core Design 3">
+      <created>1655240698109</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1655240698109</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Build Library 1">
+      <created>1655245574275</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1655245574275</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Build Library 2">
+      <created>1655261996210</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1655261996210</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Multiplayer Design 1">
+      <created>1655291156946</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1655291156946</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Multiplayer Design 1">
+      <created>1655291260864</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1655291260864</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Multiplayer Design 2">
+      <created>1655326045465</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1655326045465</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Better CHats">
+      <created>1655327217713</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1655327217713</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Better CHats 2">
+      <created>1655328787689</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1655328787689</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Better CHats 3">
+      <created>1655328944985</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1655328944985</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Multiple Library 1">
+      <created>1655351170350</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1655351170350</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="HamangMQ INIT" />
+    <MESSAGE value="HamangMQ INIT 2" />
+    <MESSAGE value="HamangMQ INIT 3" />
+    <MESSAGE value="HamangMQ INIT 4" />
+    <MESSAGE value="Game Core Design 1" />
+    <MESSAGE value="Game Core Design 2" />
+    <MESSAGE value="Game Core Design 3" />
+    <MESSAGE value="Build Library 1" />
+    <MESSAGE value="Build Library 2" />
+    <MESSAGE value="Multiplayer Design 1" />
+    <MESSAGE value="Multiplayer Design 2" />
+    <MESSAGE value="Better CHats" />
+    <MESSAGE value="Better CHats 2" />
+    <MESSAGE value="Better CHats 3" />
+    <MESSAGE value="Multiple Library 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Multiple Library 1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/system/GameStates/TransitionManager.tsx</url>
+          <line>8</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
