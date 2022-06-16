@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.8e524346.css",
-    "main.js": "/static/js/main.8bb352e7.js",
+    "main.css": "/static/css/main.b0e74f8f.css",
+    "main.js": "/static/js/main.7e6529ef.js",
     "static/media/haruhi_mikuru_win.png": "/static/media/haruhi_mikuru_win.91d536ba1470cc284816.png",
     "static/media/nagato_win2.png": "/static/media/nagato_win2.8be3bf32e2d0e52b2eb4.png",
     "static/media/loading.png": "/static/media/loading.02372c614c806a9122db.png",
@@ -39,11 +39,11 @@
     "static/media/koihime.png": "/static/media/koihime.f026d9f4c6bc8c5d25a0.png",
     "static/media/unknown.png": "/static/media/unknown.1c3c27e9b18c20378807.png",
     "index.html": "/index.html",
-    "main.8e524346.css.map": "/static/css/main.8e524346.css.map",
-    "main.8bb352e7.js.map": "/static/js/main.8bb352e7.js.map"
+    "main.b0e74f8f.css.map": "/static/css/main.b0e74f8f.css.map",
+    "main.7e6529ef.js.map": "/static/js/main.7e6529ef.js.map"
   },
   "entrypoints": [
-    "static/css/main.8e524346.css",
-    "static/js/main.8bb352e7.js"
+    "static/css/main.b0e74f8f.css",
+    "static/js/main.7e6529ef.js"
   ]
 }
