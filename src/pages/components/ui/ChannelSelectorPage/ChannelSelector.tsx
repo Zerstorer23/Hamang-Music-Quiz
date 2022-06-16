@@ -1,10 +1,11 @@
-import {useContext, useRef, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import classes from "./ChannelSelector.module.css";
 import gc from "index/global.module.css";
 import {InputManager} from "system/GameStates/InputManager";
 import {IProps} from "system/types/CommonTypes";
 import {LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
 import {ReferenceManager} from "system/Database/ReferenceManager";
+import {DS} from "system/configs/DS";
 
 
 export default function ChannelSelector() {
@@ -22,6 +23,13 @@ export default function ChannelSelector() {
         ReferenceManager.channelId = num;
         localCtx.setVal(LocalField.ChannelId, num);
     }
+
+    useEffect(() => {
+        if (DS.directRoom) {
+            ReferenceManager.channelId = 876;
+            localCtx.setVal(LocalField.ChannelId, 876);
+        }
+    }, []);
 
     return <div className={`${classes.container} ${gc.round_border} ${gc.panelBackground}`}>
         <p>0~999 사이의 채널을 골라주세요.</p><br/><p> (없는 채널이면 생성. 있는 채널이면 접속)</p>

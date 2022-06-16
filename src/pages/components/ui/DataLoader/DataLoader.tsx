@@ -18,6 +18,7 @@ import {PlayerManager} from "system/Database/PlayerManager";
 import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
 import ChannelSelector from "pages/components/ui/ChannelSelectorPage/ChannelSelector";
 import LoadingPage from "pages/components/ui/LoadingPage/LoadingPage";
+import {DS} from "system/configs/DS";
 
 function checkNull<T>(snapshot: Snapshot): [boolean, T] {
     const data: T = snapshot.val();
@@ -149,7 +150,10 @@ export default function DataLoader(props: IProps) {
         setJSX(props.children);
     }, [myId]);
     useEffect(() => {
-        if (channelId < 0) return;
+        if (channelId < 0) {
+
+            return;
+        }
         setStatus(LoadStatus.init);
     }, [channelId]);
 
