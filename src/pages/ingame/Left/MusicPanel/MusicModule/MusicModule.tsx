@@ -88,7 +88,8 @@ export default function MusicModule() {
 }
 
 function pollMusic(ctx: RoomContextType): boolean {
-    if (TurnManager.getRemainingSongs(ctx) < 0) return false;
+    // console.log(`remianing ${TurnManager.getRemainingSongs(ctx)}, counter ${ctx.room.game.musicEntry.counter}, total ${ctx.room.header.settings.songsPlay}`);
+    if (TurnManager.getRemainingSongs(ctx) - 1 < 0) return false;
     const counter = ctx.room.game.musicEntry.counter;
     const me: MusicEntry | null = MusicManager.pollNext(counter + 1);
     if (me === null) return false;

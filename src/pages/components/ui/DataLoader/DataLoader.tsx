@@ -109,7 +109,7 @@ export default function DataLoader(props: IProps) {
     useEffect(() => {
         switch (loadStatus) {
             case LoadStatus.selectChannel:
-                MusicManager.loadPreset().then(() => {
+                MusicManager.loadPresets().then(() => {
                     console.log("CSV loaded");
                     setCSVLoaded(true);
                     setStatus(LoadStatus.loaded);

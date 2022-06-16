@@ -6,7 +6,6 @@ export type IProps = {
 };
 
 export type ItemPair = {
-    key: string;
     label: string;
     value: string;
 };

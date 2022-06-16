@@ -4,6 +4,10 @@
     height: 2rem;
 }
 
+.presetSelector {
+    width: 100%;
+}
+
 .centerText {
     text-align: center;
 }
@@ -11,4 +15,21 @@
 .halfWidth {
     width: 50%;
     height: 100%;
+}
+
+.thirdWidth {
+    display: inline-block;
+    width: 33%;
+}
+
+.dropdownPanel {
+    margin-left: 0.5rem;
+    width: 70%;
+    height: 2rem;
+}
+
+.reloadButton {
+    margin-left: 0.2rem;
+    width: 25%;
+    height: 2rem;
 }

@@ -1,28 +1,21 @@
-import { IProps, ItemPair } from "system/types/CommonTypes";
+import {IProps, ItemPair} from "system/types/CommonTypes";
 import classes from "./Dropdown.module.css";
+import gc from "index/global.module.css";
+
 type Props = IProps & {
-  label: string | null;
-  value: string;
-  options: ItemPair[];
-  onChange: any;
+    value: string;
+    options: ItemPair[];
+    onChange: any;
 };
 export default function Dropdown(props: Props) {
-  return (
-    <div className={props.className}>
-      <label className={classes.container}>
-        {props.label != null && props.label}
-        <select
-          className={classes.container}
-          value={props.value}
-          onChange={props.onChange}
-        >
-          {props.options.map((option) => (
-            <option key={option.key} value={option.value}>
-              {option.label}
-            </option>
-          ))}
+    return (<select className={`${classes.container} ${gc.darkFont} ${props.className}`}
+                    value={props.value}
+                    onChange={props.onChange}>
+            {props.options.map((option, index) => (
+                <option key={index} className={gc.darkFont} value={option.value}>
+                    {option.label}
+                </option>
+            ))}
         </select>
-      </label>
-    </div>
-  );
+    );
 }
