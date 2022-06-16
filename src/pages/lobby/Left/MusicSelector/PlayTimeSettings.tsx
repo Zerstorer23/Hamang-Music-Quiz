@@ -9,6 +9,7 @@ import {LocalContext} from "system/context/localInfo/LocalContextProvider";
 import {sendAnnounce} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
 import {TurnManager} from "system/GameStates/TurnManager";
 import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
+import {GameConfigs} from "system/configs/GameConfigs";
 
 export default function PlayTimeSettings() {
     const ctx = useContext(RoomContext);
@@ -17,12 +18,18 @@ export default function PlayTimeSettings() {
     const guessRef = useRef<HTMLTextAreaElement>(null);
     const amHost = TurnManager.amHost(ctx, localCtx);
     const numSongs = ctx.room.header.settings.songsPlay;
+    const currLen = MusicManager.MusicList.length;
     useEffect(() => {
-        if (numSongs > MusicManager.MusicList.length) {
-            songNumRef.current!.value = MusicManager.MusicList.length + "";
-            ReferenceManager.updateReference(DbFields.HEADER_settings_songsPlay, MusicManager.MusicList.length);
+        if (numSongs > currLen) {
+            songNumRef.current!.value = currLen + "";
+            ReferenceManager.updateReference(DbFields.HEADER_settings_songsPlay, currLen);
         }
-    }, [MusicManager.MusicList.length]);
+    }, [currLen]);
+
+    useEffect(() => {
+        songNumRef.current!.value = numSongs + "";
+    }, [numSongs]);
+
 
     function onToggleSafeChat() {
         const toggle = !ctx.room.header.settings.limitedCommunication;

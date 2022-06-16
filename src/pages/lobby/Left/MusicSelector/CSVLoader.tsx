@@ -1,10 +1,11 @@
 import {Fragment, useContext, useEffect, useState} from "react";
 
 import Papa from "papaparse";
-import {MusicManager, PresetName} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
-import classes from "./GenreBox.module.css";
+import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
+import classes from "pages/lobby/Left/MusicSelector/MusicSelector.module.css";
 import {IProps} from "system/types/CommonTypes";
 import ChatContext from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
+import {PresetName} from "pages/ingame/Left/MusicPanel/MusicModule/Presets";
 
 const allowedExtensions = ["csv"];
 type Props = IProps & {
@@ -54,11 +55,11 @@ export default function CSVLoader(props: Props) {
         reader.onload = async ({target}: any) => {
             try {
                 const csv = Papa.parse(target.result, {header: true});
-                MusicManager.parseCSV(csv, PresetName.User, (obj: any) => {
+                const success = MusicManager.parseCSV(csv, PresetName.User, (obj: any) => {
                     setError(`${obj}: 내부포맷이 잘못된 파일. 헤더명이 정확하고 내용에 ,이 없는지 확인해주세요.`);
-                }, () => {
-                    props.onUseCustom(PresetName.User);
                 });
+                if (!success) return;
+                props.onUseCustom(PresetName.User);
             } catch (e) {
                 setError(`내부포맷이 잘못된 파일. 헤더명이 정확하고 내용에 ,이 없는지 확인해주세요.`);
                 return;

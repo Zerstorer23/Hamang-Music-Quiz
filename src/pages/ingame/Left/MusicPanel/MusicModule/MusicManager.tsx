@@ -5,6 +5,7 @@ import Papa from "papaparse";
 import {MusicFilter, MusicLibrary} from "pages/ingame/Left/MusicPanel/MusicModule/MusicLibrary";
 import {GameConfigs} from "system/configs/GameConfigs";
 import {sendAnnounce} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
+import {PresetName, presetToName} from "pages/ingame/Left/MusicPanel/MusicModule/Presets";
 
 //https://docs.google.com/spreadsheets/d/1QluDRTVw7qz5rE46MpLYEFj_WntZUNa3THLvBeuvVJY/edit#gid=0
 
@@ -27,32 +28,12 @@ type MusicCSVEntry = {
     sub3: string,
 }
 
-export enum PresetName {
-    Suzumiya = "suzumiya",
-    Idol765 = "i765",
-    User = "user",
-}
-
-export function presetToName(preset: PresetName) {
-    switch (preset) {
-        case PresetName.Suzumiya:
-            return "스즈미야";
-        case PresetName.Idol765:
-            return "아이마스";
-        case PresetName.User:
-            return "사용자지정";
-
-    }
-}
-
 export class MusicManager {
-    public static presetsList = [PresetName.Suzumiya, PresetName.Idol765];
     private static PresetLibrary = new Map<PresetName, MusicLibrary>();
     public static CurrentLibrary: MusicLibrary;
     public static MusicList: MusicObject[] = [];
 
     public static parseCSV(results: any, presetName: PresetName, onException: any = () => {
-    }, onSuccess: any = () => {
     }) {
         const rows = results.data as MusicCSVEntry[]; // array of objects
         const library = new MusicLibrary();
@@ -81,10 +62,11 @@ export class MusicManager {
         } catch (e: any) {
             console.warn(e.stack);
             onException(`${line}줄 부근:${JSON.stringify(lastItem)} `);
-            return;
+            return false;
         }
         this.PresetLibrary.set(presetName, library);
-        onSuccess();
+        console.log(presetName, library);
+        return true;
     }
 
     public static async loadPreset(presetName: PresetName) {
@@ -94,31 +76,23 @@ export class MusicManager {
         const decoder = new TextDecoder('utf-8');
         const csv = decoder.decode(result.value); // the csv text
         const results = Papa.parse(csv, {header: true}); // object with { data, errors, meta }
-        this.parseCSV(results, presetName, (a: any) => {
+        const success = this.parseCSV(results, presetName, (a: any) => {
             console.warn(presetName + ": " + a);
         });
-        this.selectLibrary(presetName);
-        sendAnnounce(`${presetToName(presetName)}가 다시 로드됨 (${this.CurrentLibrary.library.size}개 찾음)`);
-    };
-
-    public static async loadPresets() {
-        for (const preset of this.presetsList) {
-            const response = await fetch(`presets/${preset}.csv`)!;
-            const reader = response.body!.getReader();
-            const result = await reader.read(); // raw array
-            const decoder = new TextDecoder('utf-8');
-            const csv = decoder.decode(result.value); // the csv text
-            const results = Papa.parse(csv, {header: true}); // object with { data, errors, meta }
-            this.parseCSV(results, preset, (a: any) => {
-                console.warn(preset + ": " + a);
-            });
+        if (success) {
+            this.selectLibrary(presetName);
         }
-        this.selectLibrary(GameConfigs.defaultPreset);
+        return success;
     };
 
-    public static selectLibrary(presetName: PresetName) {
+    public static selectLibrary(presetName: PresetName): boolean {
+        if (!this.PresetLibrary.has(presetName)) {
+            return false;
+        }
         this.CurrentLibrary = this.PresetLibrary.get(presetName)!;
-        this.buildRandomList();
+        const num = this.buildRandomList();
+        console.log(`selected ${presetName} num=${num}`);
+        return true;
     }
 
     public static pushHeader(filter: MusicFilter): number {

@@ -1,4 +1,5 @@
 import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManager";
+import {GameConfigs} from "system/configs/GameConfigs";
 
 const LF = String.fromCharCode(10);
 const CR = String.fromCharCode(13);
@@ -20,11 +21,11 @@ export class InputManager {
     public static cleanseSongs(event: any): number | null {
         let numVal: number = +event.target.value;
         if (isNaN(numVal)) {
-            event.target.value = Math.min(5, MusicManager.MusicList.length);
+            event.target.value = Math.min(GameConfigs.defaultSongNumber, MusicManager.MusicList.length);
             return null;
         }
         numVal = Math.min(numVal, MusicManager.MusicList.length);
-        if (numVal <= 0) numVal = 1;
+        if (numVal <= 0) numVal = 0;
         return numVal;
     }
 

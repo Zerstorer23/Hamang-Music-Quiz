@@ -19,6 +19,7 @@ import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicManage
 import ChannelSelector from "pages/components/ui/ChannelSelectorPage/ChannelSelector";
 import LoadingPage from "pages/components/ui/LoadingPage/LoadingPage";
 import {DS} from "system/configs/DS";
+import {GameConfigs} from "system/configs/GameConfigs";
 
 function checkNull<T>(snapshot: Snapshot): [boolean, T] {
     const data: T = snapshot.val();
@@ -110,7 +111,7 @@ export default function DataLoader(props: IProps) {
     useEffect(() => {
         switch (loadStatus) {
             case LoadStatus.selectChannel:
-                MusicManager.loadPresets().then(() => {
+                MusicManager.loadPreset(GameConfigs.defaultPreset).then(() => {
                     console.log("CSV loaded");
                     setCSVLoaded(true);
                     setStatus(LoadStatus.loaded);

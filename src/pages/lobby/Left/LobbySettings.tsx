@@ -1,18 +1,12 @@
-import {useContext, useEffect, useRef} from "react";
+import {useContext} from "react";
 
 import gc from "index/global.module.css";
 import classes from "./LobbySettings.module.css";
 import RoomContext from "system/context/roomInfo/room-context";
 import {LocalContext} from "system/context/localInfo/LocalContextProvider";
 import {TurnManager} from "system/GameStates/TurnManager";
-import {DbFields, PlayerDbFields, ReferenceManager} from "system/Database/ReferenceManager";
-import HorizontalLayout from "pages/components/ui/HorizontalLayout";
-import {InputManager} from "system/GameStates/InputManager";
-import {DS} from "system/configs/DS";
-import VerticalLayout from "pages/components/ui/VerticalLayout";
-import GenreBox from "pages/lobby/Left/MusicSelector/GenreBox";
-import {RoomManager} from "system/Database/RoomManager";
-import ChatContext from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
+import {PlayerDbFields, ReferenceManager} from "system/Database/ReferenceManager";
+import MusicSelector from "pages/lobby/Left/MusicSelector/MusicSelector";
 import PlayTimeSettings from "pages/lobby/Left/MusicSelector/PlayTimeSettings";
 
 const MAX_NAME_LENGTH = 16;
@@ -66,7 +60,7 @@ export default function LobbySettings() {
             {
                 amHost && <div className={`${classes.hostSettingsContainer} `}>
                     <PlayTimeSettings/>
-                    <GenreBox/>
+                    <MusicSelector/>
                 </div>
             }
         </div>
