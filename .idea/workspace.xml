@@ -1,10 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="Better user settings UX">
+    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="public html">
+      <change afterPath="$PROJECT_DIR$/src/resources/images/ellieloading.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Center/PlayersPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Center/PlayersPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ImageButton/ImageText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ImageButton/ImageText.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ImagePage/ImagePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ImagePage/ImagePage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/LoadingPage/LoadingPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/LoadingPage/LoadingPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/AudioManager.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/Resources.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/audios/objection.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/asakura.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/asakura_dead.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/coin_ico.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/emptyCard.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/haruhi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/haruhi_dead.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/koihime.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/koihime_dead.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/kyon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/kyon_dead.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/kyonko.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/kyonko_dead.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/large/asakura_mikuru_win.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/large/asakura_mikuru_win2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/large/asakura_win.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/large/haruhi_kyon_win.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/large/haruhi_kyon_win2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/large/haruhi_mikuru_win.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/large/haruhi_mikuru_win2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/large/haruhi_nagato_win.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/large/haruhi_nagato_win2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/large/haruhi_win.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/large/itsuki_win.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/large/kyon_nagato_win.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/large/kyon_nagato_win2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/large/kyonko_itsuki.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/large/kyonko_win.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/large/loading.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/large/mikuru_mikuru_win.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/large/mikuru_win.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/large/mikuru_win2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/large/nagato_win.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/large/nagato_win2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/mikuru2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/mikuru_dead.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/nagato2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/nagato_dead.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/ruleCard.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/ruleCardExpansion.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/images/unknown.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +96,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "code.cleanup.on.save": "true",
-    "last_opened_file_path": "D:/Code Repos/IdeaProjects/hamang-music-quiz/public/presets",
+    "last_opened_file_path": "D:/Code Repos/IdeaProjects/hamang-music-quiz/src/resources/images",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -63,6 +108,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\src\resources\images" />
       <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\public\presets" />
       <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\public" />
     </key>
@@ -116,7 +162,9 @@
       <workItem from="1655344523274" duration="6759000" />
       <workItem from="1655354177089" duration="870000" />
       <workItem from="1655370319761" duration="6000" />
-      <workItem from="1655408819117" duration="8475000" />
+      <workItem from="1655408819117" duration="9736000" />
+      <workItem from="1655421070918" duration="81000" />
+      <workItem from="1655467254407" duration="516000" />
     </task>
     <task id="LOCAL-00001" summary="HamangMQ INIT">
       <created>1655161415348</created>
@@ -258,7 +306,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655419226911</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="public html">
+      <created>1655419310090</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1655419310090</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,7 +351,8 @@
     <MESSAGE value="File Loader Improvement" />
     <MESSAGE value="Remembering file selected" />
     <MESSAGE value="Better user settings UX" />
-    <option name="LAST_COMMIT_MESSAGE" value="Better user settings UX" />
+    <MESSAGE value="public html" />
+    <option name="LAST_COMMIT_MESSAGE" value="public html" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -8,7 +8,6 @@ import gc from "index/global.module.css";
 import {LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
 import {GameStatus} from "system/types/GameTypes";
 import {Navigation} from "index/App";
-import {Images} from "resources/Resources";
 
 export default function LoadingPage() {
     const ctx = useContext(RoomContext);
@@ -32,7 +31,7 @@ export default function LoadingPage() {
     }, [gameState, myId]);
 
     return <div className={`${classes.container} ${gc.panelBackground}`}>
-        <ImagePage imgSrc={Images.LoadingImg}>
+        <ImagePage>
             로딩중입니다...[10초이상 걸리면 새로고침 추천]
         </ImagePage>;
     </div>;
