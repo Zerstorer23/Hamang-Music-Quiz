@@ -40,5 +40,6 @@
 
 .isDisabled {
     pointer-events: none;
+    disabled: true;
     background-color: #000000;
 }

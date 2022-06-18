@@ -77,7 +77,7 @@ export default function AnswerInputPanel() {
             (isRevealing) && <p className={classes.textInput}>{`정답은 ${musicEntry.music.title}`}</p>
         }
         {
-            (musicEntry.status === MusicStatus.Playing) &&
+            (musicEntry.status === MusicStatus.Playing || musicEntry.status === MusicStatus.ReceivingAnswers) &&
             <textarea className={`${classes.textInput} ${enabledCss}`}
                       ref={inputRef}
                       placeholder={hintText}
