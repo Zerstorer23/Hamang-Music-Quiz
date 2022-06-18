@@ -1,55 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="public html">
-      <change afterPath="$PROJECT_DIR$/src/resources/images/ellieloading.png" afterDir="false" />
+    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="New Loading">
+      <change afterPath="$PROJECT_DIR$/public/presets/others.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/presets/vocaloids.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ImageButton/ImageText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ImageButton/ImageText.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ImagePage/ImagePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ImagePage/ImagePage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/LoadingPage/LoadingPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/LoadingPage/LoadingPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/AudioManager.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/Resources.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/audios/objection.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/asakura.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/asakura_dead.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/coin_ico.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/emptyCard.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/haruhi.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/haruhi_dead.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/koihime.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/koihime_dead.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/kyon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/kyon_dead.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/kyonko.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/kyonko_dead.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/large/asakura_mikuru_win.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/large/asakura_mikuru_win2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/large/asakura_win.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/large/haruhi_kyon_win.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/large/haruhi_kyon_win2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/large/haruhi_mikuru_win.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/large/haruhi_mikuru_win2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/large/haruhi_nagato_win.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/large/haruhi_nagato_win2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/large/haruhi_win.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/large/itsuki_win.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/large/kyon_nagato_win.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/large/kyon_nagato_win2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/large/kyonko_itsuki.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/large/kyonko_win.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/large/loading.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/large/mikuru_mikuru_win.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/large/mikuru_win.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/large/mikuru_win2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/large/nagato_win.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/large/nagato_win2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/mikuru2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/mikuru_dead.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/nagato2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/nagato_dead.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/ruleCard.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/ruleCardExpansion.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/unknown.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChannelSelectorPage/ChannelSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChannelSelectorPage/ChannelSelector.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/DataLoader/DataLoader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/DataLoader/DataLoader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/DataLoader/Sanitizer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/DataLoader/Sanitizer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/AnswerInput/AnswerinputPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/AnswerInput/AnswerinputPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/Presets.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/Presets.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Center/PlayerListItem.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Center/PlayerListItem.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Center/PlayerListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Center/PlayerListItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Center/PlayersPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Center/PlayersPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/Database/RoomDatabase.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/Database/RoomDatabase.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/configs/DS.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/configs/DS.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/context/roomInfo/RoomContextProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/context/roomInfo/RoomContextProvider.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,24 +54,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "code.cleanup.on.save": "true",
-    "last_opened_file_path": "D:/Code Repos/IdeaProjects/hamang-music-quiz/src/resources/images",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "rearrange.code.on.save": "true",
-    "settings.editor.selected.configurable": "actions.on.save",
-    "ts.external.directory.path": "D:\\Code Repos\\IdeaProjects\\hamang-music-quiz\\node_modules\\typescript\\lib"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Code Repos/IdeaProjects/hamang-music-quiz/src/resources/images&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Code Repos\\IdeaProjects\\hamang-music-quiz\\node_modules\\typescript\\lib&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\src\resources\images" />
@@ -113,11 +79,11 @@
       <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\public\presets" />
       <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\src\pages\ingame\Left\MusicPanel\MusicModule\MusicDatabase" />
       <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\public" />
       <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\src\resources\csv" />
       <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\src\pages\ingame\Left\MusicPanel" />
-      <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\src\pages\ingame\Left" />
     </key>
   </component>
   <component name="RunManager" selected="npm.start">
@@ -164,7 +130,9 @@
       <workItem from="1655370319761" duration="6000" />
       <workItem from="1655408819117" duration="9736000" />
       <workItem from="1655421070918" duration="81000" />
-      <workItem from="1655467254407" duration="516000" />
+      <workItem from="1655467254407" duration="756000" />
+      <workItem from="1655470427530" duration="1178000" />
+      <workItem from="1655514319974" duration="5411000" />
     </task>
     <task id="LOCAL-00001" summary="HamangMQ INIT">
       <created>1655161415348</created>
@@ -313,7 +281,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655419310090</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="New Loading">
+      <created>1655467853607</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1655467853607</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -352,7 +327,8 @@
     <MESSAGE value="Remembering file selected" />
     <MESSAGE value="Better user settings UX" />
     <MESSAGE value="public html" />
-    <option name="LAST_COMMIT_MESSAGE" value="public html" />
+    <MESSAGE value="New Loading" />
+    <option name="LAST_COMMIT_MESSAGE" value="New Loading" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

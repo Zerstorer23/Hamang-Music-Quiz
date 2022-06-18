@@ -2,7 +2,6 @@ import {IProps} from "system/types/CommonTypes";
 import {Fragment, useContext, useEffect, useState} from "react";
 import RoomContext from "system/context/roomInfo/room-context";
 import {useHistory} from "react-router-dom";
-import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import {LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
 import {TurnManager} from "system/GameStates/TurnManager";
 import {Navigation} from "index/App";
@@ -17,16 +16,20 @@ export default function Sanitizer(props: IProps) {
     const amHost = TurnManager.amHost(ctx, localCtx);
     const myEntry = TurnManager.getMyInfo(ctx, localCtx);
 
-    function checkSanity(): boolean {
-        if (!amHost) return false;
-        ReferenceManager.updateReference(DbFields.GAME, ctx.room.game);
-        ReferenceManager.updateReference(DbFields.HEADER_hostId, myEntry.id);
-        return true;
-    }
+    /*
+        function checkSanity(): boolean {
+            /!*    if (!amHost) {
+                    RoomDatabase.toggleRoomCleanUp(false);
+                } else {
+                    RoomDatabase.toggleRoomCleanUp(true);
+                }*!/
+            return true;
+        }
 
-    useEffect(() => {
-        checkSanity();
-    }, [ctx.room.playerMap.size, amHost]);
+        useEffect(() => {
+            // checkSanity();
+        }, [amHost]);
+    */
 
     const [valid, setValid] = useState(false);
     useEffect(() => {

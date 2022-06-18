@@ -1,8 +1,7 @@
 import {useReducer} from "react";
 import RoomContext, {UpdateType,} from "system/context/roomInfo/room-context";
 import {DbRef, IProps} from "system/types/CommonTypes";
-import {Player, PlayerEntry, Room} from "system/types/GameTypes";
-import {RoomDatabase} from "system/Database/RoomDatabase";
+import {PlayerEntry, Room} from "system/types/GameTypes";
 import {PlayerManager} from "system/Database/PlayerManager";
 import {RoomManager} from "system/Database/RoomManager";
 
@@ -53,9 +52,9 @@ function handlePlayerUpdate(newRoom: Room, action: RoomActionType) {
             newRoom.playerMap.delete(entry.id);
             newRoom.playerList = PlayerManager.getSortedListFromMap(newRoom.playerMap);
             if (entry.id === newRoom.header.hostId || !newRoom.playerMap.has(newRoom.header.hostId)) {
+                console.log(newRoom.playerList);
                 newRoom.header.hostId = newRoom.playerList[0];
                 console.warn("Detected host disconnect " + newRoom.header.hostId);
-                window.location.reload();
             }
             break;
     }

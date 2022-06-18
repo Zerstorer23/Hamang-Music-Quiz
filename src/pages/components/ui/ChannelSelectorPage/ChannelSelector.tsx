@@ -2,7 +2,6 @@ import {useContext, useEffect, useRef, useState} from "react";
 import classes from "./ChannelSelector.module.css";
 import gc from "index/global.module.css";
 import {InputManager} from "system/GameStates/InputManager";
-import {IProps} from "system/types/CommonTypes";
 import {LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
 import {ReferenceManager} from "system/Database/ReferenceManager";
 import {DS} from "system/configs/DS";
@@ -25,7 +24,7 @@ export default function ChannelSelector() {
     }
 
     useEffect(() => {
-        if (DS.directRoom) {
+        if (DS.directRoom !== undefined && DS.directRoom) {
             ReferenceManager.channelId = 876;
             localCtx.setVal(LocalField.ChannelId, 876);
         }

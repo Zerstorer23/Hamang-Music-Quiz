@@ -11,8 +11,18 @@ export class RoomDatabase {
         const roomRef = ReferenceManager.getRef(DbFields.ROOM);
         const defaultRoom = RoomManager.getDefaultRoom();
         await roomRef.set(defaultRoom);
-        ReferenceManager.getRef(DbFields.ROOT).onDisconnect().remove();
+        // this.toggleRoomCleanUp(true);
         return await PlayerManager.joinLocalPlayer(true);
+    }
+
+    public static toggleRoomCleanUp(doRemove: boolean) {
+
+        if (doRemove) {
+            ReferenceManager.getRef(DbFields.ROOT).onDisconnect().remove();
+        } else {
+            ReferenceManager.getRef(DbFields.ROOT).onDisconnect().cancel();
+
+        }
     }
 
     public static async joinLobby(): Promise<string> {

@@ -9,16 +9,18 @@ import {
     LoadStatus,
     Snapshot,
 } from "system/types/CommonTypes";
-import {ReferenceManager} from "system/Database/ReferenceManager";
+import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import {LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
 import {Listeners, ListenerTypes} from "system/context/roomInfo/RoomContextProvider";
-import {Player, Room, RoomHeader} from "system/types/GameTypes";
+import {GameStatus, Player, Room, RoomHeader} from "system/types/GameTypes";
 import {RoomDatabase} from "system/Database/RoomDatabase";
 import {PlayerManager} from "system/Database/PlayerManager";
 import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager";
 import ChannelSelector from "pages/components/ui/ChannelSelectorPage/ChannelSelector";
 import LoadingPage from "pages/components/ui/LoadingPage/LoadingPage";
 import {GameConfigs} from "system/configs/GameConfigs";
+import {TurnManager} from "system/GameStates/TurnManager";
+import TransitionManager from "system/GameStates/TransitionManager";
 
 function checkNull<T>(snapshot: Snapshot): [boolean, T] {
     const data: T = snapshot.val();
@@ -30,34 +32,34 @@ export default function DataLoader(props: IProps) {
     const [csvLoaded, setCSVLoaded] = useState(false);
     const [roomLoaded, setRoomLoaded] = useState(false);
     const [jsxElem, setJSX] = useState(<ChannelSelector/>);
-    const context = useContext(RoomContext);
+    const ctx = useContext(RoomContext);
     const localCtx = useContext(LocalContext);
     const channelId = localCtx.getVal(LocalField.ChannelId);
-
+    const amHost = TurnManager.amHost(ctx, localCtx);
     ///====LOAD AND LISTEN DB===///
     //https://firebase.google.com/docs/reference/node/firebase.database.Reference#on
     function updateField<T>(listenerType: ListenerTypes, snapshot: Snapshot) {
         const [valid, data] = checkNull<T>(snapshot);
         if (!valid) return;
-        context.onUpdateField(listenerType, data);
+        ctx.onUpdateField(listenerType, data);
     }
 
     function onUpdatePlayer(snapshot: Snapshot) {
         const [valid, player] = checkNull<Player>(snapshot);
         if (!valid) return;
-        context.onUpdatePlayer(PlayerManager.createEntry(snapshot.key!, player), UpdateType.Update);
+        ctx.onUpdatePlayer(PlayerManager.createEntry(snapshot.key!, player), UpdateType.Update);
     }
 
     function onAddPlayer(snapshot: Snapshot) {
         const [valid, player] = checkNull<Player>(snapshot);
         if (!valid) return;
-        context.onUpdatePlayer(PlayerManager.createEntry(snapshot.key!, player), UpdateType.Insert);
+        ctx.onUpdatePlayer(PlayerManager.createEntry(snapshot.key!, player), UpdateType.Insert);
     }
 
     function onRemovePlayer(snapshot: Snapshot) {
         const [valid, player] = checkNull<Player>(snapshot);
         if (!valid) return;
-        context.onUpdatePlayer(PlayerManager.createEntry(snapshot.key!, player), UpdateType.Delete);
+        ctx.onUpdatePlayer(PlayerManager.createEntry(snapshot.key!, player), UpdateType.Delete);
     }
 
     function onUpdateGame(snapshot: Snapshot) {
@@ -96,7 +98,7 @@ export default function DataLoader(props: IProps) {
     }
 
     function joinPlayer() {
-        if (context.room.playerMap.size === 0) {
+        if (ctx.room.playerMap.size === 0) {
             //Join as host
             console.log("Join as host");
             setUpRoom();
@@ -121,7 +123,7 @@ export default function DataLoader(props: IProps) {
                 setJSX(<LoadingPage/>);
                 RoomDatabase.loadRoom().then((room: Room) => {
                     console.log("Room loaded");
-                    context.onRoomLoaded(room);
+                    ctx.onRoomLoaded(room);
                     setRoomLoaded(true);
                     setStatus(LoadStatus.loaded);
                 });
@@ -150,6 +152,14 @@ export default function DataLoader(props: IProps) {
         setStatus(LoadStatus.outerSpace);
         setJSX(props.children);
     }, [myId]);
+    useEffect(() => {
+        if (!amHost) return;
+        ReferenceManager.updateReference(DbFields.HEADER_hostId, myId);
+        if (ctx.room.game.gameStatus === GameStatus.InGame) {
+            TransitionManager.pushEndGame();
+        }
+    }, [amHost]);
+
     useEffect(() => {
         if (channelId < 0) {
 

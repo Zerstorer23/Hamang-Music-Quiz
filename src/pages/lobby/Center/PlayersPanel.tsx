@@ -8,7 +8,7 @@ import gc from "index/global.module.css";
 import {TurnManager} from "system/GameStates/TurnManager";
 import useKeyListener, {KeyCode} from "system/hooks/useKeyListener";
 import {InputCursor, LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
-import {PlayerDbFields, ReferenceManager} from "system/Database/ReferenceManager";
+import {DbFields, PlayerDbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import {Player, PlayerMap} from "system/types/GameTypes";
 import {RoomManager} from "system/Database/RoomManager";
 import {DS} from "system/configs/DS";
@@ -56,6 +56,12 @@ export default function PlayersPanel() {
         }
     }
 
+    function onPromote(id: string) {
+        if (!amHost) return;
+        ReferenceManager.updateReference(DbFields.HEADER_hostId, id);
+    }
+
+
     let buttonKey = getButtonKey(amHost, playerList, playerMap, myEntry.player);
     const numGames = ctx.room.header.games;
     const remainingCss = getRemainingCss(numGames);
@@ -66,9 +72,13 @@ export default function PlayersPanel() {
                 <p className={classes.headerPlayerNum}>{`연결됨: ${currPlayer}`}</p>
             </div>
             <VerticalLayout className={classes.list}>{
-                playerList.map((id, index, array) => {
+                playerList.map((id) => {
                     const player = playerMap.get(id)!;
-                    return <PlayerListItem key={id} player={player}
+                    const showPromote = (amHost && id !== myEntry.id);
+
+                    return <PlayerListItem key={id} playerEntry={{id, player}}
+                                           showPromote={showPromote}
+                                           onPromote={onPromote}
                                            isHost={id === ctx.room.header.hostId}/>;
                 })
             }</VerticalLayout>
