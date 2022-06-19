@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="More KyoAniSongs">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="AAUto Insert answer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/presets/kyoani.csv" beforeDir="false" afterPath="$PROJECT_DIR$/public/presets/kyoani.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/AnswerInput/AnswerinputPanel.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/AnswerInput/AnswerinputPanel.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/AnswerInput/AnswerinputPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/AnswerInput/AnswerinputPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/LobbySettings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/LobbySettings.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/configs/DS.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/configs/DS.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +123,12 @@
       <workItem from="1655467254407" duration="756000" />
       <workItem from="1655470427530" duration="1178000" />
       <workItem from="1655514319974" duration="8700000" />
-      <workItem from="1655564107648" duration="1711000" />
+      <workItem from="1655564107648" duration="2105000" />
+      <workItem from="1655589323293" duration="592000" />
+      <workItem from="1655610874198" duration="1036000" />
+      <workItem from="1655615070332" duration="88000" />
+      <workItem from="1655616496094" duration="3000" />
+      <workItem from="1655645136771" duration="656000" />
     </task>
     <task id="LOCAL-00001" summary="HamangMQ INIT">
       <created>1655161415348</created>
@@ -308,7 +312,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655527005201</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="AAUto Insert answer">
+      <created>1655569435977</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1655569435977</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,7 +361,8 @@
     <MESSAGE value="New Loading" />
     <MESSAGE value="Chat, Answer Fix, More solutions" />
     <MESSAGE value="More KyoAniSongs" />
-    <option name="LAST_COMMIT_MESSAGE" value="More KyoAniSongs" />
+    <MESSAGE value="AAUto Insert answer" />
+    <option name="LAST_COMMIT_MESSAGE" value="AAUto Insert answer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

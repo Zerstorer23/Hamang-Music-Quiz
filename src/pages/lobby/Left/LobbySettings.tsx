@@ -53,7 +53,8 @@ export default function LobbySettings() {
                 </button>
                 <a href={"https://chat.haruhi.boats/"} target={"_blank"}>중계기</a>
                 <br/>
-                <a href={"https://chat.haruhi.boats/"} target={"_blank"}>수동파일설정가이드</a>
+                <a href={"https://gall.dcinside.com/mgallery/board/view/?id=haruhiism&no=143089"}
+                   target={"_blank"}>수동파일설정가이드</a>
                 <br/>
                 <p>모바일 유저는 데스크탑보기모드 꼭 켜주라!</p>
                 <p>정답은 주로 한글 번역/발음/영문 발음/특수문자 무시</p>
