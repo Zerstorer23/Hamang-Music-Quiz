@@ -1,46 +1,34 @@
-# Getting Started with Create React App
+# 프로젝트 설치 방법
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+0. 리액트, TypeScript, 파이어베이스로 구성되어있습니다.
 
-## Available Scripts
+1. NodeJs, 파이어베이스 실시간 데이터베이스 설정
 
-In the project directory, you can run:
+2. 레포지토리 복사 후 npm run build로 dependency 설치
 
-### `npm start`
+3. build/ 폴더에 CNAME 파일 제거
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+4. fbkey/ 폴더의 fakeKet.tsx 파일 참조, 파이어베이스 설정후
+   Database/keys/SGconfig.tsx 이름으로 붙여넣기
+   (폴더없으면 생성)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+5. npm run start로 시작
 
-### `npm test`
+## 음악 플레이리스트
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+플레이리스트는 따로 서버에 저장되어있지않고
+직접 CSV파일로 제작하여 파일탐색기로 올려서 사용가능 (전원 공유)
 
-### `npm run build`
+설정법 및 기본 리스트
+https://docs.google.com/spreadsheets/d/1QluDRTVw7qz5rE46MpLYEFj_WntZUNa3THLvBeuvVJY/edit?usp=sharing
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+765 리스트
+https://docs.google.com/spreadsheets/d/1E89UuJwiR3yRKNjifMK4nArg0iO7Ish09BHkMexXqo8/edit?usp=sharing
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 게임 설명
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. 아무거나 1~999 사이 방번호 입력해서 들어가서
+2. 플레이리스트 선택후 한다.
+3. 같은 방번호에 접속시 멀티플레이
+4. 곡 선택, 업로드는 방장 권한
+5. 답은 영어음표기 위주, 경우에따라 한글음표기, 번역표기 등등도 지원함
