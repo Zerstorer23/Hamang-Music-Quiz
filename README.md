@@ -2,9 +2,9 @@
 
 0. 리액트, TypeScript, 파이어베이스로 구성되어있습니다.
 
-1. NodeJs, 파이어베이스 실시간 데이터베이스 설정
+1. NodeJs 설치, 파이어베이스 실시간 데이터베이스 설정
 
-2. 레포지토리 복사 후 npm run build로 dependency 설치
+2. 레포지토리 복사 후 npm run build 명령어로 dependency 설치
 
 3. build/ 폴더에 CNAME 파일 제거
 
@@ -19,13 +19,20 @@
 플레이리스트는 따로 서버에 저장되어있지않고
 직접 CSV파일로 제작하여 파일탐색기로 올려서 사용가능 (전원 공유)
 
-설정법 및 기본 리스트
+아래의 링크는 기본등록된 플레이리스트 예제와 설정법
+
+### 설정법 및 기본 리스트
+
 https://docs.google.com/spreadsheets/d/1QluDRTVw7qz5rE46MpLYEFj_WntZUNa3THLvBeuvVJY/edit?usp=sharing
 
-765 리스트
+### 765 리스트
+
 https://docs.google.com/spreadsheets/d/1E89UuJwiR3yRKNjifMK4nArg0iO7Ish09BHkMexXqo8/edit?usp=sharing
 
 ## 게임 설명
+
+시범페이지 :
+https://music.haruhi.boats
 
 1. 아무거나 1~999 사이 방번호 입력해서 들어가서
 2. 플레이리스트 선택후 한다.
