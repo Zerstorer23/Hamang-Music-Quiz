@@ -1,6 +1,6 @@
 export const DS = {
     StrictRules: true,
     serverSG: true,
-    useChatRelay: true,
+    useChatRelay: false,
     directRoom: false,
 };

@@ -51,7 +51,7 @@ export default function LobbySettings() {
                 <button className={`${classes.fieldType}`}
                         onClick={onClickCopy}>{`방 코드: ${ReferenceManager.channelId} 복사`}
                 </button>
-                <a href={"https://chat.haruhi.boats/"} target={"_blank"}>중계기</a>
+                {/*<a href={"https://chat.haruhi.boats/"} target={"_blank"}>중계기</a>*/}
                 <br/>
                 <a href={"https://gall.dcinside.com/mgallery/board/view/?id=haruhiism&no=143089"}
                    target={"_blank"}>수동파일설정가이드</a>
