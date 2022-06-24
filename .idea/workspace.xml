@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="Cached Room Number">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChannelSelectorPage/ChannelSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChannelSelectorPage/ChannelSelector.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ChatModule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ChatModule.tsx" afterDir="false" />
+    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="Emergency Kick">
       <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/CommandParser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/CommandParser.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/DataLoader/DataLoader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/DataLoader/DataLoader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/Database/PlayerManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/Database/PlayerManager.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +131,7 @@
       <workItem from="1655645136771" duration="1601000" />
       <workItem from="1655941442246" duration="1715000" />
       <workItem from="1656088231606" duration="1648000" />
-      <workItem from="1656090054207" duration="1753000" />
+      <workItem from="1656090054207" duration="2065000" />
     </task>
     <task id="LOCAL-00001" summary="HamangMQ INIT">
       <created>1655161415348</created>
@@ -383,7 +378,21 @@
       <option name="project" value="LOCAL" />
       <updated>1656089759312</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Emergency Kick">
+      <created>1656091928641</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1656091928641</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Emergency Kick">
+      <created>1656092006660</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1656092006660</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -402,7 +411,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="HamangMQ INIT" />
     <MESSAGE value="HamangMQ INIT 2" />
     <MESSAGE value="HamangMQ INIT 3" />
     <MESSAGE value="HamangMQ INIT 4" />
@@ -427,7 +435,8 @@
     <MESSAGE value="More KyoAniSongs" />
     <MESSAGE value="AAUto Insert answer" />
     <MESSAGE value="Cached Room Number" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cached Room Number" />
+    <MESSAGE value="Emergency Kick" />
+    <option name="LAST_COMMIT_MESSAGE" value="Emergency Kick" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

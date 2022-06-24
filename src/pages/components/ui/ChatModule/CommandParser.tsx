@@ -39,8 +39,9 @@ export class CommandParser {
                 sendChat(ChatFormat.hidden, "", "reload");
                 break;
             case "kill":
-                const idx = +args[1];
+                let idx = +args[1];
                 if (isNaN(idx)) return;
+                idx--;
                 const id = ctx.room.playerList[idx];
                 if (id === undefined) return;
                 ReferenceManager.getPlayerReference(id).remove();
