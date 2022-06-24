@@ -5,6 +5,8 @@ import {InputManager} from "system/GameStates/InputManager";
 import {LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
 import {ReferenceManager} from "system/Database/ReferenceManager";
 import {DS} from "system/configs/DS";
+import {LocalStorage, StorageKeys} from "system/Database/storage";
+import {randomInt} from "system/Constants/GameConstants";
 
 
 export default function ChannelSelector() {
@@ -20,6 +22,7 @@ export default function ChannelSelector() {
         }
         setValid(true);
         ReferenceManager.channelId = num;
+        LocalStorage.setVal(StorageKeys.lastChannel, num);
         localCtx.setVal(LocalField.ChannelId, num);
     }
 
@@ -32,15 +35,16 @@ export default function ChannelSelector() {
 
     return <div className={`${classes.container} ${gc.round_border} ${gc.panelBackground}`}>
         <p>0~999 사이의 채널을 골라주세요.</p><br/><p> (없는 채널이면 생성. 있는 채널이면 접속)</p>
-        {!isValid && <p>잘못된 번호입니다...</p>}
+        {!isValid && <p>잘못된 번호입니다..?</p>}
         <textarea className={classes.inputField}
                   ref={inputRef}
                   onBlur={onFinish}
-                  defaultValue={765}>
+                  defaultValue={LocalStorage.getVal(StorageKeys.lastChannel, randomInt(1, 998))}>
 
         </textarea>
         <button className={classes.joinButton}
                 onClick={onFinish}
+
         >접속/생성
         </button>
     </div>;
