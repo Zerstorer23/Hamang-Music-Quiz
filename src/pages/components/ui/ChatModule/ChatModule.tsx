@@ -13,8 +13,7 @@ import useKeyListener, {KeyCode} from "system/hooks/useKeyListener";
 import {CommandParser} from "pages/components/ui/ChatModule/CommandParser";
 import sendToPort from "pages/components/ui/ChatModule/ChatRelay";
 import {InputManager} from "system/GameStates/InputManager";
-import {currentTimeInMills, elapsedSinceInMills, randomInt} from "system/Constants/GameConstants";
-import {RoomManager} from "system/Database/RoomManager";
+import {currentTimeInMills, elapsedSinceInMills} from "system/Constants/GameConstants";
 import {PlayerManager} from "system/Database/PlayerManager";
 
 export default function ChatModule() {
@@ -47,19 +46,16 @@ export default function ChatModule() {
     }
 
 
-    const handleSpecials = useCallback(
-        (text: string) => {
-            if (text.length < 2) return false;
-            const firstChar = text.at(0);
-            const theRest = text.substring(1);
-            if (firstChar === "/") {
-                CommandParser.handleCommands(ctx, localCtx, chatCtx, theRest);
-                return true;
-            }
-            return false;
-        },
-        [myEntry.id, chatCtx]
-    );
+    function handleSpecials(text: string) {
+        if (text.length < 2) return false;
+        const firstChar = text.at(0);
+        const theRest = text.substring(1);
+        if (firstChar === "/") {
+            CommandParser.handleCommands(ctx, localCtx, chatCtx, theRest);
+            return true;
+        }
+        return false;
+    }
 
     const handleSend = useCallback(() => {
         let text = chatFieldRef.current!.value.toString();

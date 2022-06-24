@@ -26,8 +26,9 @@ export class PlayerManager {
         const playersRef = ReferenceManager.getRef(DbFields.PLAYERS);
         const player = this.getDefaultPlayer();
 
-        const myRef = playersRef.push();
+        const myRef = await playersRef.push();
         await myRef.set(player);
+        await myRef.onDisconnect().remove();
         const myId = await myRef.key;
         if (asHost) {
             ReferenceManager.updateReference(DbFields.HEADER_hostId, myId);

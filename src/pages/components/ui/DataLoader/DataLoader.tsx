@@ -84,7 +84,7 @@ export default function DataLoader(props: IProps) {
     function onDisconnectCleanUp(id: string) {
         localCtx.setVal(LocalField.Id, id);
         const myRef = ReferenceManager.getPlayerReference(id);
-        myRef.onDisconnect().remove();
+        // myRef.onDisconnect().remove();
     }
 
     async function setUpRoom() {
@@ -95,6 +95,11 @@ export default function DataLoader(props: IProps) {
     async function playerJoin() {
         const myId = await RoomDatabase.joinLobby();
         onDisconnectCleanUp(myId);
+        /*        if (!ctx.room.playerMap.has(ctx.room.header.hostId)) {
+                    //NOTE SOmething wrong in this room. Eject
+                    await ReferenceManager.getRef(DbFields.ROOM).remove();
+                    window.location.reload();
+                }*/
     }
 
     function joinPlayer() {

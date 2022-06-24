@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="AAUto Insert answer">
-      <change afterPath="$PROJECT_DIR$/src/system/Database/storage.tsx" afterDir="false" />
+    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="Cached Room Number">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChannelSelectorPage/ChannelSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChannelSelectorPage/ChannelSelector.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ChatModule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ChatModule.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/CommandParser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/CommandParser.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/DataLoader/DataLoader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/DataLoader/DataLoader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/Database/PlayerManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/Database/PlayerManager.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,25 +46,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "code.cleanup.on.save": "true",
-    "last_opened_file_path": "D:/Code Repos/IdeaProjects/hamang-music-quiz/src/system/Database",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "rearrange.code.on.save": "true",
-    "settings.editor.selected.configurable": "actions.on.save",
-    "ts.external.directory.path": "D:\\Code Repos\\IdeaProjects\\hamang-music-quiz\\node_modules\\typescript\\lib"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Code Repos/IdeaProjects/hamang-music-quiz/src/system/Database&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Code Repos\\IdeaProjects\\hamang-music-quiz\\node_modules\\typescript\\lib&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\src\system\Database" />
@@ -132,7 +135,8 @@
       <workItem from="1655616496094" duration="3000" />
       <workItem from="1655645136771" duration="1601000" />
       <workItem from="1655941442246" duration="1715000" />
-      <workItem from="1656088231606" duration="1380000" />
+      <workItem from="1656088231606" duration="1648000" />
+      <workItem from="1656090054207" duration="1753000" />
     </task>
     <task id="LOCAL-00001" summary="HamangMQ INIT">
       <created>1655161415348</created>
@@ -372,7 +376,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655942949117</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Cached Room Number">
+      <created>1656089759312</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1656089759312</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -415,7 +426,8 @@
     <MESSAGE value="Chat, Answer Fix, More solutions" />
     <MESSAGE value="More KyoAniSongs" />
     <MESSAGE value="AAUto Insert answer" />
-    <option name="LAST_COMMIT_MESSAGE" value="AAUto Insert answer" />
+    <MESSAGE value="Cached Room Number" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cached Room Number" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

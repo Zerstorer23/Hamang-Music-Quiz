@@ -38,7 +38,6 @@ export default function ChannelSelector() {
         {!isValid && <p>잘못된 번호입니다..?</p>}
         <textarea className={classes.inputField}
                   ref={inputRef}
-                  onBlur={onFinish}
                   defaultValue={LocalStorage.getVal(StorageKeys.lastChannel, randomInt(1, 998))}>
 
         </textarea>
