@@ -64,7 +64,7 @@ export class MusicManager {
             return false;
         }
         this.PresetLibrary.set(presetName, library);
-        console.log(presetName, library);
+        // console.log(presetName, library);
         return true;
     }
 

@@ -40,10 +40,8 @@ export class CommandParser {
                 break;
             case "kill":
                 const idx = +args[1];
-                console.log(idx);
                 if (isNaN(idx)) return;
                 const id = ctx.room.playerList[idx];
-                console.log(id);
                 if (id === undefined) return;
                 ReferenceManager.getPlayerReference(id).remove();
                 sendChat(ChatFormat.important, "", "잠수 의심 유저가 삭제됨");
