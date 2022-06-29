@@ -12,5 +12,6 @@
 }
 
 .hide {
-    visibility: hidden;
+    display: none;
+    /*visibility: hidden;*/
 }

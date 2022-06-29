@@ -15,7 +15,7 @@ export class PlayerManager {
             isReady: false,
             wins: 0,
             name: this.getDefaultName(),
-            gameWins: 0,
+            totalWin: 0,
             answer: "",
         };
         return newPlayer;

@@ -4,7 +4,7 @@ import {PlayAt, PlaySpeed} from "pages/ingame/Left/MusicPanel/MusicModule/MusicM
 export type Player = {
     isSpectating: boolean; //may not need it
     isReady: boolean;
-    gameWins: number;
+    totalWin: number;
     wins: number;
     name: string;
     answer: string;

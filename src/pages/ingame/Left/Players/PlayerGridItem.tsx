@@ -28,7 +28,7 @@ export default function PlayerGridItem(props: Props) {
             return;
         }
         if (music.status !== MusicStatus.Revealing) return;
-        const isAnswer = MusicManager.checkAnswer(music.music, player.answer);
+        const isAnswer = MusicManager.checkAnswer(music.music, player.answer, ctx.room.header.settings.useArtists);
         setGotCorrect(isAnswer);
     }, [music.status, player.answer]);
 

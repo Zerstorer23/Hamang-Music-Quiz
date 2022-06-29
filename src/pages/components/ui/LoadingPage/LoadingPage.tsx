@@ -33,6 +33,6 @@ export default function LoadingPage() {
     return <div className={`${classes.container} ${gc.panelBackground}`}>
         <ImagePage>
             로딩중입니다...[10초이상 걸리면 새로고침 추천]
-        </ImagePage>;
+        </ImagePage>
     </div>;
 }

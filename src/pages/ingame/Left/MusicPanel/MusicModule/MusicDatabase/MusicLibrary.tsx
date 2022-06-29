@@ -6,6 +6,7 @@ export type MusicFilter = Map<string, boolean>;
 export class MusicLibrary {
     public headers: MusicFilter = new Map<string, boolean>();
     public library = new Map<string, MusicObject>();
+    private useArtists: boolean = false;
 
     public clear() {
         this.headers.clear();
@@ -26,6 +27,7 @@ export class MusicLibrary {
         let list: MusicObject[] = [];
         this.library.forEach((value, key, map) => {
             if (!this.headers.has(value.team) || !this.headers.get(value.team)) return;
+            if (this.useArtists && value.artists[0].length === 0) return;
             list.push(value);
         });
         list = shuffleArray(list);
@@ -40,6 +42,10 @@ export class MusicLibrary {
         if (numTrue === 0) return false;
         this.headers = filters;
         return true;
+    }
+
+    public updateArtists(use: boolean) {
+        this.useArtists = use;
     }
 
 

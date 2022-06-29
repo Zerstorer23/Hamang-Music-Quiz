@@ -44,6 +44,7 @@ function parseVideoEntry(item: MusicCSVEntry) {
         return ans.length > 0;
     });
     obj.artists = [...parseArtistTag(item.artistMain), ...parseArtistTag(item.artistSub)];
+    if (obj.artists.length === 0) obj.artists.push("");//Ensures at least 1 object.
     return obj;
 }
 
@@ -115,6 +116,11 @@ export class MusicManager {
         return MusicManager.buildRandomList();
     }
 
+    public static pushArtists(useArtists: boolean): number {
+        MusicManager.CurrentLibrary.updateArtists(useArtists);
+        return MusicManager.buildRandomList();
+    }
+
     public static buildRandomList(): number {
         this.MusicList = this.CurrentLibrary.applyFilter();
         return this.MusicList.length;
@@ -134,10 +140,23 @@ export class MusicManager {
         };
     }
 
-    public static checkAnswer(music: MusicObject, myAnswer: string): boolean {
-        myAnswer = InputManager.cleanseAnswer(myAnswer);
+    public static checkAnswer(music: MusicObject, myAnswer: string, checkArtist: boolean): boolean {
         if (myAnswer.length <= 0) return false;
         if (music === null) return false;
+        const ansParts = myAnswer.split("-");
+        const correctSongName = this.checkSongName(music, ansParts[0]);
+        if (!checkArtist || !correctSongName) return correctSongName;
+        return this.checkArtists(music, ansParts[1]);
+    }
+
+    public static addPoints(player: PlayerEntry) {
+        ReferenceManager.atomicDeltaByPlayerField(player.id, PlayerDbFields.PLAYER_wins, 1);
+        ReferenceManager.atomicDeltaByPlayerField(player.id, PlayerDbFields.PLAYER_totalWin, 1);
+    }
+
+    private static checkSongName(music: MusicObject, myAnswer: string): boolean {
+        myAnswer = InputManager.cleanseAnswer(myAnswer);
+
         let correct = false;
         music.answers.forEach((value) => {
             if (correct) return;
@@ -149,8 +168,37 @@ export class MusicManager {
         return correct;
     }
 
-    public static addPoints(player: PlayerEntry) {
-        ReferenceManager.atomicDeltaByPlayerField(player.id, PlayerDbFields.PLAYER_wins, 1);
-        ReferenceManager.atomicDeltaByPlayerField(player.id, PlayerDbFields.PLAYER_gameWins, 1);
+    private static checkArtists(music: MusicObject, myAnswer?: string): boolean {
+        //It has no answer. you are always correct
+        if (music.artists.length === 0) return true;
+        if (music.artists.length === 1 && music.artists[0].length === 0) return true;
+        //It has answer but you didnt write any. you are always wrong
+        if (myAnswer === undefined || myAnswer.length === 0) return false;
+        const myArtists = myAnswer.split(",").map((value) => {
+            return InputManager.cleanseAnswer(value);
+        });
+        //Now artists hs cleansed multiples.
+        //aa:bb/cc
+        let correct = false;
+        music.artists.forEach((artistTags) => {
+            if (correct) return;
+            const requiredArtists: string[] = artistTags.split(":").map((value) => {
+                return InputManager.cleanseAnswer(value);
+            });
+            //Not same number. it is wrong
+            if (requiredArtists.length !== myArtists.length) return;
+            let allFound = true; // need to find both aa and bb
+            //Is ALl my artist answer in answer criteria?
+            myArtists.forEach((artist: string) => {
+                if (!allFound) return;
+                if (!requiredArtists.includes(artist)) {
+                    allFound = false;
+                }
+            });
+            if (allFound) {
+                correct = true;
+            }
+        });
+        return correct;
     }
 }

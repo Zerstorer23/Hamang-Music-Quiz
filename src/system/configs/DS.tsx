@@ -4,4 +4,5 @@ export const DS = {
     useChatRelay: false,
     directRoom: false,
     ytDebug: false,
+    allowConsole: true,
 };

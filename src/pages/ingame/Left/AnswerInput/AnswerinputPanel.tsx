@@ -5,7 +5,7 @@ import useKeyListener, {KeyCode} from "system/hooks/useKeyListener";
 import {CursorFocusInfo, InputCursor, LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
 import RoomContext from "system/context/roomInfo/room-context";
 import {PlayerDbFields, ReferenceManager} from "system/Database/ReferenceManager";
-import {MusicEntry, MusicStatus, Player, PlayerMap} from "system/types/GameTypes";
+import {MusicEntry, MusicStatus, Player, PlayerMap, RoomSettings} from "system/types/GameTypes";
 import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager";
 import TransitionManager from "system/GameStates/TransitionManager";
 import {currentTimeInMills} from "system/Constants/GameConstants";
@@ -38,7 +38,7 @@ export default function AnswerInputPanel() {
     }
 
     useEffect(() => {
-        handleMusicStatus(musicEntry, inputRef, myId, myPlayer);
+        handleMusicStatus(musicEntry, inputRef, myId, myPlayer, ctx.room.header.settings);
     }, [musicEntry.status]);
 
     function toggleFocus(toggle: boolean) {
@@ -74,7 +74,8 @@ export default function AnswerInputPanel() {
             >[방장]<br/>게임끝내기</button>
         }
         {
-            (isRevealing) && <p className={classes.textInput}>{`정답은 ${musicEntry.music.title}`}</p>
+            (isRevealing) &&
+            <p className={classes.textInput}>{getAnswerString(musicEntry, ctx.room.header.settings)}</p>
         }
         {
             (musicEntry.status === MusicStatus.Playing || musicEntry.status === MusicStatus.ReceivingAnswers) &&
@@ -93,7 +94,7 @@ export default function AnswerInputPanel() {
     </div>;
 }
 
-function handleMusicStatus(musicEntry: MusicEntry, inputRef: any, myId: string, myPlayer: Player) {
+function handleMusicStatus(musicEntry: MusicEntry, inputRef: any, myId: string, myPlayer: Player, settings: RoomSettings) {
     switch (musicEntry.status) {
         case MusicStatus.WaitingMusic:
             ReferenceManager.updatePlayerFieldReference(myId, PlayerDbFields.PLAYER_answer, "");
@@ -105,7 +106,7 @@ function handleMusicStatus(musicEntry: MusicEntry, inputRef: any, myId: string, 
             inputRef.current?.blur();
             break;
         case MusicStatus.Revealing:
-            const isAnswer = MusicManager.checkAnswer(musicEntry.music, myPlayer.answer);
+            const isAnswer = MusicManager.checkAnswer(musicEntry.music, myPlayer.answer, settings.useArtists);
             if (isAnswer) {
                 MusicManager.addPoints({id: myId, player: myPlayer});
             }
@@ -149,4 +150,10 @@ function inferCss(music: MusicEntry) {
     }
 
     return [enabledCss, hintText];
+}
+
+function getAnswerString(musicEntry: MusicEntry, settings: RoomSettings): string {
+    const title = musicEntry.music.title;
+    if (!settings.useArtists || musicEntry.music.artists.length === 0) return `정답은 ${title}`;
+    return `정답은 ${title} - ${musicEntry.music.artists[0].split(":").join(",")}`;
 }

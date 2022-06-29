@@ -1,7 +1,7 @@
 import classes from "./PlayersPanel.module.css";
 import VerticalLayout from "pages/components/ui/VerticalLayout";
 import PlayerListItem from "./PlayerListItem";
-import {Fragment, useContext} from "react";
+import {Fragment, useContext, useEffect} from "react";
 import RoomContext from "system/context/roomInfo/room-context";
 
 import gc from "index/global.module.css";
@@ -24,7 +24,13 @@ export default function PlayersPanel() {
     const currPlayer = playerMap.size;
     const playerList = ctx.room.playerList;
     useKeyListener([KeyCode.Space], onKey);
+    useEffect(() => {
+        if (myEntry.id === null) return;
+        if (myEntry.player.wins === 0) return;
+        ReferenceManager.updatePlayerFieldReference(myEntry.id, PlayerDbFields.PLAYER_wins, 0);
+    }, []);
     if (myEntry.id === null) return <Fragment/>;
+
 
     function onKey(keyCode: KeyCode) {
         if (localCtx.getVal(LocalField.InputFocus).state !== InputCursor.Idle) return;
@@ -72,12 +78,13 @@ export default function PlayersPanel() {
                 <p className={classes.headerPlayerNum}>{`연결됨: ${currPlayer}`}</p>
             </div>
             <VerticalLayout className={classes.list}>{
-                playerList.map((id) => {
+                playerList.map((id, index) => {
                     const player = playerMap.get(id)!;
                     const showPromote = (amHost && id !== myEntry.id);
 
                     return <PlayerListItem key={id} playerEntry={{id, player}}
                                            showPromote={showPromote}
+                                           index={index}
                                            onPromote={onPromote}
                                            isHost={id === ctx.room.header.hostId}/>;
                 })

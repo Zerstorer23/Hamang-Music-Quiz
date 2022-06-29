@@ -5,13 +5,14 @@ import {InputManager} from "system/GameStates/InputManager";
 import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import {Fragment, useContext, useEffect, useRef} from "react";
 import RoomContext from "system/context/roomInfo/room-context";
-import {LocalContext} from "system/context/localInfo/LocalContextProvider";
+import {LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
 import {sendAnnounce} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
 import {TurnManager} from "system/GameStates/TurnManager";
 import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager";
 import Dropdown from "pages/components/ui/Dropdown";
 import {PlayAt, PlaySpeed} from "pages/ingame/Left/MusicPanel/MusicModule/MusicModule";
 import {ItemPair} from "system/types/CommonTypes";
+import {presetToName} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/Presets";
 
 export default function GamePlaySettings() {
     const ctx = useContext(RoomContext);
@@ -43,6 +44,13 @@ export default function GamePlaySettings() {
         } else {
             sendAnnounce("채팅제한 꺼짐");
         }
+    }
+
+    function onUseArtists() {
+        const toggle = !ctx.room.header.settings.useArtists;
+        ReferenceManager.updateReference(DbFields.HEADER_settings_useArtists, toggle);
+        const targetNumber = MusicManager.pushArtists(toggle);
+        sendAnnounce(`${presetToName(localCtx.getVal(LocalField.SelectedPreset))}${toggle ? "+가수" : ""} 목록이 설정됨. 수록곡 ${targetNumber}개`);
     }
 
     function onFinishEditGuessTime(event: any) {
@@ -80,6 +88,10 @@ export default function GamePlaySettings() {
                onChange={onToggleSafeChat}
                checked={ctx.room.header.settings.limitedCommunication}/>
         <label htmlFor={"safeChat"}>채팅제한</label>
+        <input type="checkbox" id={"useArtists"}
+               onChange={onUseArtists}
+               checked={ctx.room.header.settings.useArtists}/>
+        <label htmlFor={"useArtists"}>작곡가맞추기</label>
         <HorizontalLayout>
             <p>재생시간:</p>
             <textarea

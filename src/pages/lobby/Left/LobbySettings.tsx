@@ -57,6 +57,7 @@ export default function LobbySettings() {
                 <br/>
                 <p>모바일 유저는 데스크탑보기모드 꼭 켜주라!</p>
                 <p>정답은 주로 한글 번역/발음/영문 발음/특수문자 무시</p>
+                <p>/help = 방장용 명령어 도움말</p>
             </div>
             {
                 amHost && <div className={`${classes.hostSettingsContainer} `}>

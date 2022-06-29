@@ -41,6 +41,7 @@ export class InputManager {
     public static cleanseAnswer(answer: string): string {
         answer = answer.replaceAll(LF, "")
             .replaceAll(CR, "")
+            .replaceAll("@", "a")
             .replaceAll(" ", "")
             .replace(reg, "")
             .toLowerCase();
