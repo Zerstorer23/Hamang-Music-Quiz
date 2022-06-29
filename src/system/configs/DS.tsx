@@ -3,4 +3,5 @@ export const DS = {
     serverSG: true,
     useChatRelay: false,
     directRoom: false,
+    ytDebug: false,
 };

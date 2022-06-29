@@ -21,7 +21,7 @@ function YoutubeGuardModule() {
     function onStateChange(e: any) {
         const player = e.target;
         const state = e.data as YtState;
-        if (state === YtState.Paused || state == YtState.Finished) {
+        if (state === YtState.Paused || state === YtState.Finished) {
             player.seekTo(0, true);
             player.playVideo();
         }

@@ -1,5 +1,6 @@
 import YouTube, {YouTubeProps} from "react-youtube";
 import {IProps} from "system/types/CommonTypes";
+import {DS} from "system/configs/DS";
 
 type YtProps = IProps & {
     videoId: string;
@@ -16,8 +17,9 @@ export function YoutubeModule(props: YtProps) {
         width: width,
         playerVars: {
             autoplay: 1,
-            controls: 0,
+            controls: (DS.ytDebug) ? 1 : 0,
         },
+
     };
 
     function onError(e: any) {

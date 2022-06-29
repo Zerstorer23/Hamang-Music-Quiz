@@ -104,7 +104,7 @@ export class MusicManager {
             return false;
         }
         this.CurrentLibrary = this.PresetLibrary.get(presetName)!;
-        const num = this.buildRandomList();
+        this.buildRandomList();
         return true;
     }
 

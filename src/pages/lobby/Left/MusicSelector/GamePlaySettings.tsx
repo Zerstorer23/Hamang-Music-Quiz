@@ -64,13 +64,13 @@ export default function GamePlaySettings() {
 
     function onSelectPlayAt(value: PlayAt) {
         if (!amHost) return;
-        ReferenceManager.updateReference(DbFields.HEADER_settings_playAt, value);
-        sendAnnounce(`재생모드: ${getPlayAtName(value)}`);
+        ReferenceManager.updateReference(DbFields.HEADER_settings_playAt, +value);
+        sendAnnounce(`재생모드: ${getPlayAtName(+value)}`);
     }
 
     function onSelectPlaySpeed(value: PlaySpeed) {
         if (!amHost) return;
-        ReferenceManager.updateReference(DbFields.HEADER_settings_speed, value);
+        ReferenceManager.updateReference(DbFields.HEADER_settings_speed, +value);
         sendAnnounce(`재생속도: ${getPlaySpeedName(+value)}`);
     }
 
@@ -103,7 +103,6 @@ export default function GamePlaySettings() {
             <Dropdown className={`${classes.fieldTypeSmall} ${gc.centerText}`}
                       value={ctx.room.header.settings.playAt.toString()}
                       options={playAtPairs} onChange={(e: any) => {
-                console.log(e.target.value);
                 onSelectPlayAt(e.target.value as PlayAt);
             }}/>
         </HorizontalLayout>
@@ -119,7 +118,6 @@ export default function GamePlaySettings() {
 }
 
 export function getPlayAtName(playAt: PlayAt): string {
-    console.log("Received", playAt);
     switch (playAt.toString()) {
         case PlayAt.Start.toString():
             return "전주";

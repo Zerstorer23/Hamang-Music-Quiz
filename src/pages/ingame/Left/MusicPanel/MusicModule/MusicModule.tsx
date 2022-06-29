@@ -4,13 +4,14 @@ import RoomContext from "system/context/roomInfo/room-context";
 import {TurnManager} from "system/GameStates/TurnManager";
 import {LocalContext} from "system/context/localInfo/LocalContextProvider";
 import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
-import {MusicEntry, MusicStatus} from "system/types/GameTypes";
+import {MusicEntry, MusicStatus, RoomSettings} from "system/types/GameTypes";
 import {RoomManager} from "system/Database/RoomManager";
 import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager";
 import TransitionManager from "system/GameStates/TransitionManager";
 import {YoutubeModule} from "pages/ingame/Left/MusicPanel/MusicModule/YoutubeModule";
 import {setMyTimer} from "pages/components/ui/MyTimer/MyTimer";
 import {RoomContextType} from "system/context/roomInfo/RoomContextProvider";
+import {DS} from "system/configs/DS";
 
 export const HEURISTIC_INIT_TIME = 3;
 export const REVEAL_TIME = 5;
@@ -93,11 +94,14 @@ export default function MusicModule() {
         const player = e.target;
         const state = e.data as YtState;
         if (state === YtState.Playing) {
-            adjustPlayTime(player, e, guessTime, musicEntry.seed);
+            adjustPlayTime(player, e, musicEntry.seed, ctx.room.header.settings);
         }
     }
 
-    const blockCss = `${classes.youtubeBlock} ${(playerState === MusicStatus.Revealing) ? classes.show : classes.hide}`;
+    const blockCss = `${classes.youtubeBlock} 
+    ${
+        (DS.ytDebug || playerState === MusicStatus.Revealing) ? classes.show : classes.hide
+    }`;
     return <div className={classes.container}>
         <div className={blockCss}>
             {youtubeElement}
@@ -135,18 +139,21 @@ export function cleanMusic() {
     cRef.set(RoomManager.getDefaultMusic());
 }
 
-function adjustPlayTime(player: any, e: any, guessTime: number, seed: number) {
+function adjustPlayTime(player: any, e: any, seed: number, settings: RoomSettings) {
+    e.target.setPlaybackRate(+settings.speed);
     if (player.getCurrentTime() >= HEURISTIC_INIT_TIME) return;
+    console.log(settings.playAt, PlayAt.Start, settings.playAt === PlayAt.Start);
+    if (settings.playAt === PlayAt.Start) return;
     const duration = e.target.getDuration();
-    const totalPlayTime = guessTime + REVEAL_TIME;
+    const totalPlayTime = (settings.guessTime + REVEAL_TIME) * +settings.speed;
     const acceptableEndTime = duration - totalPlayTime;//Make sure video does not finish.
+    // console.log(`${acceptableEndTime} / ${duration} /${totalPlayTime}`);
     if (acceptableEndTime < HEURISTIC_INIT_TIME) return;//no need to set time.  it will reach the end no matter what.
-    const randomOffset = HEURISTIC_INIT_TIME + (seed / 100) * (acceptableEndTime - HEURISTIC_INIT_TIME); // total length of available time.
-    // console.log("Random ", randomOffset);
-    e.target.seekTo(randomOffset, true);
-    // const rates = e.target.getAvailablePlaybackRates();
-    // console.log("Rates ", rates);
-    e.target.setPlaybackRate(3);
-    //TODO
-    //0.25 0.5 0.75 1 1.25 1.5 1.75 2
+    if (settings.playAt === PlayAt.End) {
+        e.target.seekTo(acceptableEndTime, true);
+        return;
+    } else {
+        const randomOffset = HEURISTIC_INIT_TIME + (seed / 100) * (acceptableEndTime - HEURISTIC_INIT_TIME); // total length of available time.
+        e.target.seekTo(randomOffset, true);
+    }
 }
