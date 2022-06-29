@@ -7,7 +7,7 @@ import {LocalContext} from "system/context/localInfo/LocalContextProvider";
 import {TurnManager} from "system/GameStates/TurnManager";
 import {PlayerDbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import MusicSelector from "pages/lobby/Left/MusicSelector/MusicSelector";
-import PlayTimeSettings from "pages/lobby/Left/MusicSelector/PlayTimeSettings";
+import GamePlaySettings from "pages/lobby/Left/MusicSelector/GamePlaySettings";
 import SettingsDisplay from "pages/lobby/Left/SettingsDisplay/SettingsDisplay";
 
 const MAX_NAME_LENGTH = 16;
@@ -48,10 +48,9 @@ export default function LobbySettings() {
                     onBlur={onFinishEditName}
                     defaultValue={myEntry.player.name}
                 ></textarea>
-                <button className={`${classes.fieldType}`}
-                        onClick={onClickCopy}>{`방 코드: ${ReferenceManager.channelId} 복사`}
+                <button className={`${classes.fieldTypeSmall}`}
+                        onClick={onClickCopy}>{`방 번호: ${ReferenceManager.channelId} 복사`}
                 </button>
-                {/*<a href={"https://chat.haruhi.boats/"} target={"_blank"}>중계기</a>*/}
                 <br/>
                 <a href={"https://docs.google.com/spreadsheets/d/1QluDRTVw7qz5rE46MpLYEFj_WntZUNa3THLvBeuvVJY/edit?usp=sharing"}
                    target={"_blank"}>수동파일설정가이드</a>
@@ -61,7 +60,7 @@ export default function LobbySettings() {
             </div>
             {
                 amHost && <div className={`${classes.hostSettingsContainer} `}>
-                    <PlayTimeSettings/>
+                    <GamePlaySettings/>
                     <MusicSelector/>
                 </div>
             }

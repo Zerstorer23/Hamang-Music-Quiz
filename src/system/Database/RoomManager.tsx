@@ -5,6 +5,7 @@ import {Game, GameStatus, MusicEntry, MusicStatus, Player, Room, RoomHeader} fro
 import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import {MusicManager, MusicObject} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager";
 import {DS} from "system/configs/DS";
+import {PlayAt, PlaySpeed} from "pages/ingame/Left/MusicPanel/MusicModule/MusicModule";
 
 export class RoomManager {
 
@@ -18,6 +19,9 @@ export class RoomManager {
                 guessTime: !DS.StrictRules ? 5 : GameConfigs.defaultGuessTime,
                 songsPlay: !DS.StrictRules ? 5 : GameConfigs.defaultSongNumber,
                 limitedCommunication: false,
+                playAt: PlayAt.Random,
+                speed: PlaySpeed.Normal,
+                useArtists: false,
             },
         };
     }
@@ -27,7 +31,8 @@ export class RoomManager {
             team: "버그",
             answers: ["Calc"],
             videoId: "oidKy7khp8o",
-            title: "Calc.[이게 보이면 버그있음]"
+            title: "Calc.[이게 보이면 버그있음]",
+            artists: []
         };
     }
 

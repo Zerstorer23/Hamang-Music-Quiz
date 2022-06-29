@@ -1,4 +1,5 @@
 import {MusicObject} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager";
+import {PlayAt, PlaySpeed} from "pages/ingame/Left/MusicPanel/MusicModule/MusicModule";
 
 export type Player = {
     isSpectating: boolean; //may not need it
@@ -17,6 +18,9 @@ export type RoomSettings = {
     guessTime: number,
     songsPlay: number,
     limitedCommunication: boolean,
+    playAt: PlayAt,
+    speed: PlaySpeed,
+    useArtists: boolean,
 }
 export type RoomHeader = {
     seed: number;

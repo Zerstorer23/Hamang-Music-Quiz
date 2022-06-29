@@ -6,6 +6,7 @@ import {connect} from "pages/components/ui/ChatModule/ChatRelay";
 import InGame from "pages/ingame/InGame";
 import ChatLoader from "pages/components/ui/ChatModule/ChatLoader";
 import GameOverPage from "pages/gameOver/GameOverPage";
+import VideoGuard from "pages/components/ui/VideoGuard/VideoGuard";
 
 export enum Navigation {
     Loading = "/loading",
@@ -22,6 +23,7 @@ function App() {
         <Fragment>
             <DataLoader>
                 <ChatLoader/>
+                <VideoGuard/>
                 <Switch>
                     <Route path={Navigation.Lobby} exact>
                         <Lobby/>

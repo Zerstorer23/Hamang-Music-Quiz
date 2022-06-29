@@ -12,11 +12,30 @@ import {YoutubeModule} from "pages/ingame/Left/MusicPanel/MusicModule/YoutubeMod
 import {setMyTimer} from "pages/components/ui/MyTimer/MyTimer";
 import {RoomContextType} from "system/context/roomInfo/RoomContextProvider";
 
-export const HEURISTIC_INIT_TIME = 4;
+export const HEURISTIC_INIT_TIME = 3;
 export const REVEAL_TIME = 5;
 export const RECEIVE_ANSWER_TIME = 1;
 
-enum YtState {
+export enum PlayAt {
+    Start,
+    Random,
+    End
+}
+
+// const rates = e.target.getAvailablePlaybackRates();
+// console.log("Rates ", rates);
+// e.target.setPlaybackRate(3);
+//TODO
+//0.25 0.5 0.75 1 1.25 1.5 1.75 2
+export enum PlaySpeed {
+    Slowest = 0.25,
+    Slow = 0.5,
+    Normal = 1,
+    Fast = 1.5,
+    Fastest = 2,
+}
+
+export enum YtState {
     NotStarted = -1,
     Finished = 0,
     Playing = 1,
@@ -125,4 +144,9 @@ function adjustPlayTime(player: any, e: any, guessTime: number, seed: number) {
     const randomOffset = HEURISTIC_INIT_TIME + (seed / 100) * (acceptableEndTime - HEURISTIC_INIT_TIME); // total length of available time.
     // console.log("Random ", randomOffset);
     e.target.seekTo(randomOffset, true);
+    // const rates = e.target.getAvailablePlaybackRates();
+    // console.log("Rates ", rates);
+    e.target.setPlaybackRate(3);
+    //TODO
+    //0.25 0.5 0.75 1 1.25 1.5 1.75 2
 }

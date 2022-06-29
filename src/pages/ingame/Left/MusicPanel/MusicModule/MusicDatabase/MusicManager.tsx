@@ -14,17 +14,42 @@ export type MusicObject = {
     videoId: string,
     title: string,
     answers: string[],
+    artists: string[],
 }
 type MusicCSVEntry = {
     team: string,
     video: string,
     title: string,
+    artistMain?: string,
+    artistSub?: string,
     ko_translate: string,
     ko_read: string,
     en_read: string,
     sub1: string,
     sub2: string,
     sub3: string,
+}
+
+function parseVideoEntry(item: MusicCSVEntry) {
+    const obj: MusicObject = {
+        team: item.team,
+        videoId: InputManager.cleanseVid(item.video),
+        title: item.title,
+        answers: [],
+        artists: [],
+    };
+    const answers = [item.ko_translate, item.ko_read, item.en_read, item.sub1, item.sub2, item.sub3];
+    obj.answers = answers.filter((ans) => {
+        if (ans === undefined) return false;
+        return ans.length > 0;
+    });
+    obj.artists = [...parseArtistTag(item.artistMain), ...parseArtistTag(item.artistSub)];
+    return obj;
+}
+
+function parseArtistTag(tag?: string): string[] {
+    if (tag === undefined || tag === null || tag.length === 0) return [];
+    return tag.split("/");
 }
 
 export class MusicManager {
@@ -43,17 +68,7 @@ export class MusicManager {
             rows.forEach((item: MusicCSVEntry) => {
                     lastItem = item;
                     if (item.video === undefined) return;
-                    const obj: MusicObject = {
-                        team: item.team,
-                        videoId: InputManager.cleanseVid(item.video),
-                        title: item.title,
-                        answers: []
-                    };
-                    const answers = [item.ko_translate, item.ko_read, item.en_read, item.sub1, item.sub2, item.sub3];
-                    obj.answers = answers.filter((ans) => {
-                        if (ans === undefined) return false;
-                        return ans.length > 0;
-                    });
+                    const obj = parseVideoEntry(item);
                     library.put(obj);
                     line++;
                 }
