@@ -6,9 +6,10 @@
 
 2. 레포지토리 복사 후 npm run build 명령어로 dependency 설치
 
-3. build/ 폴더에 CNAME 파일 제거
+3. public/ 폴더에 CNAME 파일 제거
+(도메인연결파일임)
 
-4. fbkey/ 폴더의 fakeKet.tsx 파일 참조, 파이어베이스 설정후
+4. fbkey/ 폴더의 fakeKey.tsx 파일 참조, 파이어베이스 설정후
    Database/keys/SGconfig.tsx 이름으로 붙여넣기
    (폴더없으면 생성)
 
