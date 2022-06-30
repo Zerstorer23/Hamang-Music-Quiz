@@ -6,13 +6,13 @@ import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import {Fragment, useContext, useEffect, useRef} from "react";
 import RoomContext from "system/context/roomInfo/room-context";
 import {LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
-import {sendAnnounce} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
 import {TurnManager} from "system/GameStates/TurnManager";
 import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager";
 import Dropdown from "pages/components/ui/Dropdown";
 import {PlayAt, PlaySpeed} from "pages/ingame/Left/MusicPanel/MusicModule/MusicModule";
 import {ItemPair} from "system/types/CommonTypes";
 import {presetToName} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/Presets";
+import {sendAnnounce} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
 
 export default function GamePlaySettings() {
     const ctx = useContext(RoomContext);
@@ -39,11 +39,6 @@ export default function GamePlaySettings() {
     function onToggleSafeChat() {
         const toggle = !ctx.room.header.settings.limitedCommunication;
         ReferenceManager.updateReference(DbFields.HEADER_settings_limitedCommunication, toggle);
-        if (toggle) {
-            sendAnnounce(`채팅제한 켜짐. 채팅은 3글자만. 닉네임은 ㅇㅇ만 표기.`);
-        } else {
-            sendAnnounce("채팅제한 꺼짐");
-        }
     }
 
     function onUseArtists() {
@@ -53,13 +48,17 @@ export default function GamePlaySettings() {
         sendAnnounce(`${presetToName(localCtx.getVal(LocalField.SelectedPreset))}${toggle ? "+가수" : ""} 목록이 설정됨. 수록곡 ${targetNumber}개`);
     }
 
+    function onAssistMode() {
+        const toggle = !ctx.room.header.settings.assistMode;
+        ReferenceManager.updateReference(DbFields.HEADER_settings_assistMode, toggle);
+    }
+
     function onFinishEditGuessTime(event: any) {
         if (!amHost) return;
         let guessTime = InputManager.cleanseTime(event, 8, 20);
         if (guessTime === null) return;
         guessRef.current!.value = guessTime + "";
         ReferenceManager.updateReference(DbFields.HEADER_settings_guessTime, guessTime);
-        sendAnnounce(`답안제출시간: ${guessTime}`);
     }
 
     function onFinishEditSongNumbers(event: any) {
@@ -67,19 +66,16 @@ export default function GamePlaySettings() {
         let songNumber = InputManager.cleanseSongs(event);
         songNumRef.current!.value = songNumber + "";
         ReferenceManager.updateReference(DbFields.HEADER_settings_songsPlay, songNumber);
-        sendAnnounce(`플레이 곡 수: ${songNumber}`);
     }
 
     function onSelectPlayAt(value: PlayAt) {
         if (!amHost) return;
         ReferenceManager.updateReference(DbFields.HEADER_settings_playAt, +value);
-        sendAnnounce(`재생모드: ${getPlayAtName(+value)}`);
     }
 
     function onSelectPlaySpeed(value: PlaySpeed) {
         if (!amHost) return;
         ReferenceManager.updateReference(DbFields.HEADER_settings_speed, +value);
-        sendAnnounce(`재생속도: ${getPlaySpeedName(+value)}`);
     }
 
 
@@ -88,10 +84,16 @@ export default function GamePlaySettings() {
                onChange={onToggleSafeChat}
                checked={ctx.room.header.settings.limitedCommunication}/>
         <label htmlFor={"safeChat"}>채팅제한</label>
+        <br/>
         <input type="checkbox" id={"useArtists"}
                onChange={onUseArtists}
                checked={ctx.room.header.settings.useArtists}/>
         <label htmlFor={"useArtists"}>작곡가맞추기</label>
+        <br/>
+        <input type="checkbox" id={"assistMode"}
+               onChange={onAssistMode}
+               checked={ctx.room.header.settings.assistMode}/>
+        <label htmlFor={"assistMode"}>정답미리확인</label>
         <HorizontalLayout>
             <p>재생시간:</p>
             <textarea

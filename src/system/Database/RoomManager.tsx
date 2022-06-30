@@ -22,6 +22,7 @@ export class RoomManager {
                 playAt: PlayAt.Random,
                 speed: PlaySpeed.Normal,
                 useArtists: false,
+                assistMode: false,
             },
         };
     }

@@ -18,7 +18,7 @@ export default function PlayerGridItem(props: Props) {
     const player = props.entry.player;
     const music = ctx.room.game.musicEntry;
     const cssIndex = props.index + 1;
-    const cellCss = classes[`cell${cssIndex}`];
+    const cellCss = "";//classes[`cell${cssIndex}`];
     const [gotCorrect, setGotCorrect] = useState(false);
     const revealAnswers = music.status === MusicStatus.Revealing || music.status === MusicStatus.ReceivingAnswers;
 

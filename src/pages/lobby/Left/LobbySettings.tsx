@@ -9,6 +9,7 @@ import {PlayerDbFields, ReferenceManager} from "system/Database/ReferenceManager
 import MusicSelector from "pages/lobby/Left/MusicSelector/MusicSelector";
 import GamePlaySettings from "pages/lobby/Left/MusicSelector/GamePlaySettings";
 import SettingsDisplay from "pages/lobby/Left/SettingsDisplay/SettingsDisplay";
+import SettingsChangeNotifier from "pages/lobby/Left/MusicSelector/SettingsChangeNotifier";
 
 const MAX_NAME_LENGTH = 16;
 export default function LobbySettings() {
@@ -68,6 +69,7 @@ export default function LobbySettings() {
             {
                 !amHost && <SettingsDisplay className={classes.hostSettingsContainer}/>
             }
+            <SettingsChangeNotifier/>
         </div>
     );
 }

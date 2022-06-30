@@ -18,15 +18,15 @@
     /*scrollbar-width: none; */
 }
 
+/*.chatbox::-webkit-scrollbar {*/
+/*    display: none;*/
+/*}*/
 .chatbox p {
     white-space: normal;
     word-wrap: break-word;
     word-break: break-word;
 }
 
-/*.chatbox::-webkit-scrollbar {*/
-/*    display: none;*/
-/*}*/
 
 .sendBox {
     height: 10%;

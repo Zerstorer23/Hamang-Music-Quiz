@@ -8,8 +8,15 @@
     background-color: rgba(64, 70, 78, 255);
     border: 0.2rem solid rgba(32, 32, 32, 255);
     border-radius: 0.7rem;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
+.cell::-webkit-scrollbar {
+    display: none;
+}
 
 .correct {
     font-size: 1.2rem;

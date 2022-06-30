@@ -1,6 +1,7 @@
 import classes from "./AnswerinputPanel.module.css";
+import gc from "index/global.module.css";
 import {TurnManager} from "system/GameStates/TurnManager";
-import {useContext, useEffect, useRef} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import useKeyListener, {KeyCode} from "system/hooks/useKeyListener";
 import {CursorFocusInfo, InputCursor, LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
 import RoomContext from "system/context/roomInfo/room-context";
@@ -11,8 +12,9 @@ import TransitionManager from "system/GameStates/TransitionManager";
 import {currentTimeInMills} from "system/Constants/GameConstants";
 import {sendAnnounce} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
 
-
+const ASSIST_CHANCE = 2;
 export default function AnswerInputPanel() {
+    const [assistCount, setAssistCount] = useState(ASSIST_CHANCE);
     const ctx = useContext(RoomContext);
     const localCtx = useContext(LocalContext);
     const {id: myId, player: myPlayer} = TurnManager.getMyInfo(ctx, localCtx);
@@ -39,6 +41,9 @@ export default function AnswerInputPanel() {
 
     useEffect(() => {
         handleMusicStatus(musicEntry, inputRef, myId, myPlayer, ctx.room.header.settings);
+        if (musicEntry.status === MusicStatus.WaitingMusic) {
+            setAssistCount(ASSIST_CHANCE);
+        }
     }, [musicEntry.status]);
 
     function toggleFocus(toggle: boolean) {
@@ -62,9 +67,10 @@ export default function AnswerInputPanel() {
         if (text === myPlayer.answer) return;
         if (cursorFocus.state !== InputCursor.Idle) return;
         insertAnswer(text, myPlayer, myId, musicEntry, ctx.room.playerMap);
+        if (assistCount >= 0) setAssistCount((n) => n - 1);
     }, [cursorFocus.state]);
     const [enabledCss, hintText] = inferCss(musicEntry);
-
+    const isAnswer = MusicManager.checkAnswer(ctx.room.game.musicEntry.music, myPlayer.answer, ctx.room.header.settings.useArtists);
 
     return <div className={classes.container}>
         {
@@ -79,16 +85,27 @@ export default function AnswerInputPanel() {
         }
         {
             (musicEntry.status === MusicStatus.Playing || musicEntry.status === MusicStatus.ReceivingAnswers) &&
-            <textarea className={`${classes.textInput} ${enabledCss}`}
-                      ref={inputRef}
-                      placeholder={hintText}
-                      onBlur={() => {
-                          toggleFocus(false);
-                      }}
-                      onFocus={() => {
-                          toggleFocus(true);
-                      }}
-            />
+            <div className={`${classes.textInputPanel}`}>
+                  <textarea className={`${classes.textInput} ${enabledCss}`}
+                            ref={inputRef}
+                            placeholder={hintText}
+                            onBlur={() => {
+                                toggleFocus(false);
+                            }}
+                            onFocus={() => {
+                                toggleFocus(true);
+                            }}
+                  />
+                {
+                    (assistCount >= 0 && assistCount < 2) &&
+                    <p className={`${classes.assistPanel} ${isAnswer ? gc.greenText : gc.redText}`}>
+                        {`${isAnswer ? "정답" : "오답"}`}
+                        <br/>
+                        {!isAnswer && `${assistCount}/${ASSIST_CHANCE}`}
+                    </p>
+                }
+            </div>
+
         }
         <p className={classes.playerNumDisplay}>{`${ctx.room.playerList.length}명 플레이중`}</p>
     </div>;

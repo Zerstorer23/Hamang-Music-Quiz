@@ -13,10 +13,13 @@ export default function PlayersPanel() {
     const sortedPlayers = PlayerManager.sortByWins(ctx.room.playerMap, ctx.room.playerList);
     const myEntry = TurnManager.getMyInfo(ctx, localCtx);
 
-    return <div className={`${classes.container} ${gc.round_border} ${gc.borderColor}`}>
+    const containerCss = (sortedPlayers.length <= 8) ? classes.container8 : classes.container12;
+    const maxPlayerCell = (sortedPlayers.length <= 8) ? 8 : 12;
+
+    return <div className={`${containerCss} ${gc.round_border} ${gc.borderColor}`}>
         {
-            sortedPlayers.map((player, index, array) => {
-                if (index > 7) return <Fragment key={index}/>;
+            sortedPlayers.map((player, index) => {
+                if (index >= maxPlayerCell) return <Fragment key={index}/>;
                 return <PlayerGridItem
                     key={index}
                     entry={player}
