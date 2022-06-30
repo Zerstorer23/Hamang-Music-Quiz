@@ -83,8 +83,6 @@ export default function DataLoader(props: IProps) {
     ///////////////END LISTENER--////////////////////////
     function onDisconnectCleanUp(id: string) {
         localCtx.setVal(LocalField.Id, id);
-        const myRef = ReferenceManager.getPlayerReference(id);
-        // myRef.onDisconnect().remove();
     }
 
     async function setUpRoom() {
@@ -118,7 +116,6 @@ export default function DataLoader(props: IProps) {
         switch (loadStatus) {
             case LoadStatus.selectChannel:
                 MusicManager.loadPreset(GameConfigs.defaultPreset).then(() => {
-                    console.log("CSV loaded");
                     localCtx.setVal(LocalField.SelectedPreset, GameConfigs.defaultPreset);
                     setCSVLoaded(true);
                     setStatus(LoadStatus.loaded);
@@ -127,7 +124,6 @@ export default function DataLoader(props: IProps) {
             case LoadStatus.init:
                 setJSX(<LoadingPage/>);
                 RoomDatabase.loadRoom().then((room: Room) => {
-                    console.log("Room loaded");
                     ctx.onRoomLoaded(room);
                     setRoomLoaded(true);
                     setStatus(LoadStatus.loaded);

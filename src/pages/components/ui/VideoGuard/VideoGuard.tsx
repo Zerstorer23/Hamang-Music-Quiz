@@ -24,7 +24,6 @@ function YoutubeGuardModule(p: Props) {
         const inv = setInterval(() => {
             setTimeout(() => {
                 player.playVideo();
-                // console.log("Changed");
             }, 1000);
         }, 2000);
         return () => {

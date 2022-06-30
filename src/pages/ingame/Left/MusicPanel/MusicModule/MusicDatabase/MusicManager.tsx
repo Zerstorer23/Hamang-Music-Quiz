@@ -81,7 +81,6 @@ export class MusicManager {
             return false;
         }
         this.PresetLibrary.set(presetName, library);
-        // console.log(presetName, library);
         return true;
     }
 
@@ -123,7 +122,6 @@ export class MusicManager {
     }
 
     public static buildRandomList(): number {
-        console.log(this.useArtists);
         this.MusicList = this.CurrentLibrary.applyFilter(this.useArtists);
         return this.MusicList.length;
     }

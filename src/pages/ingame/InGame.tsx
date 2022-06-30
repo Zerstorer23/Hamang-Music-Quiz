@@ -4,16 +4,12 @@ import classes from "./InGame.module.css";
 import {Fragment, useContext, useEffect} from "react";
 import RoomContext from "system/context/roomInfo/room-context";
 import {useHistory} from "react-router-dom";
-import {TurnManager} from "system/GameStates/TurnManager";
 
 import gc from "index/global.module.css";
 import {LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
-import {DS} from "system/configs/DS";
-import TransitionManager from "system/GameStates/TransitionManager";
 import {Navigation} from "index/App";
 import {GameStatus} from "system/types/GameTypes";
 import InGameChatBoard from "pages/ingame/Chat/InGameChatBoard";
-import MusicModule from "pages/ingame/Left/MusicPanel/MusicModule/MusicModule";
 import PlayersPanel from "pages/ingame/Left/Players/PlayersPanel";
 import AnswerInputPanel from "pages/ingame/Left/AnswerInput/AnswerinputPanel";
 import MusicPanel from "pages/ingame/Left/MusicPanel/MusicPanel";
@@ -23,7 +19,6 @@ export default function InGame() {
     const localCtx = useContext(LocalContext);
     const history = useHistory();
     const myId = localCtx.getVal(LocalField.Id);
-    const amHost = TurnManager.amHost(ctx, localCtx);
     const numPlayers = ctx.room.playerMap.size;
 
     useEffect(() => {

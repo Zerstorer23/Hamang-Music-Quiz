@@ -17,16 +17,19 @@ import VideoGuard from "pages/components/ui/VideoGuard/VideoGuard";
 
 export const HEURISTIC_INIT_TIME = 3;
 export const REVEAL_TIME = 5;
+export const LIMITED_PLAYTIME = 6;
 export const RECEIVE_ANSWER_TIME = 1;
 
 export enum PlayAt {
+    StartLimited,
     Start,
     Random,
-    End
+    End,
+    EndLimited
 }
 
 // const rates = e.target.getAvailablePlaybackRates();
-// console.log("Rates ", rates);
+
 // e.target.setPlaybackRate(3);
 //TODO
 //0.25 0.5 0.75 1 1.25 1.5 1.75 2
@@ -46,6 +49,9 @@ export enum YtState {
     Buffering = 3,
     VideoSignaal = 5,
 }
+
+let latestPlayer: any = null;
+let latestTimeout: any = null;
 
 export default function MusicModule() {
     const localCtx = useContext(LocalContext);
@@ -87,6 +93,7 @@ export default function MusicModule() {
                 break;
             case MusicStatus.Revealing:
                 if (!amHost) return;
+                resumePlay(ctx.room.header.settings);
                 doTimer(setMusicTimer, REVEAL_TIME, () => {
                     TransitionManager.pushMusicState(MusicStatus.WaitingMusic);
                 });
@@ -107,14 +114,16 @@ export default function MusicModule() {
     }, []);
 
     function onStateChange(e: any) {
-        const player = e.target;
+        latestPlayer = e.target;
         const state = e.data as YtState;
-        if (state === YtState.Playing) {
-            adjustPlayTime(player, e, musicEntry.seed, ctx.room.header.settings);
+        if (state === YtState.Playing && playerState === MusicStatus.Playing) {
+            const settings = ctx.room.header.settings;
+            adjustPlayTime(latestPlayer, musicEntry.seed, settings);
             setCount((n) => n + 1);
-
+            triggerLimitedPlay(settings);
         }
     }
+
 
     const blockCss = `${classes.youtubeBlock} 
     ${
@@ -131,7 +140,6 @@ export default function MusicModule() {
 }
 
 function pollMusic(ctx: RoomContextType): boolean {
-    // console.log(`remianing ${TurnManager.getRemainingSongs(ctx)}, counter ${ctx.room.game.musicEntry.counter}, total ${ctx.room.header.settings.songsPlay}`);
     if (TurnManager.getRemainingSongs(ctx) - 1 < 0) return false;
     const counter = ctx.room.game.musicEntry.counter;
     const me: MusicEntry | null = MusicManager.pollNext(counter + 1);
@@ -160,19 +168,48 @@ export function cleanMusic() {
     cRef.set(RoomManager.getDefaultMusic());
 }
 
-function adjustPlayTime(player: any, e: any, seed: number, settings: RoomSettings): boolean {
-    e.target.setPlaybackRate(+settings.speed);
-    if (player.getCurrentTime() >= HEURISTIC_INIT_TIME) return false;
-    if (settings.playAt === PlayAt.Start) return false;
-    const duration = e.target.getDuration();
+function adjustPlayTime(player: any, seed: number, settings: RoomSettings) {
+    player.setPlaybackRate(+settings.speed);
+    if (player.getCurrentTime() >= HEURISTIC_INIT_TIME) return;
+    if (settings.playAt === PlayAt.Start || settings.playAt === PlayAt.StartLimited) return;
+    const duration = player.getDuration();
     const totalPlayTime = (settings.guessTime + REVEAL_TIME) * +settings.speed;
     const acceptableEndTime = duration - totalPlayTime;//Make sure video does not finish.
-    if (acceptableEndTime < HEURISTIC_INIT_TIME) return false;//no need to set time.  it will reach the end no matter what.
-    if (settings.playAt === PlayAt.End) {
-        e.target.seekTo(acceptableEndTime, true);
+    if (acceptableEndTime < HEURISTIC_INIT_TIME) return;//no need to set time.  it will reach the end no matter what.
+    if (settings.playAt === PlayAt.EndLimited) {
+        player.seekTo(Math.max(0, duration - LIMITED_PLAYTIME), true);
+    } else if (settings.playAt === PlayAt.End) {
+        player.seekTo(acceptableEndTime, true);
     } else {
         const randomOffset = HEURISTIC_INIT_TIME + (seed / 100) * (acceptableEndTime - HEURISTIC_INIT_TIME); // total length of available time.
-        e.target.seekTo(randomOffset, true);
+        player.seekTo(randomOffset, true);
     }
-    return true;
+    return;
+}
+
+function triggerLimitedPlay(settings: RoomSettings) {
+    if (latestTimeout !== null) {
+        clearTimeout(latestTimeout);
+    }
+    if (settings.playAt === PlayAt.EndLimited || settings.playAt === PlayAt.StartLimited) {
+        latestTimeout = setTimeout(() => {
+            latestPlayer.pauseVideo();
+        }, LIMITED_PLAYTIME * 1000);
+    }
+}
+
+function resumePlay(settings: RoomSettings) {
+    if (latestTimeout !== null) {
+        clearTimeout(latestTimeout);
+    }
+    if (latestPlayer === null) return;
+    if (settings.playAt === PlayAt.StartLimited) {
+        // latestPlayer.seekTo(0, true);
+        latestPlayer.playVideo();
+    } else if (settings.playAt === PlayAt.EndLimited) {
+        const duration = latestPlayer.getDuration();
+        latestPlayer.seekTo(Math.max(0, duration - LIMITED_PLAYTIME), true);
+        latestPlayer.playVideo();
+    }
+
 }

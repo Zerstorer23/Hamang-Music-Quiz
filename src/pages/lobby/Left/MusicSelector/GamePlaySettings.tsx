@@ -134,12 +134,16 @@ export default function GamePlaySettings() {
 
 export function getPlayAtName(playAt: PlayAt): string {
     switch (playAt.toString()) {
+        case PlayAt.StartLimited.toString():
+            return "전주 5초만";
         case PlayAt.Start.toString():
             return "전주";
         case PlayAt.Random.toString():
             return "무작위";
         case PlayAt.End.toString():
             return "끝";
+        case PlayAt.EndLimited.toString():
+            return "마지막 5초만";
     }
     return "?";
 }
@@ -153,7 +157,8 @@ export function getPlaySpeedName(speed: PlaySpeed) {
     }
 }
 
-const playSpeedPairs: ItemPair[] = [PlaySpeed.Slowest,
+const playSpeedPairs: ItemPair[] = [
+    PlaySpeed.Slowest,
     PlaySpeed.Slow,
     PlaySpeed.Normal,
     PlaySpeed.Fast,
@@ -165,10 +170,12 @@ const playSpeedPairs: ItemPair[] = [PlaySpeed.Slowest,
     };
 });
 const playAtPairs: ItemPair[] = [
+    PlayAt.StartLimited,
     PlayAt.Start,
     PlayAt.Random,
     PlayAt.End,
-].map((value, index, array) => {
+    PlayAt.EndLimited,
+].map((value) => {
     return {
         label: getPlayAtName(value),
         value: value.toString(),
