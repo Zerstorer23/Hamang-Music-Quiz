@@ -54,8 +54,9 @@ export default function MusicModule() {
     const playerState = musicEntry.status;
     // const [playerState, setPlayerState] = useState<MusicStatus>(ctx.room.game.music.status);
     const [youtubeElement, setJSX] = useState(<Fragment/>);
-    const [guardElem, setGuardJSX] = useState(<Fragment/>);
     const [musicTimer, setMusicTimer] = useState<any>(null);
+
+    const [count, setCount] = useState(0);
 
     // const myId = localCtx.getVal(LocalField.Id);
     const amHost = TurnManager.amHost(ctx, localCtx);
@@ -64,7 +65,6 @@ export default function MusicModule() {
         switch (playerState) {
             case MusicStatus.WaitingMusic:
                 setJSX(<p>로딩중</p>);
-                setGuardJSX(<VideoGuard/>);
                 if (!amHost) return;
                 clearTimer(musicTimer);
                 const success = pollMusic(ctx);
@@ -86,20 +86,33 @@ export default function MusicModule() {
                 });
                 break;
             case MusicStatus.Revealing:
-                setGuardJSX(<Fragment/>);
                 if (!amHost) return;
                 doTimer(setMusicTimer, REVEAL_TIME, () => {
                     TransitionManager.pushMusicState(MusicStatus.WaitingMusic);
                 });
                 break;
         }
+
     }, [playerState]);
+    useEffect(() => {
+        const inv = setInterval(() => {
+            const elems = document.querySelectorAll("iframe");
+            elems.forEach((node) => {
+                node.setAttribute("title", "");
+            });
+        }, 5000);
+        return () => {
+            clearInterval(inv);
+        };
+    }, []);
 
     function onStateChange(e: any) {
         const player = e.target;
         const state = e.data as YtState;
         if (state === YtState.Playing) {
             adjustPlayTime(player, e, musicEntry.seed, ctx.room.header.settings);
+            setCount((n) => n + 1);
+
         }
     }
 
@@ -108,10 +121,11 @@ export default function MusicModule() {
         (DS.ytDebug || playerState === MusicStatus.Revealing) ? classes.show : classes.hide
     }`;
     const home = document.getElementById("root") as HTMLElement;
+
     return <div className={classes.container}>
+        {ReactDOM.createPortal(<VideoGuard count={count}/>, home)}
         <div className={blockCss}>
             {youtubeElement}
-            {ReactDOM.createPortal(guardElem, home)}
         </div>
     </div>;
 }
@@ -146,21 +160,19 @@ export function cleanMusic() {
     cRef.set(RoomManager.getDefaultMusic());
 }
 
-function adjustPlayTime(player: any, e: any, seed: number, settings: RoomSettings) {
+function adjustPlayTime(player: any, e: any, seed: number, settings: RoomSettings): boolean {
     e.target.setPlaybackRate(+settings.speed);
-    if (player.getCurrentTime() >= HEURISTIC_INIT_TIME) return;
-    console.log(settings.playAt, PlayAt.Start, settings.playAt === PlayAt.Start);
-    if (settings.playAt === PlayAt.Start) return;
+    if (player.getCurrentTime() >= HEURISTIC_INIT_TIME) return false;
+    if (settings.playAt === PlayAt.Start) return false;
     const duration = e.target.getDuration();
     const totalPlayTime = (settings.guessTime + REVEAL_TIME) * +settings.speed;
     const acceptableEndTime = duration - totalPlayTime;//Make sure video does not finish.
-    // console.log(`${acceptableEndTime} / ${duration} /${totalPlayTime}`);
-    if (acceptableEndTime < HEURISTIC_INIT_TIME) return;//no need to set time.  it will reach the end no matter what.
+    if (acceptableEndTime < HEURISTIC_INIT_TIME) return false;//no need to set time.  it will reach the end no matter what.
     if (settings.playAt === PlayAt.End) {
         e.target.seekTo(acceptableEndTime, true);
-        return;
     } else {
         const randomOffset = HEURISTIC_INIT_TIME + (seed / 100) * (acceptableEndTime - HEURISTIC_INIT_TIME); // total length of available time.
         e.target.seekTo(randomOffset, true);
     }
+    return true;
 }
