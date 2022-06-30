@@ -108,7 +108,6 @@ function notifyLoaded(localCtx: LocalContextType, ctx: RoomContextType, setCheck
     setChecked(MusicManager.CurrentLibrary.headers);
     localCtx.setVal(LocalField.SelectedPreset, loadedPreset);
     sendAnnounce(`${presetToName(loadedPreset)} 목록이 설정됨. 수록곡 ${numSongs}개`);
-    // console.log(numSongs, GameConfigs.defaultSongNumber, prevRoomSettingSongs);
     const adjNum = (prevRoomSettingSongs === 0) ? GameConfigs.defaultSongNumber : prevRoomSettingSongs;
     const min = Math.min(numSongs, adjNum);
     if (min === prevRoomSettingSongs) return;

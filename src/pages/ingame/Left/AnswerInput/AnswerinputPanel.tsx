@@ -1,7 +1,7 @@
 import classes from "./AnswerinputPanel.module.css";
 import gc from "index/global.module.css";
 import {TurnManager} from "system/GameStates/TurnManager";
-import {useContext, useEffect, useRef, useState} from "react";
+import {Fragment, useContext, useEffect, useRef, useState} from "react";
 import useKeyListener, {KeyCode} from "system/hooks/useKeyListener";
 import {CursorFocusInfo, InputCursor, LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
 import RoomContext from "system/context/roomInfo/room-context";
@@ -172,8 +172,13 @@ function inferCss(music: MusicEntry) {
     return [enabledCss, hintText];
 }
 
-function getAnswerString(musicEntry: MusicEntry, settings: RoomSettings): string {
+function getAnswerString(musicEntry: MusicEntry, settings: RoomSettings): JSX.Element {
     const title = musicEntry.music.title;
-    if (!settings.useArtists || musicEntry.music.artists.length === 0) return `정답은 ${title}`;
-    return `정답은 ${title} - ${musicEntry.music.artists[0].split(":").join(",")}`;
+    if (!settings.useArtists || musicEntry.music.artists.length === 0) return <Fragment>
+        {`정답은 ${title}`}
+    </Fragment>;
+    return <Fragment>
+        {`정답은 ${title}`}
+        <br/>
+        {`- ${musicEntry.music.artists[0].split(":").join(",")}`} </Fragment>;
 }

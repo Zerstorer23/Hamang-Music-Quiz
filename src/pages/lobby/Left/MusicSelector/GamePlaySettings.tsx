@@ -46,6 +46,7 @@ export default function GamePlaySettings() {
         ReferenceManager.updateReference(DbFields.HEADER_settings_useArtists, toggle);
         const targetNumber = MusicManager.pushArtists(toggle);
         sendAnnounce(`${presetToName(localCtx.getVal(LocalField.SelectedPreset))}${toggle ? "+가수" : ""} 목록이 설정됨. 수록곡 ${targetNumber}개`);
+        sendAnnounce("\"곡제목-가수1,가수2..\" 형식으로 답을 입력하세요");
     }
 
     function onAssistMode() {
@@ -88,7 +89,7 @@ export default function GamePlaySettings() {
         <input type="checkbox" id={"useArtists"}
                onChange={onUseArtists}
                checked={ctx.room.header.settings.useArtists}/>
-        <label htmlFor={"useArtists"}>작곡가맞추기</label>
+        <label htmlFor={"useArtists"}>가수 맞추기</label>
         <br/>
         <input type="checkbox" id={"assistMode"}
                onChange={onAssistMode}

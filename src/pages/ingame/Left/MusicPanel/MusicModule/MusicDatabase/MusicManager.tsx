@@ -57,6 +57,7 @@ export class MusicManager {
     public static CurrentLibrary: MusicLibrary;
     public static MusicList: MusicObject[] = [];
     private static PresetLibrary = new Map<PresetName, MusicLibrary>();
+    private static useArtists = false;
 
     public static parseCSV(results: any, presetName: PresetName, onException: any = () => {
     }) {
@@ -117,12 +118,13 @@ export class MusicManager {
     }
 
     public static pushArtists(useArtists: boolean): number {
-        MusicManager.CurrentLibrary.updateArtists(useArtists);
+        this.useArtists = useArtists;
         return MusicManager.buildRandomList();
     }
 
     public static buildRandomList(): number {
-        this.MusicList = this.CurrentLibrary.applyFilter();
+        console.log(this.useArtists);
+        this.MusicList = this.CurrentLibrary.applyFilter(this.useArtists);
         return this.MusicList.length;
     }
 
@@ -174,6 +176,32 @@ export class MusicManager {
         if (music.artists.length === 1 && music.artists[0].length === 0) return true;
         //It has answer but you didnt write any. you are always wrong
         if (myAnswer === undefined || myAnswer.length === 0) return false;
+        return this.easyCheck(music, myAnswer);
+    }
+
+    private static easyCheck(music: MusicObject, myAnswer: string) {
+        const myArtists = InputManager.cleanseAnswer(myAnswer);
+        //Now artists hs cleansed multiples.
+        //aa:bb/cc
+        let correct = false;
+        music.artists.forEach((artistTags) => {
+            if (correct) return;
+            let allFound = true; // need to find both aa and bb
+            artistTags.split(":").forEach((value) => {
+                if (!allFound) return;
+                const criteria = InputManager.cleanseAnswer(value);
+                if (!myArtists.includes(criteria)) {
+                    allFound = false;
+                }
+            });
+            if (allFound) {
+                correct = true;
+            }
+        });
+        return correct;
+    }
+
+    private static hardCheck(music: MusicObject, myAnswer: string) {
         const myArtists = myAnswer.split(",").map((value) => {
             return InputManager.cleanseAnswer(value);
         });
