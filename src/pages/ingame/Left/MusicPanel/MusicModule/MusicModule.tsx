@@ -31,7 +31,6 @@ export enum PlayAt {
 // const rates = e.target.getAvailablePlaybackRates();
 
 // e.target.setPlaybackRate(3);
-//TODO
 //0.25 0.5 0.75 1 1.25 1.5 1.75 2
 export enum PlaySpeed {
     Slowest = 0.25,

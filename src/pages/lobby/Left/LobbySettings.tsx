@@ -27,7 +27,6 @@ export default function LobbySettings() {
         }
         const myNameRef = ReferenceManager.getPlayerFieldReference(myEntry.id, PlayerDbFields.PLAYER_name);
         myNameRef.set(newName);
-        // setFishName(newName); //TODO
     }
 
 
@@ -36,7 +35,6 @@ export default function LobbySettings() {
         navigator.clipboard.writeText(`주소: ${myUrl} \n방번호: ${ReferenceManager.channelId}`);
     }
 
-//TODO on push Filter, build library, if host, check count song validity and update
     //On update count song, check validity and modify min.
     //Dont push if library size 0
     const enabledCss = myEntry.player.isReady ? classes.isDisabled : "";

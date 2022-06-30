@@ -25,7 +25,6 @@ export class PlayerManager {
     public static async joinLocalPlayer(asHost: boolean): Promise<string> {
         const playersRef = ReferenceManager.getRef(DbFields.PLAYERS);
         const player = this.getDefaultPlayer();
-
         const myRef = await playersRef.push();
         await myRef.set(player);
         await myRef.onDisconnect().remove();
@@ -33,7 +32,6 @@ export class PlayerManager {
         if (asHost) {
             ReferenceManager.updateReference(DbFields.HEADER_hostId, myId);
         }
-        // fetchFishServer(player.name);
         return myId!;
     }
 
