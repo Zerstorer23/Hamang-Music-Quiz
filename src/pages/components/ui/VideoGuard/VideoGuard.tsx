@@ -54,7 +54,7 @@ export default function VideoGuard() {
             case MusicStatus.WaitingMusic:
                 setTimeout(() => {
                     setStatus(MusicStatus.Playing);
-                }, 1000);
+                }, 100);
                 break;
             case MusicStatus.Playing:
                 setJSX(<YoutubeGuardModule vid={BLACK_SCREEN_VID}/>);

@@ -6,7 +6,6 @@ import {connect} from "pages/components/ui/ChatModule/ChatRelay";
 import InGame from "pages/ingame/InGame";
 import ChatLoader from "pages/components/ui/ChatModule/ChatLoader";
 import GameOverPage from "pages/gameOver/GameOverPage";
-import VideoGuard from "pages/components/ui/VideoGuard/VideoGuard";
 import ConsoleGuard from "pages/components/ui/VideoGuard/ConsoleGuard";
 
 export enum Navigation {
@@ -22,7 +21,7 @@ function App() {
     }, []);
     return (
         <Fragment>
-            <VideoGuard/>
+            {/*<VideoGuard/>*/}
             <DataLoader>
                 <ConsoleGuard/>
                 <ChatLoader/>

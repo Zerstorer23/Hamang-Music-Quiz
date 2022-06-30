@@ -12,6 +12,8 @@ import {YoutubeModule} from "pages/ingame/Left/MusicPanel/MusicModule/YoutubeMod
 import {setMyTimer} from "pages/components/ui/MyTimer/MyTimer";
 import {RoomContextType} from "system/context/roomInfo/RoomContextProvider";
 import {DS} from "system/configs/DS";
+import ReactDOM from "react-dom";
+import VideoGuard from "pages/components/ui/VideoGuard/VideoGuard";
 
 export const HEURISTIC_INIT_TIME = 3;
 export const REVEAL_TIME = 5;
@@ -52,6 +54,7 @@ export default function MusicModule() {
     const playerState = musicEntry.status;
     // const [playerState, setPlayerState] = useState<MusicStatus>(ctx.room.game.music.status);
     const [youtubeElement, setJSX] = useState(<Fragment/>);
+    const [guardElem, setGuardJSX] = useState(<Fragment/>);
     const [musicTimer, setMusicTimer] = useState<any>(null);
 
     // const myId = localCtx.getVal(LocalField.Id);
@@ -61,6 +64,7 @@ export default function MusicModule() {
         switch (playerState) {
             case MusicStatus.WaitingMusic:
                 setJSX(<p>로딩중</p>);
+                setGuardJSX(<VideoGuard/>);
                 if (!amHost) return;
                 clearTimer(musicTimer);
                 const success = pollMusic(ctx);
@@ -82,6 +86,7 @@ export default function MusicModule() {
                 });
                 break;
             case MusicStatus.Revealing:
+                setGuardJSX(<Fragment/>);
                 if (!amHost) return;
                 doTimer(setMusicTimer, REVEAL_TIME, () => {
                     TransitionManager.pushMusicState(MusicStatus.WaitingMusic);
@@ -102,9 +107,11 @@ export default function MusicModule() {
     ${
         (DS.ytDebug || playerState === MusicStatus.Revealing) ? classes.show : classes.hide
     }`;
+    const home = document.getElementById("root") as HTMLElement;
     return <div className={classes.container}>
         <div className={blockCss}>
             {youtubeElement}
+            {ReactDOM.createPortal(guardElem, home)}
         </div>
     </div>;
 }

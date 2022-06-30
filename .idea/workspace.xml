@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="Artists Options">
-      <change afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/SettingsChangeNotifier.tsx" afterDir="false" />
+    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="Artists Options 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index/global.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index/global.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ChatModule.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ChatModule.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/AnswerInput/AnswerinputPanel.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/AnswerInput/AnswerinputPanel.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/VideoGuard/VideoGuard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/VideoGuard/VideoGuard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/AnswerInput/AnswerinputPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/AnswerInput/AnswerinputPanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayerGridItem.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayerGridItem.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayerGridItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayerGridItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayersPanel.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayersPanel.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayersPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayersPanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/LobbySettings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/LobbySettings.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/GamePlaySettings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/GamePlaySettings.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/Database/ReferenceManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/Database/ReferenceManager.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/Database/RoomManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/Database/RoomManager.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/types/GameTypes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/types/GameTypes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicModule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicModule.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +139,7 @@
       <workItem from="1656095114913" duration="118000" />
       <workItem from="1656504928583" duration="697000" />
       <workItem from="1656506428453" duration="867000" />
-      <workItem from="1656510606387" duration="26417000" />
+      <workItem from="1656510606387" duration="28969000" />
     </task>
     <task id="LOCAL-00001" summary="HamangMQ INIT">
       <created>1655161415348</created>
@@ -466,7 +456,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656546072062</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Artists Options 2">
+      <created>1656551183633</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1656551183633</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -485,7 +482,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Build Library 1" />
     <MESSAGE value="Build Library 2" />
     <MESSAGE value="Multiplayer Design 1" />
     <MESSAGE value="Multiplayer Design 2" />
@@ -510,7 +506,8 @@
     <MESSAGE value="Video Guard and Sub settings 1" />
     <MESSAGE value="F12 and Right click disable.&#10;Music PLay Options" />
     <MESSAGE value="Artists Options" />
-    <option name="LAST_COMMIT_MESSAGE" value="Artists Options" />
+    <MESSAGE value="Artists Options 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Artists Options 2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

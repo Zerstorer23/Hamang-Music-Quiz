@@ -107,7 +107,10 @@ export default function AnswerInputPanel() {
             </div>
 
         }
-        <p className={classes.playerNumDisplay}>{`${ctx.room.playerList.length}명 플레이중`}</p>
+        <p className={classes.playerNumDisplay}>
+            {`${myPlayer.wins}점`}
+            <br/>
+            {`${ctx.room.playerList.length}명 플레이중`}</p>
     </div>;
 }
 
