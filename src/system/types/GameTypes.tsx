@@ -21,6 +21,7 @@ export type RoomSettings = {
     playAt: PlayAt,
     speed: PlaySpeed,
     useArtists: boolean,
+    blocker: boolean,
 }
 export type RoomHeader = {
     seed: number;

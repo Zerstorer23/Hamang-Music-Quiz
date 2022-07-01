@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import classes from "pages/ingame/Left/MusicPanel/MusicModule/MusicModule.module.css";
-import {Fragment, useContext, useEffect, useState} from "react";
+import React, {Fragment, useContext, useEffect, useState} from "react";
 import RoomContext from "system/context/roomInfo/room-context";
 import {TurnManager} from "system/GameStates/TurnManager";
 import {LocalContext} from "system/context/localInfo/LocalContextProvider";
@@ -61,7 +61,6 @@ export default function MusicModule() {
     // const [playerState, setPlayerState] = useState<MusicStatus>(ctx.room.game.music.status);
     const [youtubeElement, setJSX] = useState(<Fragment/>);
     const [musicTimer, setMusicTimer] = useState<any>(null);
-
     const [count, setCount] = useState(0);
 
     // const myId = localCtx.getVal(LocalField.Id);
@@ -129,10 +128,9 @@ export default function MusicModule() {
     ${
         (DS.ytDebug || playerState === MusicStatus.Revealing) ? classes.show : classes.hide
     }`;
-    const home = document.getElementById("root") as HTMLElement;
-
+    const guard = document.getElementById("guard") as HTMLElement;
     return <div className={classes.container}>
-        {ReactDOM.createPortal(<VideoGuard count={count}/>, home)}
+        {ReactDOM.createPortal(<VideoGuard count={count}/>, guard)}
         <div className={blockCss}>
             {youtubeElement}
         </div>

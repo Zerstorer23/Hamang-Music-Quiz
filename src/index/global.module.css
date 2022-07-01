@@ -20,6 +20,11 @@
     transform: translateY(-50%);
 }
 
+.hidden {
+    display: none;
+    visibility: hidden;
+}
+
 .absoluteLeftCenter {
     display: block;
     position: absolute;

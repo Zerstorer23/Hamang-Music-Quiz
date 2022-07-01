@@ -21,7 +21,6 @@ function App() {
     }, []);
     return (
         <Fragment>
-            {/*<VideoGuard/>*/}
             <DataLoader>
                 <ConsoleGuard/>
                 <ChatLoader/>

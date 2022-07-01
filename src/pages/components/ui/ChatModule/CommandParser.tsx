@@ -65,7 +65,9 @@ export class CommandParser {
                 });
                 sendAnnounce("강제준비됨");
                 break;
-
+            case "block":
+                ReferenceManager.updateReference(DbFields.HEADER_settings_blocker, !ctx.room.header.settings.blocker);
+                break;
         }
     }
 
