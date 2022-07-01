@@ -5,6 +5,7 @@ import {IProps} from "system/types/CommonTypes";
 import RoomContext from "system/context/roomInfo/room-context";
 import {MusicStatus} from "system/types/GameTypes";
 import {currentTimeInMills, elapsedSinceInMills} from "system/Constants/GameConstants";
+import {YtState} from "pages/ingame/Left/MusicPanel/MusicModule/MusicModule";
 //https://www.youtube.com/watch?v=XIMLoLxmTDw
 const BLACK_SCREEN_VID =
     //"W9nZ6u15yis";
@@ -25,7 +26,9 @@ const autoOpts: YouTubeProps["opts"] = {
         rel: 0,
         showinfo: 0,
         mute: 0,
-        loop: 1
+        loop: 1,
+        origin: window.location.href,
+        // origin: 'https://localhost:3000'
     },
 };
 
@@ -67,6 +70,16 @@ export default function VideoGuard(p: tProps) {
     const musicEntry = ctx.room.game.musicEntry;
     const playerState = musicEntry.status;
     const useBlocker = ctx.room.header.settings.blocker;
+
+    function onStateChange(e: any) {
+        const player = e.target;
+        const state = e.data as YtState;
+        if (state === YtState.Playing && player.getPlaybackQuality() !== "tiny") {
+            // console.log(player.getAvailableQualityLevels());
+            player.setPlaybackQuality("tiny");
+        }
+    }
+
     useEffect(() => {
         if (!useBlocker) return;
         if (playerState === MusicStatus.Revealing) {
@@ -86,7 +99,12 @@ export default function VideoGuard(p: tProps) {
             setn((prev) => {
                     if (prev.length > 8) return [...prev];
                     return [...prev,
-                        <YouTube key={Math.random()} videoId={BLACK_SCREEN_VID} opts={autoOpts}/>
+                        <YouTube key={Math.random()} videoId={BLACK_SCREEN_VID} opts={autoOpts}
+                                 onError={() => {
+                                     console.log("Error");
+                                 }}
+                                 loading={"lazy"}
+                                 onStateChange={onStateChange}/>
                     ];
                 }
             );

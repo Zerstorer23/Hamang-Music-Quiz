@@ -1,4 +1,3 @@
-import React from "react";
 import {DS} from "system/configs/DS";
 
 let client: WebSocket;
