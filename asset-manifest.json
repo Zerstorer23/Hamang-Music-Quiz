@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.2604d32a.css",
-    "main.js": "/static/js/main.bcb4173a.js",
+    "main.js": "/static/js/main.2493ed28.js",
     "static/media/ellieloading.png": "/static/media/ellieloading.6016e9b5f13be0631e27.png",
     "index.html": "/index.html",
     "main.2604d32a.css.map": "/static/css/main.2604d32a.css.map",
-    "main.bcb4173a.js.map": "/static/js/main.bcb4173a.js.map"
+    "main.2493ed28.js.map": "/static/js/main.2493ed28.js.map"
   },
   "entrypoints": [
     "static/css/main.2604d32a.css",
-    "static/js/main.bcb4173a.js"
+    "static/js/main.2493ed28.js"
   ]
 }
