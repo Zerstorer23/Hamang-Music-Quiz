@@ -8,7 +8,7 @@ import {LocalContext} from "system/context/localInfo/LocalContextProvider";
 import {TurnManager} from "system/GameStates/TurnManager";
 import {PlayerEntry} from "system/types/GameTypes";
 
-const SMALL_SIZE = 4;
+const SMALL_SIZE = 8;
 
 function getLastPlayer(lastVisibleIndex: number, myEntry: PlayerEntry, myRank: number, sortedPlayers: PlayerEntry[], maxPlayerCell: number) {
     let lastPlayer: PlayerEntry | null = myEntry;
@@ -39,8 +39,8 @@ export default function PlayersPanel() {
     const sortedPlayers = PlayerManager.sortByWins(ctx.room.playerMap, ctx.room.playerList);
     const myEntry = TurnManager.getMyInfo(ctx, localCtx);
     const myRank = sortedPlayers.findIndex((value, index, obj) => value.id === myEntry.id);
-    const containerCss = classes.container8; //(sortedPlayers.length <= SMALL_SIZE) ? classes.container8 : classes.container12;
-    const maxPlayerCell = SMALL_SIZE;//(sortedPlayers.length <= SMALL_SIZE) ? SMALL_SIZE : 12;
+    const containerCss = (sortedPlayers.length <= SMALL_SIZE) ? classes.container8 : classes.container12;
+    const maxPlayerCell = (sortedPlayers.length <= SMALL_SIZE) ? SMALL_SIZE : 12;
     const lastVisibleIndex = maxPlayerCell - 1;
     let lastElement = getLastPlayer(lastVisibleIndex, myEntry, myRank, sortedPlayers, maxPlayerCell);
     return <div className={`${containerCss} ${gc.round_border} ${gc.borderColor}`}>
