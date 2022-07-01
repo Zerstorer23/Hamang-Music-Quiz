@@ -19,26 +19,28 @@ export default function PlayerGridItem(props: Props) {
     const music = ctx.room.game.musicEntry;
     const cssIndex = props.index + 1;
     const cellCss = "";//classes[`cell${cssIndex}`];
-    const [gotCorrect, setGotCorrect] = useState(false);
+    const [receivedPoints, setReceivedPoints] = useState<number>(0);
     const revealAnswers = music.status === MusicStatus.Revealing || music.status === MusicStatus.ReceivingAnswers;
 
     useEffect(() => {
         if (music.status === MusicStatus.WaitingMusic) {
-            setGotCorrect(false);
+            setReceivedPoints(0);
             return;
         }
         if (music.status !== MusicStatus.Revealing) return;
-        const isAnswer = MusicManager.checkAnswer(music.music, player.answer, ctx.room.header.settings.useArtists);
-        setGotCorrect(isAnswer);
+        const points = MusicManager.checkAnswer(music.music, player.answer, ctx.room.header.settings.useArtists);
+        setReceivedPoints(points);
     }, [music.status, player.answer]);
 
     const playerAnswerDisplay = (player.answer.replaceAll(" ", "").length === 0) ? "몰루겟소요..." : player.answer;
     const isReadyText = player.isReady ? " [제출완료]" : "";
-    const answerCss = (gotCorrect) ? `${classes.correct} ${gc.greenText} ${animCss.zoomIn}` : `${animCss.slideUp}`;
+    const answerCss = (receivedPoints > 0) ? `${classes.correct} ${gc.greenText} ${animCss.zoomIn}` : `${animCss.slideUp}`;
     const playerCss = (props.isMe) ? gc.greenText : (player.isReady) ? gc.blueText : "";
+    const points = (receivedPoints > 0) ? `+${receivedPoints}점` : `(${player.wins}점)`;
+
     return <div className={`${classes.cell} ${cellCss}`}>
         <p className={playerCss}>
-            {`${cssIndex}. ${player.name} (${player.wins}점) ${isReadyText}`}
+            {`${cssIndex}. ${player.name} ${points} ${isReadyText}`}
         </p>
         {
             (revealAnswers) &&

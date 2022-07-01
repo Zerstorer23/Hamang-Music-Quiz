@@ -170,19 +170,28 @@ export function cleanMusic() {
 function adjustPlayTime(player: any, seed: number, settings: RoomSettings) {
     player.setPlaybackRate(+settings.speed);
     if (player.getCurrentTime() >= HEURISTIC_INIT_TIME) return;
-    if (settings.playAt === PlayAt.Start || settings.playAt === PlayAt.StartLimited) return;
     const duration = player.getDuration();
     const totalPlayTime = (settings.guessTime + REVEAL_TIME) * +settings.speed;
     const acceptableEndTime = duration - totalPlayTime;//Make sure video does not finish.
-    if (acceptableEndTime < HEURISTIC_INIT_TIME) return;//no need to set time.  it will reach the end no matter what.
-    if (settings.playAt === PlayAt.EndLimited) {
-        player.seekTo(Math.max(0, duration - LIMITED_PLAYTIME), true);
-    } else if (settings.playAt === PlayAt.End) {
-        player.seekTo(acceptableEndTime, true);
-    } else {
-        const randomOffset = HEURISTIC_INIT_TIME + (seed / 100) * (acceptableEndTime - HEURISTIC_INIT_TIME); // total length of available time.
-        player.seekTo(randomOffset, true);
+    let offset = 0;
+    switch (settings.playAt) {
+        case PlayAt.Start:
+            return;
+        case PlayAt.StartLimited:
+            offset = HEURISTIC_INIT_TIME + duration * 0.05; // total length of available time.
+            break;
+        case PlayAt.Random:
+            offset = HEURISTIC_INIT_TIME + (seed / 100) * (acceptableEndTime - HEURISTIC_INIT_TIME); // total length of available time.
+            break;
+        case PlayAt.End:
+            offset = acceptableEndTime;
+            break;
+        case PlayAt.EndLimited:
+            offset = Math.max(0, duration * 0.95 - LIMITED_PLAYTIME);
+            break;
     }
+    if (offset < HEURISTIC_INIT_TIME) return;//no need to set time.  it will reach the end no matter what.
+    player.seekTo(offset, true);
     return;
 }
 
@@ -203,11 +212,10 @@ function resumePlay(settings: RoomSettings) {
     }
     if (latestPlayer === null) return;
     if (settings.playAt === PlayAt.StartLimited) {
-        // latestPlayer.seekTo(0, true);
         latestPlayer.playVideo();
     } else if (settings.playAt === PlayAt.EndLimited) {
         const duration = latestPlayer.getDuration();
-        latestPlayer.seekTo(Math.max(0, duration - LIMITED_PLAYTIME), true);
+        latestPlayer.seekTo(Math.max(0, duration * 0.95 - LIMITED_PLAYTIME), true);
         latestPlayer.playVideo();
     }
 

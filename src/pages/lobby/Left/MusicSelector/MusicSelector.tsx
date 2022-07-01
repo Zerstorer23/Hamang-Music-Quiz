@@ -5,7 +5,7 @@ import classes from "pages/lobby/Left/MusicSelector/MusicSelector.module.css";
 import RoomContext from "system/context/roomInfo/room-context";
 import {LocalContext, LocalContextType, LocalField} from "system/context/localInfo/LocalContextProvider";
 import {TurnManager} from "system/GameStates/TurnManager";
-import {sendAnnounce} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
+import ChatContext, {ChatContextType, sendAnnounce} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
 import CSVLoader from "pages/lobby/Left/MusicSelector/CSVLoader";
 import Dropdown from "pages/components/ui/Dropdown";
 import gc from "index/global.module.css";
@@ -19,6 +19,7 @@ import {GameConfigs} from "system/configs/GameConfigs";
 export default function MusicSelector() {
     const ctx = useContext(RoomContext);
     const localCtx = useContext(LocalContext);
+    const chatCtx = useContext(ChatContext);
     const prevSelected = localCtx.getVal(LocalField.SelectedPreset) as PresetName;
     const [dropdownPreset, setDropDownPreset] = useIncrementalState<PresetName>(prevSelected);
     const [loadedPreset, setLoadedPreset] = useIncrementalState<PresetName>(prevSelected);
@@ -32,14 +33,14 @@ export default function MusicSelector() {
     }, [dropdownPreset.counter]);
     //Updae UI if preset IS loaded.
     useEffect(() => {
-        notifyLoaded(localCtx, ctx, setChecked, loadedPreset.value);
+        notifyLoaded(chatCtx, localCtx, ctx, setChecked, loadedPreset.value);
     }, [loadedPreset.counter]);
 
 
     function onClickReload() {
         MusicManager.loadPreset(dropdownPreset.value).then((success: boolean) => {
             if (!success) return;
-            notifyLoaded(localCtx, ctx, setChecked, loadedPreset.value);
+            notifyLoaded(chatCtx, localCtx, ctx, setChecked, loadedPreset.value);
         });
     }
 
@@ -102,12 +103,13 @@ function tryPreset(dropdownPreset: PresetName, setLoadedPreset: any) {
     });
 }
 
-function notifyLoaded(localCtx: LocalContextType, ctx: RoomContextType, setChecked: any, loadedPreset: PresetName) {
+function notifyLoaded(chatCtx: ChatContextType, localCtx: LocalContextType, ctx: RoomContextType, setChecked: any, loadedPreset: PresetName) {
     const numSongs = MusicManager.MusicList.length;
     const prevRoomSettingSongs = ctx.room.header.settings.songsPlay;
     setChecked(MusicManager.CurrentLibrary.headers);
     localCtx.setVal(LocalField.SelectedPreset, loadedPreset);
     sendAnnounce(`${presetToName(loadedPreset)} 목록이 설정됨. 수록곡 ${numSongs}개`);
+    chatCtx.localAnnounce("곡 수가 안맞으면 다시로드를 눌러보세요");
     const adjNum = (prevRoomSettingSongs === 0) ? GameConfigs.defaultSongNumber : prevRoomSettingSongs;
     const min = Math.min(numSongs, adjNum);
     if (min === prevRoomSettingSongs) return;

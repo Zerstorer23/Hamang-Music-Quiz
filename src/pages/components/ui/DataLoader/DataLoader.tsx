@@ -21,6 +21,7 @@ import LoadingPage from "pages/components/ui/LoadingPage/LoadingPage";
 import {GameConfigs} from "system/configs/GameConfigs";
 import {TurnManager} from "system/GameStates/TurnManager";
 import TransitionManager from "system/GameStates/TransitionManager";
+import {ArtistDB} from "system/Database/ArtistDB";
 
 function checkNull<T>(snapshot: Snapshot): [boolean, T] {
     const data: T = snapshot.val();
@@ -93,11 +94,6 @@ export default function DataLoader(props: IProps) {
     async function playerJoin() {
         const myId = await RoomDatabase.joinLobby();
         onDisconnectCleanUp(myId);
-        /*        if (!ctx.room.playerMap.has(ctx.room.header.hostId)) {
-                    //NOTE SOmething wrong in this room. Eject
-                    await ReferenceManager.getRef(DbFields.ROOM).remove();
-                    window.location.reload();
-                }*/
     }
 
     function joinPlayer() {
@@ -115,6 +111,7 @@ export default function DataLoader(props: IProps) {
     useEffect(() => {
         switch (loadStatus) {
             case LoadStatus.selectChannel:
+                ArtistDB.initIdolmasterArtistsMap();
                 MusicManager.loadPreset(GameConfigs.defaultPreset).then(() => {
                     localCtx.setVal(LocalField.SelectedPreset, GameConfigs.defaultPreset);
                     setCSVLoaded(true);

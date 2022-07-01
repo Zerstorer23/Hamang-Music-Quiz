@@ -17,7 +17,7 @@ export default function SettingsChangeNotifier() {
     }, [settings.limitedCommunication]);
     useEffect(() => {
         chatCtx.localAnnounce(`정답미리확인 ${settings.assistMode ? " ON" : " OFF"}`);
-        chatCtx.localAnnounce(`정답제출시 최대 2번 미리 오답확인이 가능합니다.`);
+        if (settings.assistMode) chatCtx.localAnnounce(`정답제출시 최대 2번 미리 오답확인이 가능합니다.`);
     }, [settings.assistMode]);
     useEffect(() => {
         sendAnnounce(`재생속도: ${getPlaySpeedName(+settings.speed)}`);

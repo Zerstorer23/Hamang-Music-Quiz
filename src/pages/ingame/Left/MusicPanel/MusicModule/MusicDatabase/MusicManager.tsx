@@ -86,10 +86,13 @@ export class MusicManager {
 
     public static async loadPreset(presetName: PresetName) {
         const response = await fetch(`presets/${presetName}.csv`)!;
-        const reader = response.body!.getReader();
-        const result = await reader.read(); // raw array
-        const decoder = new TextDecoder('utf-8');
-        const csv = decoder.decode(result.value); // the csv text
+        const csv = await response.text();
+        //https://stackoverflow.com/questions/54842343/papaparse-not-parsing-full-data
+        /*        const reader = response.body!.getReader();
+                const result = await reader.read(); // raw array
+                const decoder = new TextDecoder('utf-8');
+                const csv = decoder.decode(result.value); // the csv text*/
+        // console.log(csv);
         const results = Papa.parse(csv, {header: true}); // object with { data, errors, meta }
         const success = this.parseCSV(results, presetName, (a: any) => {
             console.warn(presetName + ": " + a);
@@ -140,13 +143,13 @@ export class MusicManager {
         };
     }
 
-    public static checkAnswer(music: MusicObject, myAnswer: string, checkArtist: boolean): boolean {
-        if (myAnswer.length <= 0) return false;
-        if (music === null) return false;
+    public static checkAnswer(music: MusicObject, myAnswer: string, checkArtist: boolean): number {
+        if (myAnswer.length <= 0) return 0;
+        if (music === null) return 0;
         const ansParts = myAnswer.split("-");
-        const correctSongName = this.checkSongName(music, ansParts[0]);
-        if (!checkArtist || !correctSongName) return correctSongName;
-        return this.checkArtists(music, ansParts[1]);
+        const songPoint = this.checkSongName(music, ansParts[0]);
+        if (!checkArtist) return +(songPoint.toFixed(2));
+        return +((0.5 * songPoint + 0.5 * this.checkArtists(music, ansParts[1])).toFixed(2));
     }
 
     public static addPoints(player: PlayerEntry) {
@@ -154,9 +157,8 @@ export class MusicManager {
         ReferenceManager.atomicDeltaByPlayerField(player.id, PlayerDbFields.PLAYER_totalWin, 1);
     }
 
-    private static checkSongName(music: MusicObject, myAnswer: string): boolean {
+    private static checkSongName(music: MusicObject, myAnswer: string): number {
         myAnswer = InputManager.cleanseAnswer(myAnswer);
-
         let correct = false;
         music.answers.forEach((value) => {
             if (correct) return;
@@ -165,66 +167,41 @@ export class MusicManager {
                 correct = true;
             }
         });
-        return correct;
+        return (correct) ? 1 : 0;
     }
 
-    private static checkArtists(music: MusicObject, myAnswer?: string): boolean {
+    private static checkArtists(music: MusicObject, myAnswer?: string): number {
         //It has no answer. you are always correct
-        if (music.artists.length === 0) return true;
-        if (music.artists.length === 1 && music.artists[0].length === 0) return true;
+        if (music.artists.length === 0) return 1;
+        if (music.artists.length === 1 && music.artists[0].length === 0) return 1;
         //It has answer but you didnt write any. you are always wrong
-        if (myAnswer === undefined || myAnswer.length === 0) return false;
-        return this.easyCheck(music, myAnswer);
+        if (myAnswer === undefined || myAnswer.length === 0) return 0;
+        return this.hardCheck(music, myAnswer);
     }
 
-    private static easyCheck(music: MusicObject, myAnswer: string) {
-        const myArtists = InputManager.cleanseAnswer(myAnswer);
-        //Now artists hs cleansed multiples.
-        //aa:bb/cc
-        let correct = false;
-        music.artists.forEach((artistTags) => {
-            if (correct) return;
-            let allFound = true; // need to find both aa and bb
-            artistTags.split(":").forEach((value) => {
-                if (!allFound) return;
-                const criteria = InputManager.cleanseAnswer(value);
-                if (!myArtists.includes(criteria)) {
-                    allFound = false;
-                }
-            });
-            if (allFound) {
-                correct = true;
-            }
-        });
-        return correct;
-    }
-
-    private static hardCheck(music: MusicObject, myAnswer: string) {
+    private static hardCheck(music: MusicObject, myAnswer: string): number {
         const myArtists = myAnswer.split(",").map((value) => {
-            return InputManager.cleanseAnswer(value);
+            return InputManager.cleanseArtistAnswer(value);
         });
         //Now artists hs cleansed multiples.
         //aa:bb/cc
-        let correct = false;
+        let highestPoint = 0;
+        //For each answer...
         music.artists.forEach((artistTags) => {
-            if (correct) return;
+            //You need these artists.
             const requiredArtists: string[] = artistTags.split(":").map((value) => {
-                return InputManager.cleanseAnswer(value);
+                return InputManager.cleanseArtistAnswer(value);
             });
-            //Not same number. it is wrong
-            if (requiredArtists.length !== myArtists.length) return;
-            let allFound = true; // need to find both aa and bb
+            let found = 0; // need to find both aa and bb
             //Is ALl my artist answer in answer criteria?
             myArtists.forEach((artist: string) => {
-                if (!allFound) return;
-                if (!requiredArtists.includes(artist)) {
-                    allFound = false;
+                if (requiredArtists.includes(artist)) {
+                    found++;
                 }
             });
-            if (allFound) {
-                correct = true;
-            }
+            //Get most found answer.
+            highestPoint = Math.max(highestPoint, (+found / +myArtists.length));
         });
-        return correct;
+        return highestPoint;
     }
 }

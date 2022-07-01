@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="More play options">
+      <change afterPath="$PROJECT_DIR$/src/system/Database/ArtistDB.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/presets/i765.csv" beforeDir="false" afterPath="$PROJECT_DIR$/public/presets/i765.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/DataLoader/DataLoader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/DataLoader/DataLoader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicModule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicModule.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/LobbySettings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/LobbySettings.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/Database/PlayerManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/Database/PlayerManager.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayerGridItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayerGridItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Center/PlayersPanel.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Center/PlayersPanel.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/MusicSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/MusicSelector.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/SettingsChangeNotifier.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/SettingsChangeNotifier.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/GameStates/InputManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/GameStates/InputManager.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,21 +147,8 @@
       <workItem from="1656506428453" duration="867000" />
       <workItem from="1656510606387" duration="36353000" />
       <workItem from="1656574626939" duration="3409000" />
-      <workItem from="1656614200704" duration="3570000" />
-    </task>
-    <task id="LOCAL-00002" summary="HamangMQ INIT 2">
-      <created>1655170308364</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1655170308364</updated>
-    </task>
-    <task id="LOCAL-00003" summary="HamangMQ INIT 3">
-      <created>1655179113395</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1655179113395</updated>
+      <workItem from="1656614200704" duration="5549000" />
+      <workItem from="1656646094518" duration="4445000" />
     </task>
     <task id="LOCAL-00004" summary="HamangMQ INIT 4">
       <created>1655180737819</created>
@@ -485,7 +479,21 @@
       <option name="project" value="LOCAL" />
       <updated>1656619161820</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="More play options">
+      <created>1656619306977</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1656619306977</updated>
+    </task>
+    <task id="LOCAL-00052" summary="More play options">
+      <created>1656619550394</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1656619550394</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

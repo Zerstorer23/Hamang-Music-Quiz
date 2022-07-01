@@ -1,11 +1,14 @@
 import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager";
 import {GameConfigs} from "system/configs/GameConfigs";
+import {ArtistDB} from "system/Database/ArtistDB";
 
 const LF = String.fromCharCode(10);
 const CR = String.fromCharCode(13);
 const reg = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
 
 export class InputManager {
+
+
     public static cleanseTime(event: any, min: number, defaultVal: number): number | null {
         let numVal: number = +event.target.value;
         if (isNaN(numVal)) {
@@ -51,6 +54,14 @@ export class InputManager {
         return answer;
     }
 
+    public static cleanseArtistAnswer(answer: string): string {
+        const cleansedAnswer = this.cleanseAnswer(answer);
+        if (ArtistDB.imasArtistMap.has(cleansedAnswer)) {
+            return ArtistDB.imasArtistMap.get(cleansedAnswer)!;
+        }
+        return cleansedAnswer;
+    }
+
     public static cleanseChat(answer: string): string {
         answer = answer.replaceAll(LF, "");
         answer = answer.replaceAll(CR, "");
@@ -61,7 +72,6 @@ export class InputManager {
     }
 
     public static cleanseVid(url: string) {
-
         if (url.length === 11) {
             return url;
         } else if (url.includes("youtu.be")) {
@@ -72,6 +82,5 @@ export class InputManager {
             let temp = url.indexOf("v=");
             return url.substring(temp + 2, temp + 13);
         }
-
     }
 }
