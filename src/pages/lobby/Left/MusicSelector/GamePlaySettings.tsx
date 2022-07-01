@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import HorizontalLayout from "pages/components/ui/HorizontalLayout";
 import classes from "pages/lobby/Left/LobbySettings.module.css";
 import gc from "index/global.module.css";
@@ -46,7 +47,7 @@ export default function GamePlaySettings() {
         ReferenceManager.updateReference(DbFields.HEADER_settings_useArtists, toggle);
         const targetNumber = MusicManager.pushArtists(toggle);
         sendAnnounce(`${presetToName(localCtx.getVal(LocalField.SelectedPreset))}${toggle ? "+가수" : ""} 목록이 설정됨. 수록곡 ${targetNumber}개`);
-        sendAnnounce("\"곡제목-가수1,가수2..\" 형식으로 답을 입력하세요");
+        if (toggle) sendAnnounce("\"곡제목-가수1,가수2..\" 형식으로 답을 입력하세요");
     }
 
     /*    function onAssistMode() {

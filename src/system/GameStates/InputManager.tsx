@@ -4,7 +4,10 @@ import {ArtistDB} from "system/Database/ArtistDB";
 
 const LF = String.fromCharCode(10);
 const CR = String.fromCharCode(13);
+// eslint-disable-next-line
 const reg = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
+
+//const reg = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
 
 export class InputManager {
 

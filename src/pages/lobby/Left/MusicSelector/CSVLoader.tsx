@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {Fragment, useContext, useEffect, useState} from "react";
 
 import Papa from "papaparse";

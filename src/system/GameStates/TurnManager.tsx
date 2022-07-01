@@ -1,5 +1,5 @@
 import {RoomContextType} from "system/context/roomInfo/RoomContextProvider";
-import {PlayerEntry, PlayerMap} from "system/types/GameTypes";
+import {PlayerEntry} from "system/types/GameTypes";
 import {LocalContextType, LocalField} from "system/context/localInfo/LocalContextProvider";
 
 

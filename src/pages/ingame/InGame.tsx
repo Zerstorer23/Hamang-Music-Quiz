@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import HorizontalLayout from "../components/ui/HorizontalLayout";
 import VerticalLayout from "../components/ui/VerticalLayout";
 import classes from "./InGame.module.css";

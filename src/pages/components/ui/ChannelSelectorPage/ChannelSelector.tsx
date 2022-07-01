@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {useContext, useEffect, useRef, useState} from "react";
 import classes from "./ChannelSelector.module.css";
 import gc from "index/global.module.css";
@@ -14,7 +15,7 @@ export default function ChannelSelector() {
     const [isValid, setValid] = useState(true);
     const localCtx = useContext(LocalContext);
 
-    function onFinish(e: any) {
+    function onFinish() {
         const num = InputManager.isNumber(inputRef.current!, 765);
         if (num < 0 || num > 999) {
             setValid(false);

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import classes from "pages/ingame/Left/MusicPanel/MusicModule/MusicModule.module.css";
 import {Fragment, useContext, useEffect, useState} from "react";
 import RoomContext from "system/context/roomInfo/room-context";

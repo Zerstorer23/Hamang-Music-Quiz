@@ -105,6 +105,7 @@ export class ArtistDB {
         this.f("765proALLSTARS", "765");
         this.f("765pro", "765");
         this.f("765프로", "765");
+        this.f("765프로올스타즈", "765");
         this.f("765프로덕션", "765");
         this.f("765Production", "765");
         this.f("IdolMasterAllStars", "ImasAllStars");

@@ -199,6 +199,11 @@ export class MusicManager {
                     found++;
                 }
             });
+            //YOu entered too much. lose points
+            const lenDiff = myArtists.length - requiredArtists.length;
+            if (lenDiff > 0) {
+                found /= (lenDiff + 1);
+            }
             //Get most found answer.
             highestPoint = Math.max(highestPoint, (+found / +requiredArtists.length));
         });

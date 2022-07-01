@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import classes from "./AnswerinputPanel.module.css";
 import gc from "index/global.module.css";
 import {TurnManager} from "system/GameStates/TurnManager";
@@ -143,7 +144,7 @@ function insertAnswer(answer: string, myPlayer: Player, myId: string, music: Mus
     ReferenceManager.updatePlayerFieldReference(myId, PlayerDbFields.PLAYER_isReady, true);
     if (music.status !== MusicStatus.Playing) return;
     let allAnswered = true;
-    playerMap.forEach((value, key, map) => {
+    playerMap.forEach((value, key) => {
         if (!allAnswered) return;
         if (key === myId) return;
         if (!value.isReady) allAnswered = false;

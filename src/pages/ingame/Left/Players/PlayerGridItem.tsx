@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {IProps} from "system/types/CommonTypes";
 import {MusicStatus, PlayerEntry} from "system/types/GameTypes";
 import classes from "./PlayerGridItem.module.css";

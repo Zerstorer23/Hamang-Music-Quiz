@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import ImagePage from "pages/components/ui/ImagePage/ImagePage";
 import {useContext, useEffect} from "react";
 import RoomContext from "system/context/roomInfo/room-context";

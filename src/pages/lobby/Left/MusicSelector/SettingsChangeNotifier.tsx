@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {Fragment, useContext, useEffect} from "react";
 import RoomContext from "system/context/roomInfo/room-context";
 import ChatContext from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";

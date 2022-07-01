@@ -1,10 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="Last VIsibility fix">
+    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="Last VIsibility fix 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayersPanel.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayersPanel.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayersPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayersPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/presets/i765.csv" beforeDir="false" afterPath="$PROJECT_DIR$/public/presets/i765.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChannelSelectorPage/ChannelSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChannelSelectorPage/ChannelSelector.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ChatLoader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ChatLoader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ChatModule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ChatModule.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/DataLoader/DataLoader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/DataLoader/DataLoader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/DataLoader/Sanitizer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/DataLoader/Sanitizer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/LoadingPage/LoadingPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/LoadingPage/LoadingPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/MyTimer/MyTimer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/MyTimer/MyTimer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/PopUp/PopUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/PopUp/PopUp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/gameOver/GameOverPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/gameOver/GameOverPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ingame/InGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/InGame.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/AnswerInput/AnswerinputPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/AnswerInput/AnswerinputPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicModule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicModule.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayerGridItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayerGridItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/LobbySettings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/LobbySettings.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/CSVLoader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/CSVLoader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/GamePlaySettings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/GamePlaySettings.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/MusicSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/MusicSelector.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/SettingsChangeNotifier.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/SettingsChangeNotifier.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/Database/ArtistDB.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/Database/ArtistDB.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/GameStates/InputManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/GameStates/InputManager.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/GameStates/TransitionManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/GameStates/TransitionManager.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/GameStates/TurnManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/GameStates/TurnManager.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/hooks/useKeyListener.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/hooks/useKeyListener.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,32 +68,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Code Repos/IdeaProjects/hamang-music-quiz/public/presets&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\Code Repos\\IdeaProjects\\hamang-music-quiz\\node_modules\\typescript\\lib&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "code.cleanup.on.save": "true",
+    "last_opened_file_path": "D:/Code Repos/IdeaProjects/hamang-music-quiz/public",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "rearrange.code.on.save": "true",
+    "settings.editor.selected.configurable": "actions.on.save",
+    "ts.external.directory.path": "D:\\Code Repos\\IdeaProjects\\hamang-music-quiz\\node_modules\\typescript\\lib"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\public" />
       <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\public\presets" />
       <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\src\pages\components\ui" />
       <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\build\presets" />
       <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\src\system\Database" />
-      <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\public\presets" />
@@ -140,14 +165,7 @@
       <workItem from="1656510606387" duration="36353000" />
       <workItem from="1656574626939" duration="3409000" />
       <workItem from="1656614200704" duration="5549000" />
-      <workItem from="1656646094518" duration="8292000" />
-    </task>
-    <task id="LOCAL-00006" summary="Game Core Design 2">
-      <created>1655238496964</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1655238496964</updated>
+      <workItem from="1656646094518" duration="11970000" />
     </task>
     <task id="LOCAL-00007" summary="Game Core Design 3">
       <created>1655240698109</created>
@@ -485,7 +503,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656654485749</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Last VIsibility fix">
+      <created>1656654555614</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1656654555614</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -504,7 +529,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Multiple Library 1" />
     <MESSAGE value="DS Direct Connect" />
     <MESSAGE value="File Loader Improvement" />
     <MESSAGE value="Remembering file selected" />
@@ -529,18 +553,8 @@
     <MESSAGE value="More play options" />
     <MESSAGE value="Fix CSV&#10;Better Artists" />
     <MESSAGE value="Last VIsibility fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Last VIsibility fix" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/system/GameStates/TransitionManager.tsx</url>
-          <line>8</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Last VIsibility fix 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Last VIsibility fix 2" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

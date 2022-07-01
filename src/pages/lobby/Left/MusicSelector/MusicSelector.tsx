@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import HorizontalLayout from "pages/components/ui/HorizontalLayout";
 import {Fragment, useContext, useEffect, useState} from "react";
 import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager";

@@ -1,7 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {Fragment, useContext, useEffect} from "react";
 import {useTimer} from "react-timer-hook";
 import {TimerReturnType} from "system/types/CommonTypes";
-import {RoomContextType} from "system/context/roomInfo/RoomContextProvider";
 import {
     LocalContext,
     LocalContextType,

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {Fragment, useContext, useEffect} from "react";
 import ChatContext, {ChatEntry, cleanChats} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
 import {LISTEN_CHILD_ADDED, Snapshot} from "system/types/CommonTypes";

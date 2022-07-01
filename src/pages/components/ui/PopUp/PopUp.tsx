@@ -1,12 +1,11 @@
 import classes from "./PopUp.module.css";
-import {Fragment, useContext, useEffect} from "react";
+import {Fragment, useContext} from "react";
 import ReactDOM from "react-dom";
-import {IProps} from "system/types/CommonTypes";
 import RoomContext from "system/context/roomInfo/room-context";
 
 import animClasses from "index/animation.module.css";
 import {MyTimer} from "pages/components/ui/MyTimer/MyTimer";
-import {LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
+import {LocalContext} from "system/context/localInfo/LocalContextProvider";
 import {PlayerManager} from "system/Database/PlayerManager";
 import {TurnManager} from "system/GameStates/TurnManager";
 import gc from "index/global.module.css";
@@ -18,7 +17,7 @@ function Backdrop() {
 }
 
 
-function GameOverWindow(props: IProps) {
+function GameOverWindow() {
     const ctx = useContext(RoomContext);
     const localCtx = useContext(LocalContext);
     const sortedPlayers = PlayerManager.sortByWins(ctx.room.playerMap, ctx.room.playerList);
@@ -26,7 +25,7 @@ function GameOverWindow(props: IProps) {
 
     return (
         <div className={`${classes.modal} ${animClasses.slideDown}`}>
-            {sortedPlayers.map((value, index, array) => {
+            {sortedPlayers.map((value, index) => {
                 const player = value.player;
                 const playerCss = (value.id === myEntry.id) ? gc.greenText : " ";
                 if (index > 7) return <Fragment key={index}/>;

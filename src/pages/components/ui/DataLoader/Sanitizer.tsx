@@ -1,9 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {IProps} from "system/types/CommonTypes";
 import {Fragment, useContext, useEffect, useState} from "react";
 import RoomContext from "system/context/roomInfo/room-context";
 import {useHistory} from "react-router-dom";
 import {LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
-import {TurnManager} from "system/GameStates/TurnManager";
 import {Navigation} from "index/App";
 import {GameStatus} from "system/types/GameTypes";
 
@@ -13,23 +13,6 @@ export default function Sanitizer(props: IProps) {
     const history = useHistory();
     const gameStatus = ctx.room.game.gameStatus;
     const myId = localCtx.getVal(LocalField.Id);
-    const amHost = TurnManager.amHost(ctx, localCtx);
-    const myEntry = TurnManager.getMyInfo(ctx, localCtx);
-
-    /*
-        function checkSanity(): boolean {
-            /!*    if (!amHost) {
-                    RoomDatabase.toggleRoomCleanUp(false);
-                } else {
-                    RoomDatabase.toggleRoomCleanUp(true);
-                }*!/
-            return true;
-        }
-
-        useEffect(() => {
-            // checkSanity();
-        }, [amHost]);
-    */
 
     const [valid, setValid] = useState(false);
     useEffect(() => {

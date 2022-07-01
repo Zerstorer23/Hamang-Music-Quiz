@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import classes from "pages/ingame/InGame.module.css";
 import {useContext, useEffect} from "react";
 import RoomContext from "system/context/roomInfo/room-context";

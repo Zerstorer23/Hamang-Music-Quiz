@@ -1,7 +1,6 @@
 import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import {Game, GameStatus, MusicStatus} from "system/types/GameTypes";
 import {RoomManager} from "system/Database/RoomManager";
-import {RoomContextType} from "system/context/roomInfo/RoomContextProvider";
 
 
 export enum TransitionAction {

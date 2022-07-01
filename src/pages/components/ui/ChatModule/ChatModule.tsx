@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useCallback, useContext, useEffect, useRef} from "react";
 import classes from "./ChatModule.module.css";
 import ChatContext, {

@@ -52,7 +52,10 @@ export default function LobbySettings() {
                 </button>
                 <br/>
                 <a href={"https://docs.google.com/spreadsheets/d/1QluDRTVw7qz5rE46MpLYEFj_WntZUNa3THLvBeuvVJY/edit?usp=sharing"}
-                   target={"_blank"}>수동파일설정가이드</a>
+                   target={"_blank"}>수동파일설정</a>
+                /
+                <a href={"https://docs.google.com/spreadsheets/d/1E89UuJwiR3yRKNjifMK4nArg0iO7Ish09BHkMexXqo8/edit?usp=sharing"}
+                   target={"_blank"}>765시트</a>
                 <br/>
                 <p>모바일 유저는 데스크탑보기모드 꼭 켜주라!</p>
                 <p>정답은 주로 한글 번역/발음/영문 발음/특수문자 무시</p>
