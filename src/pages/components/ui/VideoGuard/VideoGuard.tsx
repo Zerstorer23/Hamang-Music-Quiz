@@ -108,7 +108,7 @@ export default function VideoGuard(p: tProps) {
                     ];
                 }
             );
-        }, 1000);
+        }, 2000);
         return () => {
             clearTimeout(inv);
         };
