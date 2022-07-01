@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="More play options">
-      <change afterPath="$PROJECT_DIR$/src/system/Database/ArtistDB.tsx" afterDir="false" />
+    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="Fix CSV&#10;Better Artists">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/presets/i765.csv" beforeDir="false" afterPath="$PROJECT_DIR$/public/presets/i765.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/DataLoader/DataLoader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/DataLoader/DataLoader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/AnswerInput/AnswerinputPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/AnswerInput/AnswerinputPanel.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicModule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicModule.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayerGridItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayerGridItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Center/PlayersPanel.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Center/PlayersPanel.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/MusicSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/MusicSelector.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayersPanel.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayersPanel.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayersPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayersPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/GamePlaySettings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/GamePlaySettings.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/SettingsChangeNotifier.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/SettingsChangeNotifier.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/GameStates/InputManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/GameStates/InputManager.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/Database/PlayerManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/Database/PlayerManager.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/Database/ReferenceManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/Database/ReferenceManager.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/Database/RoomManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/Database/RoomManager.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/types/GameTypes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/types/GameTypes.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,14 +149,7 @@
       <workItem from="1656510606387" duration="36353000" />
       <workItem from="1656574626939" duration="3409000" />
       <workItem from="1656614200704" duration="5549000" />
-      <workItem from="1656646094518" duration="4445000" />
-    </task>
-    <task id="LOCAL-00004" summary="HamangMQ INIT 4">
-      <created>1655180737819</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1655180737819</updated>
+      <workItem from="1656646094518" duration="8218000" />
     </task>
     <task id="LOCAL-00005" summary="Game Core Design 1">
       <created>1655228009086</created>
@@ -493,7 +487,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656619550394</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Fix CSV&#10;Better Artists">
+      <created>1656650606531</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1656650606532</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -512,7 +513,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Better CHats 2" />
     <MESSAGE value="Better CHats 3" />
     <MESSAGE value="Multiple Library 1" />
     <MESSAGE value="DS Direct Connect" />
@@ -537,7 +537,8 @@
     <MESSAGE value="Video Guard 4" />
     <MESSAGE value="Wrap Up 1" />
     <MESSAGE value="More play options" />
-    <option name="LAST_COMMIT_MESSAGE" value="More play options" />
+    <MESSAGE value="Fix CSV&#10;Better Artists" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix CSV&#10;Better Artists" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

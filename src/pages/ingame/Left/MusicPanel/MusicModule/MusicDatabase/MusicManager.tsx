@@ -152,9 +152,9 @@ export class MusicManager {
         return +((0.5 * songPoint + 0.5 * this.checkArtists(music, ansParts[1])).toFixed(2));
     }
 
-    public static addPoints(player: PlayerEntry) {
-        ReferenceManager.atomicDeltaByPlayerField(player.id, PlayerDbFields.PLAYER_wins, 1);
-        ReferenceManager.atomicDeltaByPlayerField(player.id, PlayerDbFields.PLAYER_totalWin, 1);
+    public static addPoints(player: PlayerEntry, points: number) {
+        ReferenceManager.atomicDeltaByPlayerField(player.id, PlayerDbFields.PLAYER_wins, points);
+        ReferenceManager.atomicDeltaByPlayerField(player.id, PlayerDbFields.PLAYER_totalWin, points);
     }
 
     private static checkSongName(music: MusicObject, myAnswer: string): number {
@@ -193,14 +193,14 @@ export class MusicManager {
                 return InputManager.cleanseArtistAnswer(value);
             });
             let found = 0; // need to find both aa and bb
-            //Is ALl my artist answer in answer criteria?
-            myArtists.forEach((artist: string) => {
-                if (requiredArtists.includes(artist)) {
+            //Is ALLL Criteria in My answer?
+            requiredArtists.forEach((artist: string) => {
+                if (myArtists.includes(artist)) {
                     found++;
                 }
             });
             //Get most found answer.
-            highestPoint = Math.max(highestPoint, (+found / +myArtists.length));
+            highestPoint = Math.max(highestPoint, (+found / +requiredArtists.length));
         });
         return highestPoint;
     }

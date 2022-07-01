@@ -211,10 +211,11 @@ function resumePlay(settings: RoomSettings) {
         clearTimeout(latestTimeout);
     }
     if (latestPlayer === null) return;
+    const duration = latestPlayer.getDuration();
     if (settings.playAt === PlayAt.StartLimited) {
+        latestPlayer.seekTo(HEURISTIC_INIT_TIME + duration * 0.05, true);
         latestPlayer.playVideo();
     } else if (settings.playAt === PlayAt.EndLimited) {
-        const duration = latestPlayer.getDuration();
         latestPlayer.seekTo(Math.max(0, duration * 0.95 - LIMITED_PLAYTIME), true);
         latestPlayer.playVideo();
     }

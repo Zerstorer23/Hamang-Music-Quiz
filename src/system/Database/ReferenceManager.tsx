@@ -23,7 +23,7 @@ export enum DbFields {
     HEADER_settings_limitedCommunication = `/room/header/settings/limitedCommunication`,
     HEADER_settings_playAt = `/room/header/settings/playAt`,
     HEADER_settings_useArtists = `/room/header/settings/useArtists`,
-    HEADER_settings_assistMode = `/room/header/settings/assistMode`,
+    // HEADER_settings_assistMode = `/room/header/settings/assistMode`,
     HEADER_settings_speed = `/room/header/settings/speed`,
     CHAT = "/chat",
 }

@@ -49,10 +49,10 @@ export default function GamePlaySettings() {
         sendAnnounce("\"곡제목-가수1,가수2..\" 형식으로 답을 입력하세요");
     }
 
-    function onAssistMode() {
-        const toggle = !ctx.room.header.settings.assistMode;
-        ReferenceManager.updateReference(DbFields.HEADER_settings_assistMode, toggle);
-    }
+    /*    function onAssistMode() {
+            const toggle = !ctx.room.header.settings.assistMode;
+            ReferenceManager.updateReference(DbFields.HEADER_settings_assistMode, toggle);
+        }*/
 
     function onFinishEditGuessTime(event: any) {
         if (!amHost) return;
@@ -91,10 +91,10 @@ export default function GamePlaySettings() {
                checked={ctx.room.header.settings.useArtists}/>
         <label htmlFor={"useArtists"}>가수 맞추기</label>
         <br/>
-        <input type="checkbox" id={"assistMode"}
+        {/*     <input type="checkbox" id={"assistMode"}
                onChange={onAssistMode}
                checked={ctx.room.header.settings.assistMode}/>
-        <label htmlFor={"assistMode"}>정답미리확인</label>
+        <label htmlFor={"assistMode"}>정답미리확인</label>*/}
         <HorizontalLayout>
             <p>재생시간:</p>
             <textarea

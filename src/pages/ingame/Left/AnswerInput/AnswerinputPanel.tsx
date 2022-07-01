@@ -70,7 +70,7 @@ export default function AnswerInputPanel() {
         if (assistCount >= 0) setAssistCount((n) => n - 1);
     }, [cursorFocus.state]);
     const [enabledCss, hintText] = inferCss(musicEntry);
-    const isAnswer = MusicManager.checkAnswer(ctx.room.game.musicEntry.music, myPlayer.answer, ctx.room.header.settings.useArtists);
+    const points = MusicManager.checkAnswer(ctx.room.game.musicEntry.music, myPlayer.answer, ctx.room.header.settings.useArtists);
 
     return <div className={classes.container}>
         {
@@ -98,10 +98,10 @@ export default function AnswerInputPanel() {
                   />
                 {
                     (assistCount >= 0 && assistCount < 2) &&
-                    <p className={`${classes.assistPanel} ${isAnswer ? gc.greenText : gc.redText}`}>
-                        {`${isAnswer ? "정답" : "오답"}`}
+                    <p className={`${classes.assistPanel} ${(points) ? gc.greenText : gc.redText}`}>
+                        {`${points ? "정답" : "오답"}`}
                         <br/>
-                        {!isAnswer && `${assistCount}/${ASSIST_CHANCE}`}
+                        {`${points ? `+${points}점` : `${assistCount}/${ASSIST_CHANCE}`}`}
                     </p>
                 }
             </div>
@@ -126,9 +126,9 @@ function handleMusicStatus(musicEntry: MusicEntry, inputRef: any, myId: string, 
             inputRef.current?.blur();
             break;
         case MusicStatus.Revealing:
-            const isAnswer = MusicManager.checkAnswer(musicEntry.music, myPlayer.answer, settings.useArtists);
-            if (isAnswer) {
-                MusicManager.addPoints({id: myId, player: myPlayer});
+            const points = MusicManager.checkAnswer(musicEntry.music, myPlayer.answer, settings.useArtists);
+            if (points > 0) {
+                MusicManager.addPoints({id: myId, player: myPlayer}, points);
             }
             if (myPlayer.isReady) {
                 ReferenceManager.updatePlayerFieldReference(myId, PlayerDbFields.PLAYER_isReady, false);

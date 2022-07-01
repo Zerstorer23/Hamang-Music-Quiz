@@ -61,6 +61,9 @@ export class PlayerManager {
     }
 
     static createEntry(id: string, player: Player): PlayerEntry {
+        if (player.answer === undefined || player.answer === null) {
+            player = PlayerManager.getDefaultPlayer();
+        }
         return {id, player};
     }
 
