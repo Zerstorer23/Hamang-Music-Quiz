@@ -144,6 +144,7 @@ export class MusicManager {
     }
 
     public static checkAnswer(music: MusicObject, myAnswer: string, checkArtist: boolean): number {
+        if (myAnswer.length === undefined) return 0;
         if (myAnswer.length <= 0) return 0;
         if (music === null) return 0;
         const ansParts = myAnswer.split("-");
