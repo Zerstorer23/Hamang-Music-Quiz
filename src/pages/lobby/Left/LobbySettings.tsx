@@ -1,4 +1,4 @@
-import {useContext} from "react";
+import {useContext, useEffect, useRef} from "react";
 
 import gc from "index/global.module.css";
 import classes from "./LobbySettings.module.css";
@@ -10,6 +10,7 @@ import MusicSelector from "pages/lobby/Left/MusicSelector/MusicSelector";
 import GamePlaySettings from "pages/lobby/Left/MusicSelector/GamePlaySettings";
 import SettingsDisplay from "pages/lobby/Left/SettingsDisplay/SettingsDisplay";
 import SettingsChangeNotifier from "pages/lobby/Left/MusicSelector/SettingsChangeNotifier";
+import {PlayerManager} from "system/Database/PlayerManager";
 
 const MAX_NAME_LENGTH = 16;
 export default function LobbySettings() {
@@ -17,18 +18,34 @@ export default function LobbySettings() {
     const localCtx = useContext(LocalContext);
     const myEntry = TurnManager.getMyInfo(ctx, localCtx);
     const amHost = TurnManager.amHost(ctx, localCtx);
+    const nameRef = useRef<HTMLTextAreaElement>(null);
 
     async function onFinishEditName(event: any) {
         let newName: string = event.target.value;
         if (newName.length <= 1) return;
         if (myEntry.player.isReady) return;
+        if (limitedComm) return;
         if (newName.length > MAX_NAME_LENGTH) {
             newName = newName.substring(0, MAX_NAME_LENGTH);
         }
-        const myNameRef = ReferenceManager.getPlayerFieldReference(myEntry.id, PlayerDbFields.PLAYER_name);
-        myNameRef.set(newName);
+        if (myEntry.player.name === newName) return;
+        ReferenceManager.updatePlayerFieldReference(myEntry.id, PlayerDbFields.PLAYER_name, newName);
     }
 
+    const limitedComm = ctx.room.header.settings.limitedCommunication;
+    useEffect(() => {
+        if (!limitedComm) return;
+        if (
+            myEntry.player.name.includes("ㅇㅇ (")
+            && myEntry.player.name.includes(")")
+            && myEntry.player.name.includes(".")
+        ) return;
+        const newName = PlayerManager.getDefaultName();
+        ReferenceManager.updatePlayerFieldReference(myEntry.id, PlayerDbFields.PLAYER_name, newName);
+        if (nameRef !== null) {
+            nameRef.current!.value = newName;
+        }
+    }, [limitedComm]);
 
     function onClickCopy(e: any) {
         const myUrl = window.location.href;
@@ -37,12 +54,13 @@ export default function LobbySettings() {
 
     //On update count song, check validity and modify min.
     //Dont push if library size 0
-    const enabledCss = myEntry.player.isReady ? classes.isDisabled : "";
+    const enabledCss = (myEntry.player.isReady || limitedComm) ? classes.isDisabled : "";
     return (
         <div className={`${classes.container} ${gc.round_border} ${gc.borderColor}`}>
             <div className={`${classes.commonSettingsContainer} ${gc.borderBottom}`}>
                 <p className={classes.nameHeader}>이름</p>
                 <textarea
+                    ref={nameRef}
                     className={`${classes.fieldType} ${classes.nameTextArea} ${enabledCss}`}
                     onBlur={onFinishEditName}
                     defaultValue={myEntry.player.name}
