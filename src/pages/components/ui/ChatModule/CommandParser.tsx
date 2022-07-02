@@ -35,11 +35,7 @@ export class CommandParser {
                     DbFields.HEADER_games,
                     ctx.room.header.games + GameConfigs.addGames
                 );
-                chatCtx.loadChat({
-                    format: ChatFormat.announcement,
-                    name: "",
-                    msg: "게임을 더 하는것에 합의하였습니다.",
-                });
+                sendAnnounce("게임을 더 하는것에 합의하였습니다.");
                 break;
             case "redirect":
                 if (!amHost) return;

@@ -160,6 +160,10 @@ export class MusicManager {
     private static checkSongName(music: MusicObject, myAnswer: string): number {
         myAnswer = InputManager.cleanseAnswer(myAnswer);
         let correct = false;
+        if (music.answers === undefined || music.answers === null) {
+            music.answers = ["?"];
+            return 1;
+        }
         music.answers.forEach((value) => {
             if (correct) return;
             const realAns = InputManager.cleanseAnswer(value);
@@ -172,6 +176,7 @@ export class MusicManager {
 
     private static checkArtists(music: MusicObject, myAnswer?: string): number {
         //It has no answer. you are always correct
+        if (music.artists === undefined || music.artists === null) return 1;
         if (music.artists.length === 0) return 1;
         if (music.artists.length === 1 && music.artists[0].length === 0) return 1;
         //It has answer but you didnt write any. you are always wrong

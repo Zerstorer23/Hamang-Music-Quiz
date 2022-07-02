@@ -11,6 +11,12 @@ export enum ConClass {
     Stop = "stop.png",
     Yes = "yes.png",
     No = "no.png",
+    investigate = "investigate.png",
+    kk = "kk.png",
+    nokkol = "nokkol.png",
+    sowhat = "sowhat.gif",
+    surprise = "surprise.gif",
+    yatta = "yatta.png",
 }
 
 export type DCConButtonType = {
@@ -65,5 +71,29 @@ export const DCconList: DCConButtonType[] = [
     {
         con: ConClass.WhatThe,
         text: "ㅁㅊ"
+    },
+    {
+        con: ConClass.investigate,
+        text: "알아와"
+    },
+    {
+        con: ConClass.kk,
+        text: "ㅋㅋ"
+    },
+    {
+        con: ConClass.nokkol,
+        text: "노꼴"
+    },
+    {
+        con: ConClass.surprise,
+        text: "놀람"
+    },
+    {
+        con: ConClass.sowhat,
+        text: "어쩔"
+    },
+    {
+        con: ConClass.yatta,
+        text: "야따먹"
     },
 ];
