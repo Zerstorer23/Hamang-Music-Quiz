@@ -30,5 +30,18 @@ export default function ConModule(p: Props) {
                 </button>;
             })
         }
+        {
+            DCconList.map((value, index) => {
+                return <button
+                    key={Math.random()}
+                    className={classes.dcconButton}
+                    onClick={() => {
+                        onClickCon(value);
+                    }}
+                >
+                    {`${value.text}`}
+                </button>;
+            })
+        }
     </div>;
 }
