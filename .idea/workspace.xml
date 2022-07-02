@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="AFK Detection">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/LobbySettings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/LobbySettings.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="Anon Game" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -142,14 +139,7 @@
       <workItem from="1656646094518" duration="12287000" />
       <workItem from="1656662281955" duration="12837000" />
       <workItem from="1656698126347" duration="12678000" />
-      <workItem from="1656728182899" duration="1141000" />
-    </task>
-    <task id="LOCAL-00013" summary="Better CHats">
-      <created>1655327217713</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1655327217713</updated>
+      <workItem from="1656728182899" duration="1224000" />
     </task>
     <task id="LOCAL-00014" summary="Better CHats 2">
       <created>1655328787689</created>
@@ -487,7 +477,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656727233279</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Anon Game">
+      <created>1656729388898</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1656729388899</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -506,7 +503,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="public html" />
     <MESSAGE value="New Loading" />
     <MESSAGE value="Chat, Answer Fix, More solutions" />
     <MESSAGE value="More KyoAniSongs" />
@@ -531,7 +527,8 @@
     <MESSAGE value="Relay ON" />
     <MESSAGE value="DC con" />
     <MESSAGE value="AFK Detection" />
-    <option name="LAST_COMMIT_MESSAGE" value="AFK Detection" />
+    <MESSAGE value="Anon Game" />
+    <option name="LAST_COMMIT_MESSAGE" value="Anon Game" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
