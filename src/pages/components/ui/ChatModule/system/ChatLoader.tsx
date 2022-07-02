@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import {Fragment, useContext, useEffect} from "react";
-import ChatContext, {ChatEntry, cleanChats} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
+import ChatContext, {ChatEntry, cleanChats} from "pages/components/ui/ChatModule/system/ChatContextProvider";
 import {LISTEN_CHILD_ADDED, Snapshot} from "system/types/CommonTypes";
 import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
 

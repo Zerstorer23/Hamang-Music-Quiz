@@ -5,6 +5,15 @@ import {PresetName} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase
 /*
 Local context holds local data that does not go into database
 */
+let myId = "";
+
+export function getGlobalMyId(): string {
+    return myId;
+}
+
+export function globalSetId(id: string) {
+    myId = id;
+}
 
 export type ContextFieldType<T> = {
     val: T | null;

@@ -32,6 +32,7 @@
 }
 
 .dcConPanel {
+    padding: 0.5rem 0;
     display: grid;
     flex: 2;
     width: 100%;
@@ -42,6 +43,13 @@
     justify-items: center;
     align-content: center;
     justify-content: center;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.dcConPanel::-webkit-scrollbar {
+    display: none;
 }
 
 .sendBox {

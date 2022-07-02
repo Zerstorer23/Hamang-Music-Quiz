@@ -37,7 +37,7 @@ export default function PlayerGridItem(props: Props) {
     const isReadyText = player.isReady ? " [제출완료]" : "";
     const answerCss = (receivedPoints > 0) ? `${classes.correct} ${gc.greenText} ${animCss.zoomIn}` : `${animCss.slideUp}`;
     const playerCss = (props.isMe) ? gc.greenText : (player.isReady) ? gc.blueText : "";
-    const points = (receivedPoints > 0) ? `+${receivedPoints}점` : `(${player.wins}점)`;
+    const points = (receivedPoints > 0) ? `+${receivedPoints.toFixed(2)}점` : `(${player.wins}점)`;
 
     return <div className={`${classes.cell} ${cellCss}`}>
         <p className={playerCss}>

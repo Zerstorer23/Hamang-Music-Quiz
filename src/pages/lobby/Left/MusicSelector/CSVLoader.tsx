@@ -5,7 +5,7 @@ import Papa from "papaparse";
 import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager";
 import classes from "pages/lobby/Left/MusicSelector/MusicSelector.module.css";
 import {IProps} from "system/types/CommonTypes";
-import ChatContext from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
+import ChatContext from "pages/components/ui/ChatModule/system/ChatContextProvider";
 import {PresetName} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/Presets";
 
 const allowedExtensions = ["csv"];

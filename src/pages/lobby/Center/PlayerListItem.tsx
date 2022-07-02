@@ -5,6 +5,7 @@ import animClasses from "index/animation.module.css";
 
 import gc from "index/global.module.css";
 import {PlayerEntry} from "system/types/GameTypes";
+import {PlayerManager} from "system/Database/PlayerManager";
 
 type Prop = IProps & {
     playerEntry: PlayerEntry;
@@ -20,7 +21,7 @@ export default function PlayerListItem(props: Prop) {
     const player = props.playerEntry.player;
     const id = props.playerEntry.id;
 
-    const name = `[${props.index + 1}] ${(player.totalWin === 0) ? player.name : `${player.name} (${player.totalWin}점)`}`;
+    const name = `${(player.totalWin === 0) ? player.name : `${player.name} (${player.totalWin}점)`}`;
     let tagElem: JSX.Element;
     if (props.isHost) {
         tagElem = <div className={`${classes.hostPanel}`}>방장</div>;
@@ -36,11 +37,23 @@ export default function PlayerListItem(props: Prop) {
             {tagElem}
             <p className={`${hostCss} ${classes.namePanel}`}>{name}</p>
             {
-                (props.showPromote) &&
-                <button className={`${classes.promote}`} onClick={() => {
-                    props.onPromote(id);
-                }}>방장위임</button>
+                (props.showPromote) && <div className={`${classes.playerOptionPanel}`}>
+                    <button
+                        className={`${classes.optionButton}`}
+                        onClick={() => {
+                            PlayerManager.kickPlayer(id);
+                        }}>퇴장
+                    </button>
+                    <button
+                        className={`${classes.optionButton}`} onClick={() => {
+                        props.onPromote(id);
+                    }}>방장위임
+                    </button>
+
+                </div>
             }
+
         </div>
     );
 }
+

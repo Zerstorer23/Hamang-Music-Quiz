@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="Relay ON">
-      <change afterPath="$PROJECT_DIR$/public/images/baka.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/ellie.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/godsong.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/more.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/no.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/old.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/stop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/sugoi.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/trash.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/unknown.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/whatthe.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/yes.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ConModule.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/DCconDB.tsx" afterDir="false" />
+    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="DC con">
+      <change afterPath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/system/ProbeModule.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ChatLoader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/system/ChatLoader.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ChatModule.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ChatModule.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ChatModule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ChatModule.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/chatInfo/ChatContextProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/chatInfo/ChatContextProvider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ImageButton/ImageText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ImageButton/ImageText.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/images/ellieloading.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/ellieloading.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/typings.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/typings.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ChatRelay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/system/ChatRelay.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/CommandParser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/CommandParser.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ConModule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ConModule.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/chatInfo/ChatContextProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/system/ChatContextProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/DataLoader/DataLoader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/DataLoader/DataLoader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/PopUp/PopUp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/PopUp/PopUp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/AnswerInput/AnswerinputPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/AnswerInput/AnswerinputPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayerGridItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/Players/PlayerGridItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Center/PlayerListItem.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Center/PlayerListItem.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Center/PlayerListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Center/PlayerListItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Center/PlayersPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Center/PlayersPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/CSVLoader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/CSVLoader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/GamePlaySettings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/GamePlaySettings.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/MusicSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/MusicSelector.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/SettingsChangeNotifier.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/SettingsChangeNotifier.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/Database/PlayerManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/Database/PlayerManager.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/Database/RoomManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/Database/RoomManager.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/configs/DS.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/configs/DS.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/context/localInfo/LocalContextProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/context/localInfo/LocalContextProvider.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,11 +94,11 @@
       <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\public\presets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\src\pages\components\ui\ChatModule\system" />
       <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\public\images" />
       <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\src\resources\images" />
       <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\src\resources" />
       <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\public\resources\images" />
-      <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\public\presets" />
     </key>
   </component>
   <component name="RunManager" selected="npm.start">
@@ -160,14 +165,7 @@
       <workItem from="1656614200704" duration="5549000" />
       <workItem from="1656646094518" duration="12287000" />
       <workItem from="1656662281955" duration="12837000" />
-      <workItem from="1656698126347" duration="7031000" />
-    </task>
-    <task id="LOCAL-00011" summary="Multiplayer Design 1">
-      <created>1655291260864</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1655291260864</updated>
+      <workItem from="1656698126347" duration="11962000" />
     </task>
     <task id="LOCAL-00012" summary="Multiplayer Design 2">
       <created>1655326045465</created>
@@ -505,7 +503,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656689109196</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="DC con">
+      <created>1656722094535</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1656722094536</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -524,7 +529,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Remembering file selected" />
     <MESSAGE value="Better user settings UX" />
     <MESSAGE value="public html" />
     <MESSAGE value="New Loading" />
@@ -549,7 +553,8 @@
     <MESSAGE value="Last VIsibility fix 2" />
     <MESSAGE value="Video Guard 5" />
     <MESSAGE value="Relay ON" />
-    <option name="LAST_COMMIT_MESSAGE" value="Relay ON" />
+    <MESSAGE value="DC con" />
+    <option name="LAST_COMMIT_MESSAGE" value="DC con" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

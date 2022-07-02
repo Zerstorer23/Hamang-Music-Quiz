@@ -6,7 +6,7 @@ import classes from "pages/lobby/Left/MusicSelector/MusicSelector.module.css";
 import RoomContext from "system/context/roomInfo/room-context";
 import {LocalContext, LocalContextType, LocalField} from "system/context/localInfo/LocalContextProvider";
 import {TurnManager} from "system/GameStates/TurnManager";
-import ChatContext, {ChatContextType, sendAnnounce} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
+import ChatContext, {ChatContextType, sendAnnounce} from "pages/components/ui/ChatModule/system/ChatContextProvider";
 import CSVLoader from "pages/lobby/Left/MusicSelector/CSVLoader";
 import Dropdown from "pages/components/ui/Dropdown";
 import gc from "index/global.module.css";

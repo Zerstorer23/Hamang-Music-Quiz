@@ -13,7 +13,7 @@ import Dropdown from "pages/components/ui/Dropdown";
 import {PlayAt, PlaySpeed} from "pages/ingame/Left/MusicPanel/MusicModule/MusicModule";
 import {ItemPair} from "system/types/CommonTypes";
 import {presetToName} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/Presets";
-import {sendAnnounce} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
+import {sendAnnounce} from "pages/components/ui/ChatModule/system/ChatContextProvider";
 
 export default function GamePlaySettings() {
     const ctx = useContext(RoomContext);

@@ -3,7 +3,7 @@ import gc from "index/global.module.css";
 import {DCConButtonType, DCconList} from "resources/DCconDB";
 import React from "react";
 import {IProps} from "system/types/CommonTypes";
-import {ChatFormat, sendChat} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
+import {ChatFormat, sendChat} from "pages/components/ui/ChatModule/system/ChatContextProvider";
 
 type Props = IProps & {
     height: string;

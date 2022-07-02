@@ -1,6 +1,7 @@
 import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import {Player, PlayerEntry, PlayerMap} from "system/types/GameTypes";
 import {randomInt} from "system/Constants/GameConstants";
+import {ChatFormat, sendChat} from "pages/components/ui/ChatModule/system/ChatContextProvider";
 
 export class PlayerManager {
 
@@ -32,6 +33,7 @@ export class PlayerManager {
         if (asHost) {
             ReferenceManager.updateReference(DbFields.HEADER_hostId, myId);
         }
+
         return myId!;
     }
 
@@ -67,4 +69,9 @@ export class PlayerManager {
         return {id, player};
     }
 
+    public static kickPlayer(id: string) {
+        if (id === undefined) return;
+        ReferenceManager.getPlayerReference(id).remove();
+        sendChat(ChatFormat.important, "", "잠수 의심 유저가 삭제됨");
+    }
 }

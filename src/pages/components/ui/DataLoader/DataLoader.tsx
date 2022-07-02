@@ -11,7 +11,7 @@ import {
     Snapshot,
 } from "system/types/CommonTypes";
 import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
-import {LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
+import {globalSetId, LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
 import {Listeners, ListenerTypes} from "system/context/roomInfo/RoomContextProvider";
 import {GameStatus, Player, Room, RoomHeader} from "system/types/GameTypes";
 import {RoomDatabase} from "system/Database/RoomDatabase";
@@ -23,6 +23,7 @@ import {GameConfigs} from "system/configs/GameConfigs";
 import {TurnManager} from "system/GameStates/TurnManager";
 import TransitionManager from "system/GameStates/TransitionManager";
 import {ArtistDB} from "system/Database/ArtistDB";
+import {ProbeModule} from "pages/components/ui/ChatModule/system/ProbeModule";
 
 function checkNull<T>(snapshot: Snapshot): [boolean, T] {
     const data: T = snapshot.val();
@@ -85,6 +86,7 @@ export default function DataLoader(props: IProps) {
     ///////////////END LISTENER--////////////////////////
     function onDisconnectCleanUp(id: string) {
         localCtx.setVal(LocalField.Id, id);
+        globalSetId(id);
     }
 
     async function setUpRoom() {
@@ -148,6 +150,7 @@ export default function DataLoader(props: IProps) {
     const myId = localCtx.getVal(LocalField.Id);
     useEffect(() => {
         if (myId === null) return;
+        ProbeModule.prepareProbing(myId, ctx);
         setStatus(LoadStatus.outerSpace);
         setJSX(props.children);
     }, [myId]);

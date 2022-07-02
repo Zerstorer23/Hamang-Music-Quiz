@@ -11,7 +11,7 @@ import {MusicEntry, MusicStatus, Player, PlayerMap, RoomSettings} from "system/t
 import {MusicManager} from "pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager";
 import TransitionManager from "system/GameStates/TransitionManager";
 import {currentTimeInMills} from "system/Constants/GameConstants";
-import {sendAnnounce} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
+import {sendAnnounce} from "pages/components/ui/ChatModule/system/ChatContextProvider";
 
 const ASSIST_CHANCE = 2;
 export default function AnswerInputPanel() {

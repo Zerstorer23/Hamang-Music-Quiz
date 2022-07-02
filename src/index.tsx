@@ -5,7 +5,7 @@ import App from "index/App";
 import LocalProvider from "system/context/localInfo/LocalContextProvider";
 import RoomProvider from "system/context/roomInfo/RoomContextProvider";
 import {BrowserRouter} from "react-router-dom";
-import {ChatProvider} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
+import {ChatProvider} from "pages/components/ui/ChatModule/system/ChatContextProvider";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement

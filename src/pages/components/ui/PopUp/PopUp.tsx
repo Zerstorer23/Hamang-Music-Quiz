@@ -30,7 +30,7 @@ function GameOverWindow() {
                 const playerCss = (value.id === myEntry.id) ? gc.greenText : " ";
                 if (index > 7) return <Fragment key={index}/>;
                 return <p className={`${classes.item} ${playerCss}`}
-                          key={index}>{`${index + 1}.${player.name} [${player.wins}승]`}</p>;
+                          key={index}>{`${index + 1}.${player.name} [${player.wins}점]`}</p>;
             })}
             <p className={classes.text}><MyTimer/>초후 로비로 복귀...</p>
         </div>

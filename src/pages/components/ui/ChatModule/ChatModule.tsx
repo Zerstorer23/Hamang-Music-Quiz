@@ -5,13 +5,13 @@ import ChatContext, {
     ChatEntryToElem,
     ChatFormat,
     sendChat,
-} from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
+} from "pages/components/ui/ChatModule/system/ChatContextProvider";
 import {TurnManager} from "system/GameStates/TurnManager";
 import RoomContext from "system/context/roomInfo/room-context";
 import {CursorFocusInfo, InputCursor, LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
 import useKeyListener, {KeyCode} from "system/hooks/useKeyListener";
 import {CommandParser} from "pages/components/ui/ChatModule/CommandParser";
-import sendToPort from "pages/components/ui/ChatModule/ChatRelay";
+import sendToPort from "pages/components/ui/ChatModule/system/ChatRelay";
 import {InputManager} from "system/GameStates/InputManager";
 import {currentTimeInMills, elapsedSinceInMills} from "system/Constants/GameConstants";
 import ConModule from "pages/components/ui/ChatModule/ConModule";
@@ -97,7 +97,8 @@ export default function ChatModule() {
             </div>
             <div className={`${classes.inputBox} `}>
                 <ConModule myName={myEntry.player.name} show={limitedChat} height={conHeight}/>
-                <div className={`${classes.sendBox}  ${(limitedChat ? gc.hidden : "")}`} style={{height: chatHeight}}>
+                <div className={`${classes.sendBox}  ${((limitedChat && !amHost) ? gc.hidden : "")}`}
+                     style={{height: chatHeight}}>
                 <textarea
                     ref={chatFieldRef}
                     className={classes.inputField}

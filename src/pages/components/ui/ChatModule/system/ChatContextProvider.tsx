@@ -6,12 +6,13 @@ import {currentTimeInMills, elapsedSinceInMills} from "system/Constants/GameCons
 import {GameConfigs} from "system/configs/GameConfigs";
 import {ConClass, DCconList} from "resources/DCconDB";
 import animCss from "index/animation.module.css";
+import {ProbeModule} from "pages/components/ui/ChatModule/system/ProbeModule";
+import {getGlobalMyId} from "system/context/localInfo/LocalContextProvider";
 
 export type ChatContextType = {
     chatList: ChatEntry[];
     loadChat: (a: ChatEntry) => void;
     localAnnounce: (a: string) => void;
-
 };
 
 
@@ -34,6 +35,14 @@ export enum ChatFormat {
     important,
     hidden,
 }
+
+export enum HiddenChats {
+    redirect = "redirect",
+    reload = "reload",
+    probe = "probe",
+    reply = "reply",
+}
+
 
 export function cleanChats() {
     const ref = ReferenceManager.getRef(DbFields.CHAT);
@@ -72,16 +81,25 @@ export function ChatEntryToElem(key: any, ce: ChatEntry): JSX.Element {
         case ChatFormat.important:
             return <p className={classes.importantChat} key={key}>{ce.msg}</p>;
         case ChatFormat.hidden:
-            handleHidden(ce);
             return <Fragment key={key}/>;
     }
 }
 
-export function handleHidden(ce: ChatEntry) {
-    if (ce.msg === "redirect") {
-        window.location.href = 'https://suzumiya.haruhi.boats/';
-    } else if (ce.msg === "reload") {
-        window.location.href = 'https://music.haruhi.boats/';
+export function handleHidden(ce: ChatEntry, myId: string) {
+    const msg = ce.msg as HiddenChats;
+    switch (msg) {
+        case HiddenChats.redirect:
+            window.location.href = 'https://suzumiya.haruhi.boats/';
+            break;
+        case HiddenChats.reload:
+            window.location.href = 'https://music.haruhi.boats/';
+            break;
+        case HiddenChats.reply:
+            ProbeModule.registerReply(ce.name);
+            break;
+        case HiddenChats.probe:
+            ProbeModule.replyToProbe(myId);
+            break;
     }
 }
 
@@ -90,6 +108,10 @@ export function ChatProvider(props: IProps) {
 
     function loadChat(ce: ChatEntry) {
         if (ce === null) return;
+        if (ce.format === ChatFormat.hidden) {
+            handleHidden(ce, getGlobalMyId());
+            return;
+        }
         setChatList((prev) => [...prev, ce]);
     }
 
