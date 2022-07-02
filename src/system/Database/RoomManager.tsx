@@ -18,7 +18,7 @@ export class RoomManager {
             settings: {
                 guessTime: !DS.StrictRules ? 5 : GameConfigs.defaultGuessTime,
                 songsPlay: !DS.StrictRules ? 5 : GameConfigs.defaultSongNumber,
-                limitedCommunication: true,
+                limitedCommunication: (randomInt(0, 1) === 1),
                 playAt: PlayAt.Random,
                 speed: PlaySpeed.Normal,
                 useArtists: false,
@@ -78,7 +78,7 @@ export class RoomManager {
         newHeader.settings.songsPlay = Math.min(newHeader.settings.songsPlay, MusicManager.MusicList.length);
         ReferenceManager.updateReference(DbFields.HEADER, newHeader);
         //Set Players. is one by one uniform
-        room.playerList.forEach((playerId, index) => {
+        room.playerList.forEach((playerId) => {
             const player = room.playerMap.get(playerId)!;
             player.isSpectating = false;
             player.isReady = false;

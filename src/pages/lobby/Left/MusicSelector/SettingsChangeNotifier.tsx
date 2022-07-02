@@ -12,6 +12,7 @@ export default function SettingsChangeNotifier() {
     useEffect(() => {
         if (settings.limitedCommunication) {
             chatCtx.localAnnounce(`채팅제한 켜짐.`);
+            chatCtx.localAnnounce(`방장제외 디시콘만 사용합니다`);
         } else {
             chatCtx.localAnnounce("채팅제한 꺼짐");
         }

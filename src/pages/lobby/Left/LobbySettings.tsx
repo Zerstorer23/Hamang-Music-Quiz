@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {useContext, useEffect, useRef} from "react";
 
 import gc from "index/global.module.css";
@@ -47,7 +48,7 @@ export default function LobbySettings() {
         }
     }, [limitedComm]);
 
-    function onClickCopy(e: any) {
+    function onClickCopy() {
         const myUrl = window.location.href;
         navigator.clipboard.writeText(`주소: ${myUrl} \n방번호: ${ReferenceManager.channelId}`);
     }
@@ -69,10 +70,12 @@ export default function LobbySettings() {
                         onClick={onClickCopy}>{`방 번호: ${ReferenceManager.channelId} 복사`}
                 </button>
                 <br/>
-                <a href={"https://docs.google.com/spreadsheets/d/1QluDRTVw7qz5rE46MpLYEFj_WntZUNa3THLvBeuvVJY/edit?usp=sharing"}
+                <a rel="noopener noreferrer"
+                   href={"https://docs.google.com/spreadsheets/d/1QluDRTVw7qz5rE46MpLYEFj_WntZUNa3THLvBeuvVJY/edit?usp=sharing"}
                    target={"_blank"}>수동파일설정</a>
                 /
-                <a href={"https://docs.google.com/spreadsheets/d/1E89UuJwiR3yRKNjifMK4nArg0iO7Ish09BHkMexXqo8/edit?usp=sharing"}
+                <a rel="noopener noreferrer"
+                   href={"https://docs.google.com/spreadsheets/d/1E89UuJwiR3yRKNjifMK4nArg0iO7Ish09BHkMexXqo8/edit?usp=sharing"}
                    target={"_blank"}>765시트</a>
                 <br/>
                 <p>모바일 유저는 데스크탑보기모드 꼭 켜주라!</p>

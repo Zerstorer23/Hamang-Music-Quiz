@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="Anon Game">
-      <change afterPath="$PROJECT_DIR$/public/images/investigate.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/kk.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/nokkol.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/sowhat.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/surprise.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/yatta.png" afterDir="false" />
+    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="a href safety">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/CommandParser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/CommandParser.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicDatabase/MusicManager.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/DCconDB.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/DCconDB.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/LobbySettings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/LobbySettings.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/SettingsChangeNotifier.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/lobby/Left/MusicSelector/SettingsChangeNotifier.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/Database/RoomManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/Database/RoomManager.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,14 +145,7 @@
       <workItem from="1656662281955" duration="12837000" />
       <workItem from="1656698126347" duration="12678000" />
       <workItem from="1656728182899" duration="1224000" />
-      <workItem from="1656738682203" duration="923000" />
-    </task>
-    <task id="LOCAL-00014" summary="Better CHats 2">
-      <created>1655328787689</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1655328787689</updated>
+      <workItem from="1656738682203" duration="1253000" />
     </task>
     <task id="LOCAL-00015" summary="Better CHats 3">
       <created>1655328944985</created>
@@ -496,7 +483,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656729388899</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Undefined Bug fix">
+      <created>1656739713221</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1656739713221</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -515,8 +509,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="New Loading" />
-    <MESSAGE value="Chat, Answer Fix, More solutions" />
     <MESSAGE value="More KyoAniSongs" />
     <MESSAGE value="AAUto Insert answer" />
     <MESSAGE value="Cached Room Number" />
@@ -540,7 +532,9 @@
     <MESSAGE value="DC con" />
     <MESSAGE value="AFK Detection" />
     <MESSAGE value="Anon Game" />
-    <option name="LAST_COMMIT_MESSAGE" value="Anon Game" />
+    <MESSAGE value="Undefined Bug fix" />
+    <MESSAGE value="a href safety" />
+    <option name="LAST_COMMIT_MESSAGE" value="a href safety" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
