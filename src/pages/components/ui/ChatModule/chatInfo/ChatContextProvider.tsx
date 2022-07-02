@@ -4,6 +4,8 @@ import classes from "pages/components/ui/ChatModule/ChatModule.module.css";
 import {DbFields, ReferenceManager} from "system/Database/ReferenceManager";
 import {currentTimeInMills, elapsedSinceInMills} from "system/Constants/GameConstants";
 import {GameConfigs} from "system/configs/GameConfigs";
+import {ConClass, DCconList} from "resources/DCconDB";
+import animCss from "index/animation.module.css";
 
 export type ChatContextType = {
     chatList: ChatEntry[];
@@ -38,11 +40,33 @@ export function cleanChats() {
     ref.remove();
 }
 
+function isCon(msg: string): ConClass | null {
+    if (msg.at(0) !== "#") return null;
+    for (let con of DCconList) {
+        if (msg === `#${con.text}`) {
+            return con.con;
+        }
+    }
+    return null;
+}
+
 export function ChatEntryToElem(key: any, ce: ChatEntry): JSX.Element {
     switch (ce.format) {
         case ChatFormat.normal:
             const text = `[${ce.name}] ${ce.msg}`;
-            return <p className={classes.normalChat} key={key}>{text}</p>;
+            const paragraph = <p className={classes.normalChat} key={key}>{text}</p>;
+            const conInfo = isCon(ce.msg);
+            if (conInfo !== null) {
+                return <Fragment key={key}>
+                    {paragraph}
+                    <img alt={ce.msg}
+                         className={animCss.slideUp}
+                         src={`/images/${conInfo}`}
+                    />
+                </Fragment>;
+            } else {
+                return paragraph;
+            }
         case ChatFormat.announcement:
             return <p className={classes.announceChat} key={key}>{ce.msg}</p>;
         case ChatFormat.important:

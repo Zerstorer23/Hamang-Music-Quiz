@@ -8,14 +8,14 @@ import ChatContext, {
 } from "pages/components/ui/ChatModule/chatInfo/ChatContextProvider";
 import {TurnManager} from "system/GameStates/TurnManager";
 import RoomContext from "system/context/roomInfo/room-context";
-import HorizontalLayout from "pages/components/ui/HorizontalLayout";
 import {CursorFocusInfo, InputCursor, LocalContext, LocalField} from "system/context/localInfo/LocalContextProvider";
 import useKeyListener, {KeyCode} from "system/hooks/useKeyListener";
 import {CommandParser} from "pages/components/ui/ChatModule/CommandParser";
 import sendToPort from "pages/components/ui/ChatModule/ChatRelay";
 import {InputManager} from "system/GameStates/InputManager";
 import {currentTimeInMills, elapsedSinceInMills} from "system/Constants/GameConstants";
-import {PlayerManager} from "system/Database/PlayerManager";
+import ConModule from "pages/components/ui/ChatModule/ConModule";
+import gc from "index/global.module.css";
 
 export default function ChatModule() {
     const chatCtx = useContext(ChatContext);
@@ -27,6 +27,7 @@ export default function ChatModule() {
     const chatFieldRef = useRef<HTMLTextAreaElement>(null);
     const cursorFocus = localCtx.getVal(LocalField.InputFocus) as CursorFocusInfo;
     const limitedChat = ctx.room.header.settings.limitedCommunication;
+    const amHost = TurnManager.amHost(ctx, localCtx);
     useEffect(() => {
         messagesEndRef.current!.scrollIntoView({behavior: "smooth"});
     }, [chatCtx.chatList.length]);
@@ -68,10 +69,6 @@ export default function ChatModule() {
         }
         if (handleSpecials(text)) return;
         let senderName = myEntry.player.name;
-        if (limitedChat) {
-            text = text.substring(0, 3);
-            senderName = PlayerManager.getDefaultName();
-        }
         sendToPort(text);
         const success = sendChat(ChatFormat.normal, senderName, text);
         if (!success) {
@@ -87,6 +84,8 @@ export default function ChatModule() {
         localCtx.setVal(LocalField.InputFocus, cursorInfo);
     }
 
+    const chatHeight = (limitedChat) ? (amHost) ? "33%" : "0%" : "100%";
+    const conHeight = (limitedChat) ? (amHost) ? "66%" : "100%" : "0%";
 
     return (
         <div className={`${classes.container}`}>
@@ -96,23 +95,25 @@ export default function ChatModule() {
                 })}
                 <div ref={messagesEndRef}/>
             </div>
-            <HorizontalLayout className={classes.sendBox}>
-        <textarea
-            ref={chatFieldRef}
-            className={classes.inputField}
-            placeholder={"Enter로 채팅 시작..."}
-            onBlur={() => {
-                toggleFocus(false);
-            }}
-            onFocus={() => {
-                toggleFocus(true);
-            }}
-        ></textarea>
-                <button className={classes.buttonSend} onClick={handleSend}>
-                    전송
-                </button>
-            </HorizontalLayout>
+            <div className={`${classes.inputBox} `}>
+                <ConModule myName={myEntry.player.name} show={limitedChat} height={conHeight}/>
+                <div className={`${classes.sendBox}  ${(limitedChat ? gc.hidden : "")}`} style={{height: chatHeight}}>
+                <textarea
+                    ref={chatFieldRef}
+                    className={classes.inputField}
+                    placeholder={"Enter로 채팅 시작..."}
+                    onBlur={() => {
+                        toggleFocus(false);
+                    }}
+                    onFocus={() => {
+                        toggleFocus(true);
+                    }}
+                ></textarea>
+                    <button className={classes.buttonSend} onClick={handleSend}>
+                        전송
+                    </button>
+                </div>
+            </div>
         </div>
     );
 }
-
