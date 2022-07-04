@@ -5,7 +5,7 @@ team,video,title,artistMain,artistSub,ko_translate,ko_read,en_read,sub1,sub2,sub
 765,https://youtu.be/5nN-CxAKR84,Good Byes,야요이,,작별,굿바이즈,Good Byes,,,
 765,https://youtu.be/QVk9Ei5zRMc,i,하루카,765PRO ALLSTARS/765프로 올스타즈,나,아이,i,,,
 765,https://youtu.be/DjvmY3A7S1I,J☆U☆M☆P,미키,하루카:미키:야요이,,점프,jump,잠푸,쩜프,
-765,https://youtu.be/IgdEBgmw_2I,New Me Continued,히비키,,뉴미컨,뉴미컨티뉴드,New Me Continued,뉴미콘,,
+765,https://youtu.be/IgdEBgmw_2I,New Me Continued,히비키,,뉴미컨,뉴미컨티뉴드,New Me Continued,뉴미콘,뉴미콘티뉴드,
 765,https://youtu.be/yK7-t418_IY,オハヨ○サンシャイン(Ohayou Sunshine),야요이,,오하요선샤인,오하요우선샤인,Ohayou Sunshine,오하요산샤인,안녕선샤인,
 765,https://youtu.be/HybN89eX-oA,白い犬 (Shiroi Inu),야요이,,하얀개,시로이이누,Shiroi Inu,백견,흰개,
 765,https://youtu.be/muwpQWhwGWg,Looking For Love,하루카,하루카:미키,,루킹포러브,Looking For Love,,,
@@ -25,7 +25,7 @@ team,video,title,artistMain,artistSub,ko_translate,ko_read,en_read,sub1,sub2,sub
 765,https://youtu.be/zwJR4Secr1w,仮面舞踏会 (Kamen Butoukai),마코토,,가면무도회,카멘부도우카이,Kamen Butoukai,가면라이더,,
 765,https://youtu.be/GIzLYc-Sb4o,歌う人 (Utau Hito),치하야,,,우타우히토,Utau Hito,,,
 765,https://youtu.be/2jWovwlSWpc,強い女 (Tsuyoi Onna),하루카,,강한여자,츠요이온나,Tsuyoi Onna,강한여성,쯔요이온나,Tsuyoii Onna
-765,https://youtu.be/Il-PXaYUMBM,見つめて(Mitsumete),유키호:타카네,,봐줘,미츠메테,Mitsumete,,,
+765,https://youtu.be/Il-PXaYUMBM,見つめて(Mitsumete),유키호:타카네,,봐줘,미츠메테,Mitsumete,바라봐줘,,
 765,https://youtu.be/ZJ67FZPc3B0,高鳴る(Takanaru),미키,,,타카나루,Takanaru,고동,고동치다,
 765,https://youtu.be/8hFzH3gN7O4,空(Sora),코토리,,하늘,소라,sora,,,
 765,https://youtu.be/e89WZt-2_mo,空色デイズ(Sorairo Days),리츠코,,하늘색데이즈,소라이로데이즈,Sorairo Days,하늘빛데이즈,,
@@ -33,14 +33,14 @@ team,video,title,artistMain,artistSub,ko_translate,ko_read,en_read,sub1,sub2,sub
 765,https://youtu.be/snPh6AnI4aU,光 (Hikari),코토리,,빛,히카리,hikari,,,
 765,https://youtu.be/kCVUP7iCS_A,久遠の河(Kuon no Kawa),아즈사,,구원의강,쿠온노카와,Kuon no Kawa,,,
 765,https://youtu.be/QEIvKAicx3M,君が選ぶ道 (Kimi ga Erabu Michi),코토리,,너가고르는길,키미가에라부미치,Kimi ga Erabu Michi,당신이선택한길,,
-765,https://youtu.be/rfsT75hAEew,君のままで (Kimi no Mama de),하루카:유키호:리츠코,,,키미노마마데,Kimi no Mama de,너인채로,,
+765,https://youtu.be/rfsT75hAEew,君のままで (Kimi no Mama de),하루카:유키호:리츠코,,너인 그대로,키미노마마데,Kimi no Mama de,너인채로,,
 765,https://youtu.be/ZlMomNi-vZo,近道したい (Chikamichi Shitai),아즈사,,지름길로 가고파,치카미치시타이,Chikamichi Shitai,,,
 765,https://youtu.be/ROhtaL2ERdA,今 スタート！ (Ima Start!),치하야:히비키:아즈사,,지금스타트,Ima Start,이마스타트,이마스타토,,
 765,https://youtu.be/cFrmqCLbagU,女々しくて(Memeshikute),마미,,소심하니까,메메시쿠테,Memeshikute,,,
 765,https://youtu.be/ZQspqhVWpMU,大スキ！ (Daisuki!),하루카,,정말좋아,다이스키,Daisuki!,다이수키,,
 765,https://youtu.be/3Fh-gtNlFgk,待ち受けプリンス(Machiuke Prince),야요이:마코토:이오리,,기다리는프린스,마치우케프린스,Machiuke Prince,마치우케,,
 765,https://youtu.be/I8naa0BU1Y4,東京は夜の七時(Tokyo wa Yoru no Shichiji),리츠코,,도쿄는밤7시,토쿄와요루노시치지,Tokyo wa Yoru no Shichiji,도쿄와요루노시치지,도쿄는밤의7시,도쿄는밤일곱시
-765,https://youtu.be/5YoMUYU7fIc,旅立ちの日に…(Tabidachi no Hi ni...),리츠코,,,타비다치노히니,Tabidachi no Hi ni...,,,
+765,https://youtu.be/5YoMUYU7fIc,旅立ちの日に…(Tabidachi no Hi ni...),리츠코,,떠나는날에,타비다치노히니,Tabidachi no Hi ni...,,,
 765,https://youtu.be/nzzkoV0XvMM,黎明スターライン(Reimei Starline),아미:마미,쌍둥이,여명스타라인,레이메이스타라인,Reimei Starline,,,
 765,https://youtu.be/6Ws-xidbGdw,隣に...(tonari ni...),아즈사,,곁에,토나리니,tonari ni...,,,
 765,https://youtu.be/gbJGs4yGwPQ,魔法をかけて！ (Mahou wo Kakete!),리츠코,,마법을걸어줘,마호우오카케테,Mahou o Kakete!,mahou wo kakete,마호오카케테,
@@ -66,18 +66,18 @@ team,video,title,artistMain,artistSub,ko_translate,ko_read,en_read,sub1,sub2,sub
 765,https://youtu.be/RrwPQF6qPDw,私たちはずっと…でしょう(Watashi tachi wa Zutto Deshou),765PRO ALLSTARS,765프로 올스타즈,우리들은계속그렇죠,와타치타치와즛토데쇼우,Watashitachi wa Zutto Deshou,와타시타치와즛토데쇼,와타시타치와즛또데쇼우,와타시타치와즛또데쇼
 765,https://youtu.be/gjB3tKwz6BY,私だって女の子(Watashi Datte Onnanoko),리츠코,,나도여자아이,와타시닷테온나노코,Watashi Datte Onnanoko,와타시닷떼온나노코,와타시다떼온나노코,나도여자랍니다
 765,https://youtu.be/osklmiRhDag,色・ホワイトブレンド(Iro White Blend),하루카,,색 화이트블렌드,이로화이트블렌드,Iro White Blend,,,
-765,https://youtu.be/YpRkrHQz0us,雪国(yukikuni),아미:마미,,설국,유키쿠니,yukikuni,,,
+765,https://youtu.be/YpRkrHQz0us,雪国(yukikuni),아미:마미,쌍둥이,설국,유키쿠니,yukikuni,,,
 765,https://youtu.be/HUrFX0HoYxA,雪に願いを (Yuki ni Negai wo),하루카,,눈에 소원을,유키니네가이오,yuki ni negai wo,,,
 765,https://youtu.be/aTo7S-Ka9-g,星間飛行(Seikan Hikou),마코토,,성간비행,세이칸히코우,Seikan Hikou,,,
 765,https://youtu.be/F3dmPrOK1p8,聖炎の女神(Seien no Megami),리츠코:타카네,,성염의여신,세이엔노메가미,Seien no Megami,,,
 765,https://youtu.be/xByOTvQ0uXw,星彩ステッパー(Starlight Stepper),이오리:아미:마미:미키,,성채스텝퍼,스타라이트스텝퍼,Starlight Stepper,성채스테퍼,별빛스테퍼,별빛스텝퍼
-765,https://youtu.be/myFPhrfpWGY,聖なる夜に (Seinaru Yoru Ni),프로젝트페어리,미키:타카네:히비키,성스러운밤에,聖なる夜に (Seinaru Yoru Ni),Seinaru Yoru Ni,,,
+765,https://youtu.be/myFPhrfpWGY,聖なる夜に (Seinaru Yoru Ni),프로젝트페어리,미키:타카네:히비키,성스러운밤에,聖なる夜に (Seinaru Yoru Ni),Seinaru Yoru Ni,세이나루요루니,,
 765,https://youtu.be/Uaco8FpNQCM,星の降る街 (Hoshi no Furu Machi),미키,,별이내리는거리,호시노후루마치,Hoshi no Furu Machi,별이내리는마을,,
 765,https://youtu.be/bPbqAjA13o4,星のかけらを探しにいこうagain (Hoshi no Kakera wo Sagashi ni Ikou Again),마코토,,별의조각을찾으러가자Again,호시노카케라오사가시니이코우어게인,Hoshi no Kakera wo Sagashi ni Ikou Again,호시노카케라오사가시니이코우Again,,
 765,https://youtu.be/8S2g0F6Onis,世界でいちばん頑張ってる君に (Sekai de Ichiban Ganbatteru Kimi ni),하루카,,세상에서 가장 열심히 하는 너에게,세카이데이치방간밧테루키미니,Sekai de Ichiban Ganbatteru Kimi ni,세상에서 가장 열심인 너에게,세상에서 가장 열심히 하는 그대에게,세상에서 가장 열심인 그대에게
 765,https://youtu.be/BHijVEqjCkg,細氷 (Saihyou),치하야,,세빙,사이효우,Saihyou,,,
 765,https://youtu.be/cMToKamkFIw,少年時代(Shounen Jidai),히비키,,소년시대,쇼우넨지다이,Shounen Jidai,,,
-765,https://youtu.be/eE4EM21WSAA,笑顔のゲンキ (Egao no Genki),아미:마미,,,에가오노겐키,Egao no Genki,에가오노겡키,,
+765,https://youtu.be/eE4EM21WSAA,笑顔のゲンキ (Egao no Genki),아미:마미,쌍둥이,,에가오노겐키,Egao no Genki,에가오노겡키,,
 765,https://youtu.be/G9I7yWdRQGk,小さきもの (Chiisaki Mono),치하야,,작은존재,치이사키모노,Chiisaki Mono,,,
 765,https://youtu.be/ZWMfS0-5_88,笑って!(Waratte!),하루카,,웃어봐,와랏테,Waratte!,와랏떼,웃어,
 765,https://youtu.be/fjdrblKSu0U,手紙 〜愛するあなたへ〜(Tegami~aisuruanata he~),야요이,,편지 사랑하는 당신에게,테가미아이스루아나타에,Tegami~aisuruanata he~,테가미아이스루아나타헤,,
@@ -92,7 +92,7 @@ team,video,title,artistMain,artistSub,ko_translate,ko_read,en_read,sub1,sub2,sub
 765,https://youtu.be/JoIJZukh7IA,愛について (Ai Nitsuite),치하야,,사랑에 대해서,아이니츠이테,Ai Nitsuite,,,
 765,https://youtu.be/t4oQqK7mukU,愛のうた (Ai no Uta),마코토,,사랑의노래,아이노우타,Ai no Uta,,,
 765,https://youtu.be/kZR3LdoVbes,約束 (Yakusoku),치하야,,약속,야쿠소쿠,Yakusoku,,,
-765,https://youtu.be/diIy7hBt5Ck,炎ノ鳥(Hono-o no tori),타카네,,불새,호노우노토리,Hono-o no tori,호노노토리,호노오노토리,hononotori
+765,https://youtu.be/diIy7hBt5Ck,炎ノ鳥(Hono-o no tori),타카네,,불새,불의새,Hono o no tori,호노노토리,호노오노토리,호노우노토리
 765,https://youtu.be/VUEw3kZShQI,遠い街から(Tooi Machi Kara),치하야,,먼거리에서,토오이마치카라,Tooi Machi Kara,먼곳에서,,
 765,https://youtu.be/EPqu3p-cgwA,遠い音楽(Tooi Ongaku),치하야,,멀어진음악,토오이온가쿠,Tooi Ongaku,머나먼음악,,
 765,https://youtu.be/DGpIotcQR_4,月ノ桜 (Tsuki no Sakura),타카네,,달의벚꽃,Tsuki no Sakura,츠키노사쿠라,,,
@@ -114,7 +114,7 @@ team,video,title,artistMain,artistSub,ko_translate,ko_read,en_read,sub1,sub2,sub
 765,https://youtu.be/uTlwLGlJvjU,卒業写真(Sotsugyousyasin),하루카,,졸업사진,소츠교우샤신,sotsugyousyasin,,,
 765,https://youtu.be/ckoJ3onZt8Y,鳥の詩 (Tori no Uta),치하야,,새의시,토리노우타,Tori no Uta,새의노래,,
 765,https://youtu.be/xnS24-TV1kE,仲良しでいようね♥ (Nakayoshi de Iyou ne♥),이오리:야요이,,나카요시데이이요네,나카요시데이요우네,Nakayoshi de Iyou ne♥,나카요시데이요네,,
-765,https://youtu.be/Lw49Tyq-raY,贈る言葉(Okuru Kotoba),아미:마미,,보내는말,오쿠루코토바,Okuru Kotoba,,,
+765,https://youtu.be/Lw49Tyq-raY,贈る言葉(Okuru Kotoba),아미,,보내는말,오쿠루코토바,Okuru Kotoba,,,
 765,https://youtu.be/oZLZ0MHKmvo,津軽海峡・冬景色 (Tsugaru Kaikyou Fuyugeshiki),유키호,,쓰가루해협겨울경치,쓰가루카이쿄우후유게시키,Tsugaru Kaikyou Fuyugeshiki,츠가루카이쿄우후유게시키,쓰가루해협,츠가루해협겨울경치
 765,https://youtu.be/CUJtweHbYwo,蒼い鳥 (Aoi Tori) ~TV ARRANGE~ ,치하야,,파랑새,아오이 토리,Aoi TOri,파랑새 티비어레인지,아오이토리 티비어레인지,
 765,https://youtu.be/h_AsR_dVMXQ,千本桜 (Senbonzakura),아즈사,,천본앵,센본자쿠라,Senbonzakura,,,
@@ -138,12 +138,12 @@ team,video,title,artistMain,artistSub,ko_translate,ko_read,en_read,sub1,sub2,sub
 765,https://youtu.be/Vc_-Lrzy7pI,夏祭り (Natsumatsuri),야요이,,나츠마츠리,natsumatsuri,나츠마쯔리,,,
 765,https://youtu.be/dOSc_mAl13s,夏のBang! (Natsu no Bang!),프로젝트 루미너스,미키:유키호:야요이:아미:마미:코하쿠,여름의bang,나츠노방,natsu no bang,나츠노bang,나츠노뱅,여름의뱅
 765,https://youtu.be/lNWXdDIh7v0,幸 (Shiawase),코토리,,행복,Siawase,시아와세,Shiawase,,
-765,https://youtu.be/6iVeBpuLTAk,海の声 (Umi no Koe),히비키,,바다의소리,우미노코에,Umi no Koe,,,
+765,https://youtu.be/6iVeBpuLTAk,海の声 (Umi no Koe),히비키,,바다의소리,우미노코에,Umi no Koe,바다의목소리,,
 765,https://youtu.be/YcvC10FvUzw,魂のルフラン(Tamashii no Refrain),타카네,,영혼의루프라,타마시이노리프레인,Tamashii no Refrain,타마시노루프라,TamashiinoRufura,TamashiinoRufuran
 765,https://youtu.be/SvjL9A-cKao,홍백응원V,765PRO ALLSTARS,765프로 올스타즈,홍백응원V,Kouhaku Ouen V,홍백응원,,,
 765,https://youtu.be/O-MOizCZqBo,虹色ミラクル(Nijiiro Miracle),765PRO ALLSTARS,765프로 올스타즈,니지이로미라클,니지이로미라쿠루,Nijiiro Miracle,칠색기적,무지갯빛미라클,무지개빛미라클
 765,https://youtu.be/LEQsj7aJ-m8,虹のデスティネーション(Niji no Destination),미키:이오리:유키호:아즈사,,무지개의데스티네이션,니지노데스티네이션,Niji no Destination,니지노데스티네션,,
-765,https://youtu.be/ngIYwee9jDg,好きになって よかった (Suki ni Natte Yokatta),유키호,,좋아하게되어서다행이야,스키니낫테요캇타,Suki ni Natte Yokatta,스키니낫떼요캇타,,
+765,https://youtu.be/ngIYwee9jDg,好きになって よかった (Suki ni Natte Yokatta),유키호,,좋아하게되어서다행이야,스키니낫테요캇타,Suki ni Natte Yokatta,스키니낫떼요캇타,좋아하게되서다행이야,
 765,https://youtu.be/FUry5b2C4xs,花 (Hana),코토리,,꽃,하나,hana,,,
 765,https://youtu.be/P5_fZURmy5U,花 (Hana),코토리,,꽃,하나,Hana,,,
 765,https://youtu.be/tFI_9sKBR0w,亜熱帯 ガール(Anettai Girl),히비키,,아열대걸,아네타이걸,Anettai Girl,아넷타이걸,아네따이걸,
@@ -167,7 +167,7 @@ team,video,title,artistMain,artistSub,ko_translate,ko_read,en_read,sub1,sub2,sub
 765,https://youtu.be/8FKOg3J_Ilg,涙そうそう(Nada Sousou),히비키,,눈물주룩주룩,나다소우소우,Nada Sousou,나다소소,,
 765,https://youtu.be/q6a-US3_5Hk,涙のハリケーン (Namida no Hurricane),미키,,눈물의허리케인,나미다노허리케인,Namida no Hurricane,,,
 765,https://youtu.be/kkduXiFTbqo,焼け野が原(Yakeno ga hara),타카네,,불타버린들판,야케노가하라,Yakeno ga hara,불탄들판,불타버린들,
-765,https://youtu.be/4b3oh9k_GPQ,青空のナミダ(Aozora no Namida),아미:마미,,푸른하늘의 눈물,아오조라노나미다,Aozora no Namida,,,
+765,https://youtu.be/4b3oh9k_GPQ,青空のナミダ(Aozora no Namida),아미:마미,쌍둥이,푸른하늘의 눈물,아오조라노나미다,Aozora no Namida,,,
 765,https://youtu.be/eNNjDVtn4xo,静かな夜に願いを… (Shizukana yoru ni negai wo),치하야:마미:유키호,,고요한밤에소원을,시즈카나요루니네가이오,Shizukana yoru ni negai o,shizukana yoru ni negai wo,고밤소,
 765,https://youtu.be/g2w1KNx8rBU,黒い犬 (Kuroi Inu),프로젝트 페어리,미키:히비키:타카네,흑견,쿠로이이누,Kuroi Inu,검은개,,
 765,https://youtu.be/0fO801PgpxE,Agape,유키호,,아가페,,Agape,,,
@@ -177,7 +177,7 @@ team,video,title,artistMain,artistSub,ko_translate,ko_read,en_read,sub1,sub2,sub
 765,https://youtu.be/GsnyWF7Mg5c,arcadia,치하야,,아르카디아,알카디아,arcadia,,,
 765,https://www.youtube.com/watch?v=aMt2H3pExzQ,BANGxBANG,토우마,아마가세토우마/Touma,뱅x뱅,BANGxBANG,뱅엑스뱅,뱅액스뱅,,
 765,https://youtu.be/a3nzJlN1L2o,Believe,히비키,,믿음,빌리브,Believe,,,
-765,https://youtu.be/VzJDFvRuAfI,Best Friend,아즈사,,,베스트프렌드,Best Friend,,,
+765,https://youtu.be/VzJDFvRuAfI,Best Friend,아즈사,,,베스트프렌드,Best Friend,베스트프렌드아즈사버전,베스트프렌드버전아즈사,
 765,https://youtu.be/Nai14HThfSw,Blooming Star,시이카,,,블루밍스타,Blooming Star,,,
 765,https://youtu.be/2t2nXlMsftY,Brand New Day!,히비키,,,브랜뉴데이,Brand New Day!,브랜드뉴데이,,
 765,https://youtu.be/q6q_h2DYQAI,Brand New Wave Upper Ground,리츠코,,,브랜뉴웨이브어퍼그라운드,Brand New Wave Upper Ground,브랜드뉴웨이브어퍼그라운드,,
@@ -227,12 +227,12 @@ team,video,title,artistMain,artistSub,ko_translate,ko_read,en_read,sub1,sub2,sub
 765,https://youtu.be/1HNeblVy9OU,HUG,히비키,,,허그,HUG,,,
 765,https://youtu.be/F761BhZn7nc,I Want,하루카,,,아이원트,I Want,,,
 765,https://youtu.be/MFMQDw3Mwns,I'm so free!,아즈사:타카네:미키,,,아임소프리,I'm so free!,암소프리,암쏘프리,아임쏘프리
-765,https://youtu.be/ga0Tza8DuHs,I'm Yours,하루카,,,아임유어즈,I'm Yours,암유어즈,,
+765,https://youtu.be/ga0Tza8DuHs,I'm Yours,하루카,,아임유어스,아임유어즈,I'm Yours,암유어즈,,
 765,https://youtu.be/2yipmn7ppw8,ID:[OL],코토리,,아이돌,idol,아이디오엘,,,
 765,https://youtu.be/RmM3niC1NT0,IDOL POWER RAINBOW,하루카:치하야:미키,,,아이돌파워레인보우,IDOL POWER RAINBOW,,,
 765,https://youtu.be/J13K-r_Pn9g,IDOL☆HEART,765PRO ALLSTARS,765프로 올스타즈,아이돌하트,idol heart,,,,
 765,https://youtu.be/QjH8Uyvndic,inferno,치하야:유키호,,,인페르노,inferno,,,
-765,https://youtu.be/a0mjNTFKF7M,inferno SQUARING,치하야:유키호,,,인페르노스퀘어링,inferno SQUARING,,,
+765,https://youtu.be/a0mjNTFKF7M,inferno SQUARING,치하야:유키호,,,인페르노스퀘어링,inferno SQUARING,인페르노 스쿼링,인페르노 스콰링,
 765,https://youtu.be/UYN43i325ic,Is This Love,히비키,,이거사랑이냐,이스디스러브,is this love,,,
 765,https://www.youtube.com/watch?v=F77qsqd3V4c,It's Show,치하야:이오리:리츠코:마코토:유키호:코토리,,잇쇼,잇츠쇼,its show,잇츠쑈,이쑈,잇쑈
 765,https://youtu.be/MZgSaUnXaQo,Jupiter,치하야,,목성,쥬피터,Jupiter,주피터,주피타,쥬피타
@@ -286,7 +286,7 @@ team,video,title,artistMain,artistSub,ko_translate,ko_read,en_read,sub1,sub2,sub
 765,https://youtu.be/lzIMF4epXLk,Shooting,미키,,난사,슈팅,Shooting,슛팅,,
 765,https://youtu.be/7w-HfK9279A,Shy→Shining,765PRO ALLSTARS,765프로 올스타즈,샤이샤이닝,ShyShining,,,,
 765,https://youtu.be/9ilB28jQDQE,Slapp Happy!!!,야요이:치하야:이오리,,,슬랩해피,Slapp Happy!!!,,,
-765,https://youtu.be/RgxfsiVm1gk,SMOKY FRUITS,류구코마치,이오리:아미:아즈사,,스모키후루츠,SMOKY FRUITS,,,
+765,https://youtu.be/RgxfsiVm1gk,SMOKY FRUITS,류구코마치,이오리:아미:아즈사,스모키후르츠,스모키후루츠,SMOKY FRUITS,스모키푸르츠,,
 765,https://youtu.be/i2PIge2aE1Y,SMOKY THRILL,류구코마치,이오리:아미:아즈사,,스모키스릴,SMOKY THRILL,스모키쓰릴,,
 765,https://youtu.be/P6hj2Sw1ih4,Snowdome,유키호,,,스노우돔,Snowdome,스노돔,스노우도무,
 765,https://youtu.be/7x6ytT_XlRA,SPIRIT,유키호,,영혼,스피릿,SPIRIT,,,
@@ -333,7 +333,7 @@ team,video,title,artistMain,artistSub,ko_translate,ko_read,en_read,sub1,sub2,sub
 765,https://youtu.be/5S73rzlRPVQ,アマテラス (Amaterasu),유키호:아즈사:타카네:리츠코,,아마테라스,,Amaterasu,,,
 765,https://youtu.be/TL3uTDy8m0c,アムリタ (Amrita),유키호,,암리타,아무리타,amrita,amurita,,
 765,https://youtu.be/YrXT_WHgJUQ,ありがとう･･･(Arigatou...),코토리,,고마워,아리가토우,Arigatou...,아리가토,아리가또,아리가토우
-765,https://youtu.be/QXfm7IFzIxA,アルティメットアイズ(Ultimate Eyes),레온,,궁극눈,얼티메이트아이즈,ultimate eyes,얼티메이트아이,얼티밋아이즈,
+765,https://youtu.be/QXfm7IFzIxA,アルティメットアイズ(Ultimate Eyes),레온,,궁극눈,얼티메이트아이즈,ultimate eyes,얼티메이트아이,얼티밋아이즈,울티메이트아이즈
 765,https://youtu.be/BxPANZhJCCA,アンバランスなKissをして(Unbalance na Kiss wo shite),마코토,,언밸런스한키스를 해줘,언밸런스나키스오시테,Unbalance na Kiss wo shite,언바란스나키스오시테,안바란스나키스오시테,
 765,https://youtu.be/Lg4DHRygJ3w,イジワルしないで抱きしめてよ (Ijiwaru Shinai de Dakishimete yo),미키,,심술부리지말고안아줘,이지와루시나이데 다키시메테요,Ijiwaru Shinai de Dakishimete yo,어리광부리지말고안아줘,심술내지말고안아줘,
 765,https://youtu.be/togtUSSu6X0,イタズラなKISS(Itazura na Kiss),아미,,장난스런키스,이타즈라나키스,Itazura na Kiss,장난스러운키스,,
@@ -356,14 +356,14 @@ team,video,title,artistMain,artistSub,ko_translate,ko_read,en_read,sub1,sub2,sub
 765,https://youtu.be/m9Jn5knXaDM,カンゲキハッピーエコロジー(Kangeki Happy Ecology),야요이,,감격해피이콜로지,칸게키해피에콜로지,Kangeki Happy Ecology,칸게키하피에코로지,감격해피에콜로지,
 765,https://youtu.be/NyNa9nGHPxg,キミ＊チャンネル(Kimi Channel),하루카:히비키:마코토,,너채널,키미채널,Kimi Channel,키미찬네루,니채널,네채널
 765,https://youtu.be/jBWjwFDHmFQ,キューティーハニー (Cutie Honey),타카네,,,큐티하니,Cutie Honey,큐티허니,,
-765,https://youtu.be/Jw3MU3AtNq4,きゅんっ！ヴァンパイアガール(Kyun!Vampire Girl),프로젝트페어리,미키:타카네:히비키,큥뱀파,큥뱀파이어걸,Kyun!Vampire Girl,,,
+765,https://youtu.be/Jw3MU3AtNq4,きゅんっ！ヴァンパイアガール(Kyun!Vampire Girl),프로젝트페어리,미키:타카네:히비키,큥뱀파,큥뱀파이어걸,Kyun!Vampire Girl,큥뱀,,
 765,https://youtu.be/eGNLEZKvRZs,キラメキラリ (Kiramekirari),야요이,,,키라메키라리,Kiramekirari,,,
 765,https://youtu.be/C3DmIsqYRLk,グッナイ☆スターズ (Goodnight Stars),미키:유키호:타카네:아즈사,,굿나이트스타즈,굿나잇스타즈,Goodnight Stars,,,
 765,https://youtu.be/syvziV0nsxs,クリスマス・イヴ(Christmas Eve),하루카:치하야,,,크리스마스 이브,Christmas Eve,,,
 765,https://youtu.be/RPIEFcNgpDE,ゲンキトリッパー (Genki Tripper),야요이,,활발트립퍼,GenkiTripper,겡키트리퍼,겐키트리퍼,겐키트립퍼,겡키트립퍼
 765,https://youtu.be/4WTvcQPqGYY,コーヒー1杯のイマージュ(Coffee Ippai no Image),아미,아미:마미:히비키:마코토,커피한잔의이미지,커피 잇빠이노이미지,Coffee Ippai no Image,커피잇빠이노이마쥬,커피한잔의이마쥬,
 765,https://youtu.be/gLdCpRMquOo,コイ・ココロ(Koi Kokoro),아즈사,,연심,코이코코로,Koi Kokoro,,,
-765,https://www.youtube.com/watch?v=ccaXm8y8PaQ,ザ・ライブ革命でSHOW！ (The Live Kakumei de SHOW!),미키:야요이:마코토:아미:마미:타카네,,더 라이브 혁명 데 쇼,더라이브카쿠메이데show,The Live Kakumei de SHOW!,더라이브카쿠메이데쇼,혁명데쇼,라이브혁명하쇼
+765,https://www.youtube.com/watch?v=ccaXm8y8PaQ,ザ・ライブ革命でSHOW！ (The Live Kakumei de SHOW!),미키:야요이:마코토:아미:마미:타카네,,더 라이브 혁명 데 쇼,더라이브카쿠메이데show,The Live Kakumei de SHOW!,더라이브카쿠메이데쇼,혁명데쇼,더라이브혁명하쇼
 765,https://youtu.be/otPcZzBPC8A,サイレント・イヴ(Silent Eve),치하야,,사일렌트이브,사일런트이브,Silent Eve,,,
 765,https://youtu.be/AxyyErGbKFkk,サニー (Sunny),아미:마미:아즈사:이오리:유키호:리츠코,,서니,Sunny,써니,사니,싸니,
 765,https://youtu.be/kKbv18zFimM,さよならをありがとう(Sayonara no Arigato),하루카,,이별을감사해,사요나라노아리가토우,Sayonara wo Arigato,이별에감사해,사요나라오아리가토,사요나라오아리가또
@@ -379,7 +379,7 @@ team,video,title,artistMain,artistSub,ko_translate,ko_read,en_read,sub1,sub2,sub
 765,https://youtu.be/WwQvCNGNPyc,すいみん不(Suimin Fusoku),미키,,수면부족,스이민후소쿠,Suimin Fusoku,,,
 765,https://youtu.be/0Q33f2R9Nn0,スウィートドーナッツ (Sweet Donuts),유키호,,스윗도나쓰,스윗도너츠,Sweet Donuts,스윗도넛,스윗도넛츠,스위트도넛
 765,https://youtu.be/T1A6Ok2nh6M,スキ(suki),하루카:치하야:아미,아미,좋아,스키,suki,,,
-765,https://youtu.be/2k-6sxZ6RV0,スタ→トスタ→ (Start→Star→),아미:마미,,스타토스타,스타트스타,Start Star,너는멜로디,,
+765,https://youtu.be/2k-6sxZ6RV0,スタ→トスタ→ (Start→Star→),아미:마미,쌍둥이,스타토스타,스타트스타,Start Star,너는멜로디,,
 765,https://youtu.be/D1hzh0GbJnM,すてきなホリデイ(Suteki na Holiday),아즈사,,스테키나holiday,스테키나홀리데이,suteki na holiday,,,
 765,https://youtu.be/cCQYh9WJc5Y,ステキハピネス(Suteki Happiness),하루카,,스테키happiness,스테키해피니스,Suteki Happiness,근사한해피니스,,
 765,https://youtu.be/3j5f7r5NjMg,ストレートラブ! (Straight Love!),하루카:마코토:이오리,프로젝트페어리/미키:히비키:타카네,스토레이토러브,스트레이트러브,Straight Love!,스트레이토러브,스트레이토라브,스토레이토라브
@@ -389,7 +389,7 @@ team,video,title,artistMain,artistSub,ko_translate,ko_read,en_read,sub1,sub2,sub
 765,https://youtu.be/KCiDoTsbFu4,そしてぼくらは旅にでる(그리고 우리는 여행을 떠난다),하루카:유키호:야요이:아즈사,,그리고 우리는 여행을 떠난다,소시테보쿠라와타비니데루,soshite bokurawa tabini deru,,,
 765,https://youtu.be/FmcT80dmvf8,ソナー (Sonar),이오리,,음탐,소나,Sonar,sona,,
 765,https://youtu.be/FFynyC0Y12w,それが愛でしょう (Sore ga Ai deshou),하루카,,그것이 사랑이겠죠,Soregaaideshou,그것이사랑이죠,그게사랑이겠죠,그게사랑이죠,소레가아이데쇼
-765,https://youtu.be/siKc0pucfbk,たいせつなひと(Taisetsu na Hito),마코토,,소중한사람,타이세츠나히노,Taisetsu na Hito,,,
+765,https://youtu.be/siKc0pucfbk,たいせつなひと(Taisetsu na Hito),마코토,,소중한사람,타이세츠나히노,Taisetsu na Hito,다이세츠나히토,,
 765,https://youtu.be/YorjN8s0Nr4,ダンス・ダンス・ダンス (Dance Dance Dance),루미너스 아주르,치하야:리츠코:아즈사:타카네:레온:코하쿠,단스단스단스,dance dance dance,댄스댄스댄스,춤춤춤,딴딴딴,딴스딴스딴스
 765,https://youtu.be/qLIXZgYl-vo,チアリングレター (Cheering Letter),마코토,,,치어링레터,Cheering Letter,치어링래터,,
 765,https://youtu.be/7FlFKZ1P62Q,チェリー(Cherry),하루카:이오리:히비키:리츠코:유키호,,,체리,Cherry,,,
@@ -398,8 +398,8 @@ team,video,title,artistMain,artistSub,ko_translate,ko_read,en_read,sub1,sub2,sub
 765,https://youtu.be/iLvdyzAIYP0,チャンピオン (Champion),미키,,챔피온,챔피언,Champion,참피온,참피안,참피언
 765,https://youtu.be/scuhpu1acc4,トイレの神様 (Toilet no Kamisama),야요이,,화장실의신,토이레노카미사마,Toilet no Kamisama,화장실의신님,화장실의여신,
 765,https://youtu.be/qVvh2DHYyKU,ドゥー・ユー・リメンバー・ミー (Do You Remember Me),이오리,,,두유리멤버미,Do You Remember Me,,,
-765,https://youtu.be/gK8WtaKILqE,ドキッ ラブアトラクション(Doki Love Attraction),아미:마미,,도킷러브어트랙션,도키러브어트랙션,Doki Love Attraction,러브어트랙션,,
-765,https://youtu.be/WTO3uOK0jHA,どっきり☆ハピバ (Dokkiri Happy Birthday),아미:마미,,돗키리HappyBirthday,돗키리해피버스데이,Dokkiri Happy Birthday,Happy Birthday,,
+765,https://youtu.be/gK8WtaKILqE,ドキッ ラブアトラクション(Doki Love Attraction),아미:마미,쌍둥이,도킷러브어트랙션,도키러브어트랙션,Doki Love Attraction,러브어트랙션,,
+765,https://youtu.be/WTO3uOK0jHA,どっきり☆ハピバ (Dokkiri Happy Birthday),아미:마미,쌍둥이,돗키리HappyBirthday,돗키리해피버스데이,Dokkiri Happy Birthday,Happy Birthday,,
 765,https://youtu.be/OVGxDLIx-QQ,トリプルAngel (Triple Angel),아미,,트리플angel,트리플엔젤,Triple Angel,트리후엔제루,트리플엔제루,
 765,https://youtu.be/PlC3vqZQkt0,ナツノハナ (Natsu no Hana),마코토,,나츠노하나,나쓰노하나,Natsu no Hana,여름의꽃,,
 765,https://youtu.be/AI_zhuXB-7g,なんどでも笑おう (nandode mo waraou),하루카:치하야:미키,,몇번이고웃자,난도데모와라오,nandode mo waraou,난도데모와라오우,,
@@ -425,15 +425,14 @@ team,video,title,artistMain,artistSub,ko_translate,ko_read,en_read,sub1,sub2,sub
 765,https://youtu.be/mg6Mio6AFHo,フラワーガール (Flower Girl),타카네,,꽃녀,플라워걸,Flower Girl,,,
 765,https://www.youtube.com/watch?v=qmBe1dgBevM,プリコグ (Precog),미즈타니 에리,,프리코그,precog,푸리코그,푸리코구,미리앎,
 765,https://youtu.be/K6RCJuVvdKo,ブルウ・スタア(Blue Star),마코토:히비키,,,블루스타,Blue Star,,,
-765,https://youtu.be/vroFBJeb1TE,ふるふるフューチャー (Furufuru Future),미키,,후루후루퓨처,FurufuruFuture,후루후루퓨쳐,,,
-765,https://youtu.be/7mvQ136wWcw,ふるふるフューチャー☆ (Furufuru Future☆),미키,,,후루후루퓨쳐,Furufuru Future☆,,,
+765,https://youtu.be/7mvQ136wWcw,ふるふるフューチャー☆ (Furufuru Future☆),미키,,후루후루퓨처,후루후루퓨쳐,Furufuru Future☆,,,
 765,https://youtu.be/3WEHFS8rVWw,ホウキ雲 (Houki Kumo),이오리,,빗자루구름,Houkikumo,호우키쿠모,호우키구모,,
 765,https://youtu.be/h_53Bq3AAks,ポジティブシンカー! (Positive Thinker!),아미,,포지티브싱커,포지티브띵커,Positive Thinker,포지티브씽커,,
 765,https://youtu.be/nEGKd2SNfVo,マイペースでいきましょう(My Pace de Ikimashou),리츠코:아미:마미:이오리:히비키,,마이페이스로가자,마이페이스데이키마쇼우,My Pace de Ikimashou,마이페이스데이키마쇼,,
 765,https://youtu.be/CdmrsI1ATBI,マジで…! (Majide...!),765PRO ALLSTARS,하루카/765프로 올스타즈,정말로,마지데,majide,,,
 765,https://youtu.be/jWOrQu49h2c,またね (Matane),하루카:이오리:히비키:리츠코:유키호,,마타네,Matane,,,,
 765,https://youtu.be/60rTEA65PWw,まっくら森の歌 (Makkura Mori no Uta),치하야,,,막쿠라모리노우타,Makkura Mori no Uta,맛쿠라모리노우타,,
-765,https://youtu.be/qp5epRIfPsk,まっすぐ (Massugu),마코토:아즈사:리츠코,,직진,맛스구,Massugu,똑바로,마쓰구,
+765,https://youtu.be/qp5epRIfPsk,まっすぐ (Massugu),마코토:아즈사:리츠코,,직진,맛스구,Massugu,똑바로,마쓰구,맛쓰구
 765,https://youtu.be/1_LY7jx6dMY,まほろば(Mahoroba),야요이,,멋진장소,마호로바,Mahoroba,,,
 765,https://youtu.be/qTQ7pupCvx4,マリオネットの心 (Marionette no Kokoro),미키,,마리오네트의마음,마리오네트노코코로,Marionette no Kokoro,마리오네토의마음,마리오네토노코코로,
 765,https://youtu.be/kejkyPjQRoc,ムーンライト伝説 (Moonlight Densetsu),하루카,,달빛전설,문라이트덴세츠,Moonlight Densetsu,문라이트전설,,
@@ -447,8 +446,8 @@ team,video,title,artistMain,artistSub,ko_translate,ko_read,en_read,sub1,sub2,sub
 765,https://www.youtube.com/watch?v=PhtLo-jHdeg,ら♪ら♪ら♪わんだぁらんど (La♪La♪La♪Wonderland),765PRO ALLSTARS,765프로 올스타즈,원더랜드,라라라원더랜드,La♪La♪La♪Wonderland,,,
 765,https://youtu.be/wp3-TCy-4TY,ラビットパニック(Rabbit Panic),이오리,,,래빗패닉,Rabbit Panic,레빗패닉,,
 765,https://youtu.be/06ujFv3bXIY,らびゅらびゅ(Rabyu Rabyu),야요이,,,라뷰라뷰,Rabyu Rabyu,러뷰러뷰,,
-765,https://youtu.be/UrAfAlqgIzU,ラムネ色 青春 (Ramune-Iro Seishun),765PRO ALLSTARS,765프로 올스타즈,라무네빛청춘,Ramuneiroseishun,라무네이로세이슌,,,
-765,https://youtu.be/HnulddzLLZk,ラムのラブソング(Lum no Love Song),아미:마미,,라무의 러브송,라무노어브송,Lum no Love Song,Ramu no love song,,
+765,https://youtu.be/UrAfAlqgIzU,ラムネ色 青春 (Ramune-Iro Seishun),765PRO ALLSTARS,765프로 올스타즈,라무네빛청춘,Ramuneiroseishun,라무네이로세이슌,라무네이로청춘,,
+765,https://youtu.be/HnulddzLLZk,ラムのラブソング(Lum no Love Song),아미:마미,쌍둥이,라무의 러브송,라무노어브송,Lum no Love Song,Ramu no love song,럼노러브송,럼의러브송
 765,https://youtu.be/V-bPZs1XtW4,リゾラ(Rizora),이오리,,,리조라,Rizora,니조랄,,
 765,https://youtu.be/J3MHkYmJsZA,リフレクティア (Reflectia),아즈사,,리플렉티아,Reflectia,,,,
 765,https://youtu.be/1MOEsue86kw,リルラ リルハ (Rirura Riruha),야요이,,,리루라 리루하,Rirura Riruha,,,
@@ -526,7 +525,7 @@ team,video,title,artistMain,artistSub,ko_translate,ko_read,en_read,sub1,sub2,sub
 솔로곡,https://youtu.be/pBQhsGqFWz8,MEGARE!,마미,,,메가레,MEGARE!,,,
 솔로곡,https://youtu.be/MvRFXH8FO1c,Melted Snow,아즈사,,녹은눈,멜티드스노우,Melted Snow,멜티드스노,,
 솔로곡,https://youtu.be/X3eU6YYnV7c,my song,이오리,,마이쏭,마이송,my song,,,
-솔로곡,https://youtu.be/cGHsQ3RmhuA,Yes♪,마코토,,예쓰,예스,Yes♪,,,
+솔로곡,https://youtu.be/cGHsQ3RmhuA,Yes♪,마코토,,예쓰,예스,Yes,,,
 솔로곡,https://youtu.be/bwn2sprWh8I,ら♪ら♪ら♪わんだぁらんど (La♪La♪La♪Wonderland),코토리,,원더랜드,라라라원더랜드,La♪La♪La♪Wonderland,,,
 솔로곡/S4U,https://www.youtube.com/watch?v=1gzOzNYZyJA,9 02 pm,아미,,9 02 pm,902,,,,
 솔로곡/S4U,https://www.youtube.com/watch?v=1jqXvpvS-Ck,9 02 pm,치하야,,9 02 pm,902,,,,
