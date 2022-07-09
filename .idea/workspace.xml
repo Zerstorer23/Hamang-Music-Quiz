@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="a href safety" />
+    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="a href safety">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/presets/i765.csv" beforeDir="false" afterPath="$PROJECT_DIR$/public/presets/i765.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/presets/kyoani.csv" beforeDir="false" afterPath="$PROJECT_DIR$/public/presets/kyoani.csv" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -143,6 +147,7 @@
       <workItem from="1656738682203" duration="1686000" />
       <workItem from="1656742544793" duration="148000" />
       <workItem from="1656748257737" duration="200000" />
+      <workItem from="1657340561660" duration="596000" />
     </task>
     <task id="LOCAL-00016" summary="Multiple Library 1">
       <created>1655351170350</created>
