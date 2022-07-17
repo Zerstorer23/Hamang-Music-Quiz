@@ -86,7 +86,7 @@ export const DCconList: DCConButtonType[] = [
     },
     {
         con: ConClass.surprise,
-        text: "놀람"
+        text: "놀라운"
     },
     {
         con: ConClass.sowhat,

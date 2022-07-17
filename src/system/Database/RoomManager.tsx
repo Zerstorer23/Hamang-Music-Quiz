@@ -18,7 +18,7 @@ export class RoomManager {
             settings: {
                 guessTime: !DS.StrictRules ? 5 : GameConfigs.defaultGuessTime,
                 songsPlay: !DS.StrictRules ? 5 : GameConfigs.defaultSongNumber,
-                limitedCommunication: (randomInt(0, 1) === 1),
+                limitedCommunication: false,// (randomInt(0, 1) === 1),
                 playAt: PlayAt.Random,
                 speed: PlaySpeed.Normal,
                 useArtists: false,

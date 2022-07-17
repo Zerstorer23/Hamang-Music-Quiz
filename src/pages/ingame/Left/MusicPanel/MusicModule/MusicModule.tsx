@@ -146,7 +146,7 @@ function pollMusic(ctx: RoomContextType): boolean {
     return true;
 }
 
-function doTimer(setTimer: any, durationInSec: number, onExpire: any) {
+export function doTimer(setTimer: any, durationInSec: number, onExpire: any) {
     setTimer((prevTimer: any) => {
         clearTimer(prevTimer);
         return setTimeout(() => {
@@ -155,7 +155,7 @@ function doTimer(setTimer: any, durationInSec: number, onExpire: any) {
     });
 }
 
-function clearTimer(prevTimer: any) {
+export function clearTimer(prevTimer: any) {
     if (prevTimer !== null && prevTimer !== undefined) {
         clearTimeout(prevTimer);
     }

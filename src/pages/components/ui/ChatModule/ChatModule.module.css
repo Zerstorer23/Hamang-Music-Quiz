@@ -36,7 +36,7 @@
     display: grid;
     width: 100%;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     gap: 1%;
     /*   align-items: center;
        justify-items: center;

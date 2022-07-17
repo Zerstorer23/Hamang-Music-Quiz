@@ -1,9 +1,9 @@
 import classes from "pages/components/ui/ChatModule/ChatModule.module.css";
 import gc from "index/global.module.css";
 import {DCConButtonType, DCconList} from "resources/DCconDB";
-import React from "react";
+import React, {useContext} from "react";
 import {IProps} from "system/types/CommonTypes";
-import {ChatFormat, sendChat} from "pages/components/ui/ChatModule/system/ChatContextProvider";
+import ChatContext, {ChatFormat, sendChat} from "pages/components/ui/ChatModule/system/ChatContextProvider";
 
 type Props = IProps & {
     height: string;
@@ -12,8 +12,13 @@ type Props = IProps & {
 }
 export default function ConModule(p: Props) {
 
+    const chatCtx = useContext(ChatContext);
+
     function onClickCon(conType: DCConButtonType) {
-        sendChat(ChatFormat.normal, p.myName, `#${conType.text}`);
+        const success = sendChat(ChatFormat.normal, p.myName, `#${conType.text}`);
+        if (!success) {
+            chatCtx.localAnnounce("채팅을 너무 자주 보내셨습니다...");
+        }
     }
 
     return <div className={`${classes.dcConPanel} ${(p.show) ? "" : gc.hidden}`} style={{height: p.height}}>

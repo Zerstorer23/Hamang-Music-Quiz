@@ -84,8 +84,10 @@ export default function ChatModule() {
         localCtx.setVal(LocalField.InputFocus, cursorInfo);
     }
 
-    const chatHeight = (limitedChat) ? (amHost) ? "33%" : "0%" : "100%";
-    const conHeight = (limitedChat) ? (amHost) ? "66%" : "100%" : "0%";
+    // const chatHeight = (limitedChat) ? (amHost) ? "33%" : "0%" : "100%";
+    // const conHeight = (limitedChat) ? (amHost) ? "66%" : "100%" : "0%";
+    const chatHeight = (limitedChat) ? "0%" : "100%";
+    const conHeight = (limitedChat) ? "100%" : "0%";
 
     return (
         <div className={`${classes.container}`}>
@@ -97,7 +99,7 @@ export default function ChatModule() {
             </div>
             <div className={`${classes.inputBox} `}>
                 <ConModule myName={myEntry.player.name} show={limitedChat} height={conHeight}/>
-                <div className={`${classes.sendBox}  ${((limitedChat && !amHost) ? gc.hidden : "")}`}
+                <div className={`${classes.sendBox}  ${((limitedChat) ? gc.hidden : "")}`}
                      style={{height: chatHeight}}>
                 <textarea
                     ref={chatFieldRef}
