@@ -48,3 +48,4 @@ https://music.haruhi.boats
 
 중계기 파일 주소
 https://github.com/Zerstorer23/Hamangho-Chatting-Relay/releases
+sdf
