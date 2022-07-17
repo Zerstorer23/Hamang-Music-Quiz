@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="a href safety">
+    <list default="true" id="e4c1c6ce-51b2-48c3-94c6-ad0f6380a43a" name="Changes" comment="Hint System">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ChatModule.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ChatModule.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ChatModule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ChatModule.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ConModule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/components/ui/ChatModule/ConModule.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicModule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicModule/MusicModule.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicPanel.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicPanel.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ingame/Left/MusicPanel/MusicPanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/DCconDB.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/DCconDB.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/Database/RoomManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/Database/RoomManager.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +76,7 @@
       <recent name="D:\Code Repos\IdeaProjects\hamang-music-quiz\public\resources\images" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="npm.deploy">
     <configuration name="deploy" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -156,14 +148,9 @@
       <workItem from="1657340561660" duration="851000" />
       <workItem from="1657484784639" duration="575000" />
       <workItem from="1657627283294" duration="810000" />
-      <workItem from="1658020617357" duration="2544000" />
-    </task>
-    <task id="LOCAL-00017" summary="DS Direct Connect">
-      <created>1655356361021</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1655356361022</updated>
+      <workItem from="1658020617357" duration="3998000" />
+      <workItem from="1658024749278" duration="635000" />
+      <workItem from="1658025412332" duration="395000" />
     </task>
     <task id="LOCAL-00018" summary="File Loader Improvement">
       <created>1655416417091</created>
@@ -501,7 +488,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657341346076</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Hint System">
+      <created>1658023310920</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1658023310921</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -520,7 +514,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="More KyoAniSongs" />
     <MESSAGE value="AAUto Insert answer" />
     <MESSAGE value="Cached Room Number" />
     <MESSAGE value="Emergency Kick" />
@@ -545,7 +538,8 @@
     <MESSAGE value="Anon Game" />
     <MESSAGE value="Undefined Bug fix" />
     <MESSAGE value="a href safety" />
-    <option name="LAST_COMMIT_MESSAGE" value="a href safety" />
+    <MESSAGE value="Hint System" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hint System" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
