@@ -101,7 +101,8 @@ export default function PlayersPanel() {
                             {(buttonKey)}
                         </button> :
                         <p className={`${classes.noMoreCoins} ${gc.borderColor}`}>
-                            더 플레이 하려면 방장이 채팅에 "/coins" 입력
+                            더 플레이 하려면 방장이 채팅에 "/coins" 입력 <br/>
+                            {ctx.room.header.settings.limitedCommunication && "채팅제한을 해제하세요."}
                         </p>
                 }
             </div>
